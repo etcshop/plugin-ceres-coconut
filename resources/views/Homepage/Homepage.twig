@@ -1,6 +1,6 @@
 {% extends getPartial('page-design') %}
 
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "CeresCoconut::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% set showDefaultHomepage = config("Ceres.default.homepage") %}
 {% set companyLogo  = config("Ceres.header.company_logo") %}
@@ -33,7 +33,7 @@
          <div class="home container-max">
             <div class="row">
                 <div class="col">
-                    {% for content in container("Ceres::Homepage") if content.plugin == "Plenty" %}
+                    {% for content in container("CeresCoconut::Homepage") if content.plugin == "Plenty" %}
                         {{ content.result|raw }}
                     {% endfor %}
                 </div>
@@ -43,10 +43,10 @@
      {% else %}
 
          {% if showDefaultHomepage == "true" %}
-            {% include 'Ceres::Homepage.MarketingHomepageETC.twig' %}
+            {% include 'CeresCoconut::Homepage.MarketingHomepageETC.twig' %}
         {% else %}
             {% block ThemeHomepage %}
-                {% include 'Ceres::Homepage.DefaultHomepage.twig' %}
+                {% include 'CeresCoconut::Homepage.DefaultHomepage.twig' %}
             {% endblock %}
         {% endif %}
 
