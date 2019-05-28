@@ -1,1 +1,4 @@
 <!-- Insert markup here -->
+{% macro add( plugin, group ) %}
+    <script type="application/json" data-translation="{{ plugin }}::{{ group }}">{{ services.localization.getTranslations( plugin, group ) | json_encode | raw }}</script>
+{% endmacro %}
