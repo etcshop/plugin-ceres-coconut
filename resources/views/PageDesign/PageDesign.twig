@@ -53,7 +53,7 @@
     }
 </script>
 <div id="vue-app">
-    <div>DIES IST EIN TEST</div>
+
     <div class="wrapper wrapper-top">
         <!-- messages -->
         <notifications template="#vue-notifications" :initial-notifications="{{ notifications | json_encode() }}"></notifications>
@@ -65,12 +65,133 @@
 
     <div class="wrapper wrapper-main {% if ceresConfig.header.fixNavBarPos %}isSticky{% endif %}">
         {% include getPartial('header') %}
+        <div class="content">
+                  <div class="container_centered">
 
+                    {% if (services.template.isMyAccount()) or ('/pages/karriere' in canonicalUrl) or ('/pages/career' in canonicalUrl) or ('/pages/carriere' in canonicalUrl)  or ('/pages/kontakt' in canonicalUrl) or ('/pages/newsletter' in canonicalUrl) or ('/pages/infolettre' in canonicalUrl) or ('/pages/versand' in canonicalUrl) or ('/pages/shipping' in canonicalUrl) or ('pages/envoi' in canonicalUrl) or ('/pages/kontakt' in canonicalUrl) or ('/pages/zahlung' in canonicalUrl) or ('/pages/payment' in canonicalUrl) or ('/pages/paiement' in canonicalUrl)  or ('/pages/faq' in canonicalUrl) or (currTpl == 'tpl.contact') or (currTpl == 'tpl.wish-list') or (services.template.getCurrentTemplate() == 'tpl.confirmation' and request.getRequestUri()|replace({'/': ''}) == 'confirmation') %}
+                        {% set showMyAccountSubMenu = true %}
+                    {% else %}
+                        {% set showMyAccountSubMenu = false %}
+                    {% endif %}
+
+                    <!-- breadcrumb -->
+                    {% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() and not showMyAccountSubMenu and 'tpl.basket' not in currTpl %}
+                      {% include "Ceres::PageDesign.Partials.Header.Breadcrumb" %}
+                    {% endif %}
+
+                    {% if services.template.isHome() %}
+                      {% set mainContentCentered = ' class="container_centered"' %}
+                  {% else %}
+                      {% set mainContentCentered = '' %}
+                    {% endif %}
+
+                    {% if category.linklist == "Y" %}
+                        {% set initialCategory = { id: category.id } %}
+                    {% else %}
+                        {% set initialCategory = category %}
+                    {% endif %}
+                  </div>
+                  <div{% if not services.template.isHome() %} class="container_centered" {% endif %}>
+
+                    {% if showMyAccountSubMenu == true %}
+                      <div id="SubMenuButton" class="hidden-lg hidden-sm hidden-md">
+                        <i id="SubMenuButton_Icon" class="material-icons">reorder</i>
+                        <div id="SubMenuText">{{ trans("Ceres::Template.ETC_ServiceCenter") }}</div>
+                      </div>
+
+                      <div class="col-lg-3 col-md-4 col-sm-5" id="MyAccount_left">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <ul class="Test1702">
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Kontakt">
+                              <a href="{{ urls.contact }}">
+                                <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Kontakt") }}</div>
+                                <i id="MyAccountKontaktIcon" class="material-icons MyAccountIcon">contact_mail</i>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Retoure">
+                              <a href="http://s141963554.online.de/retoure/voll/retoure.php">
+                                <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Retoure") }}</div>
+                                <i id="MyAccountRetoureIcon" class="material-icons MyAccountIcon">reply</i>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Newsletter">
+                              {% set newsletter = services.category.get(802, lang) %}
+                              <a href="{{ services.category.getURL(newsletter, lang) }}">
+                                <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Newsletter") }}</div>
+                                <i id="MyAccountNewsletterIcon" class="material-icons MyAccountIcon">email</i>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Versand">
+                              {% set versand = services.category.get(722, lang) %}
+                              <a href="{{ services.category.getURL(versand, lang) }}">
+                                <div class="MyAccountLabel">{{ services.category.get(722, lang).details[0].name }}</div>
+                                <i id="MyAccountVersandIcon" class="material-icons MyAccountIcon">send</i>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Zahlung">
+                              {% set zahlung = services.category.get(725, lang) %}
+                              <a href="{{ services.category.getURL(zahlung, lang) }}">
+                                <div class="MyAccountLabel">{{ services.category.get(725, lang).details[0].name }}</div>
+                                <i id="MyAccountZahlungIcon" class="material-icons MyAccountIcon">euro_symbol</i>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_FAQ">
+                              {% set FAQ = services.category.get(714, lang) %}
+                              <a href="{{ services.category.getURL(FAQ, lang) }}">
+                                <div class="MyAccountLabel">{{ services.category.get(714, lang).details[0].name }}</div>
+                                <i id="MyAccountFAQIcon" class="material-icons MyAccountIcon">info_outline</i>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Kundendaten">
+                              <a href="{{ urls.myAccount }}#sc_Kundendaten">
+                                <div class="MyAccountLabel">{{ trans("Ceres::Template.loginMyAccount") }}</div>
+                                <i id="MyAccountKundenkontoIcon" class="material-icons MyAccountIcon">account_box</i>
+                              </a>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Auftraege">
+                              <a href="{{ urls.myAccount }}#sc_Auftraghistorie">
+                                <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Bestellungen") }}</div>
+                                <i id="MyAccountAuftragIcon" class="material-icons MyAccountIcon">restore</i>
+                              </a>
+                            </li>
+                            <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Merkliste">
+                              <a href="{{ urls.wishList }}#sc_Merkliste">
+                                <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Merkliste") }}</div>
+                                <i id="MyAccountMerklisteIcon" class="material-icons MyAccountIcon">list</i>
+                              </a>
+                            </li>
+                          </ul>
+                          {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
+                          {% if loggedIn %}
+                            <span id="PlentyWebMyAccountMyAccountLogoutContainer">
+                          	   <a class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" v-logout>{{ trans("Ceres::Template.loginLogout") }}</a>
+                             </span>
+                          {% else %}
+                            <span id="PlentyWebMyAccountMyAccountLogoutContainer">
+                               {% set loginURL = "" %}
+                               {% if lang != 'de' %}
+                                  {% set loginURL = "https://www.etc-shop.de/" + lang + "/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account#sc_Kundendaten"%}
+                               {% else %}
+                                  {% set loginURL = "https://www.etc-shop.de/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account#sc_Kundendaten"%}
+                               {% endif %}
+                          	   <a class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" href="{{ loginURL }}">{{ trans("Ceres::Template.login") }}</a>
+                             </span>
+                          {% endif %}
+                        </div>
+                      </div>
+
+                      <div class="col-lg-9 col-md-8 col-sm-12" id="MyAccount_right">
+                    {% endif %}
         <div id="page-body" class="main">
             {% block PageBody %}
                 <!-- inject content of inherited templates here -->
             {% endblock %}
         </div>
+
+        {% if showMyAccountSubMenu == true %}
+          </div>
+        {% endif %}
 
         {% include getPartial('footer') %}
 
