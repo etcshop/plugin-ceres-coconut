@@ -5,7 +5,7 @@
 {{ component( "Ceres::Basket.Components.BasketPreview" ) }}
 {{ component( "Ceres::Customer.Components.Login" ) }}
 {{ component( "Ceres::Customer.Components.Registration" ) }}
-{{ component( "Ceres::Basket.Components.AddItemToBasketOverlayETC" ) }}
+{{ component( "Ceres::Basket.Components.AddItemToBasketOverlay" ) }}
 {{ component( "Ceres::PageDesign.Components.Popper" ) }}
 {{ component( "Ceres::Containers.Components.ContainerItemList" ) }}
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
@@ -31,60 +31,6 @@
     {% for styleTemplate in get_additional_styles() %}
         {% include styleTemplate.path ignore missing with styleTemplate.params %}
     {% endfor %}
-
-    {% if services.template.isHome() %}
-
-        {% set BelboonTrackActive = config("Ceres.tracking.belboonTrackingActive") %}
-        {% if BelboonTrackActive == "true" %}
-          {% set BelboonTrack = config("Ceres.tracking.belboonProgramId") %}
-          <script type="text/javascript">
-              belboonTag = {};
-          </script>
-          <script type="text/javascript">
-          (function(d) {
-              var s = d.createElement("script");
-              s.async = true;
-              s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=start&type=dynamic";
-              var a = d.getElementsByTagName("script")[0];
-              a.parentNode.insertBefore(s, a);
-          }(document));
-          </script>
-        {% endif %}
-    {% endif %}
-      {% if (currTpl == 'tpl.basket') %}
-        {% set BelboonTrackActive = config("Ceres.tracking.belboonTrackingActive") %}
-        {% if BelboonTrackActive == "true" %}
-          <!-- START BELBOON BASKET TRACKING -->
-            {% if basketItemsETC is not defined %}
-                {% set basketItemsETC = services.basket.getBasketItems() %}
-            {% endif %}
-
-            <script type="text/javascript">
-                belboonTag = {
-                    "orderProducts": [
-                          {% for item in basketItemsETC %}
-                            {
-                              "id": "{{ item.itemId }}",
-                              "price": "{{ item.variation.data.calculatedPrices.default.price }}",
-                              "qty": "{{ item.quantity }}"
-                            }
-                          {% endfor %}
-                    ]
-                };
-            </script>
-            <script type="text/javascript">
-                (function(d) {
-                    var s = d.createElement("script");
-                    s.async = true;
-                    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId=18842&page=basket&type=dynamic";
-                    var a = d.getElementsByTagName("script")[0];
-                    a.parentNode.insertBefore(s, a);
-                }(document));
-            </script>
-          <!-- ENDE BELBOON BASKET TRACKING -->
-        {% endif %}
-      {% endif %}
-
 </head>
 
 <body>
