@@ -1,0 +1,5 @@
+{% import "Ceres::Category.Macros.CategoryTreeML" as Tree %}
+
+{% set lang = services.sessionStorage.getLang() %}
+
+{{ Tree.get_nav_barML(categories, "") }}
