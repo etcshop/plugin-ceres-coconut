@@ -1,22 +1,22 @@
-{% import "Ceres::PageDesign.Macros.IncludeComponents" as Loader %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-{% import "Ceres::PageDesign.Macros.Translations" as Translations %}
-{{ component( "Ceres::PageDesign.Components.Notifications" ) }}
-{{ component( "Ceres::Basket.Components.BasketPreview" ) }}
-{{ component( "Ceres::Customer.Components.Login" ) }}
-{{ component( "Ceres::Customer.Components.Registration" ) }}
-{{ component( "Ceres::Basket.Components.AddItemToBasketOverlay" ) }}
-{{ component( "Ceres::PageDesign.Components.Popper" ) }}
-{{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
+{% import "CeresCoconut::PageDesign.Macros.IncludeComponents" as Loader %}
+{% import "CeresCoconut::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "CeresCoconut::PageDesign.Macros.Translations" as Translations %}
+{{ component( "CeresCoconut::PageDesign.Components.Notifications" ) }}
+{{ component( "CeresCoconut::Basket.Components.BasketPreview" ) }}
+{{ component( "CeresCoconut::Customer.Components.Login" ) }}
+{{ component( "CeresCoconut::Customer.Components.Registration" ) }}
+{{ component( "CeresCoconut::Basket.Components.AddItemToBasketOverlay" ) }}
+{{ component( "CeresCoconut::PageDesign.Components.Popper" ) }}
+{{ component( "CeresCoconut::Customer.Components.ForgotPassword" ) }}
 
 {# TODO: remove if shop builder pages can be rebuild by migrations #}
-{{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
-{{ component( "Ceres::ItemList.Components.CategoryItem") }}
-{{ component( "Ceres::Newsletter.Components.NewsletterInput" ) }}
-{{ component( "Ceres::PageDesign.Components.Carousel" ) }}
+{{ component( "CeresCoconut::Containers.Components.LastSeenItemList" ) }}
+{{ component( "CeresCoconut::ItemList.Components.CategoryItem") }}
+{{ component( "CeresCoconut::Newsletter.Components.NewsletterInput" ) }}
+{{ component( "CeresCoconut::PageDesign.Components.Carousel" ) }}
 
 {% if request.get('isContentBuilder') == 1 %}
-    {% include "Ceres::Widgets.WidgetComponents" %}
+    {% include "CeresCoconut::Widgets.WidgetComponents" %}
 {% endif %}
 
 {% set currencyFormat = config("Ceres.currency.format") %}
@@ -40,7 +40,7 @@
 
 <body class="{{ bodyClasses | join(' ') }}">
 
-{{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
+{{ LayoutContainer.show("CeresCoconut::PageDesign.AfterOpeningBodyTag") }}
 
 <script>
     if('ontouchstart' in document.documentElement)
@@ -76,7 +76,7 @@
 
                     <!-- breadcrumb -->
                     {% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() and not showMyAccountSubMenu and 'tpl.basket' not in currTpl %}
-                      {% include "Ceres::PageDesign.Partials.Header.Breadcrumb" %}
+                      {% include "CeresCoconut::PageDesign.Partials.Header.Breadcrumb" %}
                     {% endif %}
 
                     {% if services.template.isHome() %}
@@ -320,7 +320,7 @@
 
 {{ Loader.include_components() }}
 
-{{ LayoutContainer.show("Ceres::Script.Loader") }}
+{{ LayoutContainer.show("CeresCoconut::Script.Loader") }}
 
 {{ Translations.add( "Ceres", "Template" ) }}
 {% if ceresConfig.log.performanceLevel  == 'development' %}
@@ -334,7 +334,7 @@
     {% include scriptTemplate.path ignore missing with scriptTemplate.params %}
 {% endfor %}
 
-{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
+{{ LayoutContainer.show("CeresCoconut::Script.AfterScriptsLoaded") }}
 
 {{ get_filtered_tags() }}
 {{ get_json_data() }}
