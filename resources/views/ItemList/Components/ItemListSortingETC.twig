@@ -1,7 +1,13 @@
 <script type="x/template" id="vue-item-list-sortingETC">
-    <select name="ItemSorting" class="custom-select ArticleOrderSelect form-control" id="itemOrderSelect" v-model="selectedSorting" @change="updateSorting()">
-      <option :value="key" v-for="(value, key) in sortingList" :selected="selectedSorting == key">
-        ${ value }
-        </option>
+    <select
+      name="ItemSorting"
+      class="custom-select ArticleOrderSelect form-control"
+      @change="$store.dispatch('selectItemListSorting', $event.target.value)"
+      v-populate-store:mutation="{ name: 'setItemListSorting', data: '{{selectedSorting}}' }"
+      id="itemOrderSelect"
+      v-model="selectedSorting">
+        {% for key, value in sortingData %}
+            <option value="{{ key }}"{% if key == selectedSorting %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
     </select>
 </script>
