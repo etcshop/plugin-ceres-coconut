@@ -39,7 +39,7 @@
               {% set topsellerURL = "/" ~ category.details[0].nameUrl %}
           {% endif %}
         {% endif %}
-        <div style="display: none">{{ category.id }}</div>
+        <div style="display: none">{{ category | json_encode }}</div>
         {% if category.details | length > 0 and category.id != 429 and category.id != 439 %}
 
             {% if urls.includeLanguage %}
