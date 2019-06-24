@@ -81,7 +81,7 @@
 
                     <ul id="twig-rendered-item-list" class="row categoryDetails isGridView" v-is-loading-watcher="$store.state.itemList.isLoading">
                         {% for item in itemList %}
-                          {% include "Ceres::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+                          {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                         {% endfor %}
                     </ul>
                     <div id="vue-rendered-item-list" style="display:none">
