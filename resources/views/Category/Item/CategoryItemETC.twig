@@ -1,5 +1,5 @@
 {% extends getPartial('page-design') %}
-{% import "CeresCoconut::Category.Macros.CategoryTree" as Tree %}
+{% import "Ceres::Category.Macros.CategoryTree" as Tree %}
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PageBody %}
@@ -20,9 +20,9 @@
 
     <div class="container categoryView isGridView isList-1">
       <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
-        <div class="SubnavigationTitle ITEMFILTERTAGLIST">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</div>
+        <div class="SubnavigationTitle ITEMFILTERTAGLIST">{{ trans("Ceres::Template.ETC_SucheEingrenzen") }}</div>
         <div id="SubnavigationContent">
-          {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
+          {{ include('Ceres::PageDesign.Partials.Header.SideNavigationETC.twig') }}
           <item-filter-tag-list></item-filter-tag-list>
           {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
           {% if overrideSearchFilters | trim is empty %}
@@ -46,7 +46,7 @@
 
               <ul class="nav navbar-right col-lg-8">
                 <li>
-                  <span>{{ itemCountTotal }} {{ trans("CeresCoconut::Template.ETC_Artikel") }}</span>
+                  <span>{{ itemCountTotal }} {{ trans("Ceres::Template.ETC_Artikel") }}</span>
                 </li>
                 <li>
                   <item-list-sorting template="#vue-item-list-sortingETC" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
