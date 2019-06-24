@@ -1,0 +1,278 @@
+{% macro get_children(category, currentScopeUrl, level) %}
+    {% set megaMenuLevels = not config('Ceres.header.megamenu_levels') ? 1 : config('Ceres.header.megamenu_levels') %}
+    {% set maxitems = { "1": config('Ceres.header.megamenu_items_stage_1'), "2": config('Ceres.header.megamenu_items_stage_2') ,"3": config('Ceres.header.megamenu_items_stage_3')} %}
+    {% import _self as childlist %}
+    {% set counter = 0 %}
+    {% if level < megaMenuLevels %}
+        {% for child in category.children if counter < maxitems[level] %}
+            {% if (child.details | length > 0) %}
+                <li class="level{{ level }}">
+                    {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
+                    <a href="{{ newScope }}{{ urls.trailingSlashSuffix }}">{{ child.details[0].name }}</a>
+                    {% if child.children %}
+                        {% if level == 1 %}<ul>{% endif %}
+                        {{ childlist.get_children(child, newScope, level + 1) }}
+                        {% if level == 1 %}</ul>{% endif %}
+                    {% endif %}
+                </li>
+                {% set counter = counter + 1 %}
+                {% if counter == maxitems[level]%}
+                    <li class="level{{ level }} bt-more"><a href="{{ currentScopeUrl }}">{{ trans("Ceres::Template.itemShowMore") }}...</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro get_nav_barETC(categories, currentScopeUrl) %}
+    {% import _self as navbar %}
+    {% set counter = 0 %}
+    {% set megaMenuLevels = not config('Ceres.header.megamenu_levels') ? 1 : config('Ceres.header.megamenu_levels') %}
+    {% set topsellerURL = "" %}
+
+    {% for category in categories %}
+
+        {% if category.id == 429 %}
+          {% if urls.includeLanguage %}
+              {% set topsellerURL = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
+          {% else %}
+              {% set topsellerURL = "/" ~ category.details[0].nameUrl %}
+          {% endif %}
+        {% endif %}
+        <div style="display: none">{{ category.id }}</div>
+        {% if category.details | length > 0 and category.id != 429 and category.id != 439 %}
+
+            {% if urls.includeLanguage %}
+                {% set currentScopeUrl = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
+            {% else %}
+                {% set currentScopeUrl = "/" ~ category.details[0].nameUrl %}
+            {% endif %}
+            {% set translatedChildren = 0 %}
+            {% for children in category.children if children.details[0] %}
+                {% set translatedChildren = translatedChildren + 1 %}
+            {% endfor %}
+
+            <div class="catLvl{{ category.level}}">
+              <!--<a class="Category_Link" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">-->
+              <a class="Category_Link">
+                <li id="{{ category.id }}" rel="/documents/{{ category.details[0].imagePath }}">
+                  {{ category.details[0].name | raw }}
+                </li>
+              </a>
+              {% if category.children and translatedChildren > 0 %}
+                <div class="subcat_container" id="subcat_{{ category.id }}">
+                  <div class="subcat">
+                    {% set counter = counter + 1 %}
+                    {% for child in category.children %}
+                      <div class="catLvl{{ child.level }}">
+                        <div class="NavigationArrow">
+                          <span class="hidden-xs">•</span>
+                          <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                        </div>
+                        <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                          <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
+                            {{ child.details[0].name | raw }}
+                          </li>
+                        </a>
+                        {% if child.children > 0 %}
+                          <div class="sub2cat">
+                            {% for child2 in child.children %}
+                              <div class="catLvl{{ child2.level }}">
+                                <div class="NavigationArrow">
+                                  <span class="hidden-xs">•</span>
+                                  <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                                </div>
+                                <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                                  <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
+                                    {{ child2.details[0].name | raw }}
+                                  </li>
+                                </a>
+                              </div>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <div class="catinfo">
+                        {% set cat =  services.category.get(category.id, lang) %}
+                        {{ cat.details[0].description2 | raw }}
+                  </div>
+                  <img src="" class="catpic hidden-xs" alt="">
+                </div>
+              {% endif %}
+            </div>
+            <div class="NavigationArrow">
+              <span class="hidden-xs">•</span>
+              <i class="material-icons w3-xxxlarge hidden-lg hidden-sm hidden-md">keyboard_arrow_down</i>
+            </div>
+
+        {% endif %}
+    {% endfor %}
+    <div class="catLvl1 menu_bargain TESTETC0900">
+      <a href="{{ topsellerURL }}" class="Category_Link" title="Top Seller">
+        <li>Top Seller</li>
+      </a>
+    </div>
+{% endmacro %}
+
+{% macro get_sidemenu(breadcrumbs, categories, currentScopeUrl) %}
+
+    {% import _self as sidemenu %}
+    {% set urlNow = currentScopeUrl %}
+
+    {% for category in categories %}
+
+        {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
+
+        {% if category.details[0] %}
+            <ul>
+                <li class="nav-item{% for breadcrumb in breadcrumbs %}{% if category.id == breadcrumb.id %} active{% endif %}{% endfor %}" v-update-sidenav-selection="$store.getters.breadcrumbs" data-category-id="{{ category.id }}">
+                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">{{ category.details[0].name }}</a>
+                    {% if category.children is not empty %}
+                        {{ sidemenu.get_sidemenu(breadcrumbs, category.children, urlNow) }}
+                    {% endif %}
+                </li>
+            </ul>
+        {% endif %}
+
+    {% endfor %}
+
+{% endmacro %}
+
+{% macro get_sidemenu_onlysub_original(breadcrumbs, categories, currentScopeUrl, startcat, issub) %}
+
+    {% import _self as sidemenu %}
+    {% set urlNow = currentScopeUrl %}
+
+      {% for category in categories %}
+          {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
+
+          {% if (category.details[0] and startcat.id == category.id) or (category.details[0] and issub == "true") %}
+
+            {% if issub == "false" %}
+              <div class="card-columns">
+                <div class="card category-card">
+                  <div class="h3">Kategorie</div>
+                  <div>
+            {% endif %}
+
+                  {% if issub == "true" %}<div class="form-check">{% endif %}
+                    {% if issub == "false" %}<div class="category-container">{% endif %}
+                    {% if issub == "true" %}
+                      <input id="option-{{ category.id }}" type="checkbox" class="form-check-input hidden-xs-up">
+                      <label for="option-{{ category.id }}" class="form-check-label">
+                        <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">
+                          <div class="CategoryCheckDivInactive"></div>
+                          {{ category.details[0].name }}
+                        </a>
+                      </label>
+                      <div class="filter-badge"></div>
+                    {% endif %}
+                    {% if issub == "false" %}</div>{% endif %}
+                    {% if category.children is not empty and issub == "false" %}
+                      <div class="sub-category-container test">
+                          {{ sidemenu.get_sidemenu_onlysub(breadcrumbs, category.children, urlNow, startcat, "true") }}
+                      </div>
+                    {% endif %}
+                  {% if issub == "true" %}</div>{% endif %}
+
+
+            {% if issub == "false" %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+          {% else %}
+             {% if category.children is not empty %}
+                 {{ sidemenu.get_sidemenu_onlysub(breadcrumbs, category.children, urlNow, startcat, "false") }}
+             {% endif %}
+
+          {% endif %}
+
+      {% endfor %}
+
+{% endmacro %}
+
+{% macro get_sidemenu_onlysub(breadcrumbs, categories, currentScopeUrl, startcat, issub, lang) %}
+
+    {% import _self as sidemenu %}
+
+    {% if lang != "" %}
+        {% set currentScopeUrl = currentScopeUrl ~ "/" ~ lang %}
+    {% else %}
+        {% set currentScopeUrl = currentScopeUrl %}
+    {% endif %}
+
+      {% for category in categories %}
+
+          {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
+
+          {% if (category.details[0] and startcat.id == category.id) %}
+            {% if (category.children is not empty) %}
+
+                <div class="card-columns test1558">
+                  <div class="card category-card">
+                    <div class="h3">Kategorie</div>
+                    <div>
+                      <div class="category-container">
+                        <div class="sub-category-container test">
+                          {% for subcategory in category.children %}
+                            {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl ~ "/" ~ subcategory.details[0].nameUrl %}
+                            <div class="form-check">
+                              <input id="option-{{ subcategory.id }}" type="checkbox" class="form-check-input hidden-xs-up">
+                              <label for="option-{{ subcategory.id }}" class="form-check-label">
+                                <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">
+                                  <div class="CategoryCheckDivInactive"></div>
+                                  {{ subcategory.details[0].name }}
+                                </a>
+                              </label>
+                              <div class="filter-badge"></div>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            {% else %}
+            <div class="card-columns test1604">
+              <div class="card category-card">
+                <div class="h3">Kategorie</div>
+                <div>
+                  <div class="category-container">
+                    <div class="sub-category-container test">
+                      {% for category in categories %}
+                          {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
+                          <div class="form-check">
+                            <input id="option-{{ category.id }}" type="checkbox" class="form-check-input hidden-xs-up">
+                            <label for="option-{{ category.id }}" class="form-check-label">
+                              <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">
+                              {% if (category.details[0] and startcat.id == category.id) %}
+                                <div class="CategoryCheckDivActive"></div>
+                              {% else %}
+                                <div class="CategoryCheckDivInactive"></div>
+                              {% endif %}
+                                {{ category.details[0].name }}
+                              </a>
+                            </label>
+                            <div class="filter-badge"></div>
+                          </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          {% else %}
+             {% if category.children is not empty %}
+                 {{ sidemenu.get_sidemenu_onlysub(breadcrumbs, category.children, urlNow, startcat, "true", "") }}
+             {% endif %}
+
+          {% endif %}
+
+      {% endfor %}
+
+{% endmacro %}
