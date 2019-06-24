@@ -53,7 +53,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
 
             if (in_array("footer", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
-                $partial->set('footer', 'CeresCoconut::PageDesign.Partials.Footer');
+                $partial->set('footer', 'CeresCoconut::PageDesign.Partials.FooterETC');
             }
 
             return false;
