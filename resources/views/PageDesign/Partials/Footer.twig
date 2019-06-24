@@ -3,7 +3,7 @@
 {% set topButtonPosition = config('CeresCoconut.footer.to_top_button') %}
 {% set lang = services.sessionStorage.getLang() %}
 
-{% set footerContainer = LayoutContainer.show("Ceres::Footer") | trim %}
+{% set footerContainer = LayoutContainer.show("CeresCoconut::Footer") | trim %}
     <div class="{% if topButtonPosition == "right" %}back-to-top{% else %}back-to-top-center{% endif %}">
         <i class="fa fa-chevron-up"></i>
     </div>
@@ -18,7 +18,7 @@
               <li>erster Text</li>
               <li>zweiter Text</li>
               <li>dritter Text</li>
-              <li>vierter Text</li> 
+              <li>vierter Text</li>
             </ul>
             <form class="form layout_form cr_form cr_font" id="footer_newsletterbox" action="https://seu.cleverreach.com/f/1710-54321/wcs/" method="post" target="_blank">
               <div class="cr_body cr_page cr_font formbox">

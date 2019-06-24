@@ -69,7 +69,7 @@
     {% endif %}
 </style>
 
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "CeresCoconut::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% set logData = config("Ceres.log.data")|split(', ') %}
 {% set sortValues = config("Ceres.sort.data")|split(', ') %}
@@ -97,14 +97,14 @@
 
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-{% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
+{% if LayoutContainer.show("CeresCoconut::Template.StyleOverwrite") | trim is empty %}
     <link data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ plugin_path('Ceres') }}/css/ceres.scss" rel="stylesheet" href="{{ plugin_path('Ceres') }}/css/ceres.css">
 {% endif %}
 
-{{ LayoutContainer.show("Ceres::Template.StyleOverwrite") }}
+{{ LayoutContainer.show("CeresCoconut::Template.StyleOverwrite") }}
 
 <!-- Extend the existing style with a template -->
-{{ LayoutContainer.show("Ceres::Template.Style") }}
+{{ LayoutContainer.show("CeresCoconut::Template.Style") }}
 
 {{ get_shop_builder_styles() }}
 

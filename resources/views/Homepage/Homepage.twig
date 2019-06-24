@@ -42,7 +42,7 @@
    {% set slider3_URL = config("CeresCoconut.homepage.sliderItemId3")  %}
 
    {% set slider1 = {
-   item: services.itemLoader.loadForTemplate('Ceres::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("CeresCoconut.homepage.sliderItemId1")]}).documents[0].data,
+   item: services.itemLoader.loadForTemplate('CeresCoconut::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("CeresCoconut.homepage.sliderItemId1")]}).documents[0].data,
    url: config("CeresCoconut.homepage.sliderImageUrl1") } %}
    {% set slider2 = {
    item: services.itemLoader.loadForTemplate('CeresCoconut::Homepage.Homepage', itemLoaderPresets.items, {variationIds: [config("CeresCoconut.homepage.sliderItemId2")]}).documents[0].data,

@@ -5,7 +5,7 @@
             {% set itemName = itemName | replace({"[BUNDLE]": ""}) | trim %}
         {% endif %}
 
-        {{ trans("Ceres::Template.itemBundleName", {"itemName": itemName}) }}
+        {{ trans("CeresCoconut::Template.itemBundleName", {"itemName": itemName}) }}
     {% elseif bundleType == "bundle_item" %}
         {% if "[-]" in itemName %}
             {% set itemName = itemName | replace({"[-]": ""}) | trim %}
