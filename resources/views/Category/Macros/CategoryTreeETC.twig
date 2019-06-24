@@ -52,7 +52,7 @@
                 {% set translatedChildren = translatedChildren + 1 %}
             {% endfor %}
 
-            <div class="catLvl{{ category.level}}">
+            <div class="catLvl1">
               <!--<a class="Category_Link" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">-->
               <a class="Category_Link">
                 <li id="{{ category.id }}" rel="/documents/{{ category.details[0].imagePath }}">
@@ -64,7 +64,7 @@
                   <div class="subcat">
                     {% set counter = counter + 1 %}
                     {% for child in category.children %}
-                      <div class="catLvl{{ child.level }}">
+                      <div class="catLvl2">
                         <div class="NavigationArrow">
                           <span class="hidden-xs">•</span>
                           <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
@@ -77,7 +77,7 @@
                         {% if child.children > 0 %}
                           <div class="sub2cat">
                             {% for child2 in child.children %}
-                              <div class="catLvl{{ child2.level }}">
+                              <div class="catLvl2">
                                 <div class="NavigationArrow">
                                   <span class="hidden-xs">•</span>
                                   <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
