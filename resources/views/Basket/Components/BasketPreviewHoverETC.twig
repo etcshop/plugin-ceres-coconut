@@ -7,16 +7,16 @@
   <div class="headicon_toolbox_spacing"></div>
   <div class="headicon_toolbox_spacing"></div>
   <div class="headicon_toolbox" id="BasketPreview" v-if="$store.state.basket.data.itemQuantity == 0">
-    <div class="basketPreviewBasketEmpty">{{ trans("Ceres::Template.ETC_WarenkorbLeer") }}</div>
+    <div class="basketPreviewBasketEmpty">{{ trans("CeresCoconut::Template.ETC_WarenkorbLeer") }}</div>
   </div>
   <div class="headicon_toolbox" id="BasketPreview" v-else>
     <basket-list class="item-list" template="#vue-basket-listETC" size="small"></basket-list>
     <hr>
     <div class="basketPreviewFooter">
       <basket-totals template="#vue-basket-totalsETC"></basket-totals>
-      <!--<div class="small lh-075">{{ trans("Ceres::Template.itemExclusive") }} <a href="https://www.etc-shop.de/cnt/versandkosten/">{{ trans("Ceres::Template.ETC_Versand") }}</a></div>-->
+      <!--<div class="small lh-075">{{ trans("Ceres::Template.itemExclusive") }} <a href="https://www.etc-shop.de/cnt/versandkosten/">{{ trans("CeresCoconut::Template.ETC_Versand") }}</a></div>-->
       <div class="basketPreviewShowBasket">
-        <a class="btn btn-default pull-right" href="{{ urls.basket }}" rel="nofollow" title="zum Warenkorb">{{ trans("Ceres::Template.ETC_Ansehen") }}</a>
+        <a class="btn btn-default pull-right" href="{{ urls.basket }}" rel="nofollow" title="zum Warenkorb">{{ trans("CeresCoconut::Template.ETC_Ansehen") }}</a>
       </div>
     </div>
   </div>

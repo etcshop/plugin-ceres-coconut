@@ -219,7 +219,7 @@
             {% if showMyAccountSubMenu == true %}
               <div id="SubMenuButton" class="hidden-lg hidden-sm hidden-md">
                 <i id="SubMenuButton_Icon" class="material-icons">reorder</i>
-                <div id="SubMenuText">{{ trans("Ceres::Template.ETC_ServiceCenter") }}</div>
+                <div id="SubMenuText">{{ trans("CeresCoconut::Template.ETC_ServiceCenter") }}</div>
               </div>
 
               <div class="col-lg-3 col-md-4 col-sm-5" id="MyAccount_left">
@@ -227,20 +227,20 @@
                   <ul class="Test1702">
                     <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Kontakt">
                       <a href="{{ urls.contact }}" title="Kontakt">
-                        <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Kontakt") }}</div>
+                        <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Kontakt") }}</div>
                         <i id="MyAccountKontaktIcon" class="material-icons MyAccountIcon">contact_mail</i>
                       </a>
                     </li>
                     <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Retoure">
                       <a href="http://s141963554.online.de/retoure/voll/retoure.php" title="Retourenportal">
-                        <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Retoure") }}</div>
+                        <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Retoure") }}</div>
                         <i id="MyAccountRetoureIcon" class="material-icons MyAccountIcon">reply</i>
                       </a>
                     </li>
                     <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Newsletter">
                       {% set newsletter = services.category.get(802, lang) %}
                       <a href="{{ services.category.getURL(newsletter, lang) }}" title="Newsletter">
-                        <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Newsletter") }}</div>
+                        <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Newsletter") }}</div>
                         <i id="MyAccountNewsletterIcon" class="material-icons MyAccountIcon">email</i>
                       </a>
                     </li>
@@ -274,13 +274,13 @@
                     </li>
                     <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Auftraege">
                       <a href="{{ urls.myAccount }}#sc_Auftraghistorie" title="Auftragshistorie">
-                        <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Bestellungen") }}</div>
+                        <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Bestellungen") }}</div>
                         <i id="MyAccountAuftragIcon" class="material-icons MyAccountIcon">restore</i>
                       </a>
                     </li>
                     <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Merkliste">
                       <a href="{{ urls.wishList }}#sc_Merkliste" title="Merkliste">
-                        <div class="MyAccountLabel">{{ trans("Ceres::Template.ETC_Merkliste") }}</div>
+                        <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Merkliste") }}</div>
                         <i id="MyAccountMerklisteIcon" class="material-icons MyAccountIcon">list</i>
                       </a>
                     </li>
