@@ -43,7 +43,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
 
             if (in_array("header", $enabledOverrides) || in_array("all", $enabledOverrides))
             {
-                $partial->set('header', 'CeresCoconut::PageDesign.Partials.Header.Header');
+                $partial->set('header', 'CeresCoconut::PageDesign.Partials.Header.HeaderETC');
             }
 
             if (in_array("page_design", $enabledOverrides) || in_array("all", $enabledOverrides))
@@ -324,19 +324,19 @@ class CeresCoconutServiceProvider extends ServiceProvider
             $dispatcher->listen( 'IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) use ($enabledResultFields)
             {
                 $templatesToOverride = [];
-                
+
                 // Override list item result fields
                 if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
                 {
                     $templatesToOverride[ResultFieldTemplate::TEMPLATE_LIST_ITEM] = 'CeresCoconut::ResultFields.ListItem';
                 }
-                
+
                 // Override single item view result fields
                 if (in_array("single_item", $enabledResultFields) || in_array("all", $enabledResultFields))
                 {
                     $templatesToOverride[ResultFieldTemplate::TEMPLATE_SINGLE_ITEM] = 'CeresCoconut::ResultFields.SingleItem';
                 }
-                
+
                 // Override basket item result fields
                 if (in_array("basket_item", $enabledResultFields) || in_array("all", $enabledResultFields))
                 {
@@ -348,7 +348,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
                 {
                     $templatesToOverride[ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST] = 'CeresCoconut::ResultFields.AutoCompleteListItem';
                 }
-                
+
                 // Override category tree result fields
                 if (in_array("category_tree", $enabledResultFields) || in_array("all", $enabledResultFields))
                 {
