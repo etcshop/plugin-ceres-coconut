@@ -58,7 +58,7 @@
           <table>
             <tbody>
               <tr>
-                <td>{{ trans("Ceres::Template.ETC_Artikelnummer") }}:</td>
+                <td>{{ trans("CeresCoconut::Template.ETC_Artikelnummer") }}:</td>
                 <td itemprop="sku">${ currentVariation.variation.number }</td>
               </tr>
               <!-- Variation -->
@@ -74,16 +74,16 @@
                 <td colspan="2"></td>
               </tr>
               <tr>
-                <td>{{ trans("Ceres::Template.ETC_Verfuegbarkeit") }}:</td>
+                <td>{{ trans("CeresCoconut::Template.ETC_Verfuegbarkeit") }}:</td>
                 <td><span data-plenty="availabilityText">${ currentVariation.variation.availability.names.name }</span></td>
               </tr>
               <tr>
-                <td>{{ trans("Ceres::Template.ETC_Bewertung") }}:</td>
+                <td>{{ trans("CeresCoconut::Template.ETC_Bewertung") }}:</td>
                 <td id="SingleArticleRatingImage"><span class="ItemRatingIconContainer ItemRatingContainer_4.6"> <slot name="AdditionalContentAfterVAT"></slot> </span></td>
               </tr>
               <tr>
                 <td colspan="2"><div id="SingleArticle_Trust"> <img src="//www.etc-shop.de/img/base/tskaeuferschutz.png" alt="Trusted Shops Käuferschutz">
-                    <div>{{ trans("Ceres::Template.ETC_TrustedShops") }}</div>
+                    <div>{{ trans("CeresCoconut::Template.ETC_TrustedShops") }}</div>
                     <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.etc-shop.delampen-moebel/innenleuchten/deckenleuchten/design-rgb-led-deckenleuchte-mit-beweglichen-strahlern/a-81051914&amp;width=184&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=46&amp;appId=193983374007433" style="border:none;overflow:hidden" width="164" height="46"></iframe>
                   </div></td>
               </tr>
@@ -130,7 +130,7 @@
               <slot name="AfterAddToBasket"></slot>
           </div>
           <slot name="AdditionalContentAfterAddToBasket"></slot>
-          <span id="SingleArticle_Price_Vat">{{ trans("Ceres::Template.ETC_InclMwSt") }} 19% <a href="https://www.etc-shop.de/content/zahlungsinformationen/">, {{ trans("Ceres::Template.ETC_ZzglVersand") }}</a></span>
+          <span id="SingleArticle_Price_Vat">{{ trans("CeresCoconut::Template.ETC_InclMwSt") }} 19% <a href="https://www.etc-shop.de/content/zahlungsinformationen/">, {{ trans("CeresCoconut::Template.ETC_ZzglVersand") }}</a></span>
 
           <slot name="CrossSellingAccessory"></slot>
 
@@ -143,23 +143,23 @@
       <div id="SingleArticle_Content">
         <input checked="checked" name="articleTab" type="radio" id="cb_details">
         <label for="cb_details">
-        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Details") }}</li>
+        <li class="Article_Content_Tab">{{ trans("CeresCoconut::Template.ETC_Details") }}</li>
         </label>
         <input name="articleTab" type="radio" id="cb_shipping">
         <label for="cb_shipping">
-        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Versand") }}</li>
+        <li class="Article_Content_Tab">{{ trans("CeresCoconut::Template.ETC_Versand") }}</li>
         </label>
         <input name="articleTab" type="radio" id="cb_payment">
         <label for="cb_payment">
-        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Zahlung") }}</li>
+        <li class="Article_Content_Tab">{{ trans("CeresCoconut::Template.ETC_Zahlung") }}</li>
         </label>
         <input name="articleTab" type="radio" id="cb_rating">
         <label for="cb_rating">
-        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Bewertung") }}</li>
+        <li class="Article_Content_Tab">{{ trans("CeresCoconut::Template.ETC_Bewertung") }}</li>
         </label>
         <input name="articleTab" type="radio" id="cb_contact">
         <label for="cb_contact">
-        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Kontakt") }}</li>
+        <li class="Article_Content_Tab">{{ trans("CeresCoconut::Template.ETC_Kontakt") }}</li>
         </label>
         <div class="Article_Content test1540" id="Article_Content_Details" itemprop="description">
           <span v-html="currentVariation.texts.description"></span>
@@ -202,7 +202,7 @@
         <div class="Article_Content" id="Article_Content_Rating" name="Article_Content_Rating">
           <div class="container_centered">
             <div class="ContentPage" id="ContentBewertung">
-              <div class="ContentCaption">{{ trans("Ceres::Template.ETC_Bewertung") }}</div>
+              <div class="ContentCaption">{{ trans("CeresCoconut::Template.ETC_Bewertung") }}</div>
               <slot name="FeedbackContainer"></slot>
             </div>
           </div>
