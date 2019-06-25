@@ -50,7 +50,9 @@
                 </li>
                 <li>
                   {% include "CeresCoconut::Category.Item.Partials.ItemSorting" with { 'sortingData': searchOptions.sorting, 'selectedSorting': itemSorting } %}
-                  {% include "Ceres::Category.Item.Partials.ItemsPerPage" with { 'itemsPerPage': searchOptions.itemsPerPage, 'selectedValue': itemsPerPage } %}
+                  <div class="list-itemsperpage">
+                    {% include "Ceres::Category.Item.Partials.ItemsPerPage" with { 'itemsPerPage': searchOptions.itemsPerPage, 'selectedValue': itemsPerPage } %}
+                  </div>
                   <!--<item-list-sorting template="#vue-item-list-sortingETC" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
                   <items-per-page
                     template="#vue-items-per-page"
