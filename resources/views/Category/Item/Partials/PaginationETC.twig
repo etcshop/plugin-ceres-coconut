@@ -18,8 +18,8 @@
   {% set hrefAdd = "#sc_Auftraghistorie" %}
 {% endif %}
 
-
 {% if pageMax > 1 %}
+      <ul class="pagination nav navbar-left col-lg-4 p-x-0">
           <div class="navPrevLinks TEST0857">
             <!-- FIRST PAGE LINK -->
             {% if page > 2 and config('Ceres.pagination.showFirstPage') == "true" %}
@@ -85,5 +85,6 @@
             {% endif %}
             <!-- ./LAST PAGE LINK -->
           </div>
+      </ul>
 
 {% endif %}
