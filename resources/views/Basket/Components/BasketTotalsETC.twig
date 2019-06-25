@@ -1,0 +1,14 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+<script type="x/template" id="vue-basket-totalsETC">
+    <!-- BASKET TOTALS -->
+    <div class="clearfix large">
+      <div class="basketPreviewSumCaption">{{ trans("Ceres::Template.ETC_Summe") }}</div>
+      <div class="basketPreviewSumValue">
+        <span data-plenty-basket-preview="totalsItemSum">
+          <span class="basket_amount_comma" id="basket_amount_comma">${ basket.itemSum | currency  }</span>
+        </span> 
+      </div>
+    </div>
+    <!-- ./BASKET TOTALS -->
+</script>
