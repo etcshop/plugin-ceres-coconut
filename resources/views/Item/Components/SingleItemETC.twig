@@ -1,7 +1,6 @@
 {% set itemData = config("Ceres.item.data") | split(', ') %}
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
-{% set unitPrice = item.data.prices.default.unitPrice.formatted %}
 
 <script type="x/template" id="vue-single-itemETC">
 <div class="container">
@@ -94,7 +93,8 @@
         <div id="SingleArticle_Price" :class="isInWishList">
           <slot name="BeforePrice"></slot>
           <div id="SingleArticle_Price_UVPSaving"> <!--UVP: 0,01 &euro;<br />  Sie sparen: <span class="text_ETCColor">0,00 (0,00 &euro;)</span>--> </div>
-          <add-to-wish-list template="#vue-add-to-wish-listETC" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>
+          <!--<add-to-wish-list template="#vue-add-to-wish-listETC" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>-->
+          <add-to-wish-list template="#vue-add-to-wish-listETC" :variation-id="currentVariation.variation.id"></add-to-wish-list>
           <div id="SingleArticle_Price_Price" class="priceContainer">
             <span style="display: none;" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
               <span style="display: none;" itemprop="itemCondition">Neu</span>
@@ -112,7 +112,7 @@
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup" value="0">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_total" value="21.755">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_cfgFormat" value="0">
-              <span class="Price test0945" id="'price_dynamic_0_' + currentVariation.item.id">${ currentVariation.calculatedPrices.formatted.defaultUnitPrice }</span>
+              <span class="Price test0945" id="'price_dynamic_0_' + currentVariation.item.id">${ currentVariation.prices.rrp.unitPrice.formatted | itemCrossPrice }</span>
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_variationId" value="35165">
             </span>
           </div>
