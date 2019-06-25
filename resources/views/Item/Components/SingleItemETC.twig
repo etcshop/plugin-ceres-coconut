@@ -1,0 +1,227 @@
+{% set itemData = config("Ceres.item.data") | split(', ') %}
+{% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
+{% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
+{% set unitPrice = item.data.prices.default.unitPrice.formatted %}
+
+<script type="x/template" id="vue-single-itemETC">
+<div class="container">
+  <div class="row">
+	  <div class="col-lg-3 col-md-2 hidden-sm SingleArticle_Top3">
+    <div class="previewPicScrollUp scrolling_inactive">
+      <div class="chevron"></div>
+    </div>
+    <div v-if="currentVariation.images.all.length > 7" class="previewPicScrollDown scrolling_active">
+      <div class="chevron"></div>
+    </div>
+    <div v-else class="previewPicScrollDown scrolling_inactive">
+      <div class="chevron"></div>
+    </div>
+
+    <div class="previewPics">
+
+    </div>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top2">
+      <div id="SingleArticle_Name" itemprop="name">${ currentVariation | itemName }</div>
+
+      <div class="img-zoom hidden-xs hidden-md hidden-sm" id="zoomlayer" :style="'background-image: url(); display: none; background-position: 84.8552% 53.7285%;'"></div>
+      <div id="SingleArticle_MainPic" class="imageBox">
+        <div :id="'previewImages-' + currentVariation.variation.id" class="h-md-3 h-sm-2">
+          <img style="display: none;" itemprop="image" :src="'https://cdn02.plentymarkets.com/9krpwzxa6mmo/item/images/' + currentVariation.item.id +'/full/14241-16-1.jpg'" alt="RGB LED Deckenleuchte mit Fernbedienung">
+          <div class="previewImageSlider owl-carousel owl-theme" style="opacity: 1; display: block;">
+            <div class="owl-wrapper-outer">
+                <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
+            </div>
+            <div class="owl-controls clickable">
+              <div class="owl-pagination">
+                <div class="owl-page active"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+                <div class="owl-page"><span class=""></span></div>
+              </div>
+              <div class="owl-buttons">
+                  <div class="owl-prev disabled"></div>
+                  <div class="owl-next"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top1">
+        <div id="SingleArticle_Data"> <span style="display: none;" itemprop="brand">Leuchten Direkt</span>
+          <table>
+            <tbody>
+              <tr>
+                <td>{{ trans("Ceres::Template.ETC_Artikelnummer") }}:</td>
+                <td itemprop="sku">${ currentVariation.variation.number }</td>
+              </tr>
+              <!-- Variation -->
+              <tr v-if="variations.length > 1">
+                <td colspan="2">
+                  <variation-select template="#vue-variation-selectETC" :attributes="attributeNameMap" :variation-units="variationUnits" :variations="variations" :preselect="currentVariation.variation.mainVariationId" :unitPreselect="currentVariation.variation.unitCombinationId" @is-valid-change="isVariationSelected = $event"></variation-select>
+                </td>
+              </td>
+              <tr>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td>{{ trans("Ceres::Template.ETC_Verfuegbarkeit") }}:</td>
+                <td><span data-plenty="availabilityText">${ currentVariation.variation.availability.names.name }</span></td>
+              </tr>
+              <tr>
+                <td>{{ trans("Ceres::Template.ETC_Bewertung") }}:</td>
+                <td id="SingleArticleRatingImage"><span class="ItemRatingIconContainer ItemRatingContainer_4.6"> <slot name="AdditionalContentAfterVAT"></slot> </span></td>
+              </tr>
+              <tr>
+                <td colspan="2"><div id="SingleArticle_Trust"> <img src="//www.etc-shop.de/img/base/tskaeuferschutz.png" alt="Trusted Shops Käuferschutz">
+                    <div>{{ trans("Ceres::Template.ETC_TrustedShops") }}</div>
+                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.etc-shop.delampen-moebel/innenleuchten/deckenleuchten/design-rgb-led-deckenleuchte-mit-beweglichen-strahlern/a-81051914&amp;width=184&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=46&amp;appId=193983374007433" style="border:none;overflow:hidden" width="164" height="46"></iframe>
+                  </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="SingleArticle_Price" :class="isInWishList">
+          <slot name="BeforePrice"></slot>
+          <div id="SingleArticle_Price_UVPSaving"> <!--UVP: 0,01 &euro;<br />  Sie sparen: <span class="text_ETCColor">0,00 (0,00 &euro;)</span>--> </div>
+          <add-to-wish-list template="#vue-add-to-wish-listETC" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>
+          <div id="SingleArticle_Price_Price" class="priceContainer">
+            <span style="display: none;" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+              <span style="display: none;" itemprop="itemCondition">Neu</span>
+              <span style="display: none;" itemprop="availability">InStock</span>
+              <span style="display: none;" itemprop="price">
+                <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup'" value="0">
+                <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_total'" value="21.755">
+                <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_cfgFormat'" value="0">
+                <span class="Price" :id="'price_dynamic_0_' + currentVariation.item.id">${ variationTotalPrice }</span>
+                <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_variationId'" value="35165">
+              </span>
+              <meta itemprop="priceCurrency" content="EUR">
+            </span>
+            <span class="SingleArticle_MainPrice Price">
+              <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup" value="0">
+              <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_total" value="21.755">
+              <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_cfgFormat" value="0">
+              <span class="Price test0945" id="'price_dynamic_0_' + currentVariation.item.id">${ currentVariation.calculatedPrices.formatted.defaultUnitPrice }</span>
+              <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_variationId" value="35165">
+            </span>
+          </div>
+          <slot name="AfterPrice"></slot>
+          <div class="row m-y-1">
+              <slot name="BeforeAddToBasket"></slot>
+              <add-to-basket
+                      template="#vue-add-to-basketETC"
+                      v-if="currentVariation.filter.isSalable"
+                      :item="$store.state.item.variation.documents[0].data"
+                      :show-quantity="true"
+                      :missing-order-properties="variationMissingProperties"
+                      :is-variation-selected="isVariationSelected"
+                      ref="addtobasketref"></add-to-basket>
+              <slot name="AfterAddToBasket"></slot>
+          </div>
+          <slot name="AdditionalContentAfterAddToBasket"></slot>
+          <span id="SingleArticle_Price_Vat">{{ trans("Ceres::Template.ETC_InclMwSt") }} 19% <a href="https://www.etc-shop.de/content/zahlungsinformationen/">, {{ trans("Ceres::Template.ETC_ZzglVersand") }}</a></span>
+
+          <slot name="CrossSellingAccessory"></slot>
+
+        </div>
+
+    </div>
+  </div>
+  <div class="row" id="SingleArticle_Information">
+    <div class="col-md-12 col-xs-12 col-lg-9 SingleArticle_Description">
+      <div id="SingleArticle_Content">
+        <input checked="checked" name="articleTab" type="radio" id="cb_details">
+        <label for="cb_details">
+        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Details") }}</li>
+        </label>
+        <input name="articleTab" type="radio" id="cb_shipping">
+        <label for="cb_shipping">
+        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Versand") }}</li>
+        </label>
+        <input name="articleTab" type="radio" id="cb_payment">
+        <label for="cb_payment">
+        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Zahlung") }}</li>
+        </label>
+        <input name="articleTab" type="radio" id="cb_rating">
+        <label for="cb_rating">
+        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Bewertung") }}</li>
+        </label>
+        <input name="articleTab" type="radio" id="cb_contact">
+        <label for="cb_contact">
+        <li class="Article_Content_Tab">{{ trans("Ceres::Template.ETC_Kontakt") }}</li>
+        </label>
+        <div class="Article_Content test1540" id="Article_Content_Details" itemprop="description">
+          <span v-html="currentVariation.texts.description"></span>
+          <slot name="AddDetailTabs"></slot>
+
+          <div id="VariationProperties" v-for="tag in currentVariation.tags" v-if="tag.id == 279">
+            <div class="VariationProperty test1139">
+              <div class="propLabel col-xs-5 col-sm-9 col-md-9 col-lg-9">Brand</div>
+              <div class="propUnit">${ currentVariation.item.manufacturer.externalName }</div>
+            </div>
+            <div class="VariationProperty">
+              <div class="propLabel col-xs-5 col-sm-9 col-md-9 col-lg-9" v-if="currentVariation.variation.model !== ''">Modell</div>
+              <div class="propUnit" v-if="currentVariation.variation.model !== ''">${ currentVariation.variation.model }</div>
+            </div>
+
+            <div v-for="varProp in currentVariation.variationProperties" class="VariationProperty" v-if="varProp.values.value !== 'null'">
+              <div class="propLabel col-xs-5 col-sm-9 col-md-9 col-lg-9">${ varProp.property.names.name }</div>
+              <div class="propUnit">${ varProp.values.value }</div>
+              <div class="propText" v-html="varProp.property.names.description"></div>
+              <div class="propValueText" v-html="varProp.values.description"></div>
+            </div>
+          </div>
+        </div>
+        <div class="Article_Content" id="Article_Content_Delivery" name="Article_Content_Delivery">
+          <div class="container_centered">
+            <div class="ContentPage Test1657" id="ContentVersand">
+              {% set versand = services.category.get(722, lang) %}
+              {% include category_template( 722, lang, webstoreConfig.webstoreId ) ignore missing %}
+            </div>
+          </div>
+        </div>
+        <div class="Article_Content" id="Article_Content_Payment" name="Article_Content_Payment">
+          <div class="container_centered">
+            <div class="ContentPage" id="ContentZahlung">
+
+            {% include category_template( 725, lang, webstoreConfig.webstoreId ) ignore missing %}
+            </div>
+          </div>
+        </div>
+        <div class="Article_Content" id="Article_Content_Rating" name="Article_Content_Rating">
+          <div class="container_centered">
+            <div class="ContentPage" id="ContentBewertung">
+              <div class="ContentCaption">{{ trans("Ceres::Template.ETC_Bewertung") }}</div>
+              <slot name="FeedbackContainer"></slot>
+            </div>
+          </div>
+        </div>
+        <div class="Article_Content Article_Content_ContactSingleItem" id="Article_Content_Contact" name="Article_Content_Contact">
+
+              {{ component( "Ceres::Customer.Components.Contact.ContactFormSingleItem" ) }}
+
+              <contact-form template="#vue-contact-form-single-item"></contact-form>
+        </div>
+        <slot name="AddDetailTabsContent"></slot>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 SingleArticle_CrossSelling">
+      <div id="SingleArticle_Cross" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <slot name="ItemListContainer"></slot>
+      </div>
+    </div>
+  </div>
+
+</div>
+</script>
