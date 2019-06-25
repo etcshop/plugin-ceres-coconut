@@ -49,7 +49,7 @@
                   <span>{{ itemCountTotal }} {{ trans("CeresCoconut::Template.ETC_Artikel") }}</span>
                 </li>
                 <li>
-                  {% include "Ceres::Category.Item.Partials.ItemSorting" with { 'sortingData': searchOptions.sorting, 'selectedSorting': itemSorting } %}
+                  {% include "CeresCoconut::Category.Item.Partials.ItemSorting" with { 'sortingData': searchOptions.sorting, 'selectedSorting': itemSorting } %}
                   {% include "Ceres::Category.Item.Partials.ItemsPerPage" with { 'itemsPerPage': searchOptions.itemsPerPage, 'selectedValue': itemsPerPage } %}
                   <!--<item-list-sorting template="#vue-item-list-sortingETC" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
                   <items-per-page
