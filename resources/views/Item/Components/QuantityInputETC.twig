@@ -1,0 +1,7 @@
+<script type="x/template" id="vue-quantity-inputETC">
+  <div class="ArticleQuantityContainer qty-btn-container">
+    <i :title="maximumHint" data-placement="top" data-toggle="tooltip" v-tooltip="isMaximum && compMax !== 0" :class="{'disabled': isMaximum || waiting}" class="qty-btn material-icons w3-xxxlarge" id="ArticleQuantity_Plus" @click="increaseValue()">add</i>
+    <input type="number" :value="displayValue" :disabled="waiting" id="ArticleQuantity" name="ArticleQuantity" class="qty-input detail-info quantityInput form-control" value="1" size="3" maxlength="3" @change="setValue($event.target.value)">
+    <i :title="minimumHint" data-placement="bottom" data-toggle="tooltip" v-tooltip="isMinimum" :class="{'disabled': isMinimum || waiting}" class="qty-btn material-icons w3-xxxlarge" id="ArticleQuantity_Minus"  @click="decreaseValue()">remove</i>
+  </div>
+</script>

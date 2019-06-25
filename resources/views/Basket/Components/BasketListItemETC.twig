@@ -1,0 +1,23 @@
+{{ component( "Ceres::Item.Components.QuantityInputETC" ) }}
+{{ component( "Ceres::Item.Components.ItemBundle" ) }}
+
+{% set itemsData = config("Ceres.basket.item_data")|split(', ') %}
+{% set showItemVariation = config("Ceres.basket.variations") %}
+{% set basketDetailsData = config("Ceres.basket.item_data")|split(', ') %}
+
+<script type="x/template" id="vue-basket-list-itemETC">
+  <li class="margin-top-1" :data-plenty-basket-preview-item="basketItem.itemId">
+    <a class="row block basicColor lh-075 margin-bottom-15" :href="basketItem.variation.data | itemURL" :title="basketItem.variation.data | itemName">
+      <div class="basketPreviewQuantity">
+        <span data-plenty-basket="itemQuantity">${ basketItem.quantity }</span> x
+      </div>
+      <div class="basketPreviewImage">
+        <img class="BasketPreviewItemPic img-responsive" :src="image" :alt="basketItem.variation.data | itemName">
+      </div>
+      <div class="basketPreviewInfo">
+        <div class="BasketPreviewItemName">${ basketItem.variation.data | itemName }</div>
+        <div class="BasketPreviewItemPrice">${ itemTotalPrice | currency(basketItem.variation.data.calculatedPrices.default.currency) }<br></div>
+      </div>
+    </a>
+  </li>
+</script>
