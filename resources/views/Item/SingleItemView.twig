@@ -1,11 +1,11 @@
 {{ component( "CeresCoconut::Item.Components.VariationSelectETC" ) }}
 {{ component( "Ceres::Item.Components.ItemImageCarousel" ) }}
-{{ component( "Ceres::Item.Components.AddToWishList" ) }}
+{{ component( "CeresCoconut::Item.Components.AddToWishListETC" ) }}
 {{ component( "Ceres::Item.Components.OrderProperties" ) }}
 {{ component( "Ceres::Item.Components.OrderPropertyList" ) }}
 {{ component( "CeresCoconut::Item.Components.SingleItemETC" ) }}
 {{ component( "Ceres::Item.Components.GraduatedPrices" ) }}
-{{ component( "Ceres::Basket.Components.AddToBasket" ) }}
+{{ component( "CeresCoconut::Basket.Components.AddToBasketETC" ) }}
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 
 <single-item v-cloak template="#vue-single-itemETC" item-data="{{ item | json_data }}" variation-list-data="{{ variations | json_data }}" :attribute-name-map="{{attributeNameMap | json_encode}}" :variation-units="{{variationUnits | json_encode}}">
