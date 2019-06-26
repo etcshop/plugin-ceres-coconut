@@ -3,17 +3,13 @@
 namespace CeresCoconut\Contexts;
 
 use IO\Helper\ContextInterface;
-use IO\Services\CustomerService;
-use IO\Services\ItemService;
+use Ceres\Contexts\SingleItemContext;
 use Plenty\Modules\Item\Item\Contracts\ItemRepositoryContract;
-
-use Plenty\Plugin\Log\Loggable;
 
 use IO\Services\ItemSearch\Services\ItemSearchService;
 use IO\Services\ItemSearch\SearchPresets\CrossSellingItems;
-use IO\Services\ItemSearch\SearchPresets\SingleItem;
 
-class SingleItemContext extends GlobalContext implements ContextInterface
+class CoconutSingleItemContext extends SingleItemContext implements ContextInterface
 {
     public $item;
 
@@ -33,16 +29,6 @@ class SingleItemContext extends GlobalContext implements ContextInterface
 
         /** @var CustomerService $customerService */
         $customerService = pluginApp(CustomerService::class);
-
-        $this->item = $params['item'];
-        $itemData = $this->item['documents'][0]['data'];
-
-        /** @var ItemService $itemService */
-        $itemService = pluginApp(ItemService::class);
-
-        $this->variations = $itemService->getVariationAttributeMap($itemData['item']['id']);
-        $this->attributeNameMap = $itemService->getAttributeNameMap($itemData['item']['id']);
-        $this->customerShowNetPrices = $customerService->showNetPrices();
 
         $itemRep =  pluginApp(ItemRepositoryContract::class);
         $this->ETCItemData = $itemRep->show($itemData['item']['id']);

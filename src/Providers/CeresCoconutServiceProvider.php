@@ -9,6 +9,7 @@ use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
+use CeresCoconut\Contexts\SingleItemContext;
 
 
 /**
@@ -58,6 +59,12 @@ class CeresCoconutServiceProvider extends ServiceProvider
 
             return false;
         }, self::PRIORITY);
+
+        $eventDispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
+       {
+           $templateContainer->setContext(SingleItemContext::class);
+           return false;
+       }, 0);
 
         // Override homepage
         if (in_array("homepage", $enabledOverrides) || in_array("all", $enabledOverrides))
