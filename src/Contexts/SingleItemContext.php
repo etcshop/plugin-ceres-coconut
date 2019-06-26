@@ -17,6 +17,7 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     public $attributeNameMap;
     public $customerShowNetPrices;
     public $ETCItemData;
+    public $itemData;
 
     public $accessory;
     public $similar;
