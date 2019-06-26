@@ -60,9 +60,9 @@ class CeresCoconutServiceProvider extends ServiceProvider
             return false;
         }, self::PRIORITY);
 
-        $eventDispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
+       $dispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
        {
-           $templateContainer->setContext(SingleItemContext::class);
+           $templateContainer->setContext(CoconutSingleItemContext::class);
            return false;
        }, 0);
 

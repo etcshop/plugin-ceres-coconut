@@ -18,7 +18,6 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     public $customerShowNetPrices;
     public $ETCItemData;
 
-    use Loggable;
     public $accessory;
     public $similar;
     public $replacementPart;
@@ -27,8 +26,8 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     {
         parent::init($params);
 
-        /** @var CustomerService $customerService */
-        $customerService = pluginApp(CustomerService::class);
+        $this->item = $params['item'];
+        $itemData = $this->item['documents'][0]['data'];
 
         $itemRep =  pluginApp(ItemRepositoryContract::class);
         $this->ETCItemData = $itemRep->show($itemData['item']['id']);
