@@ -1,6 +1,6 @@
 <?php
 
-namespace Ceres\Contexts;
+namespace CeresCoconut\Contexts;
 
 use IO\Helper\ContextInterface;
 use IO\Services\CustomerService;
