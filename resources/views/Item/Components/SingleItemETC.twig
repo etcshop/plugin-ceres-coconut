@@ -131,6 +131,17 @@
                       :missing-order-properties="variationMissingProperties"
                       :is-variation-selected="isVariationSelected"
                       ref="addtobasketref"></add-to-basket>
+
+                      {{ AddToBasket.printVueComponent(
+                          "currentVariation",
+                          false,
+                          true,
+                          {
+                              ":missing-order-properties":"variationMissingProperties",
+                              ":is-variation-selected": "isVariationSelected && currentVariation.filter.isSalable",
+                              ":has-price": "currentVariation | hasItemDefaultPrice"
+                          }
+                      ) }}
               <slot name="AfterAddToBasket"></slot>
           </div>
           <slot name="AdditionalContentAfterAddToBasket"></slot>
