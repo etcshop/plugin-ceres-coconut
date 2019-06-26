@@ -34,6 +34,11 @@
             "key"           :"CeresCoconut\\Containers\\CeresCoconutItemListContainer3",
             "name"          :"Third item list",
             "description"   :"Display a configurable list of items in your online store"
+        },
+        {
+            "key"           :"CeresCoconut\\Containers\\VueScripts",
+            "name"          :"Anbindung der VueScripts",
+            "description"   :"Hier werden eigene Komponenten eingebunden."
         }
     ]
 }
