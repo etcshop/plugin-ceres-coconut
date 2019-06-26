@@ -123,24 +123,14 @@
           <slot name="AfterPrice"></slot>
           <div class="row m-y-1">
               <slot name="BeforeAddToBasket"></slot>
-             <add-to-basket
-                      template="#vue-add-to-basket"
+              <add-to-basket
+                      template="#vue-add-to-basketETC"
                       v-if="currentVariation.filter.isSalable"
                       :item="$store.state.item.variation.documents[0].data"
                       :show-quantity="true"
                       :missing-order-properties="variationMissingProperties"
                       :is-variation-selected="isVariationSelected"
                       ref="addtobasketref"></add-to-basket>
-                      {{ AddToBasket.printVueComponent(
-                          "currentVariation",
-                          false,
-                          true,
-                          {
-                              ":missing-order-properties":"variationMissingProperties",
-                              ":is-variation-selected": "isVariationSelected && currentVariation.filter.isSalable",
-                              ":has-price": "currentVariation | hasItemDefaultPrice"
-                          }
-                      ) }}
               <slot name="AfterAddToBasket"></slot>
           </div>
           <slot name="AdditionalContentAfterAddToBasket"></slot>
