@@ -1,0 +1,158 @@
+{% set decimalCount = config("Ceres.item.storeSpecial") %}
+
+{{ component( "Ceres::ItemList.Components.CategoryItemETC" ) }}
+
+<script type="x/template" id="vue-container-item-list-direct-cross">
+<div id="SingleArticle_CrossDirect">
+   <div id="SingleArticle_ItemID_hidden">${ mainid }</div>
+   <div id="SingleArticle_ItemPrice_hidden">
+    <input type="hidden" id="price_dynamic_0_81036960_orderparam_markup" value="0">
+    <input type="hidden" id="price_dynamic_0_81036960_total" value="22.9">
+    <input type="hidden" id="price_dynamic_0_81036960_cfgFormat" value="0">
+    <span class="Price" id="price_dynamic_0_81036960">${ mainprice }</span>
+    <input type="hidden" id="price_dynamic_0_81036960_variationId" value="30469">
+   </div>
+   <span class="CrossSellingDirectCaption">{{ trans("Ceres::Template.directCrossSellingTitle") }}</span>
+   <div class="CrossSelling_DirectContainer">
+      <div class="CrossSelling_Direct_Item">
+         <div class="CRRadio" onclick="CRRadioClick(this.id)" :id="mainid"><input name="rdCrossSelling" type="radio" id="CROriginal" checked=""></div>
+         <div class="CRPrice"><label for="CROriginal">+0,00 €</label></div>
+         <div class="CRImage">
+            <!--<img src="https://cdn02.plentymarkets.com/9krpwzxa6mmo/item/images/81036960/preview/54645-4-1.jpg" data-plenty="UI.initLazyload(this, 'fadeIn')">-->
+         </div>
+         <div class="CRName"><label for="CROriginal">keine Auswahl</label></div>
+      </div>
+
+      <!-- START [ItemViewCrossSellingItemsList3] -->
+      <div class="CrossSelling_Direct_Item" v-for="item in items">
+         <div class="CRRadio" onclick="CRRadioClick(this.id)" :id="item.id"><input name="rdCrossSelling" type="radio" id="{{ item.id }}"></div>
+         <div class="CRPrice"><label for="CRItem81059894">+${ formatPrice((Number(item.data.salesPrices[0].price) - mainprice)) } €</label></div>
+         <div class="CRImage"><label for="CRItem81059894"><img :src="getLastItemURL(item.data.images.all)" data-plenty="UI.initLazyload(this, 'fadeIn')" style="display: inline-block;"></label></div>
+         <div class="CRName"><label for="CRItem81059894">${ item.data.texts.name3 }</label></div>
+         <div class="CREEK"><img :src="getEEK(item.data.properties)"></div>
+         <div class="CRLabel" style="display: none;">
+            <div class="CloseCREEK hidden-lg"><span class="link PlentyGuiIcon TabCloseButton" title="Close Tab" id="DisplayOrders_2379904_liElement_closeButton"></span></div>
+            <img :src="getLabelUrl(item.data.properties)">
+         </div>
+      </div>
+      <!-- END [ItemViewCrossSellingItemsList3] -->
+   </div>
+</div>
+</script>
+
+
+<script>
+Vue.component("container-item-list-direct-cross", {
+    template: "#vue-container-item-list-direct-cross",
+    delimiters: ["${", "}"],
+
+    props:
+    {
+        template:
+        {
+            type: String,
+            default: "#vue-container-item-list-direct-cross"
+        },
+        items:
+        {
+            type: Array,
+            default: []
+        },
+        mainprice:
+        {
+            type: Number,
+            default: 0
+        },
+        mainid:
+        {
+            type: Number,
+            default: 0
+        }
+    },
+
+    created()
+    {
+        this.$options.template = this.template;
+    },
+
+    mounted()
+    {
+        this.$nextTick(() =>
+        {
+            if (this.items.length > 4)
+            {
+                this.initializeCarousel();
+            }
+        });
+    },
+
+    methods:
+    {
+        formatPrice(value)
+        {
+            const val = (value / 1).toFixed(2).replace(".", ",");
+
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        },
+
+        getEEK(itemProperties)
+        {
+            for (var i = 0; i < itemProperties.length; i++)
+            {
+                if (itemProperties[i].group.backendName == "Energieeffizienzklasse")
+                {
+                    if (itemProperties[i].property.backendName == "energy_efficiency_class")
+                        return "https://www.etc-shop.de/layout/callisto_3/img/ccr_eek/eek_" + itemProperties[i].selection.name.replace("+++++", "PPPPP").replace("++++", "PPPP").replace("+++", "PPP").replace("++", "PP").replace("+", "P") + ".png";
+                }
+            }
+            return "";
+        },
+
+        getLabelUrl(itemProperties)
+        {
+            for (var i = 0; i < itemProperties.length; i++)
+            {
+                if (itemProperties[i].group.backendName == "Energieeffizienzklasse")
+              {
+                    if (itemProperties[i].property.backendName == "Label")
+                        return itemProperties[i].texts.value;
+                }
+            }
+            return "";
+        },
+
+        changeItemForBasket(item)
+        {
+            // this.variation = item.data.variation;
+            // this.$store.commit("setVariation", item.data.variation);
+            vue.$refs.addtobasketref.updateItemWithCrossSelling(item.data.variation.id);
+        },
+
+        compare(first, second)
+        {
+            if (first.position < second.position)
+                return -1;
+            if (first.position > second.position)
+                return 1;
+            return 0;
+        },
+
+        getLastItemURL(pics)
+        {
+            var arr = pics.slice().sort(function(first, second)
+{
+                return first.position - second.position;
+            });
+
+            return arr[arr.length - 1].urlPreview;
+        }
+    },
+    watch:
+    {
+        variation(newValue, oldValue)
+        {
+            this.$store.commit("setVariation", newValue);
+        }
+    }
+});
+</script>
