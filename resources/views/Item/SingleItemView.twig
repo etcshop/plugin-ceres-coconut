@@ -26,21 +26,9 @@
             {{ ImageCarouselOverride }}
         {% endif %}
     </template>
-    <div slot="ItemListContainer">
-      {% if similar is not empty %}
-        <div class="CrossSellingCaption test1550">{{ trans("Ceres::Template.ETC_PassendDazu") }}:</div>
-        <crossselling-item-list class="CrossSelling_Similar" :items="{{ similar | json_encode }}" :mainprice="10" :mainid="{{ item.documents[0].data.variation.id }}"></crossselling-item-list>
-      {% else %}
-        {% set itemList3 = services.itemList.getItemList( "random", "", "variation.position_desc",3 ).documents %}
-
-        <div class="CrossSellingCaption">{{ trans("Ceres::Template.ETC_AehnlicheArtikel") }}:</div>
-        <crossselling-item-list class="CrossSelling_Random" :items="{{ itemList3 | json_encode }}" :mainprice="10" :mainid="{{ item.documents[0].data.variation.id }}"></crossselling-item-list>
-      {% endif %}
-    </div>
-    <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
 
     <div slot="CrossSellingAccessory">
-    {{ component("Ceres::Containers.Components.ContainerItemListDirectCross") }}
+    {{ component("CeresCoconut::Containers.Components.ContainerItemListDirectCross") }}
     {% if replacementPart|length > 0 %}
             <div class="crossSelling">
                 <container-item-list-direct-cross :items="{{ replacementPart | json_encode }}" :mainprice="10" :mainid="{{ item.documents[0].data.variation.id }}"></container-item-list-direct-cross>
