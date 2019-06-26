@@ -425,8 +425,6 @@
     <script src="https://www.etc-shop.de/layout/ETCeres/js/etc.js"></script>
   {% endif %}
 
-{% include "CeresCoconut::VueScripts" %}
-
 <script>
     var categories = "{{ categories | json_encode }}";
     categories = JSON.parse(categories.replace(/&quot;/g,'"'));
@@ -435,5 +433,7 @@
         vueApp.$store.dispatch("initNavigationTree", categories)
     }, 0);
 </script>
+
+{% include "CeresCoconut::VueScripts" %}
 </body>
 </html>
