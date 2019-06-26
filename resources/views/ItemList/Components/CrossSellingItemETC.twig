@@ -1,0 +1,128 @@
+{% set lang = services.sessionStorage.getLang() %}
+{% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
+
+{% set techData = itemData.texts.technicalData %}
+{% set image = item.data.images.all | first %}
+{% set itemUrl =  item.data | itemURL %}
+
+<script type="x/template" id="vue-crossselling-itemETC">
+  <div class="itemBoxInner">
+      <div class="CategoryViewRatingCount">
+        <span class="ItemRatingIconContainer ItemRatingContainer_4.9">
+          <!--<img src="/images/icons/silk/star_set_5_5.png" alt="Rating: 4.9">-->
+        </span>
+      </div>
+      <div id="previewImages-" class="h-lg-2 h-md-3 h-sm-2 h-xs-6 PreviewImageBig">
+        <div class="previewImageSlider owl-carousel owl-theme" style="opacity: 1; display: block;">
+          <div class="owl-wrapper-outer">
+            <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
+                <div class="owl-item" style="width: 180px;">
+                  <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height">
+                    <a :href="itemData | itemURL">
+                        <img :src="firstImageByPosition">
+                    </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="name block" :href="itemData | itemURL">${ itemData | itemName }</a>
+      <p class="price js-link">
+        <span class="test large linkToItem">
+          <span class="Price">${ itemData.prices.default.unitPrice.formatted }</span> €
+        </span>
+      </p>
+      <p class="item_details hidden-xs test1649"><a href="{{ itemData | itemURL }}">Details</a></p>
+      <div id="CatOverviewTechnicalData">
+        Technische Daten: {{ techData }}<br>
+        ${ itemData.texts.technicalData }
+      </div>
+    </div>
+</script>
+
+<script>
+  Vue.component("crossselling-item", {
+
+    delimiters: ["${", "}"],
+
+    template: "#vue-crossselling-itemETC",
+
+    props: [
+        "decimalCount",
+        "itemData",
+        "imageUrlAccessor"
+    ],
+
+    data()
+    {
+        return {
+            recommendedRetailPrice: 0,
+            variationRetailPrice  : 0
+        };
+    },
+
+    computed:
+    {
+        /**
+         * returns itemData.item.storeSpecial
+         */
+        storeSpecial()
+        {
+            return this.itemData.item.storeSpecial;
+        },
+
+        /**
+         * returns itemData.texts[0]
+         */
+        texts()
+        {
+            return this.itemData.texts;
+        },
+
+        firstImageByPosition()
+        {
+            let pos = 10000;
+            let retImg = "";
+
+            for (var i = 0; i < this.itemData.images.all.length; i++)
+            {
+                if (this.itemData.images.all[i].position < pos && this.itemData.images.all[i].position != 0)
+              {
+                    pos = this.itemData.images.all[i].position;
+                    retImg = this.itemData.images.all[i].urlMiddle;
+                }
+            }
+            return retImg;
+        },
+
+        ...Vuex.mapState({
+            showNetPrices: state => state.basket.showNetPrices
+        })
+    },
+
+    created()
+    {
+        if (this.itemData.prices.rrp)
+        {
+            this.recommendedRetailPrice = this.itemData.prices.rrp.price.value;
+        }
+        this.variationRetailPrice = this.itemData.prices.default.price.value;
+    },
+
+    methods:
+    {
+        loadFirstImage()
+        {
+            const categoryImageCarousel = this.$refs.categoryImageCarousel;
+
+            if (categoryImageCarousel)
+            {
+                categoryImageCarousel.loadFirstImage();
+            }
+        }
+    }
+
+  });
+
+</script>

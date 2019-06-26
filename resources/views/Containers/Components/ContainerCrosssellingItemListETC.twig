@@ -1,0 +1,104 @@
+{% set decimalCount = config("Ceres.item.storeSpecial") %}
+
+{{ component( "Ceres::ItemList.Components.CrossSellingItemETC" ) }}
+
+<script type="x/template" id="vue-crossselling-item-listETC">
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12 CategoryItemETC CrossSellingItem" v-for="(item, index) in items" >
+        <crossselling-item :key="item.data.variation.id" :item-data="item.data" decimal-count="{{ decimalCount | json_encode }}" image-url-accessor="urlMiddle"></crossselling-item>
+    </div>
+</div>
+</script>
+
+<script>
+  Vue.component("crossselling-item-list", {
+
+      delimiters: ["${", "}"],
+
+      props:
+      {
+          template:
+          {
+              type: String,
+              default: "#vue-crossselling-item-listETC"
+          },
+          items:
+          {
+              type: Array,
+              default: []
+          }
+      },
+
+      created()
+      {
+          this.$options.template = this.template;
+      },
+
+      mounted()
+      {
+          this.$nextTick(() =>
+          {
+              if (this.items.length > 4)
+              {
+                  this.initializeCarousel();
+              }
+          });
+      },
+
+      methods:
+      {
+          initializeCarousel()
+          {
+              $(this.$refs.carouselContainer).owlCarousel({
+                  autoHeight       : true,
+                  dots             : true,
+                  items            : 4,
+                  responsive: {
+                      0: {
+                          items: 1
+                      },
+                      544: {
+                          items: 2
+                      },
+                      768: {
+                          items: 3
+                      },
+                      1000: {
+                          items: 4
+                      }
+                  },
+                  lazyLoad         : false,
+                  loop             : false,
+                  margin           : 30,
+                  mouseDrag        : true,
+                  nav              : true,
+                  navClass         : [
+                      "owl-single-item-nav left carousel-control list-control-special",
+                      "owl-single-item-nav right carousel-control list-control-special"
+                  ],
+                  navContainerClass: "",
+                  navText          : [
+                      "<i class=\"owl-single-item-control fa fa-chevron-left\" aria-hidden=\"true\"></i>",
+                      "<i class=\"owl-single-item-control fa fa-chevron-right\" aria-hidden=\"true\"></i>"
+                  ],
+                  smartSpeed       : 350,
+                  onChanged: property =>
+                  {
+                      const begin = property.item.index;
+                      const end = begin + property.page.size;
+
+                      for (let i = begin; i < end; i++)
+                      {
+                          const categoryItem = this.$refs["categoryItem_" + i];
+
+                          if (categoryItem)
+                          {
+                              categoryItem[0].loadFirstImage();
+                          }
+                      }
+                  }
+              });
+          }
+      }
+  });
+</script>
