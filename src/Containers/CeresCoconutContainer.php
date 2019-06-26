@@ -9,5 +9,6 @@ class CeresCoconutContainer
     public function call(Twig $twig):string
     {
         return $twig->render('CeresCoconut::Stylesheet');
+        return $twig->render('CeresCoconut::VueScripts');
     }
 }
