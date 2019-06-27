@@ -1,3 +1,5 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
 {{ component( "CeresCoconut::Item.Components.QuantityInputETC" ) }}
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 
@@ -7,6 +9,7 @@
 
 <script type="x/template" id="vue-basket-list-itemETC">
   <li class="margin-top-1" :data-plenty-basket-preview-item="basketItem.itemId">
+    {{ LayoutContainer.show("Ceres::BasketList.BeforeItem") }}
     <a class="row block basicColor lh-075 margin-bottom-15" :href="basketItem.variation.data | itemURL" :title="basketItem.variation.data | itemName">
       <div class="basketPreviewQuantity">
         <span data-plenty-basket="itemQuantity">${ basketItem.quantity }</span> x
@@ -19,5 +22,6 @@
         <div class="BasketPreviewItemPrice">${ itemTotalPrice | currency(basketItem.variation.data.calculatedPrices.default.currency) }<br></div>
       </div>
     </a>
+    {{ LayoutContainer.show("Ceres::BasketList.AfterItem") }}
   </li>
 </script>
