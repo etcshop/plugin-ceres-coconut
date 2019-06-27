@@ -12,6 +12,11 @@
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
 {{ component( "CeresCoconut::VueScripts" ) }}
 
+{{ component( "CeresCoconut::Containers.Components.ContainerCrosssellingItemListETC" ) }}
+{{ component( "CeresCoconut::Containers.Components.ContainerItemListDirectCross" ) }}
+{{ component( "CeresCoconut::ItemList.Components.CrossSellingItemETC" ) }}
+
+
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
 {% set pid = services.webstoreConfig.getPlentyId() %}
