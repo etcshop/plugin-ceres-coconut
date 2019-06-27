@@ -6,7 +6,7 @@
 
     <div>
         <div v-if="localeToShow == 'DE' && addressType === '1'">
-            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupDE" %}
+            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupDE" %}
             <country-select
                 template="#vue-country-select"
                 :selected-country-id="value.countryId"
@@ -19,7 +19,7 @@
         </div>
 
         <div v-if="localeToShow == 'GB' && addressType === '1'">
-            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupGB" %}
+            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupGB" %}
             <country-select
                 template="#vue-country-select"
                 :selected-country-id="value.countryId"
@@ -32,7 +32,7 @@
         </div>
 
         <div v-if="localeToShow == 'DE' && addressType === '2'">
-            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupDE" %}
+            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupDE" %}
             <country-select
                 template="#vue-country-select"
                 :selected-country-id="value.countryId"
@@ -45,7 +45,7 @@
         </div>
 
         <div v-if="localeToShow == 'GB' && addressType === '2'">
-            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupGB" %}
+            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupGB" %}
             <country-select
                 template="#vue-country-select"
                 :selected-country-id="value.countryId"
