@@ -1,1 +1,15 @@
-<!-- Insert markup for login page here -->
+{% extends getPartial('page-design') %}
+
+{% block PartialHead %}
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.login") }}</title>
+{% endblock %}
+
+{% block PageBody %}
+    {{ component( "CeresCoconut::Customer.Components.LoginViewETC") }}
+    {{ component( "CeresCoconut::Customer.Components.LoginETC") }}
+    {{ component( "CeresCoconut::Customer.Components.GuestLoginETC") }}
+    {{ component( "CeresCoconut::Customer.Components.RegistrationETC") }}
+
+    <login-view template="#vue-login-viewETC"></login-view>
+{% endblock %}

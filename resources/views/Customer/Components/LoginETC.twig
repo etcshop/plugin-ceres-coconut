@@ -1,0 +1,36 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% set gCapture = config("Ceres.global.google_recaptcha_api_key") %}
+
+<script type="x/template" id="vue-loginETC">
+  <div id="ContentAnmeldung_top" class="ContentText col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="ContentText col-lg-3 col-md-6 col-sm-6  col-xs-12">
+      {{ trans("Ceres::Template.ETC_LoginText") | raw}}
+      <a id="btnNeuesKonto" class="btn btn-primary btn-block">{{ trans("Ceres::Template.ETC_NeuesKundenkonto") }}</a> <br>
+    </div>
+    <div class="ContentText col-lg-5 col-md-6 col-sm-6  col-xs-12">
+      <form :id="'login-form-' + _uid" class="login-container">
+        <div class="form-group">
+          <div class="form-label-container">
+            {% set uid_mail = uid() %}
+            <label for="{{ uid_mail }}">{{ trans("Ceres::Template.ETC_EMailAdresse") }}</label>
+          </div>
+          <input class="form-control" name="loginMail" type="email" placeholder="" id="{{ uid_mail }}" v-model="username">
+        </div>
+        <div class="form-group">
+          <div class="form-label-container">
+            {% set uid_pwd = uid() %}
+            <label for="{{ uid_pwd }}">{{ trans("Ceres::Template.loginPassword") }}</label>
+          </div>
+          <input class="form-control" id="{{ uid_pwd }}" name="loginPassword" type="password" placeholder="" v-model="password">
+        </div>
+        <button @click.prevent="validateLogin" class="btn btn-default btn-block" type="submit">{{ trans("Ceres::Template.login") }}</button>
+        <span class="error-msg">{{ trans("Ceres::Template.loginEmptyPassword") }}</span>
+      </form>
+      <br>
+      <a href="javascript:ShowPWDResetETC()" id="AnmeldungPasswortvergessen" class="iconLink small reset-pwd-direction" :class="{'col-xs-7 col-sm-4': !modalElement}">
+      	<span class="glyphicon glyphicon-question-sign"></span> {{ trans("Ceres::Template.loginForgotPassword") }}
+      </a>
+    </div>
+  </div>
+</script>

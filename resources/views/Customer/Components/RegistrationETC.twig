@@ -1,0 +1,65 @@
+{{ component( "Ceres::Customer.Components.AddressInputGroup.AddressInputGroupETC" ) }}
+<script type="x/template" id="vue-registrationETC">
+    <div id="registration_form">
+        <div class="modal-body" id="ContentAddressForm">
+            <div class="row panel-body" :id="'registration' + _uid">
+                <div class="panel-heading">
+                  <h3 class="panel-title">{{ trans("Ceres::Template.ETC_Kundendaten") }}</h3>
+                </div>
+                <div class="col-sm-6" id="Registration_E-Mail">
+                    <div class="input-unit" data-validate="mail">
+                        {% set uid_mail = uid() %}
+                        <label for="{{ uid_mail }}" class="form_musthave">{{ trans("Ceres::Template.regEmail") }}</label>
+                        <input type="text" name="email" id="{{ uid_mail }}" v-model="username">
+                    </div>
+                </div>
+
+                <div class="col-sm-6" v-if="!guestMode" id="Registration_Password">
+                    <div class="input-unit" :class="{'no-bottom media-xs-d': modalElement}" data-validate="password" ref="passwordInput">
+                        <label for="{{ uid_pwd }}" class="form_musthave">{{ trans("Ceres::Template.regPassword") }}</label>
+                        <popper v-cloak trigger="focus" placement="left" ref="passwordHint">
+                            {% set uid_pwd = uid() %}
+                            <input slot="handle" type="password" name="password" id="{{ uid_pwd }}" v-model="password">
+                            <div slot="title">
+                                {{ trans("Ceres::Template.regPasswordHintTitle") }}
+                            </div>
+                            <ul slot="content" class="p-l-1">
+                                <li>{{ trans("Ceres::Template.regPasswordHintLength") }}</li>
+                                <li>{{ trans("Ceres::Template.regPasswordHintDigit") }}</li>
+                                <li>{{ trans("Ceres::Template.regPasswordHintChar") }}</li>
+                            </ul>
+                        </popper>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 input-unit-group" v-if="!guestMode" id="Registration_PasswordRepeat">
+                    <div class="input-unit" :class="{'no-bottom': modalElement}" data-validate="ref">
+                        {% set uid_pwd_repeat = uid() %}
+                        <label for="{{ uid_pwd_repeat }}" class="form_musthave">{{ trans("Ceres::Template.regRepeatPassword") }}</label>
+                        <input type="password" name="password-repeat" id="{{ uid_pwd_repeat }}" v-model="passwordRepeat" data-validate-ref="#{{ uid_pwd }}">
+                    </div>
+                </div>
+                <div class="ContentSeperator"></div>
+                <div class="panel-heading">
+                  <h3 class="panel-title">{{ trans("Ceres::Template.ETC_Rechnungsadresse") }}:</h3>
+                </div>
+                <address-input-group
+                    template="#vue-address-input-groupETC"
+                    v-if="!isSimpleRegistration"
+                    address-type="1"
+                    :value="billingAddress"
+                    @input="setAddressDataField($event)">
+                </address-input-group>
+            </div>
+        </div>
+        <div class="modal-footer">
+            {{ LayoutContainer.show("Ceres::RegistrationOverlay.ExtendOverlayButtons") }}
+
+            <button @click="validateRegistration" :disabled="isDisabled" class="btn btn-primary btn-medium btn-right">
+                <i class="fa fa-user-plus" v-waiting-animation="isDisabled" aria-hidden="true"></i>
+                {{ trans("Ceres::Template.regRegister") }}
+            </button>
+        </div>
+        <div class="ContentSeperator"></div>
+    </div>
+</script>

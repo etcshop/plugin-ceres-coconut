@@ -1,0 +1,13 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% set backlink = request.get("backlink") %}
+
+<script type="x/template" id="vue-login-viewETC" >
+  <div class="ContentPage" id="ContentAnmeldung">
+    <login template="#vue-loginETC" backlink="{{ backlink | url_encode }}" has-to-forward="true"></login>
+    <div class="ContentSeperator_Big"></div>
+    <registration template="#vue-registrationETC" :is-simple-registration="false" modal-element="simple-registration-modal-wrapper"></registration>
+    <div class="text-left">
+      <button id="CheckoutButton_Next" class="btn btn-primary btn-lg btn-block-xs" data-plenty="click:Redirect.toCheckoutTab('next')"><span>Weiter</span><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</script>
