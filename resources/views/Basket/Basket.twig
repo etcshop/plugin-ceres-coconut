@@ -1,1 +1,46 @@
-<!-- Insert markup for shopping cart here -->
+{% extends getPartial('page-design') %}
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% set basketDetailsData = config("Ceres.basket.item_data")|split(', ') %}
+
+{% block PartialHead %}
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.basket") }}</title>
+{% endblock %}
+
+{% block PageBody %}
+
+    {{ component( "Ceres::Basket.Components.BasketListNoPreviewETC" ) }}
+    {{ component( "Ceres::Basket.Components.CouponETC" ) }}
+    {{ component( "Ceres::Basket.Components.BasketTotalsNoPreviewETC" ) }}
+    <div id="ContentCheckout_Plenty" data-plenty-checkout-catcontent="665">
+      {% set basketItemQuantity = basket.basketAmount %}
+      {% if (basketItemQuantity > 0) %}
+          <div class="ContentPage" id="ContentWarenkorb">
+            <div class="ContentCaption">
+              <span class="BasketCaptionLeft">{{ trans("Ceres::Template.basket") }}</span>
+              <span class="BasketCaptionRight hidden-xs hidden-sm">{{ trans("Ceres::Template.ETC_Bestelluebersicht") }}</span>
+            </div>
+            <div class="ContentSeperator"></div>
+            <div id="chk_BasketContent" class="ContentText">
+              <basket-list template="#vue-basket-list-nopreviewETC" size="large"></basket-list>
+              <basket-totals class="m-b-2" template="#vue-basket-totals-nopreviewETC"></basket-totals>
+            </div>
+          </div>
+        {% else %}
+          <div id="ContentCheckout_BasketEmpty">
+            {% set itemList3 = services.itemList.getItemList( "category", 429, "variation.position_desc",50 ).documents %}
+            <div style="display: none">{{ itemList3 | json_encode }}</div>
+            <div class="ContentCaption test1119">{{ trans("Ceres::Template.ETC_WarenkorbLeer") }}</div>
+				    {{ trans("Ceres::Template.ETC_WarenkorbLeer_Text") }}
+				    <br>
+				    <br>
+            <ul id="twig-rendered-item-list" class="row categoryDetails isGridView">
+              {% for item in itemList3 %}
+                {% include "Ceres::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+    </div>
+{% endblock %}
