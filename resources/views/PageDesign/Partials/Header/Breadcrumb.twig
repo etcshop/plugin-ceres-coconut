@@ -7,8 +7,8 @@
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <ol class="breadcrumbs">
-              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("Ceres::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
-              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("Ceres::Template.ETC_Breadcrumbs_Start") }}</a></li>
+              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
+              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_Start") }}</a></li>
               {% set break = false %}
               {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length ] if not break %}
                 {% if category.parentCategoryId != null %}
@@ -49,8 +49,8 @@
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <ol class="breadcrumbs">
-              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("Ceres::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
-              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("Ceres::Template.ETC_Breadcrumbs_Start") }}</a></li>
+              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
+              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_Start") }}</a></li>
               <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
                 <a href="#" title="{{ brNameAdd }}" itemprop="url">
                   <span itemprop="title">{{ brNameAdd }}</span>
