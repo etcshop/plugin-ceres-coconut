@@ -6,14 +6,14 @@
   <div id="ContentAnmeldung_top" class="ContentText col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="ContentText col-lg-3 col-md-6 col-sm-6  col-xs-12">
       {{ trans("Ceres::Template.ETC_LoginText") | raw}}
-      <a id="btnNeuesKonto" class="btn btn-primary btn-block">{{ trans("Ceres::Template.ETC_NeuesKundenkonto") }}</a> <br>
+      <a id="btnNeuesKonto" class="btn btn-primary btn-block">{{ trans("CeresCoconut::Template.ETC_NeuesKundenkonto") }}</a> <br>
     </div>
     <div class="ContentText col-lg-5 col-md-6 col-sm-6  col-xs-12">
       <form :id="'login-form-' + _uid" class="login-container">
         <div class="form-group">
           <div class="form-label-container">
             {% set uid_mail = uid() %}
-            <label for="{{ uid_mail }}">{{ trans("Ceres::Template.ETC_EMailAdresse") }}</label>
+            <label for="{{ uid_mail }}">{{ trans("CeresCoconut::Template.ETC_EMailAdresse") }}</label>
           </div>
           <input class="form-control" name="loginMail" type="email" placeholder="" id="{{ uid_mail }}" v-model="username">
         </div>
