@@ -7,11 +7,22 @@
     <div class="row">
         {% if "billing_address.salutation" in addressFields %}
             <div class="col-xs-12 col-sm-12 col-lg-12 input-unit_container">
+              <!--
                 <div class="input-unit"
                     {% if "billing_address.salutation" in addressFieldsRequired %}data-validate{% endif %}  id="BillingAddress_Salutation_Sal">
                     <label :for="'txtSalutation' + _uid" {% if "billing_address.salutation" in addressFieldsRequired %}class="form_musthave"{% endif %}>{{ trans("Ceres::Template.addressSalutation") }}</label>
                     <salutation-select template="#vue-salutation-select" :address-type="addressType" :address-data="value" @input="emitInputEvent($event.field, $event.value)"></salutation-select>
-                    <!--<salutation-select :address-type="addressType" :address-data="value" :enabled-address-fields="optionalAddressFields" :default-salutation="defaultSalutation" @input="emitInputEvent($event.field, $event.value)"></salutation-select>-->
+                </div>
+              -->
+            </div>
+            <div v-if="isInOptionalFields('de', 'billing_address.salutation')" class="col-12 col-sm-4">
+                <div
+                    class="input-unit"
+                    v-validate="isInRequiredFields('de', 'billing_address.salutation')">
+                    <salutation-select :address-type="addressType" :address-data="value" :enabled-address-fields="optionalAddressFields" :default-salutation="defaultSalutation" @input="emitInputEvent($event.field, $event.value)"></salutation-select>
+                    <label :for="'txtSalutation' + _uid">
+                        ${ transformTranslation("Ceres::Template.addressSalutation", "de", "billing_address.salutation") }
+                    </label>
                 </div>
             </div>
         {% endif %}
