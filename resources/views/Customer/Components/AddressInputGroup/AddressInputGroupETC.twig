@@ -13,8 +13,9 @@
                 :selected-state-id="value.stateId"
                 @country-changed="onSelectedCountryChanged($event)"
                 @state-changed="emitInputEvent('stateId', $event)"
-                :country-list="{{ services.country.getActiveCountriesList() | json_encode() }}"
-                :address-type="addressType">
+                country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
+                :optional-address-fields="optionalAddressFields"
+                :required-address-fields="requiredAddressFields">
             </country-select>
         </div>
 
@@ -26,8 +27,9 @@
                 :selected-state-id="value.stateId"
                 @country-changed="onSelectedCountryChanged($event)"
                 @state-changed="emitInputEvent('stateId', $event)"
-                :country-list="{{ services.country.getActiveCountriesList() | json_encode() }}"
-                :address-type="addressType">
+                country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
+                :optional-address-fields="optionalAddressFields"
+                :required-address-fields="requiredAddressFields">
             </country-select>
         </div>
 
@@ -39,8 +41,9 @@
                 :selected-state-id="value.stateId"
                 @country-changed="onSelectedCountryChanged($event)"
                 @state-changed="emitInputEvent('stateId', $event)"
-                :country-list="{{ services.country.getActiveCountriesList() | json_encode() }}"
-                :address-type="addressType">
+                country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
+                :optional-address-fields="optionalAddressFields"
+                :required-address-fields="requiredAddressFields">
             </country-select>
         </div>
 
@@ -52,8 +55,9 @@
                 :selected-state-id="value.stateId"
                 @country-changed="onSelectedCountryChanged($event)"
                 @state-changed="emitInputEvent('stateId', $event)"
-                :country-list="{{ services.country.getActiveCountriesList() | json_encode() }}"
-                :address-type="addressType">
+                country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
+                :optional-address-fields="optionalAddressFields"
+                :required-address-fields="requiredAddressFields">
             </country-select>
         </div>
     </div>
