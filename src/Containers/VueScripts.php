@@ -4,7 +4,7 @@ namespace CeresCoconut\Containers;
 
 use Plenty\Plugin\Templates\Twig;
 
-class CeresCoconutVueScripts
+class VueScripts
 {
     public function call(Twig $twig):string
     {
