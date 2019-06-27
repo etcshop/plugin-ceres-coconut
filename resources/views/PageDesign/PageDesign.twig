@@ -370,7 +370,6 @@
     {% include scriptTemplate.path ignore missing with scriptTemplate.params %}
 {% endfor %}
 
-{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 {{ get_filtered_tags() }}
 {{ get_json_data() }}
 
@@ -543,6 +542,7 @@
     })(jQuery);
 </script>
 
+{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 {{ get_shop_builder_scripts() }}
     <!--<script src="{{ plugin_path('Ceres') }}/js/dist/etc.js"></script>-->
 
