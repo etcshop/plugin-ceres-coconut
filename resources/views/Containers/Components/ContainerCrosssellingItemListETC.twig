@@ -1,7 +1,5 @@
 {% set decimalCount = config("Ceres.item.storeSpecial") %}
 
-{{ component( "CeresCoconut::ItemList.Components.CrossSellingItemETC" ) }}
-
 <script type="x/template" id="vue-crossselling-item-listETC">
 <div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12 CategoryItemETC CrossSellingItem" v-for="(item, index) in items" >
