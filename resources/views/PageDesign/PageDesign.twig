@@ -541,8 +541,6 @@
 
     })(jQuery);
 </script>
-
-{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 {{ get_shop_builder_scripts() }}
     <!--<script src="{{ plugin_path('Ceres') }}/js/dist/etc.js"></script>-->
 
@@ -561,6 +559,8 @@
     }, 0);
 </script>
 
+
+{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
 </body>
 </html>
