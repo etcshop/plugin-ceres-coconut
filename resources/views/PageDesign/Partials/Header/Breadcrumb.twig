@@ -1,1 +1,64 @@
-<!-- Insert markup for breadcrumb here -->
+{{ component("CeresCoconut::Category.Components.CategoryBreadcrumbs") }}
+{% set homepageURL = services.url.getHomepageURL() %}
+
+{% if categoryBreadcrumbs is not empty %}
+    <div class="breadcrumbs 1" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <ol class="breadcrumbs">
+              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("Ceres::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
+              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("Ceres::Template.ETC_Breadcrumbs_Start") }}</a></li>
+              {% set break = false %}
+              {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length ] if not break %}
+                {% if category.parentCategoryId != null %}
+                  {% set firstcrumb = " class=\"firstcrumb\" " %}
+                {% endif %}
+                {% if category.details[0] %}
+                  {% if category.details[0].name != "pages" %}
+                    <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+                      <a href="{{ services.category.getURLById( category.id ) }}" {{ firstcrumb }}  class="firstCrumb" title="{{ category.details[0].name }}" itemprop="url">
+                        <span itemprop="title">{{ category.details[0].name }}</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                {% else %}
+                  {% set break = true %}
+                {% endif %}
+              {% endfor %}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <category-breadcrumbs template="#vue-category-breadcrumbs"></category-breadcrumbs> -->
+    {% else %}
+    <div class="breadcrumbs 2" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
+      {% set currTpl = services.template.getCurrentTemplate() %}
+      {% set brNameAdd = "" %}
+      {% if currTpl == 'tpl.privacy-policy' %}
+        {% set brNameAdd = "Datenschutzerklärung" %}
+      {% elseif currTpl == 'tpl.terms-conditions' %}
+        {% set brNameAdd = "Allgemeine Geschäftsbedingungen" %}
+      {% elseif currTpl == 'tpl.cancellation-rights' %}
+        {% set brNameAdd = "Widerrufsrecht" %}
+      {% elseif currTpl == 'tpl.legal-disclosure' %}
+        {% set brNameAdd = "Impressum" %}
+      {% endif %}
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <ol class="breadcrumbs">
+              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("Ceres::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
+              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("Ceres::Template.ETC_Breadcrumbs_Start") }}</a></li>
+              <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+                <a href="#" title="{{ brNameAdd }}" itemprop="url">
+                  <span itemprop="title">{{ brNameAdd }}</span>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endif %}
