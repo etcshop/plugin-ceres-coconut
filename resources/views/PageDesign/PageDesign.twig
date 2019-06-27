@@ -370,7 +370,6 @@
     {% include scriptTemplate.path ignore missing with scriptTemplate.params %}
 {% endfor %}
 
-{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 {{ get_filtered_tags() }}
 {{ get_json_data() }}
 
@@ -434,6 +433,8 @@
         vueApp.$store.dispatch("initNavigationTree", categories)
     }, 0);
 </script>
+
+{{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
 {% include "CeresCoconut::VueScripts" %}
 </body>
