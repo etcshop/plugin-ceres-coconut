@@ -199,7 +199,7 @@
 
             <!-- breadcrumb -->
             {% if not services.template.isHome() and not services.template.isMyAccount() and not services.template.isCheckout() and not showMyAccountSubMenu and 'tpl.basket' not in currTpl %}
-              {% include "Ceres::PageDesign.Partials.Header.Breadcrumb" %}
+              {% include "CeresCoconut::PageDesign.Partials.Header.Breadcrumb" %}
             {% endif %}
 
             {% if services.template.isHome() %}
