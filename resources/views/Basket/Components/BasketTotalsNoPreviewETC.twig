@@ -11,13 +11,13 @@
         <div id="chk_Gesamtsummen_Berechnung" class="SummenContainer">
           <dl class="row">
             <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
-              <span>{{ trans("Ceres::Template.ETC_Warenwert") }}</span>
+              <span>{{ trans("CeresCoconut::Template.ETC_Warenwert") }}</span>
             </dt>
             <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right">
               <span data-plenty-basket-preview="totalsItemSum">${ basket.itemSum | currency  }</span>
             </dd>
             <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
-              <span>{{ trans("Ceres::Template.ETC_Versandkosten") }}</span>
+              <span>{{ trans("CeresCoconut::Template.ETC_Versandkosten") }}</span>
             </dt>
             <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right">
               <span data-plenty-basket-preview="totalsShippingAmount">${ basket.shippingAmount | currency  }</span>
@@ -26,7 +26,7 @@
               <span data-plenty-basket-preview="totalsRebateTotalAmount">${ basket.basketRebate }</span>
             </dd>
             <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs" v-if="basket.couponCode">
-              <span>{{ trans("Ceres::Template.ETC_GutschriftGutschein") }}</span>
+              <span>{{ trans("CeresCoconut::Template.ETC_GutschriftGutschein") }}</span>
             </dt>
             <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right" v-if="basket.couponCode"s>
               <span data-plenty-basket-preview="totalsCouponDiscount">${ basket.couponDiscount | currency }</span>
@@ -36,7 +36,7 @@
         <div id="chk_Gesamtsummen_Endwerte" class="SummenContainer">
           <dl class="row">
             <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
-              <span>{{ trans("Ceres::Template.ETC_Gesamtbetrag") }}</span>
+              <span>{{ trans("CeresCoconut::Template.ETC_Gesamtbetrag") }}</span>
             </dt>
             <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right">
               <span data-plenty-basket-preview="totalsTotalAmount">${ basket.basketAmount | currency  }</span>
@@ -53,7 +53,7 @@
       <div id="chk_ZurKasse" class="margin-top-1 text-right">
         <a href="{{ urls.checkout }}" class="btn btn-primary btn-lg btn-block-xs">
           <span aria-hidden="true" class="glyphicon glyphicon-euro"></span>
-          {{ trans("Ceres::Template.ETC_ZurKasse") }}
+          {{ trans("CeresCoconut::Template.ETC_ZurKasse") }}
         </a>
       </div>
     </div>

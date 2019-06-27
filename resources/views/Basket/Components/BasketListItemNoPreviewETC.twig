@@ -22,7 +22,7 @@
         <div id="chk_ItemData" class="col-xs-6 col-sm-6 col-md-6 col-lg-7">
           <a class="name block" :href="basketItem.variation.data | itemURL" :title="basketItem.variation.data | itemName">${ basketItem.variation.data | itemName }</a>
           <dl>
-            <dt class="col-xs-5 BasketItemArtNr"> {{ trans("Ceres::Template.ETC_Artikelnummer") }} </dt>
+            <dt class="col-xs-5 BasketItemArtNr"> {{ trans("CeresCoconut::Template.ETC_Artikelnummer") }} </dt>
             <dd class="col-xs-7"> ${ basketItem.variation.data.variation.number } </dd>
             <dt></dt>
             <dd class="col-xs-12 BasketItemTechData">
@@ -45,7 +45,7 @@
           </div>
           <a>
             <i v-waiting-animation="waitingForDelete" class="fa" aria-hidden="true"></i>
-            <span id="chk_RemoveItemText" @click="deleteItem"> {{ trans("Ceres::Template.ETC_ArtikelEntfernen") }} </span> <i id="chk_RemoveItem" class="material-icons w3-xxxlarge" @click="deleteItem">clear</i>
+            <span id="chk_RemoveItemText" @click="deleteItem"> {{ trans("CeresCoconut::Template.ETC_ArtikelEntfernen") }} </span> <i id="chk_RemoveItem" class="material-icons w3-xxxlarge" @click="deleteItem">clear</i>
           </a>
         </div>
         <!-- ./item info -->
@@ -55,7 +55,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button class="close" type="button" data-dismiss="modal" aria-label="Schließen"> <span aria-hidden="true">×</span> </button>
-              <h4 class="modal-title">{{ trans("Ceres::Template.ETC_ArtikelvarianteAendern") }}</h4>
+              <h4 class="modal-title">{{ trans("CeresCoconut::Template.ETC_ArtikelvarianteAendern") }}</h4>
             </div>
             <div class="modal-body">
               <div class="clearfix">
