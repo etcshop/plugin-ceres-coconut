@@ -1,5 +1,6 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
+{{ component( "Ceres::Item.Components.OrderPropertyValue" ) }}
 {{ component( "CeresCoconut::Item.Components.QuantityInputETC" ) }}
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 
@@ -19,7 +20,7 @@
       </div>
       <div class="basketPreviewInfo">
         <div class="BasketPreviewItemName">${ basketItem.variation.data | itemName }</div>
-        <div class="BasketPreviewItemPrice">${ itemTotalPrice | currency(basketItem.variation.data.calculatedPrices.default.currency) }<br></div>
+        <div class="BasketPreviewItemPrice">${ itemTotalPrice | currency(basketItem.variation.data.prices.default.currency) }<br></div>
       </div>
     </a>
     {{ LayoutContainer.show("Ceres::BasketList.AfterItem") }}
