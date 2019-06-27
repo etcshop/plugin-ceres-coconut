@@ -1,0 +1,77 @@
+{{ component( "Ceres::Item.Components.QuantityInputETC" ) }}
+{{ component( "Ceres::Item.Components.ItemBundle" ) }}
+
+{% set itemsData = config("Ceres.basket.item_data")|split(', ') %}
+{% set showItemVariation = config("Ceres.basket.variations") %}
+{% set basketDetailsData = config("Ceres.basket.item_data")|split(', ') %}
+
+<script type="x/template" id="vue-basket-list-item-nopreviewETC">
+
+  <ul class="list-unstyled">
+    <!-- item -->
+    <li data-basket-item-id="399696">
+      <div class="row margin-top-xs-05">
+        <!-- preview images -->
+        <div id="chk_ItemImage" class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+          <div class="imageBox text-center margin-top-05">
+            <img :src="middleImage" :alt="basketItem.variation.data | itemName">
+          </div>
+        </div>
+        <!-- ./preview images -->
+        <!-- item info -->
+        <div id="chk_ItemData" class="col-xs-6 col-sm-6 col-md-6 col-lg-7">
+          <a class="name block" :href="basketItem.variation.data | itemURL" :title="basketItem.variation.data | itemName">${ basketItem.variation.data | itemName }</a>
+          <dl>
+            <dt class="col-xs-5 BasketItemArtNr"> {{ trans("Ceres::Template.ETC_Artikelnummer") }} </dt>
+            <dd class="col-xs-7"> ${ basketItem.variation.data.variation.number } </dd>
+            <dt></dt>
+            <dd class="col-xs-12 BasketItemTechData">
+              ${ basketItem.variation.data.texts.technicalData }
+            </dd>
+          </dl>
+        </div>
+        <div id="chk_PriceBox" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <div class="chk_PriceBoxContainer">
+            <span id="chk_ItemPrice" data-plenty-checkout="basket-item-price-total">${ itemTotalPrice | currency(basketItem.variation.data.calculatedPrices.default.currency) }</span><br>
+          </div>
+          <div class="quantityInputWrapper" data-plenty="quantityInputWrapper">
+            <quantity-input template="#vue-quantity-inputETC"
+              @quantity-change="updateQuantity"
+              :value="basketItem.quantity"
+              :waiting="isInputLocked"
+              :min="basketItem.variation.data.variation.minimumOrderQuantity"
+              :max="basketItem.variation.data.variation.maximumOrderQuantity"
+              :interval="basketItem.variation.data.variation.intervalOrderQuantity"></quantity-input>
+          </div>
+          <a>
+            <i v-waiting-animation="waitingForDelete" class="fa" aria-hidden="true"></i>
+            <span id="chk_RemoveItemText" @click="deleteItem"> {{ trans("Ceres::Template.ETC_ArtikelEntfernen") }} </span> <i id="chk_RemoveItem" class="material-icons w3-xxxlarge" @click="deleteItem">clear</i>
+          </a>
+        </div>
+        <!-- ./item info -->
+      </div>
+      <div class="modal fade" data-plenty-basket-item="399696">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal" aria-label="Schließen"> <span aria-hidden="true">×</span> </button>
+              <h4 class="modal-title">{{ trans("Ceres::Template.ETC_ArtikelvarianteAendern") }}</h4>
+            </div>
+            <div class="modal-body">
+              <div class="clearfix">
+                <div style="display:none;" id="PlentyAttributeErrorMsg_399696_81041842" class="plentyErrorBox PlentyAttributeErrorMsg"></div>
+                <div class="PlentyWebTableLayout" data-item-attributes=""></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal"> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ trans("Ceres::Template.Cancel") }} </button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" data-plenty-modal="confirm"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ trans("Ceres::Template.Save") }} </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <!-- ./item -->
+  </ul>
+
+</script>

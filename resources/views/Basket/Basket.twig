@@ -10,16 +10,16 @@
 
 {% block PageBody %}
 
-    {{ component( "Ceres::Basket.Components.BasketListNoPreviewETC" ) }}
-    {{ component( "Ceres::Basket.Components.CouponETC" ) }}
-    {{ component( "Ceres::Basket.Components.BasketTotalsNoPreviewETC" ) }}
+    {{ component( "CeresCoconut::Basket.Components.BasketListNoPreviewETC" ) }}
+    {{ component( "CeresCoconut::Basket.Components.CouponETC" ) }}
+    {{ component( "CeresCoconut::Basket.Components.BasketTotalsNoPreviewETC" ) }}
     <div id="ContentCheckout_Plenty" data-plenty-checkout-catcontent="665">
       {% set basketItemQuantity = basket.basketAmount %}
       {% if (basketItemQuantity > 0) %}
           <div class="ContentPage" id="ContentWarenkorb">
             <div class="ContentCaption">
               <span class="BasketCaptionLeft">{{ trans("Ceres::Template.basket") }}</span>
-              <span class="BasketCaptionRight hidden-xs hidden-sm">{{ trans("Ceres::Template.ETC_Bestelluebersicht") }}</span>
+              <span class="BasketCaptionRight hidden-xs hidden-sm">{{ trans("CeresCoconut::Template.ETC_Bestelluebersicht") }}</span>
             </div>
             <div class="ContentSeperator"></div>
             <div id="chk_BasketContent" class="ContentText">
@@ -32,12 +32,12 @@
             {% set itemList3 = services.itemList.getItemList( "category", 429, "variation.position_desc",50 ).documents %}
             <div style="display: none">{{ itemList3 | json_encode }}</div>
             <div class="ContentCaption test1119">{{ trans("Ceres::Template.ETC_WarenkorbLeer") }}</div>
-				    {{ trans("Ceres::Template.ETC_WarenkorbLeer_Text") }}
+				    {{ trans("CeresCoconut::Template.ETC_WarenkorbLeer_Text") }}
 				    <br>
 				    <br>
             <ul id="twig-rendered-item-list" class="row categoryDetails isGridView">
               {% for item in itemList3 %}
-                {% include "Ceres::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+                {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
               {% endfor %}
             </ul>
           </div>

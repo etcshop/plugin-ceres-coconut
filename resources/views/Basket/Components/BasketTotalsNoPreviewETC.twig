@@ -1,0 +1,61 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{{ component( "Ceres::PageDesign.Components.ShippingCountrySelectETC" ) }}
+{{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
+{{ component( "Ceres::Checkout.Components.PaymentProviderSelectBasket" ) }}
+
+<script type="x/template" id="vue-basket-totals-nopreviewETC">
+    <!-- BASKET TOTALS -->
+    <div id="chk_Gesamtsummen" data-plenty-checkout-template="Totals" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="checkoutSum margin-bottom-1 nowrap">
+        <div id="chk_Gesamtsummen_Berechnung" class="SummenContainer">
+          <dl class="row">
+            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
+              <span>{{ trans("Ceres::Template.ETC_Warenwert") }}</span>
+            </dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right">
+              <span data-plenty-basket-preview="totalsItemSum">${ basket.itemSum | currency  }</span>
+            </dd>
+            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
+              <span>{{ trans("Ceres::Template.ETC_Versandkosten") }}</span>
+            </dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right">
+              <span data-plenty-basket-preview="totalsShippingAmount">${ basket.shippingAmount | currency  }</span>
+            </dd>
+            <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right" v-if="basket.basketRebate">
+              <span data-plenty-basket-preview="totalsRebateTotalAmount">${ basket.basketRebate }</span>
+            </dd>
+            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs" v-if="basket.couponCode">
+              <span>{{ trans("Ceres::Template.ETC_GutschriftGutschein") }}</span>
+            </dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right" v-if="basket.couponCode"s>
+              <span data-plenty-basket-preview="totalsCouponDiscount">${ basket.couponDiscount | currency }</span>
+            </dd>
+          </dl>
+        </div>
+        <div id="chk_Gesamtsummen_Endwerte" class="SummenContainer">
+          <dl class="row">
+            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
+              <span>{{ trans("Ceres::Template.ETC_Gesamtbetrag") }}</span>
+            </dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right">
+              <span data-plenty-basket-preview="totalsTotalAmount">${ basket.basketAmount | currency  }</span>
+            </dd>
+            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
+              <span>{{ trans("Ceres::Template.basketIncludeAbbr") }} {{ trans("Ceres::Template.basketVAT") }} 19%</span>
+            </dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right test1041" v-for="totalVat in basket.totalVats">
+              <span data-plenty-basket-preview="totalsVat">${ totalVat.vatAmount | currency }</span>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <div id="chk_ZurKasse" class="margin-top-1 text-right">
+        <a href="{{ urls.checkout }}" class="btn btn-primary btn-lg btn-block-xs">
+          <span aria-hidden="true" class="glyphicon glyphicon-euro"></span>
+          {{ trans("Ceres::Template.ETC_ZurKasse") }}
+        </a>
+      </div>
+    </div>
+    <!-- ./BASKET TOTALS -->
+</script>
