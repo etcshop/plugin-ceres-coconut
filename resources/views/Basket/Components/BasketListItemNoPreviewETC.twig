@@ -32,7 +32,7 @@
         </div>
         <div id="chk_PriceBox" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
           <div class="chk_PriceBoxContainer">
-            <span id="chk_ItemPrice" data-plenty-checkout="basket-item-price-total">${ itemTotalPrice | currency(basketItem.variation.data.calculatedPrices.default.currency) }</span><br>
+            <span id="chk_ItemPrice" data-plenty-checkout="basket-item-price-total">${ itemTotalPrice | currency(basketItem.variation.data.prices.default.currency) }</span><br>
           </div>
           <div class="quantityInputWrapper" data-plenty="quantityInputWrapper">
             <quantity-input template="#vue-quantity-inputETC"
