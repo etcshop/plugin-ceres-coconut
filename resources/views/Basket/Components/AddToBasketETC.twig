@@ -72,7 +72,12 @@
 
 
 Vue.component("add-to-basketETC", {
+    import ExceptionMap from "Ceres/exceptions/ExceptionMap";
+    import TranslationService from "Ceres/services/TranslationService";
+    import { navigateTo } from "Ceres/services/UrlService";
+    import { isNullOrUndefined } from "Ceres/helper/utils";
 
+    const NotificationService = require("Ceres/services/NotificationService");
     delimiters: ["${", "}"],
 
     props:
