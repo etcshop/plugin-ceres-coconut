@@ -69,7 +69,7 @@
 </script>
 
 <script>
-  import ExceptionMap from "exceptions/ExceptionMap";
+  /*import ExceptionMap from "exceptions/ExceptionMap";*/
   import TranslationService from "services/TranslationService";
   import {navigateTo}from "services/UrlService";
 
@@ -200,7 +200,7 @@
                           {
                               NotificationService.error(
                                   TranslationService.translate(
-                                      "Ceres::Template." + ExceptionMap.get(error.data.exceptionCode.toString())
+                                      "Ceres::Template.AddToBasketETC"
                                   )
                               ).closeAfter(5000);
                           }
