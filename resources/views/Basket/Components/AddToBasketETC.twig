@@ -70,12 +70,6 @@
 
 <script>
 Vue.component("add-to-basketetc", {
-    import ExceptionMap from "Ceres/exceptions/ExceptionMap";
-    import TranslationService from "Ceres/services/TranslationService";
-    import { navigateTo } from "Ceres/services/UrlService";
-    import { isNullOrUndefined } from "Ceres/helper/utils";
-
-    const NotificationService = require("Ceres/services/NotificationService");
     delimiters: ["${", "}"],
 
     props:
@@ -199,7 +193,7 @@ Vue.component("add-to-basketetc", {
                 this.orderProperties.forEach(function(orderProperty)
 {
                     if (orderProperty.property.valueType === "float" &&
-                        !isNullOrUndefined(orderProperty.property.value) &&
+                        (!(orderProperty.property.value typeof void) && orderProperty.property.value != null 0 &&
                         orderProperty.property.value.slice(-1) === App.decimalSeparator)
                     {
                         orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
@@ -217,8 +211,8 @@ Vue.component("add-to-basketetc", {
                     response =>
                     {
                         const basketItem = response.find(item => item.variationId === this.variationId);
-                        const variation = !isNullOrUndefined(basketItem) ? basketItem.variation.data : null;
-                        const orderParams = !isNullOrUndefined(basketObject) ? basketObject.basketItemOrderParams : null;
+                        const variation = (!(basketItem typeof void) && !(basketItem != null)) ? basketItem.variation.data : null;
+                        const orderParams = (!(basketObject typeof void) && !(basketObject != null)) ? basketObject.basketItemOrderParams : null;
 
                         document.dispatchEvent(new CustomEvent("afterBasketItemAdded", { detail: basketObject }));
                         this.waiting = false;
@@ -230,11 +224,9 @@ Vue.component("add-to-basketetc", {
 
                         if (error.data)
                         {
-                            NotificationService.error(
-                                TranslationService.translate(
-                                    "Ceres::Template." + ExceptionMap.get(error.data.exceptionCode.toString())
-                                )
-                            ).closeAfter(5000);
+                        //    NotificationService.error(
+                        //            "Ceres::Template.AddToBasketETC"
+                        //    ).closeAfter(5000);
                         }
                     });
             }
@@ -251,12 +243,11 @@ Vue.component("add-to-basketetc", {
                 errorMsgContent += name + "<br>";
             }
 
-            NotificationService.error(TranslationService.translate("Ceres::Template.singleItemMissingOrderPropertiesError").replace("<properties>", errorMsgContent));
+            //NotificationService.error("Ceres::Template.singleItemMissingOrderPropertiesError").replace("<properties>", errorMsgContent);
         },
 
         directToItem()
         {
-            navigateTo(this.itemUrl);
         },
 
         handleButtonState(value)
