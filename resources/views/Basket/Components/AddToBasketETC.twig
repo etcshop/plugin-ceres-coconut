@@ -1,6 +1,6 @@
 {{ component( "Ceres::Item.Components.QuantityInputETC" ) }}
 
-<script type="x/template" id="vue-add-to-basketetc">
+<script type="x/template" id="vue-add-to-basketETC">
     <div>
         <input id="VarIDforBasket" name="VarIDforBasket" type="hidden" ref="VarIDforBasket" v-model="variationId">
         <div :class="{'no-pointer-events': waiting}" class="add-to-basket-lg-container hidden-md-down" v-if="!showQuantity && useLargeScale && canBeAddedToBasket"
@@ -74,11 +74,7 @@ Vue.component("add-to-basketetc", {
 
     props:
     {
-        template:
-        {
-            type: String,
-            default: "#vue-add-to-basketETC"
-        },
+        template: "#vue-add-to-basketETC",
         itemUrl: String,
         showQuantity:
         {
