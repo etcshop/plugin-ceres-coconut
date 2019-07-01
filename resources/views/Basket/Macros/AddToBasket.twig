@@ -3,7 +3,7 @@
     {% for property in item.properties if property.property.isOderProperty %}
         {% set orderProperties = orderProperties | merge([property]) %}
     {% endfor %}
-    <add-to-basketETC
+    <add-to-basketetc
             :variation-id="{{ item.variation.id }}"
             :is-salable="{{ (item.filter is defined and item.filter.isSalable) | json_encode }}"
             :has-children="{{ (item.filter is defined and item.filter.hasActiveChildren) | json_encode }}"
@@ -20,7 +20,7 @@
 {% endmacro %}
 
 {% macro printVueComponent( itemObject, useLargeScale, showQuantity, options ) %}
-    <add-to-basketETC
+    <add-to-basketetc
             :variation-id="{{ itemObject }}.variation.id"
             :is-salable="!!{{ itemObject }}.filter && {{ itemObject }}.filter.isSalable"
             :has-children="!!{{ itemObject }}.filter && {{ itemObject }}.filter.hasActiveChildren"

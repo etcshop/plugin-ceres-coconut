@@ -1,6 +1,6 @@
 {{ component( "Ceres::Item.Components.QuantityInputETC" ) }}
 
-<script type="x/template" id="vue-add-to-basketETC">
+<script type="x/template" id="vue-add-to-basketetc">
     <div>
         <input id="VarIDforBasket" name="VarIDforBasket" type="hidden" ref="VarIDforBasket" v-model="variationId">
         <div :class="{'no-pointer-events': waiting}" class="add-to-basket-lg-container hidden-md-down" v-if="!showQuantity && useLargeScale && canBeAddedToBasket"
@@ -69,7 +69,7 @@
 </script>
 
 <script>
-Vue.component("add-to-basketETC", {
+Vue.component("add-to-basketetc", {
     import ExceptionMap from "Ceres/exceptions/ExceptionMap";
     import TranslationService from "Ceres/services/TranslationService";
     import { navigateTo } from "Ceres/services/UrlService";
