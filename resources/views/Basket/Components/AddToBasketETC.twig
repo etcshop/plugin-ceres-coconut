@@ -193,7 +193,7 @@ Vue.component("add-to-basketetc", {
                 this.orderProperties.forEach(function(orderProperty)
 {
                     if (orderProperty.property.valueType === "float" &&
-                        (!(typeof orderProperty.property.value === typeof void 0) && orderProperty.property.value != null &&
+                        (!(typeof orderProperty.property.value === typeof void 0) && orderProperty.property.value != null) &&
                         orderProperty.property.value.slice(-1) === App.decimalSeparator)
                     {
                         orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
