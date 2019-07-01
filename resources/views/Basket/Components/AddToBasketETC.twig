@@ -71,7 +71,7 @@
 <script>
 Vue.component("add-to-basketetc", {
     delimiters: ["${", "}"],
- 
+
     props:
     {
         template:
@@ -193,7 +193,7 @@ Vue.component("add-to-basketetc", {
                 this.orderProperties.forEach(function(orderProperty)
 {
                     if (orderProperty.property.valueType === "float" &&
-                        (!(orderProperty.property.value typeof void) && orderProperty.property.value != null 0 &&
+                        (!(typeof orderProperty.property.value typeof void) && orderProperty.property.value != null 0 &&
                         orderProperty.property.value.slice(-1) === App.decimalSeparator)
                     {
                         orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
@@ -211,8 +211,8 @@ Vue.component("add-to-basketetc", {
                     response =>
                     {
                         const basketItem = response.find(item => item.variationId === this.variationId);
-                        const variation = (!(basketItem typeof void) && !(basketItem != null)) ? basketItem.variation.data : null;
-                        const orderParams = (!(basketObject typeof void) && !(basketObject != null)) ? basketObject.basketItemOrderParams : null;
+                        const variation = (!(typeof basketItem typeof void) && !(basketItem != null)) ? basketItem.variation.data : null;
+                        const orderParams = (!(typeof basketObject typeof void) && !(basketObject != null)) ? basketObject.basketItemOrderParams : null;
 
                         document.dispatchEvent(new CustomEvent("afterBasketItemAdded", { detail: basketObject }));
                         this.waiting = false;
