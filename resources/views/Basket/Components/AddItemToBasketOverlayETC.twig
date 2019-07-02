@@ -11,7 +11,7 @@
 
                     <!-- MODAL HEADER -->
                     <div class="modal-header">
-                        <button type="button" @click="closeOverlay()" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <span style="float: right; margin-right: 5px; color: lightgray;"><span class="timer"></span>s</span>
@@ -70,8 +70,8 @@
                                     {{ trans("Ceres::Template.singleItemBasket") }}
                                 </a>
                                 {{ trans("CeresCoconut::Template.ETC_Or") }}
-                                <div id="content_basket_info_proceedcontainer" @click="closeOverlay()" data-dismiss="modal" aria-label="Close">
-                                  <a id="content_basket_info_proceedcontainer_link" @click="closeOverlay()" data-dismiss="modal" aria-label="Close">{{ trans("CeresCoconut::Template.ETC_Weiter_einkaufen") }}</a>
+                                <div id="content_basket_info_proceedcontainer" data-dismiss="modal" aria-label="Close">
+                                  <a id="content_basket_info_proceedcontainer_link" data-dismiss="modal" aria-label="Close">{{ trans("CeresCoconut::Template.ETC_Weiter_einkaufen") }}</a>
                                 </div>
                             </div>
                         </div>
