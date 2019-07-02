@@ -1,0 +1,33 @@
+<script type="x/template" id="vue-accept-gtc-checkETC">
+  <div>
+    <form id="chk_AcceptLegalNotes">
+      <ul class="list-unstyled margin-bottom-0">
+        <li class="checkbox">
+          <input class="form-check-input" type="checkbox" value="" id="gtc-accept" v-model="isChecked">
+          <label class="form-check-label" for="gtc-accept" v-bind:class="{ 'error': this.showError }">
+            <div class="ETC-Checkbox"><i class="material-icons w3-xxxlarge">clear</i></div>
+          </label>
+          {% autoescape false %}
+              {% set gtcContent %}<!--
+                  --><a href="{{ urls.gtc }}" target="_blank">
+                      <span>{{ trans("Ceres::Template.checkoutGtc") }}</span>
+                  </a><!--
+              -->{% endset %}
+              {% set cancellationContent %}<!--
+                  --><a href="{{ urls.cancellationRights }}" target="_blank">
+                      <strong>{{ trans("Ceres::Template.checkoutCancellationRight", {"hyphen": "&shy;"}) }}</strong>
+                  </a><!--
+              -->{% endset %}
+              {% set policyContent %}<!--
+                  --><a href="{{ urls.privacyPolicy }}" target="_blank">
+                      <span>{{ trans("Ceres::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
+                  </a><!--
+              -->{% endset %}
+
+              {{ trans("Ceres::Template.checkoutChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent}) }}
+          {% endautoescape %}
+        </li>
+      </ul>
+    </form>
+  </div>
+</script>

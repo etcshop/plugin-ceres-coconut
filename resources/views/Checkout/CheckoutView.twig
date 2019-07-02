@@ -1,1 +1,101 @@
-<!-- Insert markup for checkout view here -->
+{% extends getPartial('page-design') %}
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% block PartialHead %}
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.checkout") }}</title>
+{% endblock %}
+
+{% block PageBody %}
+
+    {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
+    {{ component( "Ceres::Checkout.Components.AcceptGtcCheckETC" ) }}
+    {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
+    {{ component( "Ceres::Checkout.Components.ShippingPrivacyHintCheck" ) }}
+    {{ component( "Ceres::Checkout.Components.ShippingProfileSelect" ) }}
+    {{ component( "Ceres::Checkout.Components.PlaceOrderETC" ) }}
+    {{ component( "Ceres::Checkout.Components.ContactWishInput" ) }}
+    {{ component( "Ceres::Basket.Components.Coupon" ) }}
+    {{ component( "Ceres::Basket.Components.BasketListCheckoutETC" ) }}
+    {{ component( "Ceres::Basket.Components.BasketTotalsCheckoutETC" ) }}
+    {{ component( "Ceres::Checkout.Components.CheckoutETC" ) }}
+
+    <checkout v-cloak template="#vue-checkoutETC" :initial-checkout="{{ services.checkout.getCheckout() | json_encode() }}">
+      <div class="checkout checkout-content checkout-tabpanel" slot-scope="checkoutComp">
+        <div class="container" id="checkoutPanelConfirm" aria-labelöledby="checkoutTabConfirm" role="tabpanel" style="display: block;">
+          <div class="row">
+            <div id="ContentOrderOverview" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-r-0">
+              <div id="checkoutPanelConfirm_Left" class="panel panel-default col-lg-9 col-xs-12">
+                <a class="btn btn-primary pull-right" href="{{ urls.basket }}">
+                    <i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i>
+                </a>
+                <h4>{{ trans("Ceres::Template.ETC_Warenkorb") }}</h4>
+                <div id="OrderOverview_ItemsList" class="col-lg-12 col-xs-12">
+                  <basket-list template="#vue-basket-list-checkoutETC" size="small"></basket-list>
+                  <hr>
+                  <div id="chk_LegalNotesContainer" class="col-lg-6 col-md-6 col-xs-12">
+                    <accept-gtc-check template="#vue-accept-gtc-checkETC"></accept-gtc-check>
+                    {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
+                    <div class="margin-top-1">
+                      <contact-wish-input class="p-b-1" template="#vue-contact-wish-input"></contact-wish-input>
+                    </div>
+                  </div>
+                  <div id="chk_PlaceOrderContainer" class="col-lg-6 col-md-6 col-xs-12 test1104">
+                    <div data-plenty-checkout-template="Totals">
+                      {{ LayoutContainer.show("Ceres::Checkout.BeforeBasketTotals") }}
+                      <basket-totals class="m-b-2" template="#vue-basket-totals-checkoutETC"></basket-totals>
+                      {{ LayoutContainer.show("Ceres::Checkout.AfterBasketTotals") }}
+                      <!--<img id="TrustedShops-Banner" src="https://www.etc-shop.de/img/base/trustedshops.jpg">-->
+                      {{ LayoutContainer.show("Ceres::Checkout.BeforePlaceOrder") }}
+                      <place-order template="#vue-place-orderETC" target-continue="{{ homepageURL }}{% if homepageURL | last != '/'%}/{% endif %}place-order{% if urls.appendTrailingSlash %}/{% endif %}" @payment-response="checkoutComp.showModal($event)"></place-order>
+                      {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="checkoutPanelConfirm_Right" class="panel panel-default col-lg-3 col-xs-12 p-x-0">
+                <div id="checkoutPanelConfirm_Right_InvAdr" class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
+                  {{ LayoutContainer.show("Ceres::Checkout.BeforeBillingAddress") }}
+
+                  <h4>{{ trans("Ceres::Template.ETC_Rechnungsadresse") }}</h4>
+                  <invoice-address-select
+                          :address-list="{{ services.customer.getAddresses(1) | json_encode }}"
+                          has-to-validate="true"
+                          :selected-address-id="{{ services.checkout.getBillingAddressId() | json_encode }}">
+                  </invoice-address-select>
+                  {{ LayoutContainer.show("Ceres::Checkout.AfterBillingAddress") }}
+                </div>
+                <div id="checkoutPanelConfirm_Right_ShipAdr" class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
+                  <button class="btn btn-primary pull-right" data-plenty="click:Redirect.toCheckoutTab('#addresses')"><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i></button>
+                  <h4>{{ trans("Ceres::Template.ETC_Lieferadresse") }}</h4>
+                    {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingAddress") }}
+                    <shipping-address-select
+                              :address-list="{{ services.customer.getAddresses(2) | json_encode }}"
+                              :selected-address-id="{{ services.checkout.getDeliveryAddressId() | json_encode }}">
+                    </shipping-address-select>
+                    {{ LayoutContainer.show("Ceres::Checkout.AfterShippingAddress") }}
+                </div>
+                <div class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
+                  <!--<button class="btn btn-primary pull-right" data-plenty="click:Redirect.toCheckoutTab('#shipping-payment')"><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i></button>-->
+                  <h4>{{ trans("Ceres::Template.ETC_ZahlungVersand") }}</h4>
+                  {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
+                  {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
+                  {% if overridePaymentList|trim is empty %}
+                        <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
+                  {% else %}
+                      {{ overridePaymentList }}
+                  {% endif %}
+                  {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
+
+                  {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingProfileList") }}
+                  <shipping-profile-select template="#vue-shipping-profile-select"></shipping-profile-select>
+                  {{ LayoutContainer.show("Ceres::Checkout.AfterShippingProfileList") }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ContentSeperator hidden-xs"></div>
+    </checkout>
+{% endblock %}

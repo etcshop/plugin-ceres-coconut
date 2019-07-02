@@ -1,0 +1,105 @@
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+<script type="x/template" id="vue-basket-totals-checkoutETC">
+    <!-- BASKET TOTALS -->
+    <div class="checkoutSum margin-bottom-1 nowrap">
+      <div class="checkoutSum margin-bottom-1 nowrap">
+        <div id="chk_Gesamtsummen_Berechnung" class="SummenContainer">
+          <dl class="row"><dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("Ceres::Template.ETC_Warenwert") }}</span></dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right">
+              <span data-plenty-basket-preview="totalsItemSum">${ basket.itemSum | currency  }</span>
+            </dd>
+            <dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs">
+              <span>{{ trans("Ceres::Template.ETC_Versandkosten") }}</span>
+            </dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right">
+              <span data-plenty-basket-preview="totalsShippingAmount">${ basket.shippingAmount | currency  }</span>
+            </dd>
+            {% if (basket.basketRebate > 0) %}
+              <dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs">
+                <span>4% {{ trans("Ceres::Template.ETC_Skonto") }}</span>
+              </dt>
+              <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right">
+                <span data-plenty-basket-preview="totalsRebateTotalAmount">${ basket.basketRebate }</span>
+              </dd>
+            {% endif %}
+            <dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs" v-if="basket.couponCode">
+              <span>{{ trans("Ceres::Template.ETC_GutschriftGutschein") }}</span>
+            </dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right" v-if="basket.couponCode"s>
+              <span data-plenty-basket-preview="totalsCouponDiscount">${ basket.couponDiscount | currency }</span>
+            </dd>
+          </dl> 
+        </div>
+        <div id="chk_Gesamtsummen_Endwerte" class="SummenContainer">
+          <dl class="row">
+            <dt class="col-xs-8 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("Ceres::Template.ETC_Gesamtbetrag") }}</span></dt>
+            <dd class="col-xs-4 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right"><span data-plenty-basket-preview="totalsTotalAmount">${ basket.basketAmount | currency  }</span></dd>
+            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("Ceres::Template.basketIncludeAbbr") }} {{ trans("Ceres::Template.basketVAT") }} 19%</span></dt>
+            <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right" v-for="totalVat in basket.totalVats"><span data-plenty-basket-preview="totalsVat">${ totalVat.vatAmount | currency }</span></dd>
+          </dl>
+        </div>
+      </div>
+      <div id="chk_ZurKasse" class="margin-top-1 text-right">
+        <a href="{{ urls.checkout }}" class="btn btn-primary btn-lg btn-block-xs">
+          <span aria-hidden="true" class="glyphicon glyphicon-euro"></span>
+          {{ trans("Ceres::Template.ETC_ZurKasse") }}
+        </a>
+      </div>
+      <div id="chk_Lieferland" class="SettingContainer"><span class="chk_Label">{{ trans("Ceres::Template.headerSelectShippingCountry") }}</span><span class="chk_Value">Deutschland</span><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i>
+        <select name="ShippingCountrySelection" id="chk_ShippingCountrySelection">
+          <option value="3">Belgien</option>
+          <option value="88">Bosnien und Herzegowina</option>
+          <option value="44">Bulgarien</option>
+          <option value="1">Deutschland</option>
+          <option value="7">Dänemark</option>
+          <option value="9">Estland</option>
+          <option value="11">Finnland</option>
+          <option value="10">Frankreich</option>
+          <option value="13">Griechenland</option>
+          <option value="255">Helgoland, Deutschland</option>
+          <option value="16">Irland</option>
+          <option value="144">Island</option>
+          <option value="15">Italien</option>
+          <option value="54">Kroatien</option>
+          <option value="18">Lettland</option>
+          <option value="34">Liechtenstein</option>
+          <option value="33">Litauen</option>
+          <option value="17">Luxemburg</option>
+          <option value="35">Monaco</option>
+          <option value="21">Niederlande</option>
+          <option value="23">Polen</option>
+          <option value="22">Portugal</option>
+          <option value="41">Rumänien</option>
+          <option value="24">Schweden</option>
+          <option value="4">Schweiz</option>
+          <option value="216">Serbien</option>
+          <option value="26">Slowakei</option>
+          <option value="27">Slowenien</option>
+          <option value="8">Spanien</option>
+          <option value="6">Tschechische Republik</option>
+          <option value="14">Ungarn</option>
+          <option value="12">United Kingdom</option>
+          <option value="2">Österreich</option>
+        </select> <a href="https://www.etc-shop.de/cnt/warenkorb/?checkout[shippingCountry][shippingCountryID]=1"><i class="material-icons w3-xxxlarge">done</i></a></div>
+      <div id="chk_Zahlungsart" class="SettingContainer"><span class="chk_Label">Zahlungsart</span><span class="chk_Value">Überweisung</span><i id="PaymentSelectionModify" class="material-icons w3-xxxlarge">create</i>
+        <select name="PaymentMethodSelection" id="chk_PaymentMethodSelection">
+          <option value="410">Sofortüberweisung</option>
+          <option value="5100">Amazon Payments Advanced</option>
+          <option value="1402">Klarna Ratenkauf</option>
+          <option value="1401">Rechnung innerhalb 14 Tage zahlbar</option>
+          <option value="14">PayPal</option>
+          <option value="0">Überweisung</option>
+        </select>
+        <a href="https://www.etc-shop.de/cnt/warenkorb/?checkout[methodOfPayment][methodOfPaymentID]=0">
+          <i class="material-icons w3-xxxlarge">done</i>
+        </a>
+      </div>
+      <div id="chk_Versand" class="SettingContainer">
+        <span class="chk_Label">Versand</span>
+        <span class="chk_Value">Versand</span>
+      </div>
+      <img id="TrustedShops-Banner" src="https://www.etc-shop.de/img/base/ts.png"> {{ trans("Ceres::Template.ETC_TrustedShops") }}
+    <!-- ./BASKET TOTALS -->
+    </div>
+</script>
