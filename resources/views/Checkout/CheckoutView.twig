@@ -9,16 +9,16 @@
 {% block PageBody %}
 
     {{ component( "Ceres::Customer.Components.AddressSelect.AddressSelect" ) }}
-    {{ component( "Ceres::Checkout.Components.AcceptGtcCheckETC" ) }}
+    {{ component( "CeresCoconut::Checkout.Components.AcceptGtcCheckETC" ) }}
     {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingPrivacyHintCheck" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingProfileSelect" ) }}
-    {{ component( "Ceres::Checkout.Components.PlaceOrderETC" ) }}
+    {{ component( "CeresCoconut::Checkout.Components.PlaceOrderETC" ) }}
     {{ component( "Ceres::Checkout.Components.ContactWishInput" ) }}
     {{ component( "Ceres::Basket.Components.Coupon" ) }}
-    {{ component( "Ceres::Basket.Components.BasketListCheckoutETC" ) }}
-    {{ component( "Ceres::Basket.Components.BasketTotalsCheckoutETC" ) }}
-    {{ component( "Ceres::Checkout.Components.CheckoutETC" ) }}
+    {{ component( "CeresCoconut::Basket.Components.BasketListCheckoutETC" ) }}
+    {{ component( "CeresCoconut::Basket.Components.BasketTotalsCheckoutETC" ) }}
+    {{ component( "CeresCoconut::Checkout.Components.CheckoutETC" ) }}
 
     <checkout v-cloak template="#vue-checkoutETC" :initial-checkout="{{ services.checkout.getCheckout() | json_encode() }}">
       <div class="checkout checkout-content checkout-tabpanel" slot-scope="checkoutComp">
