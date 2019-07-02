@@ -29,7 +29,7 @@
                 <a class="btn btn-primary pull-right" href="{{ urls.basket }}">
                     <i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i>
                 </a>
-                <h4>{{ trans("Ceres::Template.ETC_Warenkorb") }}</h4>
+                <h4>{{ trans("CeresCoconut::Template.ETC_Warenkorb") }}</h4>
                 <div id="OrderOverview_ItemsList" class="col-lg-12 col-xs-12">
                   <basket-list template="#vue-basket-list-checkoutETC" size="small"></basket-list>
                   <hr>
@@ -57,7 +57,7 @@
                 <div id="checkoutPanelConfirm_Right_InvAdr" class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
                   {{ LayoutContainer.show("Ceres::Checkout.BeforeBillingAddress") }}
 
-                  <h4>{{ trans("Ceres::Template.ETC_Rechnungsadresse") }}</h4>
+                  <h4>{{ trans("CeresCoconut::Template.ETC_Rechnungsadresse") }}</h4>
                   <invoice-address-select
                           :address-list="{{ services.customer.getAddresses(1) | json_encode }}"
                           has-to-validate="true"
@@ -67,7 +67,7 @@
                 </div>
                 <div id="checkoutPanelConfirm_Right_ShipAdr" class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
                   <button class="btn btn-primary pull-right" data-plenty="click:Redirect.toCheckoutTab('#addresses')"><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i></button>
-                  <h4>{{ trans("Ceres::Template.ETC_Lieferadresse") }}</h4>
+                  <h4>{{ trans("CeresCoconut::Template.ETC_Lieferadresse") }}</h4>
                     {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingAddress") }}
                     <shipping-address-select
                               :address-list="{{ services.customer.getAddresses(2) | json_encode }}"
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
                   <!--<button class="btn btn-primary pull-right" data-plenty="click:Redirect.toCheckoutTab('#shipping-payment')"><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i></button>-->
-                  <h4>{{ trans("Ceres::Template.ETC_ZahlungVersand") }}</h4>
+                  <h4>{{ trans("CeresCoconut::Template.ETC_ZahlungVersand") }}</h4>
                   {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
                   {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
                   {% if overridePaymentList|trim is empty %}

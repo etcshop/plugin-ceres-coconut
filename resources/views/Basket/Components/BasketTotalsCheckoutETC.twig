@@ -5,26 +5,26 @@
     <div class="checkoutSum margin-bottom-1 nowrap">
       <div class="checkoutSum margin-bottom-1 nowrap">
         <div id="chk_Gesamtsummen_Berechnung" class="SummenContainer">
-          <dl class="row"><dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("Ceres::Template.ETC_Warenwert") }}</span></dt>
+          <dl class="row"><dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("CeresCoconut::Template.ETC_Warenwert") }}</span></dt>
             <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right">
               <span data-plenty-basket-preview="totalsItemSum">${ basket.itemSum | currency  }</span>
             </dd>
             <dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs">
-              <span>{{ trans("Ceres::Template.ETC_Versandkosten") }}</span>
+              <span>{{ trans("CeresCoconut::Template.ETC_Versandkosten") }}</span>
             </dt>
             <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right">
               <span data-plenty-basket-preview="totalsShippingAmount">${ basket.shippingAmount | currency  }</span>
             </dd>
             {% if (basket.basketRebate > 0) %}
               <dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs">
-                <span>4% {{ trans("Ceres::Template.ETC_Skonto") }}</span>
+                <span>4% {{ trans("CeresCoconut::Template.ETC_Skonto") }}</span>
               </dt>
               <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right">
                 <span data-plenty-basket-preview="totalsRebateTotalAmount">${ basket.basketRebate }</span>
               </dd>
             {% endif %}
             <dt class="col-xs-7 col-sm-10 col-lg-8 col-md-7 padding-right-xs-025 text-left-xs" v-if="basket.couponCode">
-              <span>{{ trans("Ceres::Template.ETC_GutschriftGutschein") }}</span>
+              <span>{{ trans("CeresCoconut::Template.ETC_GutschriftGutschein") }}</span>
             </dt>
             <dd class="col-xs-5 col-sm-2 col-lg-4 col-md-5 padding-left-xs-025 text-right" v-if="basket.couponCode"s>
               <span data-plenty-basket-preview="totalsCouponDiscount">${ basket.couponDiscount | currency }</span>
@@ -33,7 +33,7 @@
         </div>
         <div id="chk_Gesamtsummen_Endwerte" class="SummenContainer">
           <dl class="row">
-            <dt class="col-xs-8 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("Ceres::Template.ETC_Gesamtbetrag") }}</span></dt>
+            <dt class="col-xs-8 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("CeresCoconut::Template.ETC_Gesamtbetrag") }}</span></dt>
             <dd class="col-xs-4 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right"><span data-plenty-basket-preview="totalsTotalAmount">${ basket.basketAmount | currency  }</span></dd>
             <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs"><span>{{ trans("Ceres::Template.basketIncludeAbbr") }} {{ trans("Ceres::Template.basketVAT") }} 19%</span></dt>
             <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right" v-for="totalVat in basket.totalVats"><span data-plenty-basket-preview="totalsVat">${ totalVat.vatAmount | currency }</span></dd>
@@ -43,7 +43,7 @@
       <div id="chk_ZurKasse" class="margin-top-1 text-right">
         <a href="{{ urls.checkout }}" class="btn btn-primary btn-lg btn-block-xs">
           <span aria-hidden="true" class="glyphicon glyphicon-euro"></span>
-          {{ trans("Ceres::Template.ETC_ZurKasse") }}
+          {{ trans("CeresCoconut::Template.ETC_ZurKasse") }}
         </a>
       </div>
       <div id="chk_Lieferland" class="SettingContainer"><span class="chk_Label">{{ trans("Ceres::Template.headerSelectShippingCountry") }}</span><span class="chk_Value">Deutschland</span><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i>
@@ -99,7 +99,7 @@
         <span class="chk_Label">Versand</span>
         <span class="chk_Value">Versand</span>
       </div>
-      <img id="TrustedShops-Banner" src="https://www.etc-shop.de/img/base/ts.png"> {{ trans("Ceres::Template.ETC_TrustedShops") }}
+      <img id="TrustedShops-Banner" src="https://www.etc-shop.de/img/base/ts.png"> {{ trans("CeresCoconut::Template.ETC_TrustedShops") }}
     <!-- ./BASKET TOTALS -->
     </div>
 </script>
