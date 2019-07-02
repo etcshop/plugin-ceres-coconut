@@ -20,6 +20,28 @@
     {{ component( "CeresCoconut::Basket.Components.BasketTotalsCheckoutETC" ) }}
     {{ component( "CeresCoconut::Checkout.Components.CheckoutETC" ) }}
 
+    {% set optionalInvoiceAddressFields = {
+        "de": ceresConfig.addresses.billingAddressShow,
+        "gb": ceresConfig.addresses.billingAddressShow_en
+        }
+    %}
+    {% set requiredInvoiceAddressFields = {
+        "de": ceresConfig.addresses.billingAddressRequire,
+        "gb": ceresConfig.addresses.billingAddressRequire_en
+        }
+    %}
+
+    {% set optionalShippingAddressFields = {
+        "de": ceresConfig.addresses.deliveryAddressShow,
+        "gb": ceresConfig.addresses.deliveryAddressShow_en
+        }
+    %}
+    {% set requiredShippingAddressFields = {
+        "de": ceresConfig.addresses.deliveryAddressRequire,
+        "gb": ceresConfig.addresses.billingAddressRequire_en
+        }
+    %}
+
     <checkout v-cloak template="#vue-checkoutETC" :initial-checkout="{{ services.checkout.getCheckout() | json_encode() }}">
       <div class="checkout checkout-content checkout-tabpanel" slot-scope="checkoutComp">
         <div class="container" id="checkoutPanelConfirm" aria-labelöledby="checkoutTabConfirm" role="tabpanel" style="display: block;">
@@ -58,21 +80,23 @@
                   {{ LayoutContainer.show("Ceres::Checkout.BeforeBillingAddress") }}
 
                   <h4>{{ trans("CeresCoconut::Template.ETC_Rechnungsadresse") }}</h4>
-                  <invoice-address-select
-                          :address-list="{{ services.customer.getAddresses(1) | json_encode }}"
-                          :has-to-validate="true"
-                          :selected-address-id="{{ services.checkout.getBillingAddressId() | json_encode }}">
-                  </invoice-address-select>
+                                            <invoice-address-select
+                                                :has-to-validate="true"
+                                                :optional-address-fields="{{ optionalInvoiceAddressFields | json_encode }}"
+                                                :required-address-fields="{{ requiredInvoiceAddressFields | json_encode }}"
+                                                default-salutation="{{ ceresConfig.addresses.defaultSalutation }}">
+                                            </invoice-address-select>
                   {{ LayoutContainer.show("Ceres::Checkout.AfterBillingAddress") }}
                 </div>
                 <div id="checkoutPanelConfirm_Right_ShipAdr" class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
                   <button class="btn btn-primary pull-right" data-plenty="click:Redirect.toCheckoutTab('#addresses')"><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i></button>
                   <h4>{{ trans("CeresCoconut::Template.ETC_Lieferadresse") }}</h4>
                     {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingAddress") }}
-                    <shipping-address-select
-                              :address-list="{{ services.customer.getAddresses(2) | json_encode }}"
-                              :selected-address-id="{{ services.checkout.getDeliveryAddressId() | json_encode }}">
-                    </shipping-address-select>
+                                            <shipping-address-select
+                                                :optional-address-fields="{{ optionalShippingAddressFields | json_encode }}"
+                                                :required-address-fields="{{ requiredShippingAddressFields | json_encode }}"
+                                                default-salutation="{{ ceresConfig.addresses.defaultSalutation }}">
+                                            </shipping-address-select>
                     {{ LayoutContainer.show("Ceres::Checkout.AfterShippingAddress") }}
                 </div>
                 <div class="col-lg-12 col-md-6 col-sm-12 SummenContainer">
