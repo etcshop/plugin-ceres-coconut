@@ -180,7 +180,8 @@ Vue.component("add-to-basketetc", {
           var basketItem = response.find(function (item) {
             return item.variationId === _this.variationId;
           });
-          var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
+          //var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
+          var variation = basketItem.variation.data;
           var orderParams = !(_typeof(basketObject) === _typeof(void 0)) && !(basketObject != null) ? basketObject.basketItemOrderParams : null;
           document.dispatchEvent(new CustomEvent("afterBasketItemAdded", {
             detail: basketObject
