@@ -69,219 +69,195 @@
 </script>
 
 <script>
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Vue.component("add-to-basketetc", {
-    template: "#vue-add-to-basketETC",
-    delimiters: ["${", "}"],
-
-    props:
-    {
-        itemUrl: String,
-        showQuantity:
-        {
-            type: Boolean,
-            default: false
-        },
-        useLargeScale:
-        {
-            type: Boolean,
-            default: false
-        },
-        missingOrderProperties:
-        {
-            type: Array,
-            default: () => []
-        },
-        isVariationSelected:
-        {
-            type: Boolean,
-            default: true
-        },
-
-        variationId:
-        {
-            type: Number
-        },
-        isSalable:
-        {
-            type: Boolean,
-            default: false
-        },
-        hasChildren:
-        {
-            type: Boolean,
-            default: false
-        },
-        intervalQuantity:
-        {
-            type: Number,
-            default: 1
-        },
-        minimumQuantity:
-        {
-            type: Number,
-            default: 0
-        },
-        maximumQuantity:
-        {
-            type: Number,
-            default: null
-        },
-        orderProperties:
-        {
-            type: Array,
-            default: () => []
-        },
-        hasPrice:
-        {
-            type: Boolean,
-            default: true
-        }
+  template: "#vue-add-to-basketETC",
+  delimiters: ["${", "}"],
+  props: {
+    itemUrl: String,
+    showQuantity: {
+      type: Boolean,
+      default: false
     },
-    computed:
-    {
-        computedMinimumQuantity()
-        {
-            return this.minimumQuantity <= 0 ? this.intervalQuantity : this.minimumQuantity;
-        },
-        canBeAddedToBasket()
-        {
-            return this.isSalable &&
-                !this.hasChildren &&
-                (this.computedMinimumQuantity === this.intervalQuantity || this.intervalQuantity === 0) &&
-                !this.requiresProperties &&
-                this.hasPrice;
-        },
-
-        requiresProperties()
-        {
-            return App.config.item.requireOrderProperties &&
-                this.orderProperties.filter(property => property.property.isShownOnItemPage).length > 0;
-        },
-
-        ...Vuex.mapState({
-            isBasketLoading: state => state.basket.isBasketLoading
-        })
+    useLargeScale: {
+      type: Boolean,
+      default: false
     },
-    data()
-    {
-        return {
-            quantity: 1,
-            buttonLockState: false,
-            waiting: false
-        };
+    missingOrderProperties: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
     },
-    methods:
-    {
-        /**
-         * add an item to basket-resource
-         */
-        addToBasket()
-        {
-            if (this.missingOrderProperties.length)
-            {
-                this.showMissingPropertiesError();
-            }
-
-            else if (this.isSalable)
-            {
-                this.waiting = true;
-
-                this.orderProperties.forEach(function(orderProperty)
-{
-                    if (orderProperty.property.valueType === "float" &&
-                        (!(typeof orderProperty.property.value === typeof void 0) && orderProperty.property.value != null) &&
-                        orderProperty.property.value.slice(-1) === App.decimalSeparator)
-                    {
-                        orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
-                    }
-                });
-
-                const basketObject =
-                    {
-                        variationId             :   document.querySelector("input[name=VarIDforBasket]").value,
-                        quantity                :   this.quantity,
-                        basketItemOrderParams   :   this.orderProperties
-                    };
-
-                this.$store.dispatch("addBasketItem", basketObject).then(
-                    response =>
-                    {
-                        const basketItem = response.find(item => item.variationId === this.variationId);
-                        const variation = (!(typeof basketItem === typeof void 0) && !(basketItem != null)) ? basketItem.variation.data : null;
-                        const orderParams = (!(typeof basketObject === typeof void 0) && !(basketObject != null)) ? basketObject.basketItemOrderParams : null;
-
-                        document.dispatchEvent(new CustomEvent("afterBasketItemAdded", { detail: basketObject }));
-                        this.waiting = false;
-                        this.openAddToBasketOverlay(basketObject.quantity, variation, orderParams);
-                    },
-                    error =>
-                    {
-                        this.waiting = false;
-
-                        if (error.data)
-                        {
-                        //    NotificationService.error(
-                        //            "Ceres::Template.AddToBasketETC"
-                        //    ).closeAfter(5000);
-                        }
-                    });
-            }
-        },
-        showMissingPropertiesError()
-        {
-            this.$store.commit("setVariationMarkInvalidProps", true);
-
-            const propertyNames = this.missingOrderProperties.map(property => property.property.names.name);
-            let errorMsgContent = "";
-
-            for (const name of propertyNames)
-            {
-                errorMsgContent += name + "<br>";
-            }
-
-            //NotificationService.error("Ceres::Template.singleItemMissingOrderPropertiesError").replace("<properties>", errorMsgContent);
-        },
-
-        directToItem()
-        {
-        },
-
-        handleButtonState(value)
-        {
-            this.buttonLockState = value;
-        },
-
-        /**
-         * open the AddItemToBasketOverlay
-         */
-        openAddToBasketOverlay(stashedQuantity, item, orderParams)
-        {
-            const latestBasketEntry =
-                {
-                    item: item,
-                    quantity: stashedQuantity,
-                    orderParams: orderParams
-                };
-
-            this.$store.commit("setLatestBasketEntry", latestBasketEntry);
-        },
-
-        /**
-         * update the property quantity of the current instance
-         * @param value
-         */
-        updateQuantity(value)
-        {
-            this.quantity = value;
-        }
+    isVariationSelected: {
+      type: Boolean,
+      default: true
     },
-    watch:
-    {
-        quantity(newValue, oldValue)
-        {
-            this.$store.commit("setVariationOrderQuantity", newValue);
-        }
+    variationId: {
+      type: Number
+    },
+    isSalable: {
+      type: Boolean,
+      default: false
+    },
+    hasChildren: {
+      type: Boolean,
+      default: false
+    },
+    intervalQuantity: {
+      type: Number,
+      default: 1
+    },
+    minimumQuantity: {
+      type: Number,
+      default: 0
+    },
+    maximumQuantity: {
+      type: Number,
+      default: null
+    },
+    orderProperties: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    hasPrice: {
+      type: Boolean,
+      default: true
     }
-});
+  },
+  computed: {
+    computedMinimumQuantity: function computedMinimumQuantity() {
+      return this.minimumQuantity <= 0 ? this.intervalQuantity : this.minimumQuantity;
+    },
+    canBeAddedToBasket: function canBeAddedToBasket() {
+      return this.isSalable && !this.hasChildren && (this.computedMinimumQuantity === this.intervalQuantity || this.intervalQuantity === 0) && !this.requiresProperties && this.hasPrice;
+    },
+    requiresProperties: function requiresProperties() {
+      return App.config.item.requireOrderProperties && this.orderProperties.filter(function (property) {
+        return property.property.isShownOnItemPage;
+      }).length > 0;
+    },
+    ...Vuex.mapState({
+      isBasketLoading: function isBasketLoading(state) {
+        return state.basket.isBasketLoading;
+      }
+    })
+  },
+  data: function data() {
+    return {
+      quantity: 1,
+      buttonLockState: false,
+      waiting: false
+    };
+  },
+  methods: {
+    /**
+     * add an item to basket-resource
+     */
+    addToBasket: function addToBasket() {
+      var _this = this;
 
+      if (this.missingOrderProperties.length) {
+        this.showMissingPropertiesError();
+      } else if (this.isSalable) {
+        this.waiting = true;
+        this.orderProperties.forEach(function (orderProperty) {
+          if (orderProperty.property.valueType === "float" && !(_typeof(orderProperty.property.value) === _typeof(void 0)) && orderProperty.property.value != null && orderProperty.property.value.slice(-1) === App.decimalSeparator) {
+            orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
+          }
+        });
+        var basketObject = {
+          variationId: document.querySelector("input[name=VarIDforBasket]").value,
+          quantity: this.quantity,
+          basketItemOrderParams: this.orderProperties
+        };
+        this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
+          var basketItem = response.find(function (item) {
+            return item.variationId === _this.variationId;
+          });
+          var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
+          var orderParams = !(_typeof(basketObject) === _typeof(void 0)) && !(basketObject != null) ? basketObject.basketItemOrderParams : null;
+          document.dispatchEvent(new CustomEvent("afterBasketItemAdded", {
+            detail: basketObject
+          }));
+          _this.waiting = false;
+
+          _this.openAddToBasketOverlay(basketObject.quantity, variation, orderParams);
+        }, function (error) {
+          _this.waiting = false;
+
+          if (error.data) {//    NotificationService.error(
+            //            "Ceres::Template.AddToBasketETC"
+            //    ).closeAfter(5000);
+          }
+        });
+      }
+    },
+    showMissingPropertiesError: function showMissingPropertiesError() {
+      this.$store.commit("setVariationMarkInvalidProps", true);
+      var propertyNames = this.missingOrderProperties.map(function (property) {
+        return property.property.names.name;
+      });
+      var errorMsgContent = "";
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = propertyNames[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var name = _step.value;
+          errorMsgContent += name + "<br>";
+        } //NotificationService.error("Ceres::Template.singleItemMissingOrderPropertiesError").replace("<properties>", errorMsgContent);
+
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    },
+    directToItem: function directToItem() {},
+    handleButtonState: function handleButtonState(value) {
+      this.buttonLockState = value;
+    },
+
+    /**
+     * open the AddItemToBasketOverlay
+     */
+    openAddToBasketOverlay: function openAddToBasketOverlay(stashedQuantity, item, orderParams) {
+      var latestBasketEntry = {
+        item: item,
+        quantity: stashedQuantity,
+        orderParams: orderParams
+      };
+      this.$store.commit("setLatestBasketEntry", latestBasketEntry);
+    },
+
+    /**
+     * update the property quantity of the current instance
+     * @param value
+     */
+    updateQuantity: function updateQuantity(value) {
+      this.quantity = value;
+    }
+  },
+  watch: {
+    quantity: function quantity(newValue, oldValue) {
+      this.$store.commit("setVariationOrderQuantity", newValue);
+    }
+  }
+});
 </script>
