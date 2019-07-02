@@ -60,7 +60,7 @@
                   <h4>{{ trans("CeresCoconut::Template.ETC_Rechnungsadresse") }}</h4>
                   <invoice-address-select
                           :address-list="{{ services.customer.getAddresses(1) | json_encode }}"
-                          has-to-validate=true
+                          :has-to-validate="true"
                           :selected-address-id="{{ services.checkout.getBillingAddressId() | json_encode }}">
                   </invoice-address-select>
                   {{ LayoutContainer.show("Ceres::Checkout.AfterBillingAddress") }}
