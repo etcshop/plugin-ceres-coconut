@@ -158,7 +158,7 @@
                     }
                 }
             }
-        }
+        },
         "Config.HomepageTab": {
             "label": "Config.homepageTab",
             "formFields": {
