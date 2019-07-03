@@ -159,5 +159,896 @@
                 }
             }
         }
+        "Config.HomepageTab": {
+            "label": "Config.homepageTab",
+            "formFields": {
+              "default.homepage": {
+                  "type": "checkBox",
+                  "required": false,
+                  "label": "Config.defaultHomepageLabel",
+                  "options": {
+                      "defaultValue": "true"
+                  }
+              },
+              "config.container.deutsch": {
+                  "type": "verticalContainer",
+                  "label": "Einstellungen Deutsch",
+                  "options":{
+                      "containerEntries": {
+                          "config.container.deutsch.slider": {
+                            "type": "verticalContainer",
+                            "label": "Reihe 1 (Slider)",
+                            "options":{
+                                "containerEntries": {
+                                    "homepage.sliderItemId1": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId1Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl1": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl1Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderItemId2": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId2Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl2": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl2Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderItemId3": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId3Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl3": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl3Label",
+                                        "options": {}
+                                    }
+                                }
+                             }
+                          },
+
+                          "config.container.deutsch.Reihe2": {
+                              "type": "verticalContainer",
+                              "label": "Reihe 2",
+                                "options":{
+                                  "containerEntries": {
+                                      "homepage.cntStartDeP2B1Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B1Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B1Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B1Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B1AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B1AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B2Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B2Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B2Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B2Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B2AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B2AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B3Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B3Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B3Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B3Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B3AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B3AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B4Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B4Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B4Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B4Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP2B4AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP2B4AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      }
+                                  }
+                               }
+                          },
+                          "config.container.deutsch.Reihe3": {
+                              "type": "verticalContainer",
+                              "label": "Reihe 3 (Banner)",
+                                "options":{
+                                  "containerEntries": {
+                                      "homepage.cntStartDeP3S1PicUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP3S1PicUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP3S1Url": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP3S1Url",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP3S1AltText": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP3S1AltText",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      }
+                                  }
+                               }
+                          },
+
+                          "config.container.deutsch.Reihe4": {
+                              "type": "verticalContainer",
+                              "label": "Reihe 4",
+                                "options":{
+                                  "containerEntries": {
+                                      "homepage.cntStartDeP4B1Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B1Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B1Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B1Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B1AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B1AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B2Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B2Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B2Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B2Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B2AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B2AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B3Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B3Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B3Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B3Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B3AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B3AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B4Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B4Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B4Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B4Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartDeP4B4AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartDeP4B4AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      }
+                                  }
+                               }
+                          }
+                      }
+                  }
+              },
+              "config.container.englisch": {
+                  "type": "verticalContainer",
+                  "label": "Einstellungen Englisch",
+                  "options":{
+                      "containerEntries": {
+                          "config.container.englisch.slider": {
+                            "type": "verticalContainer",
+                            "label": "Reihe 1 (Slider)",
+                            "options":{
+                                "containerEntries": {
+                                    "homepage.sliderItemId1En": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId1Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl1En": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl1Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderItemId2En": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId2Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl2En": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl2Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderItemId3En": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId3Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl3En": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl3Label",
+                                        "options": {}
+                                    }
+                                }
+                             }
+                          },
+                          "config.container.englisch.Reihe2": {
+                              "type": "verticalContainer",
+                              "label": "Reihe 2",
+                              "options":{
+                                  "containerEntries": {
+                                      "homepage.cntStartEnP2B1Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B1Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B1Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B1Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B1AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B1AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B2Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B2Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B2Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B2Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B2AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B2AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B3Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B3Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B3Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B3Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B3AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B3AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B4Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B4Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B4Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B4Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP2B4AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP2B4AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      }
+                                  }
+                              }
+                          },
+                          "config.container.englisch.Reihe3": {
+                              "type": "verticalContainer",
+                              "label": "Reihe 3 (Banner)",
+                              "options":{
+                                  "containerEntries": {
+                                      "homepage.cntStartEnP3S1PicUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP3S1PicUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP3S1Url": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP3S1Url",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP3S1AltText": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP3S1AltText",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      }
+                                  }
+                              }
+                          },
+                          "config.container.englisch.Reihe4": {
+                              "type": "verticalContainer",
+                              "label": "Reihe 4",
+                              "options":{
+                                  "containerEntries": {
+                                      "homepage.cntStartEnP4B1Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B1Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B1Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B1Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B1AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B1AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B2Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B2Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B2Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B2Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B2AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B2AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B3Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B3Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B3Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B3Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B3AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B3AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B4Label": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B4Label",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B4Value": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B4Value",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      },
+                                      "homepage.cntStartEnP4B4AltUrl": {
+                                          "type": "inputText",
+                                          "required": false,
+                                          "label": "Config.cntStartEnP4B4AltUrl",
+                                          "options": {
+                                              "defaultValue": ""
+                                          }
+                                      }
+                                 }
+                            }
+                        }
+                     }
+                  }
+              },
+              "config.container.franzoesisch": {
+                  "type": "verticalContainer",
+                  "label": "Einstellungen französisch",
+                  "options":{
+                      "containerEntries": {
+                          "config.container.franzoesisch.slider": {
+                            "type": "verticalContainer",
+                            "label": "Reihe 1 (Slider)",
+                            "options":{
+                                "containerEntries": {
+                                    "homepage.sliderItemId1Fr": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId1Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl1Fr": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl1Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderItemId2Fr": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId2Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl2Fr": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl2Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderItemId3Fr": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderItemId3Label",
+                                        "options": {}
+                                    },
+                                    "homepage.sliderImageUrl3Fr": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.homepageSliderImageUrl3Label",
+                                        "options": {}
+                                    }
+                                }
+                             }
+                          },
+                          "config.container.franzoesisch.Reihe2": {
+                            "type": "verticalContainer",
+                            "label": "Reihe 2",
+                            "options":{
+                                "containerEntries": {
+                                    "homepage.cntStartFrP2B1Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B1Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B1Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B1Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B1AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B1AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B2Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B2Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B2Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B2Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B2AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B2AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B3Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B3Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B3Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B3Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B3AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B3AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B4Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B4Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B4Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B4Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP2B4AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP2B4AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    }
+                                }
+                             }
+                          },
+                          "config.container.franzoesisch.Reihe3": {
+                            "type": "verticalContainer",
+                            "label": "Reihe 3 (Banner)",
+                            "options":{
+                                "containerEntries": {
+                                    "homepage.cntStartFrP3S1PicUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP3S1PicUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP3S1Url": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP3S1Url",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP3S1AltText": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP3S1AltText",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    }
+                                }
+                             }
+                          },
+                          "config.container.franzoesisch.Reihe4": {
+                            "type": "verticalContainer",
+                            "label": "Reihe 4",
+                            "options":{
+                                "containerEntries": {
+                                    "homepage.cntStartFrP4B1Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B1Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B1Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B1Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B1AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B1AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B2Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B2Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B2Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B2Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B2AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B2AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B3Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B3Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B3Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B3Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B3AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B3AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B4Label": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B4Label",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B4Value": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B4Value",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    },
+                                    "homepage.cntStartFrP4B4AltUrl": {
+                                        "type": "inputText",
+                                        "required": false,
+                                        "label": "Config.cntStartFrP4B4AltUrl",
+                                        "options": {
+                                            "defaultValue": ""
+                                        }
+                                    }
+                                }
+                             }
+                          }
+                      }
+                  }
+               }
+            }
+        },
     }
 }
