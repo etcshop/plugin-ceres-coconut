@@ -1049,6 +1049,75 @@
                   }
                }
             }
+        },
+        "Config.Tracking": {
+            "label": "Config.trackingTab",
+            "formFields": {
+              "tracking.belboonTrackingActive": {
+                  "type": "checkBox",
+                  "required": false,
+                  "label": "Config.trackingBelboonActive",
+                  "options": {
+                      "defaultValue": "true"
+                  }
+              },
+              "tracking.belboonProgramId": {
+                "type": "inputText",
+                "required": false,
+                "label": "Config.trackingbelboonProgramId",
+                "options": {
+                  "defaultValue": ""
+                }
+              },
+              "tracking.newsletterActive": {
+                  "type": "checkBox",
+                  "required": false,
+                  "label": "Config.labelNewsletterActive",
+                  "options": {
+                      "defaultValue": "true"
+                  }
+              },
+              "tracking.newsletterProgramId": {
+                "type": "inputText",
+                "required": false,
+                "label": "Config.labelNewsletterProgramId",
+                "options": {
+                  "defaultValue": ""
+                }
+              },
+              "tracking.newsletterCustomerId": {
+                "type": "inputText",
+                "required": false,
+                "label": "Config.labelNewsletterCustomerId",
+                "options": {
+                  "defaultValue": "1710"
+                }
+              },
+              "tracking.newsletterElementId": {
+                "type": "inputText",
+                "required": false,
+                "label": "Config.labelNewsletterElementId",
+                "options": {
+                  "defaultValue": ""
+                }
+              },
+              "tracking.newsletterInputId": {
+                "type": "inputText",
+                "required": false,
+                "label": "Config.labelNewsletterInputId",
+                "options": {
+                  "defaultValue": ""
+                }
+              },
+              "tracking.newsletterNameId": {
+                "type": "inputText",
+                "required": false,
+                "label": "Config.labelNewsletterNameId",
+                "options": {
+                  "defaultValue": ""
+                }
+              }
+            }
         }
     }
 }
