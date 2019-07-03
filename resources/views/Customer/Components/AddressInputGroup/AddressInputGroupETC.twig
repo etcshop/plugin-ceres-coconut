@@ -2,11 +2,25 @@
 
 {{ component( "Ceres::Customer.Components.CountrySelect" ) }}
 
-<script type="x/template" id="vue-address-input-groupETC">
+<script type="x/template" id="vue-address-input-group">
+    <div class="row">
+        <template v-if="value.showPickupStation && selectedCountry.isoCode2 === 'DE' && addressType === '2'">
+            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.DHLPackingStationAddressInputGroupDE" %}
+        </template>
+        <template v-else-if="localeToShow == 'DE' && addressType === '1'">
+            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupDE" %}
+        </template>
+        <template v-else-if="localeToShow == 'GB' && addressType === '1'">
+            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupGB" %}
+        </template>
+        <template v-else-if="localeToShow == 'DE' && addressType === '2'">
+            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupDE" %}
+        </template>
+        <template v-else-if="localeToShow == 'GB' && addressType === '2'">
+            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupGB" %}
+        </template>
 
-    <div>
-        <div v-if="localeToShow == 'DE' && addressType === '1'">
-            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupDE" %}
+        <div class="col-12 col-sm-4">
             <country-select
                 template="#vue-country-select"
                 :selected-country-id="value.countryId"
@@ -14,52 +28,10 @@
                 @country-changed="onSelectedCountryChanged($event)"
                 @state-changed="emitInputEvent('stateId', $event)"
                 country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
-                :optional-address-fields="optionalAddressFields"
-                :required-address-fields="requiredAddressFields">
-            </country-select>
-        </div>
-
-        <div v-if="localeToShow == 'GB' && addressType === '1'">
-            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupGB" %}
-            <country-select
-                template="#vue-country-select"
-                :selected-country-id="value.countryId"
-                :selected-state-id="value.stateId"
-                @country-changed="onSelectedCountryChanged($event)"
-                @state-changed="emitInputEvent('stateId', $event)"
-                country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
-                :optional-address-fields="optionalAddressFields"
-                :required-address-fields="requiredAddressFields">
-            </country-select>
-        </div>
-
-        <div v-if="localeToShow == 'DE' && addressType === '2'">
-            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupDE" %}
-            <country-select
-                template="#vue-country-select"
-                :selected-country-id="value.countryId"
-                :selected-state-id="value.stateId"
-                @country-changed="onSelectedCountryChanged($event)"
-                @state-changed="emitInputEvent('stateId', $event)"
-                country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
-                :optional-address-fields="optionalAddressFields"
-                :required-address-fields="requiredAddressFields">
-            </country-select>
-        </div>
-
-        <div v-if="localeToShow == 'GB' && addressType === '2'">
-            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.DeliveryAddressInputGroupGB" %}
-            <country-select
-                template="#vue-country-select"
-                :selected-country-id="value.countryId"
-                :selected-state-id="value.stateId"
-                @country-changed="onSelectedCountryChanged($event)"
-                @state-changed="emitInputEvent('stateId', $event)"
-                country-list="{{ services.country.getActiveCountriesList() | filterFields(['id','currLangName', 'isoCode2', 'states.id', 'states.name']) | json_data("activeCountriesList") }}"
+                :address-type="addressType"
                 :optional-address-fields="optionalAddressFields"
                 :required-address-fields="requiredAddressFields">
             </country-select>
         </div>
     </div>
-
 </script>
