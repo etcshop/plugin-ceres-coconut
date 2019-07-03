@@ -44,7 +44,7 @@
         <div class="row m-b-3">
             <div class="col-sm-12 col-lg-12">
                 <div class="ContentCaption">{{ trans("Ceres::Template.myAccount") }}</div>
-                <div class="ContentText">{{ trans("CeresCoconur::Template.ETC_MeinKonto_Text") }}</div>
+                <div class="ContentText">{{ trans("CeresCoconut::Template.ETC_MeinKonto_Text") }}</div>
                 {% if frontend.Account.getIsAccountLoggedIn %}
                     {% if userObject.firstName|length > 0 and userObject.lastName|length > 0 %}
                         <span class="text-muted">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
