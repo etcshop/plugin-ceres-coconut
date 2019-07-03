@@ -1,1 +1,20 @@
-<!-- Insert markup for contact page here -->
+{% extends getPartial('page-design') %}
+
+{% block PartialHead %}
+    <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
+    <meta name="robots" content="{{ config("Ceres.meta.robots_contact") }}">
+    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.contact") }}</title>
+
+    {% if config("Ceres.global.google_recaptcha_api_key") | length > 0 %}
+        <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+    {% endif %}
+
+{% endblock %}
+
+{% block PageBody %}
+
+    {{ component( "CeresCoconut::Customer.Components.Contact.ContactForm" ) }}
+
+    <contact-form template="#vue-contact-form"></contact-form>
+
+{% endblock %}
