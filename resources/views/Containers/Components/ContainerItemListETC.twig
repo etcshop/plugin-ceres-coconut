@@ -1,0 +1,11 @@
+{% set decimalCount = config("Ceres.item.storeSpecial") %}
+
+{{ component( "CeresCoconut::ItemList.Components.CategoryItemETC" ) }}
+
+<script type="x/template" id="vue-container-item-listETC">
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-12 CategoryItemETC 1" v-for="(item, index) in items" >
+        <category-item :key="item.data.variation.id" :item-data="item.data" decimal-count="{{ decimalCount | json_encode }}" image-url-accessor="urlMiddle"></category-item>
+    </div>
+</div>
+</script>
