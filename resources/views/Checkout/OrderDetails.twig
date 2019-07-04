@@ -32,7 +32,7 @@
 
                 <div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationInvoiceAddress") }}</strong>
+                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationInvoiceAddress") }}</span>
                         <span class="col-xs-6 col-sm-7">
                             <div>{{ orderData.order.billingAddress.name1 }}</div>
                             <div>{{ orderData.order.billingAddress.name2 }} {{ orderData.order.billingAddress.name3 }}</div>
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="row m-t-1">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingAddress") }}</strong>
+                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingAddress") }}</span>
                         <span class="col-xs-6 col-sm-7">
                             {% if orderData.order.billingAddress.id == orderData.order.deliveryAddress.id %}
                                 <span>
@@ -68,11 +68,11 @@
 
                 <div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</strong>
+                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</span>
                         <span class="col-xs-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
                     </div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</strong>
+                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</span>
                         {% set paymentMethodId = -1 %}
                         {% for propertyKey in orderData.order.properties %}
                             {% if orderData.order.properties[loop.index0].typeId == 4 %}
@@ -105,7 +105,7 @@
 
                 <div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingProfile") }}</strong>
+                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingProfile") }}</span>
                         <span class="col-xs-6 col-sm-7">{{ orderData.shippingProvider }} {{ orderData.shippingProfileName }}</span>
                     </div>
 
@@ -118,7 +118,7 @@
 
                     {% if shippingDate %}
                         <div class="row">
-                            <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationEstimatedShippingDate") }}</strong>
+                            <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationEstimatedShippingDate") }}</span>
                             <span class="col-xs-6 col-sm-7">{{ shippingDate | date(trans("Ceres::Template.devDateFormat")) }}</span>
                         </div>
                     {% endif %}
