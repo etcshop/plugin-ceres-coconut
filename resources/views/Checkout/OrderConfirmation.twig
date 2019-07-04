@@ -1,1 +1,191 @@
-<!-- Insert markup for order confirmation page here -->
+{% extends getPartial('page-design') %}
+{% import "Ceres::Checkout.Macros.Address" as address %}
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% block PartialHead %}
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.orderConfirmation") }}</title>
+
+    {% if webstoreConfig.webstoreId == 0 %}
+        <!-- BEGIN Google Kundenrezensionen -->
+
+        {% set deliveryAddress = data.order.deliveryAddress %}
+        {% set deliveryCountryId = deliveryAddress.countryId %}
+
+        {% set billingAddress = data.order.billingAddress %}
+
+        {% set email = "" %}
+        {% for option in billingAddress.options %}
+            {% if option.typeId == 5 %}
+                {% set email = option.value %}
+            {% endif %}
+        {% endfor %}
+
+        {% set estimatedShippingDate = "" %}
+        {% set orderDates = data.order.dates %}
+        {% for date in orderDates %}
+            {% if date.typeId == 2 %}
+                {% set estimatedShippingDate = date.date %}
+            {% endif %}
+        {% endfor %}
+
+        <script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+
+        <script>
+          window.renderOptIn = function() {
+            window.gapi.load('surveyoptin', function() {
+              window.gapi.surveyoptin.render(
+                {
+                  // REQUIRED FIELDS
+                  "merchant_id": 1340904,
+                  "order_id": "{{ data.order.id }}",
+                  "email": "{{ email }}",
+                  "delivery_country": "{{ services.country.getCountryById(data.order.deliveryAddress.countryId).isoCode2 }}",
+                  "estimated_delivery_date": "{{ estimatedShippingDate | date_modify("3 weekdays") | date("Y-m-j")}}",
+
+                  // OPTIONAL FIELDS
+                  //"products": [{"gtin":"GTIN1"}, {"gtin":"GTIN2"}]
+                  "opt_in_style": "BOTTOM_RIGHT_DIALOG"
+                });
+            });
+          }
+        </script>
+        <!-- ANFANG Sprachcode für Google Kundenrezensionen -->
+        <script>
+          window.___gcfg = {
+            lang: 'de'
+          };
+        </script>
+        <!-- ENDE Sprachcode für Google Kundenrezensionen -->
+
+        <!-- BEGIN GCR Badge Code -->
+        <script src="https://apis.google.com/js/platform.js?onload=renderBadge"
+          async defer>
+        </script>
+
+        <script>
+          window.renderBadge = function() {
+            var ratingBadgeContainer = document.createElement("div");
+              document.body.appendChild(ratingBadgeContainer);
+              window.gapi.load('ratingbadge', function() {
+                window.gapi.ratingbadge.render(
+                  ratingBadgeContainer, {
+                    // REQUIRED
+                    "merchant_id": 1340904,
+                    // OPTIONAL
+                    "position": "BOTTOM_RIGHT"
+                  });
+             });
+          }
+        </script>
+        <!-- END GCR Badge Code -->
+
+        <!-- BEGIN Global site tag (gtag.js) - Google Ads: 1072374430 -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1072374430"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-1072374430');
+          </script>
+        <!-- END Global site tag (gtag.js) - Google Ads: 1072374430 -->
+
+        <!-- BEGIN Event snippet for Tracking-Test conversion page -->
+          <script>
+            gtag('event', 'conversion', {
+                'send_to': 'AW-1072374430/0IYNCLzmhX4QnsWs_wM',
+                'value': {{ data.order.amounts[0].netTotal }},
+                'currency': 'EUR',
+                'transaction_id': '{{ data.order.id }}'
+            });
+          </script>
+        <!-- END Event snippet for Tracking-Test conversion page -->
+    {% endif %}
+{% endblock %}
+
+{% block PageBody %}
+    {{ component( "Ceres::MyAccount.Components.ChangePaymentMethod" ) }}
+
+    {% set overrideConfirmation = LayoutContainer.show("Ceres::OrderConfirmation.Override") %}
+    {% set addContentAfterOrderDetailsRow = LayoutContainer.show("Ceres::OrderConfirmation.AddContentAfterOrderDetailsRow") %}
+    <div style="display: none">{{ codedMail | url_encode}}</div>
+
+    {% if overrideConfirmation|trim is empty %}
+        <div class="page-content myaccount container-max m-b-3 m-t-1 p-b-3">
+            <div class="row m-b-3">
+              <div class="col-sm-12 col-lg-12">
+                <div style="display: none">{{ data | json_encode }}</div>
+                <div class="ContentCaption">{{ trans("Ceres::Template.orderConfirmationTitle") }}</div>
+              </div>
+            </div>
+            <div class="row m-b-3">
+                <div class="col-xs-12">
+                    <h1 class="h2">{{ trans("Ceres::Template.orderConfirmationThanks") }}</h1>
+                    <p>{{ trans("Ceres::Template.orderConfirmationWillBeProcessed") }}</p>
+                </div>
+            </div>
+
+            {{ LayoutContainer.show("Ceres::OrderConfirmation.BeforeOrderDetails", data.order) }}
+
+
+            {% include "Ceres::Checkout.OrderDetails" with { orderData: data } %}
+
+            <div class="row">
+              <div class="col-md-6 m-b-2">
+                <div class="card small">
+                  <div class="card-block">
+                    <div id="ts_Bewertung">
+                      {% if webstoreConfig.webstoreId == 4 %}
+                        <a href="https://www.trustedshops.de/bewertung/bewerten_X265918130C87C319EB2890B6759D208E.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("Ceres::Template.ETC_JetztBewerten") }}</a>
+                      {% else %}
+                        <a href="https://www.trustedshops.de/bewertung/bewerten_X59BB3F6DD867AF89CB5B857F35614717.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("Ceres::Template.ETC_JetztBewerten") }}</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            {% if addContentAfterOrderDetailsRow|trim is not empty %}
+            <div class="row">
+              {{ addContentAfterOrderDetailsRow }}
+            </div>
+            {% endif %}
+            <div class="row" id="OrderConfirmation_Bottom_Buttons">
+                {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
+                <div id="OrderConfirmation_ToHomeButton" class="col-xs-6 col-md-4 {% if loggedIn %}offset-md-2{% else %}offset-xs-3 offset-md-4{% endif %}">
+                    <a v-waiting-animation-infinite href="{{ homepageURL }}" type="" class="btn btn-primary btn-block bg-primary">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        {{ trans("Ceres::Template.orderConfirmationHomepage") }}
+                    </a>
+                </div>
+
+
+                {% if loggedIn %}
+                    <div id="OrderConfirmation_ToMyAccountButton" class="col-xs-6 col-md-4">
+                        <a v-waiting-animation-infinite href="{{ urls.myAccount }}" type="" class="btn btn-primary btn-block bg-primary">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            {{ trans("Ceres::Template.orderConfirmationMyAccount") }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    {% else %}
+      <div style="display: none">vor Override</div>
+
+        {{ overrideConfirmation }}
+    {% endif %}
+      <div style="display: none">vor Override</div>
+    {% set BelboonTrackActive = config("Ceres.tracking.belboonTrackingActive") %}
+    {% if BelboonTrackActive == "true" %}
+      {% if data.order.referrerId == 10 %}
+        <!-- BEGIN BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
+        <img src="//pluto.r.powuta.com/ts/i5534189/tsa?typ=i&trc=default&ctg=sale&sid=check-out&cid={{ data.order.id }}&orv={{ data.order.amounts[0].netTotal }}&orc=EUR" width="1" height="1" border="0" style="display:none;">
+        <!-- END BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
+      {% endif %}
+      {% endif %}
+{% endblock %}
