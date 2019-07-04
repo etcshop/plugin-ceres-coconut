@@ -112,7 +112,7 @@
     <div style="display: none">{{ codedMail | url_encode}}</div>
 
     {% if overrideConfirmation|trim is empty %}
-        <div class="page-content myaccount container-max m-b-3 m-t-1 p-b-3">
+        <div class="page-content myaccount container-max m-b-3 m-t-1 p-b-3" id="OrderConfirmation_Container">
             <div class="row m-b-3">
               <div class="col-sm-12 col-lg-12">
                 <div style="display: none">{{ data | json_encode }}</div>
@@ -137,9 +137,9 @@
                   <div class="card-block">
                     <div id="ts_Bewertung">
                       {% if webstoreConfig.webstoreId == 4 %}
-                        <a href="https://www.trustedshops.de/bewertung/bewerten_X265918130C87C319EB2890B6759D208E.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("Ceres::Template.ETC_JetztBewerten") }}</a>
+                        <a href="https://www.trustedshops.de/bewertung/bewerten_X265918130C87C319EB2890B6759D208E.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("CeresCoconut::Template.ETC_JetztBewerten") }}</a>
                       {% else %}
-                        <a href="https://www.trustedshops.de/bewertung/bewerten_X59BB3F6DD867AF89CB5B857F35614717.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("Ceres::Template.ETC_JetztBewerten") }}</a>
+                        <a href="https://www.trustedshops.de/bewertung/bewerten_X59BB3F6DD867AF89CB5B857F35614717.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("CeresCoconut::Template.ETC_JetztBewerten") }}</a>
                       {% endif %}
                     </div>
                   </div>
