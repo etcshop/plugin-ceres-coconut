@@ -62,11 +62,14 @@
             <script type="text/javascript">
                 belboonTag = {
                     "orderProducts": [
+                          {% set c = 0 %}
                           {% for item in basketItemsETC %}
+                            {% if c > 1 %},{% endif %}
                             {
                               "id": "{{ item.itemId }}",
                               "price": "{{ item.variation.data.calculatedPrices.default.price }}",
                               "qty": "{{ item.quantity }}"
+                              {% set c = c+1 %}
                             }
                           {% endfor %}
                     ]
