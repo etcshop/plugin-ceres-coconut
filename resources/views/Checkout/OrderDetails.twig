@@ -203,17 +203,17 @@
                 <h3>{{ trans("Ceres::Template.checkoutSum") }}</h3>
                 <div>
                     <dl>
-                        <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                        <dt>
                             {{ trans("Ceres::Template.checkoutValue") }} ({{ trans("Ceres::Template.checkoutGross") }})
                         </dt><!--
-                    --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                    --><dd>
                             {{ totals.itemSumGross | formatMonetary( basketTotalsCurrency ) }}
                         </dd>
 
-                        <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                        <dt>
                             {{ trans("Ceres::Template.orderConfirmationShippingCosts") }} ({{ trans("Ceres::Template.checkoutGross") }})
                         </dt><!--
-                    --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                    --><dd>
                             {{ totals.shippingGross | formatMonetary( basketTotalsCurrency ) }}
                         </dd>
 
@@ -224,10 +224,10 @@
                             {{ grossNet }}
                         {% else %}
                             {% if totals.couponType == 'promotional' and (totals.couponValue | trimNewlines) != 0 %}
-                                <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                                <dt>
                                     {{ trans("Ceres::Template.checkoutCoupon") }}
                                 </dt><!--
-                                --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                                --><dd>
                                     {{ totals.couponValue | formatMonetary( basketTotalsCurrency ) }}
                                 </dd>
                             {% endif %}
@@ -247,10 +247,10 @@
 
                             <div class="totalSum">
                                 <hr>
-                                <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                                <dt>
                                     {{ trans("Ceres::Template.checkoutTotalSum") }} ({{ trans("Ceres::Template.checkoutGross") }})
                                 </dt><!--
-                                --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                                --><dd>
                                     {{ totals.totalGross | formatMonetary( basketTotalsCurrency ) }}
                                 </dd>
                             </div>
