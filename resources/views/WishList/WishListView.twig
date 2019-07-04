@@ -1,1 +1,22 @@
-<!-- Insert markup here -->
+{% extends getPartial('page-design') %}
+
+{% block PartialHead %}
+    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.wishList") }}</title>
+{% endblock %}
+
+{% block PageBody %}
+    {{ component( "CeresCoconut::WishList.Components.WishList" ) }}
+
+    <div class="page-content wish-list container-max m-b-3">
+      <div class="row m-b-3">
+          <div class="col-sm-12 col-lg-12">
+              <div class="ContentCaption">{{ trans("Ceres::Template.ETC_Merkliste") }}</div>
+              <div class="ContentText">{{ trans("Ceres::Template.ETC_Merkliste_Text") }}</div>
+          </div>
+      </div>
+
+      <hr>
+
+       <wish-list template="#vue-wish-list" :init-ids="{{ wishList | json_encode() }}"></wish-list>
+    </div>
+{% endblock %}

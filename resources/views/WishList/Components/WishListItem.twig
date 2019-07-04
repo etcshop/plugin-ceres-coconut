@@ -1,1 +1,32 @@
-<!-- Insert markup here -->
+{{ component( "CeresCoconut::Item.Components.QuantityInput" ) }}
+<transition-group name="wish-list-item-transition" tag="div">
+    <article v-for="(wishListItem, index) in wishListItems" :key="wishListItem.id" class="wish-list-item col-xs-12" :id="'article_' + index ">
+      <div class="wish-list-itemName col-lg-12">
+          <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data | itemName }</strong></a>
+      </div>
+      <div class="wish-list-itemImage col-lg-3 col-md-3 col-xs-5">
+        <a :href="wishListItem.data | itemURL">
+          <img :src="wishListItem.data.images | itemImages('urlMiddle') | itemImage" alt="" border="0">
+        </a>
+      </div>
+      <div class="wish-list-itemData col-lg-6 col-md-6 col-xs-7 p-r-0">
+        <div class="ItemsDescriptionNo col-lg-12 col-md-12 col-xs-12 p-l-0 p-r-0">
+          <div class="ItemsDescriptionNo Label col-lg-4 col-md-4 col-xs-5 p-l-0 p-r-0">Artikel-Nr.</div>
+          <div class="ItemsDescriptionNo Value col-lg-8 col-md-8 col-xs-7 p-l-0 p-r-0">${ wishListItem.data.variation.number }</div>
+        </div>
+        <div class="ItemsDescriptionUnitPrice col-lg-12 col-md-12 col-xs-12 p-l-0 p-r-0">
+          <div class="ItemsDescriptionUnitPrice Label col-lg-4 col-md-4 col-xs-5 p-l-0 p-r-0">Preis</div>
+          <div class="ItemsDescriptionUnitPrice Value col-lg-8 col-md-8 col-xs-7 p-l-0 p-r-0">${ wishListItem.data.calculatedPrices.formatted.defaultPrice }</div>
+        </div>
+        <div class="ItemsDescriptionAvalability col-lg-12 col-md-12 col-xs-12 p-l-0 p-r-0">
+          <div class="ItemsDescriptionAvalability Label col-lg-4 col-md-4 col-xs-5 p-l-0 p-r-0">Verfügbarkeit</div>
+          <div class="ItemsDescriptionAvalability Value col-lg-8 col-md-8 col-xs-7 p-l-0 p-r-0">${ wishListItem.data.variation.availability.names.name }</div>
+        </div>
+      </div>
+      <div class="WatchListDelete col-lg-3 col-md-3 col-xs-5">
+        <a class="PlentyWebshopButton delete" id="button_deleteWebMyAccountWatchListDelete" @click="removeItem({id: wishListItem.data.variation.id, wishListItem: wishListItem, index: index})">
+          <i class="material-icons MyAccountIcon_delete">delete</i>
+        </a>
+      </div>
+    </article>
+</transition-group>
