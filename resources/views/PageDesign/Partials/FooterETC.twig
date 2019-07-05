@@ -12,13 +12,13 @@
     <div class="footerETC col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="container_centered">
         <div id="footer1" class="footerbox footer-row1 col-xs-6 col-sm-6 col-md-3 col-lg-3">
-          {% set NewsletterActive = config("Ceres.tracking.newsletterActive") %}
+          {% set NewsletterActive = config("CeresCoconut.tracking.newsletterActive") %}
           {% if NewsletterActive == "true" %}
 
-            {% set CRListID = config("Ceres.tracking.newsletterProgramId") %}
-            {% set CRElementID = config("Ceres.tracking.newsletterElementId") %}
-            {% set CRInputID = config("Ceres.tracking.newsletterInputId") %}
-            {% set CRNameID = config("Ceres.tracking.newsletterNameId") %}
+            {% set CRListID = config("CeresCoconut.tracking.newsletterProgramId") %}
+            {% set CRElementID = config("CeresCoconut.tracking.newsletterElementId") %}
+            {% set CRInputID = config("CeresCoconut.tracking.newsletterInputId") %}
+            {% set CRNameID = config("CeresCoconut.tracking.newsletterNameId") %}
 
             <h1>{{ trans("CeresCoconut::Template.ETC_Newsletter") }}</h1>
             <ul>

@@ -180,7 +180,7 @@
         {{ overrideConfirmation }}
     {% endif %}
       <div style="display: none">vor Override</div>
-    {% set BelboonTrackActive = config("Ceres.tracking.belboonTrackingActive") %}
+    {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
     {% if BelboonTrackActive == "true" %}
       {% if data.order.referrerId == 10 %}
         <!-- BEGIN BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
