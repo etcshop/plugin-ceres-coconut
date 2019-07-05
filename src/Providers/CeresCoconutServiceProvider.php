@@ -20,11 +20,6 @@ class CeresCoconutServiceProvider extends ServiceProvider
 {
     const PRIORITY = 0;
 
-    private static $templateKeyToViewMap =
-    [
-        'tpl.legal-disclosure'          => ['StaticPages.LegalDisclosure',          GlobalContext::class],         // provide template to use for legal disclosure
-    ];
-    
     public function register()
     {
 
