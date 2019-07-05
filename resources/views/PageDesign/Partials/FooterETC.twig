@@ -55,13 +55,13 @@
         </div>
         <div id="footer2" class="footerbox col-xs-6 col-sm-6 col-md-3 col-lg-3">
           <h1>{{ trans("CeresCoconut::Template.ETC_Informationen") }}</h1>
-          <a href="{{ urls.gtc }}" title="{{ trans("Ceres::Template.footerGtc") }}">{{ trans("Ceres::Template.footerGtc") }}</a>
-          <a href="{{ urls.cancellationRights }}" title="{{ trans("Ceres::Template.footerCancellationRight") }}">{{ trans("Ceres::Template.footerCancellationRight") }}</a>
-          <a href="{{ urls.privacyPolicy }}" title="{{ trans("Ceres::Template.footerPrivacyPolicy") }}">{{ trans("Ceres::Template.footerPrivacyPolicy") }}</a>
+          <a href="{{ urls.gtc }}" title="{{ trans("CeresCoconut::Template.footerGtc") }}">{{ trans("CeresCoconut::Template.footerGtc") }}</a>
+          <a href="{{ urls.cancellationRights }}" title="{{ trans("CeresCoconut::Template.footerCancellationRight") }}">{{ trans("CeresCoconut::Template.footerCancellationRight") }}</a>
+          <a href="{{ urls.privacyPolicy }}" title="{{ trans("CeresCoconut::Template.footerPrivacyPolicy") }}">{{ trans("CeresCoconut::Template.footerPrivacyPolicy") }}</a>
           {% set cat1 = services.category.get(718, lang) %}
           <a href="{{ services.category.getURL(cat1, lang) }}" title="{{ services.category.get(718, lang).details[0].name }}">{{ services.category.get(718, lang).details[0].name }}</a>
           <!--<a href="https://www.etc-shop.de/pages/i-m-p-r-e-s-s-u-m/" title="Impressum">Impressum</a><br>-->
-          <a href="{{ urls.legalDisclosure }}" title="{{ trans("Ceres::Template.footerLegalDisclosure") }}">{{ trans("Ceres::Template.footerLegalDisclosure") }}</a>
+          <a href="{{ urls.legalDisclosure }}" title="{{ trans("CeresCoconut::Template.footerLegalDisclosure") }}">{{ trans("CeresCoconut::Template.footerLegalDisclosure") }}</a>
           <br>
         </div>
         <div id="footer3" class="footerbox col-xs-6 col-sm-6 col-md-3 col-lg-3">
