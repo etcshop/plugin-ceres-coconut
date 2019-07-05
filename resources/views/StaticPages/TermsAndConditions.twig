@@ -1,1 +1,31 @@
-<!-- Insert markup for terms and conditions here -->
+{% extends getPartial('page-design') %}
+
+{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+
+{% block PartialHead %}
+    <meta name="description" content="{{ trans('Ceres::Template.termsAndConditionsMetaDescription') }}">
+    <meta name="robots" content="{{ config("Ceres.meta.robots_terms_and_conditions") }}">
+    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.termsAndConditions") }}</title>
+{% endblock %}
+
+{% block PageBody %}
+
+    {% set termsAndConditions = services.legalInformation.getTermsAndConditions() %}
+
+    <div class="container-max page-content">
+        <div class="row">
+            <div class="col-xs-12">
+                {% autoescape false %}
+                    <h1 class="StaticPages_Headline">{{ trans("Ceres::Template.termsAndConditions") }}</h1>
+                {% endautoescape %}
+
+                {% if termsAndConditions.htmlText %}
+                    {{ termsAndConditions.htmlText | raw }}
+                {% else %}
+                    <p class="static-page-plain-text">{{ termsAndConditions.plainText }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
