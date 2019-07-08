@@ -23,6 +23,7 @@
                     </div>
                     {% if orderData.status is defined and orderData.status is not empty %}
                     <div class="row">
+                        {{ orderData.order | json_encode }}
                         <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationStatus") }}</span>
                         <span class="col-xs-6 col-sm-7">{{ orderData.order.statusName }}</span>
                     </div>
