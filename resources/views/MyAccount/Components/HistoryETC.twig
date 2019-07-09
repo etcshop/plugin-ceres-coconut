@@ -1,4 +1,4 @@
-{{ component( "CeresCoconut::MyAccount.Components.OrderHistory" ) }}
+{{ component( "CeresCoconut::MyAccount.Components.OrderHistoryETC" ) }}
 {{ component( "Ceres::MyAccount.Components.OrderReturnHistory" ) }}
 
 <script type="x/template" id="vue-historyETC">
@@ -15,7 +15,7 @@
 
 		<div class="tab-content">
             <div class="tab-pane active test1553" id="order-history-tab" role="tabpanel" aria-expanded="true">
-				<order-history template="#vue-order-history">
+				<order-history template="#vue-order-historyETC">
 				</order-history>
 			</div>
 			 <div class="tab-pane" id="order-return-tab" role="tabpanel" aria-expanded="false" v-if="isReturnActive && contactHasReturns">
