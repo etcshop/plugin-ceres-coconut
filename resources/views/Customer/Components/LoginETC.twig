@@ -28,7 +28,7 @@
         <span class="error-msg">{{ trans("Ceres::Template.loginEmptyPassword") }}</span>
       </form>
       <br>
-      <a href="javascript:ShowPWDResetETC()" id="AnmeldungPasswortvergessen" class="iconLink small reset-pwd-direction" :class="{'col-xs-7 col-sm-4': !modalElement}">
+      <a href="javascript:void(0)" @click="showResetPwdView" class="iconLink small reset-pwd-direction" :class="{'col-xs-7 col-sm-4': !modalElement}">
       	<span class="glyphicon glyphicon-question-sign"></span> {{ trans("Ceres::Template.loginForgotPassword") }}
       </a>
     </div>
