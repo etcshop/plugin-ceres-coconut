@@ -1,207 +1,138 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
-{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
-{% import "Ceres::Checkout.Macros.OrderTotals" as Totals %}
+{% set loadingAnimationType = config("Ceres.item.loading_animation_type") %}
 
-{{ component( "Ceres::Item.Components.ItemBundle" ) }}
+{% set ordersPerPage = config("Ceres.my_account.orders_per_page") %}
+{% if not (ordersPerPage matches '/^\\d+$/') %}
+    {# config value is not a valid number #}
+    {% set ordersPerPage = 5 %}
+{% endif %}
 
-{% set basketTotalsCurrency = totals.currency %}
+{% set query = [] %}
+{% set page = request.get("page") | default(1) %}
+{% set orderList = services.customer.getOrders(page, ordersPerPage).toArray() %}
+{% set pageMax = orderList.lastPageNumber %}
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card small">
-            <!-- ORDER -->
-            <div class="card-header">
-                <h5>{{ trans("Ceres::Template.orderConfirmationOrderId") }} {{ orderData.order.id }}</h5>
-            </div>
+{% set paymentMethodId = 0 %}
+{% set paymentStatus = "" %}
 
-            <div class="card-block">
-                <div class="details">
-                    <div class="row">
-                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationDate") }}</span>
-                        <span class="col-xs-6 col-sm-7">{{ orderData.order.createdAt | formatDateTime | date(trans("Ceres::Template.devDateTimeFormat")) }}</span>
+{{ component( "Ceres::MyAccount.Components.ChangePaymentMethod" ) }}
+
+<script type="x/template" id="vue-order-history">
+    {% if orderList.totalsCount > 0 %}
+    <div class="form-group">
+        <div class="row mb-3">
+            <div class="col-12 col-md-12 col-lg-12">
+                <!-- ORDER PAGINATION -->
+                {% if orderList.lastPageNumber > 1 %}
+                <div class="clearfix history-pagination">
+                    <div class="float-left counter">
+                        {{ trans("Ceres::Template.orderHistoryShow", {"countStart": orderList.firstOnPage, "countEnd": orderList.lastOnPage, "orderMaxCount": orderList.totalsCount }) }}
                     </div>
-                    {% if orderData.status is defined and orderData.status.isFrontendVisible and orderData.status.names[lang] is not empty %}
-                    <div class="row test0945">
-                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationStatus") }}</span>
-                        <span class="col-xs-6 col-sm-7">{{ orderData.order.statusName }}</span>
-                    </div>
-                    {% endif %}
+                    {% include "Ceres::Category.Item.Partials.Pagination" with { 'currentPage': page } %}
                 </div>
-
-                <hr>
-
-                <div>
-                    <div class="row">
-                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationInvoiceAddress") }}</span>
-                        <span class="col-xs-6 col-sm-7">
-                            <div>{{ orderData.order.billingAddress.name1 }}</div>
-                            <div>{{ orderData.order.billingAddress.name2 }} {{ orderData.order.billingAddress.name3 }}</div>
-                            <div>{{ orderData.order.billingAddress.name4 }}</div>
-                            <div>{{ orderData.order.billingAddress.address1 }} {{ orderData.order.billingAddress.address2 }}</div>
-                            <div>{{ orderData.order.billingAddress.postalCode }} {{ orderData.order.billingAddress.town }}</div>
-                            <div>{{ services.country.getCountryName(orderData.order.billingAddress.countryId) }}</div>
-                        </span>
-                    </div>
-
-                    <div class="row m-t-1">
-                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingAddress") }}</span>
-                        <span class="col-xs-6 col-sm-7">
-                            {% if orderData.order.billingAddress.id == orderData.order.deliveryAddress.id %}
-                                <span>
-                                    {{ trans("Ceres::Template.orderConfirmationSameAsInvoice") }}
-                                </span>
-                            {% else %}
-                                <span>
-                                    <div>{{ orderData.order.deliveryAddress.name1 }}</div>
-                                    <div>{{ orderData.order.deliveryAddress.name2 }} {{ orderData.order.deliveryAddress.name3 }}</div>
-                                    <div>{{ orderData.order.deliveryAddress.name4 }}</div>
-                                    <div>{{ orderData.order.deliveryAddress.address1 }} {{ orderData.order.deliveryAddress.address2 }}</div>
-                                    <div>{{ orderData.order.deliveryAddress.postalCode }} {{ orderData.order.deliveryAddress.town }}</div>
-                                    <div>{{ services.country.getCountryName(orderData.order.deliveryAddress.countryId) }}</div>
-                                </span>
-                            {% endif %}
-                        </span>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div>
-                    <div class="row">
-                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</span>
-                        <span class="col-xs-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
-                    </div>
-                    <div class="row">
-                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</span>
-                        {% set paymentMethodId = -1 %}
-                        {% for propertyKey in orderData.order.properties %}
-                            {% if orderData.order.properties[loop.index0].typeId == 4 %}
-                                {% set paymentStatus = entry.order.properties[loop.index0].value %}
-                                <span class="col-xs-6 col-sm-7" id="payment_state_{{ orderData.order.id }}">{{ trans("Ceres::Template.orderConfirmationPaymentStatus_" ~ orderData.order.properties[loop.index0].value) }}</span>
-                            {% elseif orderData.order.properties[loop.index0].typeId == 3 %}
-                                {% set paymentMethodId = orderData.order.properties[loop.index0].value %}
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-
-                    {% set currentTemplate = services.template.getCurrentTemplate() %}
-
-                    {% if paymentMethoId != -1 and showAdditionalPaymentInformation == true %}
-                        <change-payment-method  template="#vue-change-payment-method"
-                                                :current-order="{{ orderData.order | json_encode() }}"
-                                                :change-possible="{{ services.order.allowPaymentMethodSwitchFrom(paymentMethodId, orderData.order.id) | json_encode() }}"
-                                                :allowed-payment-methods="{{ services.order.getPaymentMethodListForSwitch(paymentMethodId, orderData.order.id) | json_encode() }}"
-                                                :payment-status="{{ paymentStatus | json_encode() }}"
-                                                :current-payment-method-name="{{ orderData.paymentMethodName | json_encode() }}"
-                                                :current-template="{{ currentTemplate | json_encode() }}">
-                        </change-payment-method>
-                    {% endif %}
-
-                    {{ LayoutContainer.show("Ceres::OrderConfirmation.AdditionalPaymentInformation", orderData.order) }}
-
-                </div>
-
-                <hr>
-
-                <div>
-                    <div class="row">
-                        <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingProfile") }}</span>
-                        <span class="col-xs-6 col-sm-7">{{ orderData.shippingProvider }} {{ orderData.shippingProfileName }}</span>
-                    </div>
-
-                    {% set shippingDate = "" %}
-                    {% for date in orderData.order.dates %}
-                        {% if date.typeId == 8 %}
-                            {% set shippingDate = date.date %}
-                        {% endif %}
-                    {% endfor %}
-
-                    {% if shippingDate %}
-                        <div class="row">
-                            <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationEstimatedShippingDate") }}</span>
-                            <span class="col-xs-6 col-sm-7">{{ shippingDate | date(trans("Ceres::Template.devDateFormat")) }}</span>
-                        </div>
-                    {% endif %}
-
-                    {{ LayoutContainer.show("Ceres::OrderConfirmation.AdditionalShippingInformation", orderData.order) }}
-                </div>
-
-            </div>
-            <!-- ORDER -->
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-        <div class="confirmation-order-list">
-
-            {% for item in orderData.order.orderItems %}
-                {% if item.itemVariationId > 0 and not ('[-]' in item.orderItemName) %}
-                    {% set currentVariationId = item.itemVariationId | trimNewlines %}
-                    {% set priceNet = orderData.order.amounts[0].isNet %}
-                    <article class="cmp cmp-order-item">
-                        <a href="{{ orderData.itemURLs | getObjectValue(currentVariationId) }}" class="item-image">
-                            <img alt="{{ item.orderItemName }}" src="{{ orderData.itemImages | getObjectValue(currentVariationId) }}">
-                        </a>
-                        <div class="item-details small">
-                            <a href="{{ orderData.itemURLs | getObjectValue(currentVariationId)  }}" class="clearfix">
-                                <div class="item-name">
-                                    {{ ItemName.get(item.orderItemName, item.bundleType) }}
-                                </div>
-                            </a>
-
-                            {% if splitItemBundle != "1" and item.bundleType == "bundle" %}
-                                <div class="m-b-1 item-bundle">
-                                    {% for bundleComponent in item.bundleComponents %}
-                                        <div>
-                                            <span class="text-muted">{{ bundleComponent.quantity }} x</span>
-                                            <a href="{{ bundleComponent.data | itemURL }}"> {{ bundleComponent.data | itemName }} </a>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-
-                            <div class="row">
-                                <strong class="col-xs-6 col-sm-3">{{ trans("Ceres::Template.orderConfirmationPricePerPiece") }}</strong>
-                                <span class="col-xs-6 col-sm-9">{{ (priceNet ? item.amounts[0].priceNet : item.amounts[0].priceGross) | formatMonetary( item.amounts[0].currency ) }}</span>
-                            </div>
-                            <div class="row">
-                                <strong class="col-xs-6 col-sm-3">{{ trans("Ceres::Template.orderConfirmationPeace") }}</strong>
-                                <span class="col-xs-6 col-sm-9">{{ item.quantity }}</span>
-                            </div>
-                            <div class="row">
-                                <strong class="col-xs-6 col-sm-3">{{ trans("Ceres::Template.orderConfirmationTotal") }}</strong>
-                                <strong class="col-xs-6 col-sm-9">{{ (item.quantity * (priceNet ? item.amounts[0].priceNet : item.amounts[0].priceGross)) | formatMonetary( item.amounts[0].currency ) }}</strong>
-                            </div>
-                            {% if item.orderProperties %}
-                                {% for property in item.orderProperties %}
-                                    <div class="row">
-                                        <strong class="col-xs-6 col-sm-3 item-word-break">{{ property.name }}</strong>
-                                        {% if property.value matches '{^[0-9a-f]{8}\/[0-9a-f]{8}\/}' %}
-                                            <span class="col-xs-6 col-sm-9 item-word-break">
-                                                <a href="order-property-file/{{ property.value }}?orderId={{ orderData.order.id }}" target="_blank">
-                                                    <i class="fa fa-external-link" aria-hidden="true"></i>
-                                                    {% set splitPath = property.value |split('/') %}
-                                                    {{ splitPath | last }}
-                                                </a>
-                                            </span>
-                                        {% else %}
-                                            <span class="col-xs-6 col-sm-9 item-word-break">{{ property.value }}</span>
-                                        {% endif %}
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                        </div>
-                    </article>
                 {% endif %}
-            {% endfor %}
+                <!-- ./ORDER PAGINATION -->
+                <hr>
+                <!-- ORDER HISTORY TWIG -->
+                <div class="order-list">
+                    {% for entry in orderList.entries %}
+                        <article class="cmp cmp-order-item">
+                            <div class="item-details small">
+                                <div class="mb-3">
+                                    <h5>{{ trans("Ceres::Template.orderHistoryOrderId") }} {{ entry.order.id }}</h5>
+                                </div>
 
-        </div>
-        <div class="gesamtsumme">
-            <!-- BASKET TOTALS -->
-                    {{ Totals.forOrder(orderData) }}
-            <!-- ./BASKET TOTALS -->
+                                <div class="row">
+                                    <div class="col-12 col-md-8">
+                                        <div class="row">
+                                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryOrderDate") }}</strong>
+                                            <span class="col-6 col-sm-7">{{ entry.order.createdAt | formatDateTime | date( trans("Ceres::Template.devDateTimeFormat") ) }} {{ trans("Ceres::Template.orderHistoryTime") }}</span>
+                                        </div>
+                                        {% if entry.status is defined and entry.status is not empty %}
+                                            <div class="row my-account-no-line">
+                                                <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryStatus") }}</strong>
+                                                <span class="col-6 col-sm-7">{{ entry.status }}</span>
+                                            </div>
+                                        {% endif %}
+                                        {% if entry.paymentMethodName | trim is not empty %}
+                                            <div class="row">
+                                                <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryPaymentMethod") }}</strong>
+                                                <span class="col-6 col-sm-7" id="payment_name_{{ entry.order.id }}">{{ entry.paymentMethodName }}</span>
+                                            </div>
+                                        {% endif %}
+                                        <div class="row">
+                                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryPaymentStatus") }}</strong>
+                                            <span class="col-6 col-sm-7" id="payment_state_{{ entry.order.id }}">
+                                                {% for propertyKey in entry.order.properties %}
+                                                    {% if entry.order.properties[loop.index0].typeId == 4 %}
+                                                        {% set paymentStatus = entry.order.properties[loop.index0].value %}
+                                                        {{ trans("Ceres::Template.orderHistoryPaymentStatus_" ~ entry.order.properties[loop.index0].value) }}
+                                                    {% endif %}
+                                                    {% if entry.order.properties[loop.index0].typeId == 3 %}
+                                                        {% set paymentMethodId = entry.order.properties[loop.index0].value %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {% set currentTemplate = services.template.getCurrentTemplate() %}
+
+                                    <div class="col-12 col-md-4">
+                                        <div class="payment-change-box">
+                                            <button class="btn btn-primary btn-block" @click="setCurrentOrder({{ entry }})">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                                {{ trans("Ceres::Template.orderHistoryOrderDetails") }}
+                                            </button>
+
+                                            {% if entry.isReturnable %}
+                                                <a v-waiting-animation-infinite class="btn btn-primary btn-block" href="{{ urls.returns(entry.order.id) }}">
+                                                    <i class="fa fa-undo" aria-hidden="true"></i>
+                                                    {{ trans("Ceres::Template.orderHistoryReturnSendBack") }}
+                                                </a>
+                                            {% endif %}
+
+                                            <change-payment-method
+                                                :current-order="{{ entry.order | json_encode() }}"
+                                                :change-possible="{{ services.order.allowPaymentMethodSwitchFrom(paymentMethodId, entry.order.id) | json_encode() }}"
+                                                :allowed-payment-methods="{{ services.order.getPaymentMethodListForSwitch(paymentMethodId, entry.order.id) | json_encode() }}"
+                                                :payment-status="{{ paymentStatus | json_encode() }}"
+                                                :current-template="{{ currentTemplate | json_encode() }}"
+                                                :current-payment-method-name="{{ entry.paymentMethodName | json_encode() }}">
+                                            </change-payment-method>
+                                            {{ LayoutContainer.show("Ceres::MyAccount.OrderHistoryPaymentInformation", entry.order) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+                <!-- ./ORDER HISTORY TWIG -->
+            </div>
+
+            <!-- ORDER DETAILS MODAL -->
+            <div class="modal fade" ref="orderDetails" v-if="currentOrder" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">{{ trans("Ceres::Template.orderHistoryOrderDetails") }}</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body" :class="{'loading': isLoading}" style="min-height:350px">
+                            {% include "Ceres::ItemList.Partials.LoadingAnimation" %}
+                            <div id="dynamic-twig-content">
+                                {# DYNAMIC ADD CONTENT #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./ORDER DETAILS MODAL -->
         </div>
     </div>
-</div>
+    {% else %}
+    <p class="text-muted h4 wish-list-no-items-label">{{ trans("Ceres::Template.orderHistoryNoOrders") }}</p>
+    {% endif %}
+</script>
