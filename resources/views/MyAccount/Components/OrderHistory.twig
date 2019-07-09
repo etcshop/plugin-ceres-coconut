@@ -23,16 +23,20 @@
     <div class="form-group">
         <div class="row mb-3">
             <div class="col-12 col-md-12 col-lg-12">
-                <!-- ORDER PAGINATION -->
-                {% if orderList.lastPageNumber > 1 %}
-                <div class="clearfix history-pagination">
-                    <div class="float-left counter">
-                        {{ trans("Ceres::Template.orderHistoryShow", {"countStart": orderList.firstOnPage, "countEnd": orderList.lastOnPage, "orderMaxCount": orderList.totalsCount }) }}
-                    </div>
-                    {% include "Ceres::Category.Item.Partials.Pagination" with { 'currentPage': page } %}
+            <!-- ORDER PAGINATION -->
+            {% if orderList.lastPageNumber > 1 %}
+            <div class="clearfix history-pagination">
+                <div class="pull-xs-left counter">
+                    {{ trans("Ceres::Template.orderHistoryShow", {"countStart": orderList.firstOnPage, "countEnd": orderList.lastOnPage, "orderMaxCount": orderList.totalsCount }) }}
                 </div>
-                {% endif %}
-                <!-- ./ORDER PAGINATION -->
+                <nav class="cmp cmp-paginator row pull-xs-right text-xs-center">
+                    <!--<ul class="pagination nav navbar-left col-xs-12 m-y-0">-->
+                      {% include "CeresCoconut::Category.Item.Partials.PaginationETC" with { 'currentPage': page } %}
+                    <!--</ul>-->
+                </nav>
+            </div>
+            {% endif %}
+            <!-- ./ORDER PAGINATION -->
                 <hr>
                 <!-- ORDER HISTORY TWIG -->
                 <div class="order-list">
