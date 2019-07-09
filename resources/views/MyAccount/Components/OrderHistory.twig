@@ -24,14 +24,18 @@
         <div class="row mb-3">
             <div class="col-12 col-md-12 col-lg-12">
                 <!-- ORDER PAGINATION -->
-                {% if orderList.lastPageNumber > 1 %}
-                <div class="clearfix history-pagination">
-                    <div class="float-left counter">
-                        {{ trans("Ceres::Template.orderHistoryShow", {"countStart": orderList.firstOnPage, "countEnd": orderList.lastOnPage, "orderMaxCount": orderList.totalsCount }) }}
-                    </div>
-                    {% include "Ceres::Category.Item.Partials.Pagination" with { 'currentPage': page } %}
-                </div>
-                {% endif %}
+                  {% if orderList.lastPageNumber > 1 %}
+                  <div class="clearfix history-pagination">
+                      <div class="pull-xs-left counter">
+                          {{ trans("Ceres::Template.orderHistoryShow", {"countStart": orderList.firstOnPage, "countEnd": orderList.lastOnPage, "orderMaxCount": orderList.totalsCount }) }}
+                      </div>
+                      <nav class="cmp cmp-paginator row pull-xs-right text-xs-center">
+                          <!--<ul class="pagination nav navbar-left col-xs-12 m-y-0">-->
+                            {% include "CeresCoconut::Category.Item.Partials.PaginationETC" with { 'currentPage': page } %}
+                          <!--</ul>-->
+                      </nav>
+                  </div>
+                  {% endif %}
                 <!-- ./ORDER PAGINATION -->
                 <hr>
                 <!-- ORDER HISTORY TWIG -->
@@ -103,7 +107,7 @@
                                             </change-payment-method>
                                             {{ LayoutContainer.show("Ceres::MyAccount.OrderHistoryPaymentInformation", entry.order) }}
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </article>
