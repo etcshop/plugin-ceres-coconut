@@ -20,7 +20,6 @@
 {{ component( "Ceres::MyAccount.Components.ChangePaymentMethod" ) }}
 
 <script type="x/template" id="vue-order-historyETC">
-    {{ orderList | json_encode }}
     {% if orderList.totalsCount > 0 %}
     <div class="form-group">
         <div class="row m-b-1">
