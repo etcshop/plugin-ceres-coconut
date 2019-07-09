@@ -57,7 +57,7 @@
                                         {% if entry.status is defined and entry.status is not empty %}
                                           <div class="row my-account-no-line TEST1526">
                                               <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryStatus") }}</span>
-                                              <span class="col-xs-6 col-sm-7">{{ entry.statusName }}</span>
+                                              <span class="col-xs-6 col-sm-7">{{ entry.status }}</span>
                                           </div>
                                       {% endif %}
                                         {% if entry.paymentMethodName | trim is not empty %}
