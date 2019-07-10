@@ -1,7 +1,7 @@
 {{ component( "Ceres::Customer.Components.SalutationSelect" ) }}
 
 <div class="BillingAddressContainer col-lg-12" id="BillingSalutation">
-        <label :for="'txtSalutation' + _uid">
+        <label :for="'txtSalutation' + _uid" v-validate="isInRequiredFields('de', 'billing_address.salutation')">
             ${ transformTranslation("Ceres::Template.addressSalutation", "de", "billing_address.salutation") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.salutation')" class="col-lg-12 col-sm-4">
@@ -13,7 +13,9 @@
         </div>
 </div>
 <div class="BillingAddressContainer col-lg-12" id="BillingCompany">
-        <label :for="'txtCompany' + _uid">{{ trans("Ceres::Template.addressCompany") }}*</label>
+        <label :for="'txtCompany' + _uid"  v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
+            {{ trans("Ceres::Template.addressCompany") }}*
+        </label>
         <div
             class="col-lg-12 col-sm-6"
             v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
@@ -22,7 +24,7 @@
             </div>
         </div>
 
-        <label :for="'txtVatNumber' + _uid">
+        <label :for="'txtVatNumber' + _uid" v-if="(isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company') || isInOptionalFields('de', 'billing_address.vatNumber')">
             ${ transformTranslation("Ceres::Template.addressVatNumber", "de", "billing_address.vatNumber") }
         </label>
         <div
@@ -38,7 +40,7 @@
 </div>
 
 <div class="BillingAddressContainer col-lg-12" id="BillingContact">
-        <label :for="'txtTitle' + _uid">
+        <label :for="'txtTitle' + _uid" v-if="isInOptionalFields('de', 'billing_address.title')">
             ${ transformTranslation("Ceres::Template.addressTitle", "de", "billing_address.title") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.title')" class="col-lg-12 col-sm-4">
@@ -77,7 +79,7 @@
             </div>
         </div>
 
-        <label :for="'txtAdditionalName' + _uid">
+        <label :for="'txtAdditionalName' + _uid" v-if="isInOptionalFields('de', 'billing_address.name4')">
             ${ transformTranslation("Ceres::Template.addressAdditionalName", "de", "billing_address.name4") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.name4')" class="col-lg-12 col-sm-4">
@@ -89,7 +91,7 @@
             </div>
         </div>
 
-        <label :for="'txtBirthdate' + _uid">
+        <label :for="'txtBirthdate' + _uid" v-if="isInOptionalFields('de', 'billing_address.birthday')">
             ${ transformTranslation("Ceres::Template.addressBirthdate", "de", "billing_address.birthday") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.birthday')" class="col-lg-12 col-sm-4">
@@ -100,7 +102,7 @@
                 <input type="date" min="1901-12-14" :max="new Date().toISOString().split('T')[0]" name="birthday" placeholder="{{ trans("Ceres::Template.addressBirthdatePlaceholder") }}" :id="'txtBirthdate' + _uid" :value="value.birthday" @input="emitInputEvent('birthday', $event.target.value)">
             </div>
         </div>
-        <label :for="'txtTelephone' + _uid">
+        <label :for="'txtTelephone' + _uid" v-if="isInOptionalFields('de', 'billing_address.phoneNumber')">
             ${ transformTranslation("Ceres::Template.addressTelephone", "de", "billing_address.phoneNumber") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.phoneNumber')" class="col-lg-12 col-sm-4">
@@ -116,20 +118,20 @@
 <div class="BillingAddressContainer col-lg-12" id="BillingStreetNr">
         <label :for="'txtStreet' + _uid">{{ trans("Ceres::Template.addressStreet") }} {{ trans("Ceres::Template.addressNumber") }}*</label>
         <div class="col-lg-12 col-sm-8">
-            <div class="input-unit" data-validate="text" data-model="address1">
+            <div class="input-unit first" data-validate="text" data-model="address1">
                 <input type="text" name="street" autocomplete="address-line1" :id="'txtStreet' + _uid" :value="value.address1" @input="emitInputEvent('address1', $event.target.value)">
             </div>
         </div>
 
         <div class="col-lg-12 col-sm-4">
-            <div class="input-unit" data-validate="text" data-model="address2">
+            <div class="input-unit second" data-validate="text" data-model="address2">
                 <input type="text" name="housenumber" autocomplete="address-line2" :id="'txtNumber' + _uid" :value="value.address2" @input="emitInputEvent('address2', $event.target.value)">
             </div>
         </div>
 </div>
 
 <div class="BillingAddressContainer col-lg-12" id="BillingAddress3And4">
-        <label :for="'decorateAddress0' + _uid">
+        <label :for="'decorateAddress0' + _uid" v-if="isInOptionalFields('de', 'billing_address.address3')">
             ${ transformTranslation("Ceres::Template.addressAdditionalAddress1", "de", "billing_address.address3") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.address3')" class="col-lg-12 col-sm-6">
@@ -142,7 +144,7 @@
             </div>
         </div>
 
-        <label :for="'decorateAddress1' + _uid">
+        <label :for="'decorateAddress1' + _uid" v-if="isInOptionalFields('de', 'billing_address.address4')">
             ${ transformTranslation("Ceres::Template.addressAdditionalAddress2", "de", "billing_address.address4") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.address4')" class="col-lg-12 col-sm-6">
@@ -158,7 +160,7 @@
 <div class="BillingAddressContainer col-lg-12 col-sm-4" id="BillingZipTown">
         <label :for="'txtZip' + _uid">{{ trans("Ceres::Template.addressZip") }} {{ trans("Ceres::Template.addressPlace") }}*</label>
         <div class="input-unit first postalCode" data-validate="text" data-model="postalCode">
-            <input class="input-unit col-lg-3 col-sm-6" type="text" name="zip" :id="'txtZip' + _uid" :value="value.postalCode" @input="emitInputEvent('postalCode', $event.target.value)">
+            <input class="input-unit" type="text" name="zip" :id="'txtZip' + _uid" :value="value.postalCode" @input="emitInputEvent('postalCode', $event.target.value)">
         </div>
         <div class="input-unit second town" data-validate="text" data-model="town">
             <input type="text" name="town" :id="'txtPlace' + _uid" :value="value.town" @input="emitInputEvent('town', $event.target.value)">
