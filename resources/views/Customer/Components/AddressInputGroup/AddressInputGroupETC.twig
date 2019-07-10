@@ -24,7 +24,7 @@
             {{ value.countryId }}
             <country-select
                 template="#vue-country-select"
-                :selected-country-id="value.countryId"
+                :selected-country-id="1"
                 :selected-state-id="value.stateId"
                 @country-changed="onSelectedCountryChanged($event)"
                 @state-changed="emitInputEvent('stateId', $event)"
