@@ -1,8 +1,8 @@
 {{ component( "Ceres::Customer.Components.SalutationSelect" ) }}
 
-<div class="col-12">
+<div class="col-lg-12">
     <div class="row">
-        <div v-if="isInOptionalFields('de', 'billing_address.salutation')" class="col-12 col-sm-4">
+        <div v-if="isInOptionalFields('de', 'billing_address.salutation')" class="col-lg-12 col-sm-4">
             <div
                 class="input-unit"
                 v-validate="isInRequiredFields('de', 'billing_address.salutation')">
@@ -14,10 +14,10 @@
         </div>
     </div>
 </div>
-<div class="col-12">
+<div class="col-lg-12">
     <div class="row">
         <div
-            class="col-12 col-sm-6"
+            class="col-lg-12 col-sm-6"
             v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
             <div class="input-unit" data-validate="text" data-model="name1">
                 <input type="text" name="company" :id="'txtCompany' + _uid" :value="value.name1" @input="emitInputEvent('name1', $event.target.value)" data-autofocus>
@@ -26,7 +26,7 @@
         </div>
 
         <div
-            class="col-12 col-sm-6"
+            class="col-lg-12 col-sm-6"
             v-if="(isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company') || isInOptionalFields('de', 'billing_address.vatNumber')">
             <div
                 class="input-unit"
@@ -41,9 +41,9 @@
     </div>
 </div>
 
-<div class="col-12">
+<div class="col-lg-12">
     <div class="row">
-        <div v-if="isInOptionalFields('de', 'billing_address.title')" class="col-12 col-sm-4">
+        <div v-if="isInOptionalFields('de', 'billing_address.title')" class="col-lg-12 col-sm-4">
             <div
                 class="input-unit"
                 data-model="title"
@@ -56,13 +56,13 @@
         </div>
 
         <template v-if="areNameFieldsShown('de', 'billing_address')">
-            <div class="col-12 col-sm-4">
+            <div class="col-lg-12 col-sm-4">
                 <div class="input-unit" data-model="name2" v-validate:text="areNameFieldsRequired('de', 'billing_address')">
                     <input type="text" name="firstName" :id="'txtFirstName' + _uid" :value="value.name2"  @input="emitInputEvent('name2', $event.target.value)" data-autofocus>
                     <label :for="'txtFirstName' + _uid">{{ trans("Ceres::Template.addressFirstName") }}<span v-if="areNameFieldsRequired('de', 'billing_address')">*</span></label>
                 </div>
             </div>
-            <div class="col-12 col-sm-4">
+            <div class="col-lg-12 col-sm-4">
                 <div class="input-unit" data-model="name3" v-validate:text="areNameFieldsRequired('de', 'billing_address')">
                     <input type="text" name="lastName" :id="'txtLastName' + _uid" :value="value.name3" @input="emitInputEvent('name3', $event.target.value)">
                     <label :for="'txtLastName' + _uid">{{ trans("Ceres::Template.addressLastName") }}<span v-if="areNameFieldsRequired('de', 'billing_address')">*</span></label>
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div v-if="isInOptionalFields('de', 'billing_address.name4')" class="col-12 col-sm-4">
+        <div v-if="isInOptionalFields('de', 'billing_address.name4')" class="col-lg-12 col-sm-4">
             <div
                 class="input-unit"
                 data-model="name4"
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        <div v-if="isInOptionalFields('de', 'billing_address.birthday')" class="col-12 col-sm-4">
+        <div v-if="isInOptionalFields('de', 'billing_address.birthday')" class="col-lg-12 col-sm-4">
             <div
                 class="input-unit"
                 data-model="birthday"
@@ -105,7 +105,7 @@
                 </label>
             </div>
         </div>
-        <div v-if="isInOptionalFields('de', 'billing_address.phoneNumber')" class="col-12 col-sm-4">
+        <div v-if="isInOptionalFields('de', 'billing_address.phoneNumber')" class="col-lg-12 col-sm-4">
             <div
                 class="input-unit"
                 data-model="telephone"
@@ -119,16 +119,16 @@
     </div>
 </div>
 
-<div class="col-12">
+<div class="col-lg-12">
     <div class="row">
-        <div class="col-12 col-sm-8">
+        <div class="col-lg-12 col-sm-8">
             <div class="input-unit" data-validate="text" data-model="address1">
                 <input type="text" name="street" autocomplete="address-line1" :id="'txtStreet' + _uid" :value="value.address1" @input="emitInputEvent('address1', $event.target.value)">
                 <label :for="'txtStreet' + _uid">{{ trans("Ceres::Template.addressStreet") }}*</label>
             </div>
         </div>
 
-        <div class="col-12 col-sm-4">
+        <div class="col-lg-12 col-sm-4">
             <div class="input-unit" data-validate="text" data-model="address2">
                 <input type="text" name="housenumber" autocomplete="address-line2" :id="'txtNumber' + _uid" :value="value.address2" @input="emitInputEvent('address2', $event.target.value)">
                 <label :for="'txtNumber' + _uid">{{ trans("Ceres::Template.addressNumber") }}*</label>
@@ -137,9 +137,9 @@
     </div>
 </div>
 
-<div class="col-12">
+<div class="col-lg-12">
     <div class="row">
-        <div v-if="isInOptionalFields('de', 'billing_address.address3')" class="col-12 col-sm-6">
+        <div v-if="isInOptionalFields('de', 'billing_address.address3')" class="col-lg-12 col-sm-6">
             <div
                 class="input-unit"
                 data-model="address3"
@@ -151,7 +151,7 @@
             </div>
         </div>
 
-        <div v-if="isInOptionalFields('de', 'billing_address.address4')" class="col-12 col-sm-6">
+        <div v-if="isInOptionalFields('de', 'billing_address.address4')" class="col-lg-12 col-sm-6">
             <div
                 class="input-unit"
                 data-model="address4"
@@ -165,14 +165,14 @@
     </div>
 </div>
 
-<div class="col-12 col-sm-4">
+<div class="col-lg-12 col-sm-4">
     <div class="input-unit" data-validate="text" data-model="postalCode">
         <input type="text" name="zip" :id="'txtZip' + _uid" :value="value.postalCode" @input="emitInputEvent('postalCode', $event.target.value)">
         <label :for="'txtZip' + _uid">{{ trans("Ceres::Template.addressZip") }}*</label>
     </div>
 </div>
 
-<div class="col-12 col-sm-4">
+<div class="col-lg-12 col-sm-4">
     <div class="input-unit" data-validate="text" data-model="town">
         <input type="text" name="town" :id="'txtPlace' + _uid" :value="value.town" @input="emitInputEvent('town', $event.target.value)">
         <label :for="'txtPlace' + _uid">{{ trans("Ceres::Template.addressPlace") }}*</label>
