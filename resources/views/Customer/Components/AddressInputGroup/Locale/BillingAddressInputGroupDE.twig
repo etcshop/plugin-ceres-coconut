@@ -40,7 +40,7 @@
 
 <div class="BillingAddressContainer col-lg-12" id="BillingContact">
         <template v-if="areNameFieldsShown('de', 'billing_address')">
-            <label :for="'txtFirstName' + _uid">{{ trans("Ceres::Template.ETC_addressName") }}<span v-if="areNameFieldsRequired('de', 'billing_address')">*</span></label>
+            <label :for="'txtFirstName' + _uid">{{ trans("CeresCoconut::Template.ETC_addressName") }}<span v-if="areNameFieldsRequired('de', 'billing_address')">*</span></label>
             <div class="input-unit first firstName" data-model="name2" v-validate:text="areNameFieldsRequired('de', 'billing_address')">
                 <input type="text" name="firstName" :id="'txtFirstName' + _uid" :value="value.name2"  @input="emitInputEvent('name2', $event.target.value)" data-autofocus>
             </div>
