@@ -4,12 +4,11 @@
         <label :for="'txtSalutation' + _uid" v-validate="isInRequiredFields('de', 'billing_address.salutation')">
             ${ transformTranslation("Ceres::Template.addressSalutation", "de", "billing_address.salutation") }
         </label>
-        <div v-if="isInOptionalFields('de', 'billing_address.salutation')" class="col-lg-12 col-sm-4">
-            <div
-                class="input-unit"
-                v-validate="isInRequiredFields('de', 'billing_address.salutation')">
+        <div
+            class="input-unit single"
+            v-validate="isInRequiredFields('de', 'billing_address.salutation')"
+            v-if="isInOptionalFields('de', 'billing_address.salutation')">
                 <salutation-select :address-type="addressType" :address-data="value" :enabled-address-fields="optionalAddressFields" :default-salutation="defaultSalutation" @input="emitInputEvent($event.field, $event.value)"></salutation-select>
-            </div>
         </div>
 </div>
 <div class="BillingAddressContainer col-lg-12" id="BillingCompany">
@@ -66,7 +65,7 @@
                 </div>
             </div>
         </template>
-
+<!--
         <label :for="'txtContactPerson' + _uid">
             ${ transformTranslation("Ceres::Template.addressContactPerson", "de", "billing_address.contactPerson") }
         </label>
@@ -78,7 +77,7 @@
                 <input type="text" name="lastName" :id="'txtContactPerson' + _uid" :value="value.contactPerson" @input="emitInputEvent('contactPerson', $event.target.value)">
             </div>
         </div>
-
+-->
         <label :for="'txtAdditionalName' + _uid" v-if="isInOptionalFields('de', 'billing_address.name4')">
             ${ transformTranslation("Ceres::Template.addressAdditionalName", "de", "billing_address.name4") }
         </label>
