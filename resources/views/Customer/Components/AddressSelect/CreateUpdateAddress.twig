@@ -1,0 +1,23 @@
+{{ component( "CeresCoconut::Customer.Components.AddressInputGroup.AddressInputGroup" ) }}
+
+<script type="x/template" id="vue-create-update-address">
+    <form ref="addressForm" @submit.prevent>
+        <address-input-group
+            template="#vue-address-input-group"
+            :address-type="addressType"
+            :modal-type="modalType"
+            :value="addressData"
+            @input="emitInputEvent($event)"
+            :optional-address-fields="optionalAddressFields"
+            :required-address-fields="requiredAddressFields"
+            :default-salutation="defaultSalutation">
+        </address-input-group>
+        <button
+            type="submit"
+            class="btn btn-primary btn-appearance btn-block"
+            @click="validate"
+            :disabled="waiting">
+            {{ trans("Ceres::Template.addressSave") }}
+        </button>
+    </form>
+</script>
