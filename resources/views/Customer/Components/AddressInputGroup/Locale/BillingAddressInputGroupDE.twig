@@ -1,6 +1,6 @@
 {{ component( "Ceres::Customer.Components.SalutationSelect" ) }}
 
-<div class="col-lg-12" id="BillingSalutation">
+<div class="BillingAddressContainer col-lg-12" id="BillingSalutation">
         <label :for="'txtSalutation' + _uid">
             ${ transformTranslation("Ceres::Template.addressSalutation", "de", "billing_address.salutation") }
         </label>
@@ -12,7 +12,7 @@
             </div>
         </div>
 </div>
-<div class="col-lg-12" id="BillingCompany">
+<div class="BillingAddressContainer col-lg-12" id="BillingCompany">
         <label :for="'txtCompany' + _uid">{{ trans("Ceres::Template.addressCompany") }}*</label>
         <div
             class="col-lg-12 col-sm-6"
@@ -37,7 +37,7 @@
         </div>
 </div>
 
-<div class="col-lg-12" id="BillingContact">
+<div class="BillingAddressContainer col-lg-12" id="BillingContact">
         <label :for="'txtTitle' + _uid">
             ${ transformTranslation("Ceres::Template.addressTitle", "de", "billing_address.title") }
         </label>
@@ -113,7 +113,7 @@
         </div>
 </div>
 
-<div class="col-lg-12" id="BillingStreetNr">
+<div class="BillingAddressContainer col-lg-12" id="BillingStreetNr">
         <label :for="'txtStreet' + _uid">{{ trans("Ceres::Template.addressStreet") }} {{ trans("Ceres::Template.addressNumber") }}*</label>
         <div class="col-lg-12 col-sm-8">
             <div class="input-unit" data-validate="text" data-model="address1">
@@ -128,7 +128,7 @@
         </div>
 </div>
 
-<div class="col-lg-12" id="BillingAddress3And4">
+<div class="BillingAddressContainer col-lg-12" id="BillingAddress3And4">
         <label :for="'decorateAddress0' + _uid">
             ${ transformTranslation("Ceres::Template.addressAdditionalAddress1", "de", "billing_address.address3") }
         </label>
@@ -155,7 +155,7 @@
         </div>
 </div>
 
-<div class="col-lg-12 col-sm-4" id="BillingZipTown">
+<div class="BillingAddressContainer col-lg-12 col-sm-4" id="BillingZipTown">
         <label :for="'txtZip' + _uid">{{ trans("Ceres::Template.addressZip") }} {{ trans("Ceres::Template.addressPlace") }}*</label>
         <div class="input-unit first postalCode" data-validate="text" data-model="postalCode">
             <input class="input-unit col-lg-3 col-sm-6" type="text" name="zip" :id="'txtZip' + _uid" :value="value.postalCode" @input="emitInputEvent('postalCode', $event.target.value)">
