@@ -39,45 +39,20 @@
 </div>
 
 <div class="BillingAddressContainer col-lg-12" id="BillingContact">
-        <label :for="'txtTitle' + _uid" v-if="isInOptionalFields('de', 'billing_address.title')">
-            ${ transformTranslation("Ceres::Template.addressTitle", "de", "billing_address.title") }
-        </label>
-        <div v-if="isInOptionalFields('de', 'billing_address.title')" class="col-lg-12 col-sm-4">
-            <div
-                class="input-unit"
-                data-model="title"
-                v-validate:text="isInRequiredFields('de', 'billing_address.title')">
-                <input type="text" name="title" :id="'txtTitle' + _uid" :value="value.title"  @input="emitInputEvent('title', $event.target.value)" data-autofocus>
-            </div>
-        </div>
-
         <template v-if="areNameFieldsShown('de', 'billing_address')">
             <label :for="'txtFirstName' + _uid">{{ trans("Ceres::Template.addressFirstName") }}<span v-if="areNameFieldsRequired('de', 'billing_address')">*</span></label>
-            <div class="col-lg-12 col-sm-4">
-                <div class="input-unit" data-model="name2" v-validate:text="areNameFieldsRequired('de', 'billing_address')">
-                    <input type="text" name="firstName" :id="'txtFirstName' + _uid" :value="value.name2"  @input="emitInputEvent('name2', $event.target.value)" data-autofocus>
-                </div>
+            <div class="input-unit" data-model="name2" v-validate:text="areNameFieldsRequired('de', 'billing_address')">
+                <input type="text" name="firstName" :id="'txtFirstName' + _uid" :value="value.name2"  @input="emitInputEvent('name2', $event.target.value)" data-autofocus>
             </div>
             <label :for="'txtLastName' + _uid">{{ trans("Ceres::Template.addressLastName") }}<span v-if="areNameFieldsRequired('de', 'billing_address')">*</span></label>
-            <div class="col-lg-12 col-sm-4">
-                <div class="input-unit" data-model="name3" v-validate:text="areNameFieldsRequired('de', 'billing_address')">
-                    <input type="text" name="lastName" :id="'txtLastName' + _uid" :value="value.name3" @input="emitInputEvent('name3', $event.target.value)">
-                </div>
+            <div class="input-unit" data-model="name3" v-validate:text="areNameFieldsRequired('de', 'billing_address')">
+                <input type="text" name="lastName" :id="'txtLastName' + _uid" :value="value.name3" @input="emitInputEvent('name3', $event.target.value)">
             </div>
         </template>
-<!--
-        <label :for="'txtContactPerson' + _uid">
-            ${ transformTranslation("Ceres::Template.addressContactPerson", "de", "billing_address.contactPerson") }
-        </label>
-        <div v-else class="col-xs-12 col-sm-8">
-            <div
-                class="input-unit"
-                data-model="contactPerson"
-                v-validate:text="isInRequiredFields('de', 'billing_address.contactPerson')">
-                <input type="text" name="lastName" :id="'txtContactPerson' + _uid" :value="value.contactPerson" @input="emitInputEvent('contactPerson', $event.target.value)">
-            </div>
-        </div>
--->
+
+</div>
+
+<div class="BillingAddressContainer col-lg-12" id="BillingAdditionalData">
         <label :for="'txtAdditionalName' + _uid" v-if="isInOptionalFields('de', 'billing_address.name4')">
             ${ transformTranslation("Ceres::Template.addressAdditionalName", "de", "billing_address.name4") }
         </label>
