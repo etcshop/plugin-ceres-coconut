@@ -117,16 +117,11 @@
 
 <div class="BillingAddressContainer col-lg-12" id="BillingStreetNr">
         <label :for="'txtStreet' + _uid">{{ trans("Ceres::Template.addressStreet") }} {{ trans("Ceres::Template.addressNumber") }}*</label>
-        <div class="col-lg-12 col-sm-8">
-            <div class="input-unit first" data-validate="text" data-model="address1">
-                <input type="text" name="street" autocomplete="address-line1" :id="'txtStreet' + _uid" :value="value.address1" @input="emitInputEvent('address1', $event.target.value)">
-            </div>
+        <div class="input-unit first street" data-validate="text" data-model="address1">
+            <input type="text" name="street" autocomplete="address-line1" :id="'txtStreet' + _uid" :value="value.address1" @input="emitInputEvent('address1', $event.target.value)">
         </div>
-
-        <div class="col-lg-12 col-sm-4">
-            <div class="input-unit second" data-validate="text" data-model="address2">
-                <input type="text" name="housenumber" autocomplete="address-line2" :id="'txtNumber' + _uid" :value="value.address2" @input="emitInputEvent('address2', $event.target.value)">
-            </div>
+        <div class="input-unit second houseNr" data-validate="text" data-model="address2">
+            <input type="text" name="housenumber" autocomplete="address-line2" :id="'txtNumber' + _uid" :value="value.address2" @input="emitInputEvent('address2', $event.target.value)">
         </div>
 </div>
 
