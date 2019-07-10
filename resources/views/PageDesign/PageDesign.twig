@@ -10,6 +10,7 @@
 {{ component( "Ceres::Containers.Components.ContainerItemList" ) }}
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
+{{ component("Ceres::Customer.Components.Contact.AcceptPrivacyPolicyCheck") }}
 
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
@@ -145,7 +146,7 @@
                 </div>
             </div>
             <!-- ./REGISTRATION MODAL -->
-            
+
             <!-- PASSWORD RESET MODAL -->
             <forgot-password-modal></forgot-password-modal>
             <!-- ./PASSWORD RESET MODAL -->
