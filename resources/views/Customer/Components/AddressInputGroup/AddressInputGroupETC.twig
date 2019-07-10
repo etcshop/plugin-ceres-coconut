@@ -2,10 +2,10 @@
 
 {{ component( "Ceres::Customer.Components.CountrySelect" ) }}
 
-<script type="x/template" id="vue-address-input-groupETC">
-    <div class="row test1635">
+<script type="x/template" id="vue-address-input-group">
+    <div class="row Test1332">
         <template v-if="value.showPickupStation && selectedCountry.isoCode2 === 'DE' && addressType === '2'">
-            {% include "Ceres::Customer.Components.AddressInputGroup.Locale.DHLPackingStationAddressInputGroupDE" %}
+            {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.DHLPackingStationAddressInputGroupDE" %}
         </template>
         <template v-else-if="localeToShow == 'DE' && addressType === '1'">
             {% include "CeresCoconut::Customer.Components.AddressInputGroup.Locale.BillingAddressInputGroupDE" %}
