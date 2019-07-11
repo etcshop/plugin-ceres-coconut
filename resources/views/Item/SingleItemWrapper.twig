@@ -3,7 +3,6 @@
 {% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
 
 {% block PartialHead %}
-    {% set itemData = item.documents[0].data %}
     <meta name="description" content="{{ item.documents[0].data.texts.metaDescription }}">
     <meta name="keywords" content="{{ item.documents[0].data.texts.keywords }}">
 
@@ -19,8 +18,7 @@
 {% endblock %}
 
 {% block PageBody %}
-    {{ set_item_data_base(item.documents[0].data) }}
 
-    {% include "CeresCoconut::Item.SingleItemView" %}
+    {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "CeresCoconut::Item.SingleItemView"] %}
 
 {% endblock %}
