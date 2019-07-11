@@ -3,7 +3,7 @@
 {% set deliveryAddressFields = config("Ceres.delivery_address.show") | split(', ') %}
 {% set deliveryAddressFieldsRequired = config("Ceres.delivery_address.require") | split(', ') %}
 
-<script type="x/template" id="vue-country-selectETC">
+<script type="x/template" id="vue-country-select">
 
 <div class="UniversalAddressContainer col-lg-12" id="UniversalAddressCountry">
     <div class="input-unit single" data-validate="" data-model="countryId">
