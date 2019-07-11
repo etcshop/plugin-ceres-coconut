@@ -8,17 +8,17 @@
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 
 <single-item v-cloak item-data="{{ item | json_data }}" attributes-data="{{ attributes | json_data }}" variations="{{ variations | json_data }}">
-    <template #before-price>{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</template>
-    <template #after-price>{{ LayoutContainer.show("Ceres::SingleItem.AfterPrice", item.documents[0].data) }}</template>
-    <template #before-add-to-basket>{{ LayoutContainer.show("Ceres::SingleItem.BeforeAddToBasket", item.documents[0].data) }}</template>
-    <template #after-add-to-basket>{{ LayoutContainer.show("Ceres::SingleItem.AfterAddToBasket", item.documents[0].data) }}</template>
-    <template #additional-content-after-add-to-basket>{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterAddToBasket", item.documents[0].data) }}</template>
-    <template #additional-content-after-vat>{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterVAT", item.documents[0].data) }}</template>
-    <template #add-detail-tabs>{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabs", item.documents[0].data) }}</template>
-    <template #add-detail-tabs-content>{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabsContent", item.documents[0].data) }}</template>
-    <template #feedback-container>{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</template>
+    <template #before-price>{{ LayoutContainer.show("CeresCoconut::SingleItem.BeforePrice", item.documents[0].data) }}</template>
+    <template #after-price>{{ LayoutContainer.show("CeresCoconut::SingleItem.AfterPrice", item.documents[0].data) }}</template>
+    <template #before-add-to-basket>{{ LayoutContainer.show("CeresCoconut::SingleItem.BeforeAddToBasket", item.documents[0].data) }}</template>
+    <template #after-add-to-basket>{{ LayoutContainer.show("CeresCoconut::SingleItem.AfterAddToBasket", item.documents[0].data) }}</template>
+    <template #additional-content-after-add-to-basket>{{ LayoutContainer.show("CeresCoconut::SingleItem.AdditionalContentAfterAddToBasket", item.documents[0].data) }}</template>
+    <template #additional-content-after-vat>{{ LayoutContainer.show("CeresCoconut::SingleItem.AdditionalContentAfterVAT", item.documents[0].data) }}</template>
+    <template #add-detail-tabs>{{ LayoutContainer.show("CeresCoconut::SingleItem.AddDetailTabs", item.documents[0].data) }}</template>
+    <template #add-detail-tabs-content>{{ LayoutContainer.show("CeresCoconut::SingleItem.AddDetailTabsContent", item.documents[0].data) }}</template>
+    <template #feedback-container>{{ LayoutContainer.show("CeresCoconut::SingleItem.FeedbackContainer", item) }}</template>
     <template #image-carousel>
-        {% set ImageCarouselOverride = LayoutContainer.show("Ceres::SingleItem.ImageCarousel") %}
+        {% set ImageCarouselOverride = LayoutContainer.show("CeresCoconut::SingleItem.ImageCarousel") %}
         {% if ImageCarouselOverride|trim is empty %}
             <item-image-carousel image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
         {% else %}
