@@ -42,7 +42,13 @@
         }
     %}
 
-    <checkout v-cloak template="#vue-checkoutETC" :initial-checkout="{{ services.checkout.getCheckout() | json_encode() }}">
+    <checkout
+      v-cloak
+      :initial-checkout="{{ checkout | json_encode() }}"
+      :delivery-address-list="{{ services.customer.getAddresses(2) | json_encode }}"
+      :selected-delivery-address="{{ services.checkout.getDeliveryAddressId() | json_encode }}"
+      :billing-address-list="{{ services.customer.getAddresses(1) | json_encode }}"
+      :selected-billing-address="{{ services.checkout.getBillingAddressId() | json_encode }}">
       <div class="checkout checkout-content checkout-tabpanel" slot-scope="checkoutComp">
         <div class="container" id="checkoutPanelConfirm" aria-labelöledby="checkoutTabConfirm" role="tabpanel" style="display: block;">
           <div class="row">
