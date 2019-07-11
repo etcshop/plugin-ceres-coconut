@@ -40,11 +40,11 @@
     %}
 
     <my-account
+        class="page-content myaccount container-max m-b-3 m-t-1 col-lg-12 col-md-12 col-sm-12"
         :delivery-address-list="{{ services.customer.getAddresses(2) | json_encode }}"
         :selected-delivery-address="{{ services.checkout.getDeliveryAddressId() | json_encode }}"
         :billing-address-list="{{ services.customer.getAddresses(1) | json_encode }}"
         :selected-billing-address="{{ services.checkout.getBillingAddressId() | json_encode }}">
-    <div class="page-content myaccount container-max m-b-3 m-t-1 col-lg-12 col-md-12 col-sm-12">
         <!-- HEADER -->
         <div class="row m-b-3">
             <div class="col-sm-12 col-lg-12">
@@ -120,7 +120,7 @@
         </div>
         <!-- ./ACCOUNT SETTINGS AREA -->
 
-    </div>
+        </my-account>
 
     {% set ordersPerPage = config("Ceres.my_account.orders_per_page") %}
     {% if not (ordersPerPage matches '/^\\d+$/') %}
@@ -135,6 +135,5 @@
             :contact-has-returns="{{ contactHasReturns | json_encode }}">
     </history>
     <!-- ./HISTORY -->
-    </my-account>
 
 {% endblock %}
