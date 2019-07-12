@@ -62,6 +62,8 @@
                 <div id="OrderOverview_ItemsList" class="col-lg-12 col-xs-12">
                   <basket-list template="#vue-basket-list-checkoutETC" size="small"></basket-list>
                   <hr>
+                  <coupon template="#vue-couponETC"></coupon>
+                  <hr>
                   <div id="chk_LegalNotesContainer" class="col-lg-6 col-md-6 col-xs-12">
                     <accept-gtc-check template="#vue-accept-gtc-checkETC"></accept-gtc-check>
                     {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
@@ -80,7 +82,6 @@
                       {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
                     </div>
                   </div>
-                  <coupon template="#vue-couponETC"></coupon>
                 </div>
               </div>
               <div id="checkoutPanelConfirm_Right" class="panel panel-default col-lg-3 col-xs-12 p-x-0">
