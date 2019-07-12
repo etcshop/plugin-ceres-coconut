@@ -27,7 +27,7 @@
               <div id="SubnavigationContent">
                 {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
                 <item-filter-tag-list></item-filter-tag-list>
-                {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
+                {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %} 
                 {% if overrideSearchFilters | trim is empty %}
                   <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
                 {% else %}
