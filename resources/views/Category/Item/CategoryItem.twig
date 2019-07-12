@@ -19,22 +19,21 @@
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
     <div class="container categoryView isGridView isList-1">
-      <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
-        <div class="SubnavigationTitle ITEMFILTERTAGLIST">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</div>
-        <div id="SubnavigationContent">
-          {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
-          <item-filter-tag-list></item-filter-tag-list>
-          {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
-          {% if overrideSearchFilters | trim is empty %}
-            <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
-          {% else %}
-            {{ overrideSearchFilters }}
-          {% endif %}
-        </div>
-      </div>
-
       <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
-        <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
+          <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
+          <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
+            <div class="SubnavigationTitle ITEMFILTERTAGLIST">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</div>
+            <div id="SubnavigationContent">
+              {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
+              <item-filter-tag-list></item-filter-tag-list>
+              {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
+              {% if overrideSearchFilters | trim is empty %}
+                <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
+              {% else %}
+                {{ overrideSearchFilters }}
+              {% endif %}
+            </div>
+          </div>
           <div class="categoryPagination row margin-top-2 margin-bottom-2">
             <nav class="navbar navbar-default">
               {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
