@@ -19,6 +19,7 @@
     {{ component( "CeresCoconut::Basket.Components.BasketListCheckoutETC" ) }}
     {{ component( "CeresCoconut::Basket.Components.BasketTotalsCheckoutETC" ) }}
     {{ component( "CeresCoconut::Checkout.Components.CheckoutETC" ) }}
+    {{ component( "CeresCoconut::Basket.Components.CouponETC" ) }}
 
     {% set optionalInvoiceAddressFields = {
         "de": ceresConfig.addresses.billingAddressShow,
@@ -79,6 +80,7 @@
                       {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
                     </div>
                   </div>
+                  <coupon template="#vue-couponETC"></coupon>
                 </div>
               </div>
               <div id="checkoutPanelConfirm_Right" class="panel panel-default col-lg-3 col-xs-12 p-x-0">
