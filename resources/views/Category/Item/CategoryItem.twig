@@ -19,22 +19,22 @@
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
     <div class="container categoryView isGridView isList-1">
-      <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
           <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
-          <div class="categoryPagination row margin-top-2 margin-bottom-2">
             <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
-              <div class="SubnavigationTitle ITEMFILTERTAGLIST"><span class="hidden-xs">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</span><span class="hidden-lg"><i class="material-icons w3-xxxlarge">filter_list</i></span></div>
+            <div class="SubnavigationTitle ITEMFILTERTAGLIST"><span class="hidden-xs">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</span><span class="hidden-lg"><i class="material-icons w3-xxxlarge">filter_list</i></span></div>
               <div id="SubnavigationContent">
                 {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
                 <item-filter-tag-list></item-filter-tag-list>
-                {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %} 
+                {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
                 {% if overrideSearchFilters | trim is empty %}
                   <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
                 {% else %}
                   {{ overrideSearchFilters }}
                 {% endif %}
               </div>
-            </div>
+          </div>
+          <div class="categoryPagination row margin-top-2 margin-bottom-2 col-lg-9">
             <nav class="navbar navbar-default">
               {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
                 <!--<pagination template="#vue-paginationETC"></pagination>
@@ -80,7 +80,7 @@
                         {% include "Ceres::ItemList.Partials.LoadingAnimation" %}
                     {% endif %}
 
-                    <ul id="twig-rendered-item-list" class="row categoryDetails isGridView">
+                    <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-9">
                         {% for item in itemList %}
                           {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                         {% endfor %}
