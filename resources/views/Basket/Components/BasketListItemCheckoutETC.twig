@@ -21,8 +21,8 @@
             <dt class="col-xs-5 BasketItemArtNr"> {{ trans("CeresCoconut::Template.ETC_Artikelnummer") }} </dt>
             <dd class="col-xs-7"> ${ basketItem.variation.data.variation.number } </dd>
             <dt></dt>
-            <dd class="col-xs-12 BasketItemTechData">
-              ${ basketItem.variation.data.texts.technicalData }
+            <dd class="col-xs-12 BasketItemTechData" v-html="basketItem.variation.data.texts.technicalData">
+
             </dd>
           </dl>
         </div>
