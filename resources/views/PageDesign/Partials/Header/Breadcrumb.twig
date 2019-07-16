@@ -2,10 +2,10 @@
 {% set homepageURL = services.url.getHomepageURL() %}
 
 {% if categoryBreadcrumbs is not empty %}
-    <div class="breadcrumbs 1" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
+    <div class="breadcrumbs_main 1" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="col-sm-12 col-md-12 col-lg-12 breadcrumbs_container">
             <ol class="breadcrumbs">
               <li id="Breadcrumbs_back"><a title="zurück">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
               <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_Start") }}</a></li>
