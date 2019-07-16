@@ -80,7 +80,7 @@
               </tr>
               <tr>
                 <td>{{ trans("CeresCoconut::Template.ETC_Bewertung") }}:</td>
-                <td id="SingleArticleRatingImage"><span class="ItemRatingIconContainer ItemRatingContainer_4.6"> <slot name="AdditionalContentAfterVAT"></slot> </span></td>
+                <td id="SingleArticleRatingImage"><span class="ItemRatingIconContainer ItemRatingContainer_4.6"> <slot name="additional-content-after-vat"></slot> </span></td>
               </tr>
               <tr>
                 <td colspan="2"><div id="SingleArticle_Trust"> <img src="//www.etc-shop.de/img/base/tskaeuferschutz.png" alt="Trusted Shops Käuferschutz">
@@ -93,7 +93,7 @@
         </div>
         <!--TODO <div id="SingleArticle_Price" :class="isInWishList">-->
         <div id="SingleArticle_Price">
-          <slot name="BeforePrice"></slot>
+          <slot name="before-price"></slot>
           <div id="SingleArticle_Price_UVPSaving"> <!--UVP: 0,01 &euro;<br />  Sie sparen: <span class="text_ETCColor">0,00 (0,00 &euro;)</span>--> </div>
           <!--<add-to-wish-list template="#vue-add-to-wish-listETC" :variation-id="currentVariation.variation.id" :is-active="isInWishList"></add-to-wish-list>-->
           <add-to-wish-list template="#vue-add-to-wish-listETC" :variation-id="currentVariation.variation.id"></add-to-wish-list>
@@ -121,9 +121,9 @@
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_variationId" value="35165">
             </span>
           </div>
-          <slot name="AfterPrice"></slot>
+          <slot name="after-price"></slot>
           <div class="row m-y-1">
-              <slot name="BeforeAddToBasket"></slot>
+              <slot name="before-add-to-basket"></slot>
                       {{ AddToBasket.printVueComponent(
                           "currentVariation",
                           false,
@@ -134,9 +134,9 @@
                               ":has-price": "currentVariation | hasItemDefaultPrice"
                           }
                       ) }}
-              <slot name="AfterAddToBasket"></slot>
+              <slot name="after-add-to-basket"></slot>
           </div>
-          <slot name="AdditionalContentAfterAddToBasket"></slot>
+          <slot name="additional-content-after-add-to-basket"></slot>
           <span id="SingleArticle_Price_Vat">{{ trans("CeresCoconut::Template.ETC_InclMwSt") }} 19% <a href="https://www.etc-shop.de/content/zahlungsinformationen/">, {{ trans("CeresCoconut::Template.ETC_ZzglVersand") }}</a></span>
 
           <slot name="CrossSellingAccessory"></slot>
@@ -170,7 +170,7 @@
         </label>
         <div class="Article_Content test1540" id="Article_Content_Details" itemprop="description">
           <span v-html="currentVariation.texts.description"></span>
-          <slot name="AddDetailTabs"></slot>
+          <slot name="add-detail-tabs"></slot>
 
           <div id="VariationProperties" v-for="tag in currentVariation.tags" v-if="tag.id == 279">
             <div class="VariationProperty test1139">
@@ -210,7 +210,7 @@
           <div class="container_centered">
             <div class="ContentPage" id="ContentBewertung">
               <div class="ContentCaption">{{ trans("CeresCoconut::Template.ETC_Bewertung") }}</div>
-              <slot name="FeedbackContainer"></slot>
+              <slot name="feedback-container"></slot>
             </div>
           </div>
         </div>
@@ -220,7 +220,7 @@
 
               <contact-form template="#vue-contact-form-single-item"></contact-form>
         </div>
-        <slot name="AddDetailTabsContent"></slot>
+        <slot name="add-detail-tabs-content"></slot>
       </div>
     </div>
     <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 SingleArticle_CrossSelling">
