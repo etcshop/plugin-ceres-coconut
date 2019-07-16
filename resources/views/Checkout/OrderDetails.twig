@@ -1,4 +1,11 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Ceres::Checkout.Macros.OrderTotals" as Totals %}
+
+{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
+
+{{ component( "Ceres::Item.Components.ItemBundle" ) }}
+
+{% set basketTotalsCurrency = totals.currency %}
 
 {% set loadingAnimationType = config("Ceres.item.loading_animation_type") %}
 
