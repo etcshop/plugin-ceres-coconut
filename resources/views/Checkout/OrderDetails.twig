@@ -7,7 +7,7 @@
 {% set basketTotalsCurrency = totals.currency %}
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 OrderInformation">
         <div class="card small">
             <!-- ORDER -->
             <div class="card-header">
@@ -131,7 +131,7 @@
         </div>
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 OrderItemsTotals">
         <div class="confirmation-order-list">
 
             {% for item in orderData.order.orderItems %}
