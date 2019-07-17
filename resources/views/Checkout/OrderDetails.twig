@@ -135,7 +135,7 @@
     <div class="col-md-12 OrderItemsTotals">
       <div class="confirmation-order-list">
         <div class="col-md-6">
-            <h3>{{ trans("Ceres::Template.checkoutSum") }}</h3>
+            <h3>{{ trans("Ceres::Template.ETC_Artikel") }}</h3>
             {% for item in orderData.order.orderItems %}
                 {% if item.itemVariationId > 0 and not ('[-]' in item.orderItemName) %}
                     {% set currentVariationId = item.itemVariationId | trimNewlines %}
