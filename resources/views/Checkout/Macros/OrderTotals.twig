@@ -23,8 +23,6 @@
                     {{ totals.shippingGross | formatMonetary( totals.currency ) }}
                 </dd>
 
-                <hr>
-
                 {% set grossNet = LayoutContainer.show("Ceres::OrderConfirmation.GrossNetReplace", orderData.order) %}
                 {% if grossNet|trim is not empty %}
                     {{ grossNet }}
@@ -38,6 +36,18 @@
                         </dd>
                     {% endif %}
 
+                    <hr>
+
+                    <div class="totalSum">
+                        <hr>
+                        <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                            {{ trans("Ceres::Template.checkoutTotalSum") }} ({{ trans("Ceres::Template.checkoutGross") }})
+                        </dt><!--
+                        --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
+                            {{ totals.totalGross | formatMonetary( totals.currency ) }}
+                        </dd>
+                    </div>
+
                     {% if not orderData.order.amounts[0].isNet %}
                         <div class="vatTotals">
                             {% for vat in totals.vats %}
@@ -50,16 +60,6 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-
-                    <div class="totalSum">
-                        <hr>
-                        <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
-                            {{ trans("Ceres::Template.checkoutTotalSum") }} ({{ trans("Ceres::Template.checkoutGross") }})
-                        </dt><!--
-                        --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
-                            {{ totals.totalGross | formatMonetary( totals.currency ) }}
-                        </dd>
-                    </div>
                 {% endif %} <!-- GrossNetReplace|else -->
                 {% if totals.couponType == 'sales' and (totals.couponValue | trimNewlines) != 0 %}
                     <dt>
