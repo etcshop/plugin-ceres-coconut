@@ -129,12 +129,12 @@
 
             </div>
             <!-- ORDER -->
-        </div> 
+        </div>
 
     </div>
     <div class="col-md-12 OrderItemsTotals">
-        <div class="confirmation-order-list">
-
+      <div class="confirmation-order-list">
+        <div class="col-md-6">
             {% for item in orderData.order.orderItems %}
                 {% if item.itemVariationId > 0 and not ('[-]' in item.orderItemName) %}
                     {% set currentVariationId = item.itemVariationId | trimNewlines %}
@@ -195,8 +195,10 @@
                     </article>
                 {% endif %}
             {% endfor %}
-
+          </div>
+          <div class="col-md-6">
             {{ Totals.forOrder(orderData) }}
+          </div>
         </div>
     </div>
 </div>
