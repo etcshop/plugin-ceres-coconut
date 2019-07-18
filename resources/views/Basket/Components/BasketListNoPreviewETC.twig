@@ -4,7 +4,7 @@
 {{ component( "CeresCoconut::Containers.Components.ContainerItemListETC" ) }}
 
 <script type="x/template" id="vue-basket-list-nopreviewETC">
-  <div id="chk_Artikelliste" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 panel-body" data-plenty-checkout-template="BasketItemsList">
+  <div id="chk_Artikelliste" class="col-lg-8 col-md-7 col-sm-12 col-xs-12 panel-body" data-plenty-checkout-template="BasketItemsList">
     <div>
       <basket-list-item template="#vue-basket-list-item-nopreviewETC" v-for="basketItem in basketItems" :key="basketItem.id" :basket-item="basketItem" :size="size" :is-preview="isPreview" language="{{ services.sessionStorage.getLang() }}"></basket-list-item>
       <coupon template="#vue-couponETC"></coupon>
