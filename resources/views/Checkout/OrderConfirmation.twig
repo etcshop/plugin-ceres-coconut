@@ -113,13 +113,13 @@
 
     {% if overrideConfirmation|trim is empty %}
         <div class="page-content myaccount container-max m-b-3 m-t-1 p-b-3" id="OrderConfirmation_Container">
-            <div class="row m-b-3">
+            <div class="row m-b-3 rowCaption">
               <div class="col-sm-12 col-lg-12">
                 <div style="display: none">{{ data | json_encode }}</div>
                 <div class="ContentCaption">{{ trans("CeresCoconut::Template.orderConfirmationTitle") }}</div>
               </div>
             </div>
-            <div class="row m-b-3">
+            <div class="row m-b-3 rowInfo">
                 <div class="col-xs-12 col-sm-12 col-lg-12 OrderConfirmation_Intro">
                     <h1 class="h2">{{ trans("Ceres::Template.orderConfirmationThanks") }}</h1>
                     <p>{{ trans("Ceres::Template.orderConfirmationWillBeProcessed") }}</p>
@@ -131,7 +131,7 @@
 
             {% include "CeresCoconut::Checkout.OrderDetails" with { orderData: data } %}
 
-            <div class="row">
+            <div class="row rowTrustedShops">
               <div class="col-md-6 m-b-2">
                 <div class="card small">
                   <div class="card-block">
@@ -150,9 +150,9 @@
             {% if addContentAfterOrderDetailsRow|trim is not empty %}
             <div class="row">
               {{ addContentAfterOrderDetailsRow }}
-            </div> 
+            </div>
             {% endif %}
-            <div class="row" id="OrderConfirmation_Bottom_Buttons">
+            <div class="row rowBottomButtons" id="OrderConfirmation_Bottom_Buttons">
                 {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
                 <div id="OrderConfirmation_ToHomeButton" class="col-xs-6 col-md-4 {% if loggedIn %}offset-md-2{% else %}offset-xs-3 offset-md-4{% endif %}">
                     <a v-waiting-animation-infinite href="{{ homepageURL }}" type="" class="btn btn-primary btn-block bg-primary">
