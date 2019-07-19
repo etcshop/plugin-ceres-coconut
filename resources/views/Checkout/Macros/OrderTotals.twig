@@ -11,14 +11,14 @@
           <div class="itemSum">
             <dl>
                 <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
-                    {{ trans("Ceres::Template.checkoutValue") }} ({{ trans("Ceres::Template.checkoutGross") }})
+                    {{ trans("Ceres::Template.ETC_Warenwert") }}
                 </dt><!--
             --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
                     {{ totals.itemSumGross | formatMonetary( totals.currency ) }}
                 </dd>
 
                 <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
-                    {{ trans("Ceres::Template.orderConfirmationShippingCosts") }} ({{ trans("Ceres::Template.checkoutGross") }})
+                    {{ trans("Ceres::Template.ETC_Versandkosten") }}
                 </dt><!--
             --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
                     {{ totals.shippingGross | formatMonetary( totals.currency ) }}
@@ -30,7 +30,7 @@
                 {% else %}
                     {% if totals.couponType == 'promotional' and (totals.couponValue | trimNewlines) != 0 %}
                         <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
-                            {{ trans("Ceres::Template.checkoutCoupon") }}
+                            {{ trans("Ceres::Template.ETC_GutschriftGutschein") }}
                         </dt><!--
                         --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
                             {{ totals.couponValue | formatMonetary( totals.currency ) }}
@@ -40,7 +40,7 @@
           </div>
                     <div class="totalSum">
                         <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
-                            {{ trans("Ceres::Template.checkoutTotalSum") }} ({{ trans("Ceres::Template.checkoutGross") }})
+                            {{ trans("Ceres::Template.ETC_Gesamtbetrag") }} ({{ trans("Ceres::Template.checkoutGross") }})
                         </dt><!--
                         --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
                             {{ totals.totalGross | formatMonetary( totals.currency ) }}
@@ -51,7 +51,7 @@
                         <div class="vatTotals">
                             {% for vat in totals.vats %}
                                 <dt>
-                                    {{ trans("Ceres::Template.orderConfirmationVAT") }} {{ vat.rate }}%
+                                    {{ trans("Ceres::Template.basketIncludeAbbr") }} {{ vat.rate }}%
                                 </dt><!--
                                 --><dd>
                                     {{ vat.value | formatMonetary( totals.currency ) }}
