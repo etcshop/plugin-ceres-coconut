@@ -134,7 +134,7 @@
     </div>
     <div class="col-md-12 col-lg-6 OrderItemsTotals">
       <div class="confirmation-order-list">
-        <div class="col-md-6 col-lg-6">
+        <div class="col-md-6 col-lg-12">
             <h3>{{ trans("CeresCoconut::Template.ETC_Artikel") }}</h3>
             {% for item in orderData.order.orderItems %}
                 {% if item.itemVariationId > 0 and not ('[-]' in item.orderItemName) %}
@@ -197,7 +197,7 @@
                 {% endif %}
             {% endfor %}
           </div>
-          <div class="col-md-6 col-lg-6">
+          <div class="col-md-6 col-lg-12">
             {{ Totals.forOrder(orderData) }}
           </div>
         </div>
