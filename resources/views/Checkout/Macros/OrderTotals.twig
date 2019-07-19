@@ -51,7 +51,7 @@
                         <div class="vatTotals">
                             {% for vat in totals.vats %}
                                 <dt>
-                                    {{ trans("Ceres::Template.basketIncludeAbbr") }} {{ vat.rate }}%
+                                    {{ trans("Ceres::Template.basketIncludeAbbr") }} {{ trans("Ceres::Template.basketVAT") }} {{ vat.rate }}%
                                 </dt><!--
                                 --><dd>
                                     {{ vat.value | formatMonetary( totals.currency ) }}
