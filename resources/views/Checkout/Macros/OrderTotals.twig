@@ -40,7 +40,7 @@
           </div>
                     <div class="totalSum">
                         <dt{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
-                            {{ trans("CeresCoconut::Template.ETC_Gesamtbetrag") }} ({{ trans("CeresCoconut::Template.checkoutGross") }})
+                            {{ trans("CeresCoconut::Template.ETC_Gesamtbetrag") }}
                         </dt><!--
                         --><dd{% if not orderData.highlightNetPrices %} class="font-weight-bold"{% endif %}>
                             {{ totals.totalGross | formatMonetary( totals.currency ) }}
@@ -62,13 +62,13 @@
                 {% endif %} <!-- GrossNetReplace|else -->
                 {% if totals.couponType == 'sales' and (totals.couponValue | trimNewlines) != 0 %}
                     <dt>
-                        {{ trans("CeresCoconut::Template.checkoutCoupon") }}
+                        {{ trans("Ceres::Template.checkoutCoupon") }}
                     </dt><!--
                           --><dd>
                     {{ totals.couponValue | formatMonetary( totals.currency ) }}
                 </dd>
                     <dt>
-                        <strong>{{ trans("CeresCoconut::Template.checkoutOpenAmount") }}</strong>
+                        <strong>{{ trans("Ceres::Template.checkoutOpenAmount") }}</strong>
                     </dt><!--
                             --><dd>
                     <strong>{{ totals.openAmount | formatMonetary( totals.currency ) }}</strong>
