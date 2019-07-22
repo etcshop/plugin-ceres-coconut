@@ -11,7 +11,7 @@
                 <salutation-select :address-type="addressType" :address-data="value" :enabled-address-fields="optionalAddressFields" :default-salutation="defaultSalutation" @input="emitInputEvent($event.field, $event.value)"></salutation-select>
         </div>
 </div>
-<div class="BillingAddressContainer col-lg-12" id="BillingCompany" v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
+<div class="BillingAddressContainer col-lg-12 TEST1612" id="BillingCompany" v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
         <label :for="'txtCompany' + _uid"  v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
             {{ trans("Ceres::Template.addressCompany") }}*
         </label>
