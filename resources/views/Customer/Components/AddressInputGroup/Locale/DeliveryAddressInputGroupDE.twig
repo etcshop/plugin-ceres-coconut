@@ -19,7 +19,7 @@
         <label :for="'txtCompany' + _uid" v-if="isInOptionalFields('de', 'delivery_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'delivery_address.name1') && !isInOptionalFields('de', 'delivery_address.salutation')">
             {{ trans("Ceres::Template.addressCompany") }}*
         </label>
-        <div class="input-unit" data-validate="text" data-model="name1">
+        <div class="input-unit single" data-validate="text" data-model="name1">
                 <input type="text" name="company" :id="'txtCompany' + _uid" :value="value.name1" @input="emitInputEvent('name1', $event.target.value)" data-autofocus>
         </div>
 </div>
@@ -28,7 +28,7 @@
             ${ transformTranslation("Ceres::Template.addressVatNumber", "de", "delivery_address.vatNumber") }
         </label>
             <div
-                class="input-unit"
+                class="input-unit single"
                 data-model="vatNumber"
                 v-validate:text="isInRequiredFields('de', 'delivery_address.vatNumber')">
                 <input type="text" name="vatNumber" :id="'txtVatNumber' + _uid" :value="value.vatNumber" @input="emitInputEvent('vatNumber', $event.target.value)" data-autofocus>
