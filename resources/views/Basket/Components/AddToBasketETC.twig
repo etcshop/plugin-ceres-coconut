@@ -127,6 +127,10 @@ Vue.component("add-to-basketetc", {
     hasPrice: {
       type: Boolean,
       default: true
+    },
+    fromSingleItem: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -170,11 +174,20 @@ Vue.component("add-to-basketetc", {
             orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
           }
         });
-        var basketObject = {
-          variationId: document.querySelector("input[name=VarIDforBasket]").value,
-          quantity: this.quantity,
-          basketItemOrderParams: this.orderProperties
-        };
+        if (this.fromSingleItem)
+        {
+          var basketObject = {
+            variationId: document.querySelector("input[name=VarIDforBasket]").value,
+            quantity: this.quantity,
+            basketItemOrderParams: this.orderProperties
+          };
+        }
+        else {
+          var basketObject = {
+            variationId: this.variationId,
+            quantity: this.quantity,
+            basketItemOrderParams: this.orderProperties
+        }
         this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
           var basketItem = response.find(function (item) {
             return item.variationId === _this.variationId;
