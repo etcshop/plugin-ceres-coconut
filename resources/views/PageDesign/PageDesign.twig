@@ -302,9 +302,9 @@
                     <span id="PlentyWebMyAccountMyAccountLogoutContainer">
                        {% set loginURL = "" %}
                        {% if lang != 'de' %}
-                          {% set loginURL = "https://www.etc-shop.de/" + lang + "/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account#sc_Kundendaten"%}
+                          {% set loginURL = "https://www.etc-shop.de/" + lang + "/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account?sc_Kundendaten"%}
                        {% else %}
-                          {% set loginURL = "https://www.etc-shop.de/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account#sc_Kundendaten"%}
+                          {% set loginURL = "https://www.etc-shop.de/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account?sc_Kundendaten"%}
                        {% endif %}
                   	   <a class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" href="{{ loginURL }}">{{ trans("Ceres::Template.login") }}</a>
                      </span>

@@ -13,10 +13,6 @@
   {% set classPageNumberLength = "einstellig" %}
 {% endif %}
 
-{% set hrefAdd = "" %}
-{% if (currTpl == "tpl.my-account") %}
-  {% set hrefAdd = "#sc_Auftraghistorie" %}
-{% endif %}
 
 {% if pageMax > 1 %}
       <ul class="pagination nav navbar-left col-lg-4 p-x-0">
@@ -24,7 +20,7 @@
             <!-- FIRST PAGE LINK -->
             {% if page > 2 and config('Ceres.pagination.showFirstPage') == "true" %}
                 <li class="nav_first">
-                    <a rel="first" href="{{ baseURL ~ queryString({ 'page': null }) }}{{hrefAdd}}">
+                    <a rel="first" href="{{ baseURL ~ queryString({ 'page': null }) }}">
                       <i class="material-icons skip_prev">skip_previous</i>
                     </a>
                 </li>
@@ -34,7 +30,7 @@
             <!-- PREV LINK -->
             {% if page > 1 %}
                 <li class="nav_prev">
-                    <a rel="prev" href="{{ baseURL ~ queryString({ 'page': prevPage }) }}{{hrefAdd}}">
+                    <a rel="prev" href="{{ baseURL ~ queryString({ 'page': prevPage }) }}">
                       <i class="material-icons">play_arrow</i>
                     </a>
                 </li>
@@ -47,17 +43,17 @@
               <div class="articlePages">
                 <!-- PAGINATION -->
                 {% if page > 1 %}
-                  <a class="articlePages_LinkElement articlePages_Link page-link {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': prevPage }) }}{{hrefAdd}}">{{ page - 1 }}</a>
+                  <a class="articlePages_LinkElement articlePages_Link page-link {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': prevPage }) }}">{{ page - 1 }}</a>
                 {% endif %}
 
                 <a class="articlePages_LinkElement articlePages_Link page-link articlePages_activeLink {{ classPageNumberLength }}">{{ page }}</a>
 
                 {% if page+1 <= pageMax %}
-                  <a class="articlePages_LinkElement articlePages_Link page-link {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': currentPage + 1 }) }}{{hrefAdd}}">{{ page + 1 }}</a>
+                  <a class="articlePages_LinkElement articlePages_Link page-link {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': currentPage + 1 }) }}">{{ page + 1 }}</a>
                 {% endif %}
 
                 {% if page == 1 and pageMax >= 3 %}
-                  <a class="articlePages_LinkElement articlePages_Link page-link {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': currentPage + 2 }) }}{{hrefAdd}}">{{ page + 2 }}</a>
+                  <a class="articlePages_LinkElement articlePages_Link page-link {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': currentPage + 2 }) }}">{{ page + 2 }}</a>
                 {% endif %}
 
                 <!-- ./PAGINATION -->
@@ -68,7 +64,7 @@
             <!-- NEXT LINK -->
             {% if page < pageMax-1 and config('Ceres.pagination.showLastPage') == "true" %}
                 <li class="nav_next">
-                    <a rel="next" href="{{ baseURL ~ queryString({ 'page': currentPage + 1 }) }}{{hrefAdd}}">
+                    <a rel="next" href="{{ baseURL ~ queryString({ 'page': currentPage + 1 }) }}">
                        <i class="material-icons">play_arrow</i>
                     </a>
                 </li>
@@ -78,7 +74,7 @@
             <!-- LAST PAGE LINK -->
             {% if page < pageMax-2 and config('Ceres.pagination.showLastPage') == "true" %}
                 <li class="nav_last">
-                    <a rel="last" href="{{ baseURL ~ queryString({ 'page': pageMax }) }}{{hrefAdd}}">
+                    <a rel="last" href="{{ baseURL ~ queryString({ 'page': pageMax }) }}">
                       <i class="material-icons skip_next">skip_next</i>
                     </a>
                 </li>
