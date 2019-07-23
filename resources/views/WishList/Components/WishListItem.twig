@@ -24,15 +24,15 @@
           <div class="ItemsDescriptionAvalability Value col-lg-8 col-md-8 col-xs-7 p-l-0 p-r-0">${ wishListItem.data.variation.availability.names.name }</div>
         </div>
       </div>
-      <div id="wishListAddToBasket" class="WatchListAddToBasket col-lg-3 col-md-3 col-xs-5">
+      <div id="wishListAddToBasket">
           {{ AddToBasket.printVueComponentWishList(
-                "wishListItem.data.variation.id",
+                "wishListItem.data.id",
                 "wishListItem.data",
                 false,
                 true,
                 {
                     ":missing-order-properties":"",
-                    ":is-variation-selected": "wishListItem.data.variation.filter.isSalable",
+                    ":is-variation-selected": "isVariationSelected && wishListItem.data.variation.filter.isSalable",
                     ":has-price": "wishListItem.data.variation"
                 }
           ) }}
