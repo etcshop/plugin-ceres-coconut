@@ -37,6 +37,7 @@
             }
         ) }}
         <a class="PlentyWebshopButton delete" id="button_deleteWebMyAccountWatchListDelete" @click="removeItem({id: wishListItem.data.variation.id, wishListItem: wishListItem, index: index})">
+          {{ trans("CeresCoconut::Template.ETC_ArtikelEntfernen") }}
           <i class="material-icons MyAccountIcon_delete">delete</i>
         </a>
       </div>
