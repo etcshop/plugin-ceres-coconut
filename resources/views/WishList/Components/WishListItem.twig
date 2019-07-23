@@ -32,8 +32,8 @@
                 true,
                 {
                     ":missing-order-properties":"",
-                    ":is-variation-selected": "wishListItem.data.variation.filter.isSalable",
-                    ":has-price": "wishListItem.data.variation"
+                    ":is-variation-selected": "true",
+                    ":has-price": "wishListItem.data.variation | hasItemDefaultPrice"
                 }
           ) }}
       </div>
