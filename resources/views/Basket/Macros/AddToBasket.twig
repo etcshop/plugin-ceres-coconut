@@ -39,7 +39,7 @@
 {% endmacro %}
 {% macro printVueComponentWishList( varId, itemObject, useLargeScale, showQuantity, options ) %}
     <add-to-basketetc
-            :from-single-item=true
+            :from-single-item=false
             :variation-id="{{ varId }}"
             :is-salable="!!{{ itemObject }}.filter && {{ itemObject }}.filter.isSalable"
             :has-children="!!{{ itemObject }}.filter && {{ itemObject }}.filter.hasActiveChildren"
