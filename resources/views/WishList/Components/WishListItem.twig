@@ -1,3 +1,4 @@
+{% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %}
 {{ component( "CeresCoconut::Item.Components.QuantityInput" ) }}
 <transition-group name="wish-list-item-transition" tag="div">
     <article v-for="(wishListItem, index) in wishListItems" :key="wishListItem.id" class="wish-list-item col-xs-12" :id="'article_' + index ">
@@ -23,6 +24,18 @@
           <div class="ItemsDescriptionAvalability Value col-lg-8 col-md-8 col-xs-7 p-l-0 p-r-0">${ wishListItem.data.variation.availability.names.name }</div>
         </div>
       </div>
+
+      {{ AddToBasket.printVueComponent(
+          "currentVariation",
+          false,
+          true,
+          {
+              ":missing-order-properties":"",
+              ":is-variation-selected": "isVariationSelected && wishListItem.data.variation.filter.isSalable",
+              ":has-price": "wishListItem.data.variation"
+          }
+      ) }}
+
       <div class="WatchListDelete col-lg-3 col-md-3 col-xs-5">
         <a class="PlentyWebshopButton delete" id="button_deleteWebMyAccountWatchListDelete" @click="removeItem({id: wishListItem.data.variation.id, wishListItem: wishListItem, index: index})">
           <i class="material-icons MyAccountIcon_delete">delete</i>
