@@ -26,14 +26,14 @@
       </div>
       <div id="wishListAddToBasket">
           {{ AddToBasket.printVueComponentWishList(
-                "wishListItem.data.id",
+                "wishListItem.data.variation.id",
                 "wishListItem.data",
                 false,
                 true,
                 {
                     ":missing-order-properties":"",
                     ":is-variation-selected": "wishListItem.data.variation.filter.isSalable",
-                    ":has-price": "wishListItem.data.variationn | hasItemDefaultPrice"
+                    ":has-price": "wishListItem.data.variation"
                 }
           ) }}
       </div>
