@@ -311,20 +311,20 @@
 
                  <div style="display: none">{{ itemsLastSeen | json_encode }}</div>
                  {% if itemsLastSeen %}
-                   <start-box-item-list class="StartBoxItemList LastSeenList col-xs-6 col-sm-6 col-lg-3" :items="{{ itemsLastSeen | json_encode }}" :label="{{ itemLastSeenLbl | json_encode }}"></start-box-item-list>
+                   <start-box-item-list class="StartBoxItemList LastSeenList col-xs-12 col-sm-6 col-lg-3" :items="{{ itemsLastSeen | json_encode }}" :label="{{ itemLastSeenLbl | json_encode }}"></start-box-item-list>
                  {% else %}
                    {% if itemsP2B1 != 'NULL' %}
-                      <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-6 col-lg-3" :items="{{ itemsP2B1 | json_encode }}" :label="{{ lblP2B1 | json_encode }}" :alt-url="{{ altUrlP2B1 | json_encode }}"></start-box-item-list>
+                      <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-12 col-lg-3" :items="{{ itemsP2B1 | json_encode }}" :label="{{ lblP2B1 | json_encode }}" :alt-url="{{ altUrlP2B1 | json_encode }}"></start-box-item-list>
                    {% endif %}
                  {% endif %}
                  {% if itemsP2B2 != 'NULL' %}
-                    <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-6 col-lg-3" :items="{{ itemsP2B2 | json_encode }}" :label="{{ lblP2B2 | json_encode }}" :alt-url="{{ altUrlP2B2 | json_encode }}"></start-box-item-list>
+                    <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-12 col-lg-3" :items="{{ itemsP2B2 | json_encode }}" :label="{{ lblP2B2 | json_encode }}" :alt-url="{{ altUrlP2B2 | json_encode }}"></start-box-item-list>
                  {% endif %}
                  {% if itemsP2B3 != 'NULL' %}
-                    <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-6 col-lg-3" :items="{{ itemsP2B3 | json_encode }}" :label="{{ lblP2B3 | json_encode }}" :alt-url="{{ altUrlP2B3 | json_encode }}"></start-box-item-list>
+                    <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-12 col-lg-3" :items="{{ itemsP2B3 | json_encode }}" :label="{{ lblP2B3 | json_encode }}" :alt-url="{{ altUrlP2B3 | json_encode }}"></start-box-item-list>
                  {% endif %}
                  {% if itemsP2B4 != 'NULL' %}
-                    <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-6 col-lg-3" :items="{{ itemsP2B4 | json_encode }}" :label="{{ lblP2B4 | json_encode }}" :alt-url="{{ altUrlP2B4 | json_encode }}"></start-box-item-list>
+                    <start-box-item-list class="StartBoxItemList col-xs-6 col-sm-12 col-lg-3" :items="{{ itemsP2B4 | json_encode }}" :label="{{ lblP2B4 | json_encode }}" :alt-url="{{ altUrlP2B4 | json_encode }}"></start-box-item-list>
                  {% endif %}
               </div>
            </div>
