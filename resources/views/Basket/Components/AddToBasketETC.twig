@@ -159,7 +159,7 @@ Vue.component("add-to-basketetc", {
     };
   },
   methods: {
-    /** 
+    /**
      * add an item to basket-resource
      */
     addToBasket: function addToBasket() {
@@ -174,8 +174,7 @@ Vue.component("add-to-basketetc", {
             orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
           }
         });
-        if (this.fromSingleItem)
-        {
+        if (this.fromSingleItem){
           var basketObject = {
             variationId: document.querySelector("input[name=VarIDforBasket]").value,
             quantity: this.quantity,
@@ -187,6 +186,7 @@ Vue.component("add-to-basketetc", {
             variationId: this.variationId,
             quantity: this.quantity,
             basketItemOrderParams: this.orderProperties
+          };
         }
         this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
           var basketItem = response.find(function (item) {
