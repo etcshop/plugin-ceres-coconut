@@ -24,20 +24,18 @@
           <div class="ItemsDescriptionAvalability Value col-lg-8 col-md-8 col-xs-7 p-l-0 p-r-0">${ wishListItem.data.variation.availability.names.name }</div>
         </div>
       </div>
-      <div id="wishListAddToBasket">
-          {{ AddToBasket.printVueComponentWishList(
-                "wishListItem.data.variation.id",
-                "wishListItem.data",
-                false,
-                true,
-                {
-                    ":missing-order-properties":"",
-                    ":is-variation-selected": "true",
-                    ":has-price": "wishListItem.data | hasItemDefaultPrice"
-                }
-          ) }}
-      </div>
-      <div class="WatchListDelete col-lg-3 col-md-3 col-xs-5">
+      <div class="WatchListDelete WatchListToBasket col-lg-3 col-md-3 col-xs-5">
+        {{ AddToBasket.printVueComponentWishList(
+            "wishListItem.data.variation.id",
+            "wishListItem.data",
+            false,
+            true,
+            {
+                ":missing-order-properties":"",
+                ":is-variation-selected": "true",
+                ":has-price": "wishListItem.data | hasItemDefaultPrice"
+            }
+        ) }}
         <a class="PlentyWebshopButton delete" id="button_deleteWebMyAccountWatchListDelete" @click="removeItem({id: wishListItem.data.variation.id, wishListItem: wishListItem, index: index})">
           <i class="material-icons MyAccountIcon_delete">delete</i>
         </a>
