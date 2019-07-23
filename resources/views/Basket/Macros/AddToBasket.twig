@@ -37,3 +37,21 @@
     >
     </add-to-basketETC>
 {% endmacro %}
+{% macro printVueComponentWishList( varId, itemObject, useLargeScale, showQuantity, options ) %}
+    <add-to-basketetc
+            :variation-id="{{ varId }}"
+            :is-salable="!!{{ itemObject }}.filter && {{ itemObject }}.filter.isSalable"
+            :has-children="!!{{ itemObject }}.filter && {{ itemObject }}.filter.hasActiveChildren"
+            :interval-quantity="{{ itemObject }}.variation.intervalOrderQuantity || 1"
+            :minimum-quantity="{{ itemObject }}.variation.minimumOrderQuantity"
+            :maximum-quantity="!!{{ itemObject }}.variation.maximumOrderQuantity && {{ itemObject }}.variation.maximumOrderQuantity > 0 ? {{ itemObject }}.variation.maximumOrderQuantity : null"
+            :order-properties="{{ itemObject }}.properties.filter(function(prop) { return prop.property.isOderProperty })"
+            :use-large-scale="{{ useLargeScale | default(false) | json_encode }}"
+            :show-quantity="{{ showQuantity | default(false) | json_encode }}"
+            :item-url="{{ itemObject }} | itemURL"
+            {% for key, value in options if value is defined and value | length > 0 %}
+            {{ key }}="{{ value }}"
+            {% endfor %}
+    >
+    </add-to-basketETC>
+{% endmacro %}

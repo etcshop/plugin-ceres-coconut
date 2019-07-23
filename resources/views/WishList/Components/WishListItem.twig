@@ -25,8 +25,18 @@
         </div>
       </div>
 
+      {{ AddToBasket.printVueComponentWishList(
+                "wishListItem.id",
+                "wishListItem.data",
+                false,
+                true,
+                {
+                    ":missing-order-properties":"",
+                    ":is-variation-selected": "isVariationSelected && wishListItem.data.variation.filter.isSalable",
+                    ":has-price": "wishListItem.data.variation"
+                }
+            ) }}
 
-      <div style="position: absolute;"> {{ wishListItem.data.variation | json_encode }}</div>
 
 
       <div class="WatchListDelete col-lg-3 col-md-3 col-xs-5">
