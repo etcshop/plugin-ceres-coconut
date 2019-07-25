@@ -301,10 +301,22 @@
                   {% else %}
                     <span id="PlentyWebMyAccountMyAccountLogoutContainer">
                        {% set loginURL = "" %}
-                       {% if lang != 'de' %}
-                          {% set loginURL = "https://www.etc-shop.de/" + lang + "/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account?sc_Kundendaten"%}
+                       {% if webstoreConfig.webstoreId == 4 %}
+                           {% if lang == 'en' %}
+                              {% set loginURL = "https://www.meinelampe.de/en/login?backlink=https%3A%2F%2Fwww.meinelampe.de%2Fmy-account#sc_Kundendaten"%}
+                           {% elseif lang == 'fr' %}
+                              {% set loginURL = "https://www.meinelampe.de/fr/login?backlink=https%3A%2F%2Fwww.meinelampe.de%2Fmy-account#sc_Kundendaten"%}
+                           {% else %}
+                              {% set loginURL = "https://www.meinelampe.de/login?backlink=https%3A%2F%2Fwww.meinelampe.de%2Fmy-account#sc_Kundendaten"%}
+                           {% endif %}
                        {% else %}
-                          {% set loginURL = "https://www.etc-shop.de/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account?sc_Kundendaten"%}
+                           {% if lang == 'en' %}
+                              {% set loginURL = "https://www.etc-shop.de/en/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account#sc_Kundendaten"%}
+                           {% elseif lang == 'fr' %}
+                              {% set loginURL = "https://www.etc-shop.de/fr/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account#sc_Kundendaten"%}
+                           {% else %}
+                              {% set loginURL = "https://www.etc-shop.de/login?backlink=https%3A%2F%2Fwww.etc-shop.de%2Fmy-account#sc_Kundendaten"%}
+                           {% endif %}
                        {% endif %}
                   	   <a class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" href="{{ loginURL }}">{{ trans("Ceres::Template.login") }}</a>
                      </span>
