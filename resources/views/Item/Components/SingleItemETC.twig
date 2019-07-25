@@ -137,7 +137,8 @@
               <slot name="after-add-to-basket"></slot>
           </div>
           <slot name="additional-content-after-add-to-basket"></slot>
-          <span id="SingleArticle_Price_Vat">{{ trans("CeresCoconut::Template.ETC_InclMwSt") }} 19% <a href="https://www.etc-shop.de/content/zahlungsinformationen/">, {{ trans("CeresCoconut::Template.ETC_ZzglVersand") }}</a></span>
+          {% set zahlung = services.category.get(725, lang) %}
+          <span id="SingleArticle_Price_Vat">{{ trans("CeresCoconut::Template.ETC_InclMwSt") }} 19% <a href="{{ services.category.getURL(zahlung, lang) }}">, {{ trans("CeresCoconut::Template.ETC_ZzglVersand") }}</a></span>
 
           <slot name="CrossSellingAccessory"></slot>
 
