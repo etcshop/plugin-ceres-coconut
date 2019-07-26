@@ -153,7 +153,6 @@
 
     {% import _self as sidemenu %}
     {% set urlNow = currentScopeUrl %}
-      <div class="Test1123" style="display: none;">startcat.id: {{startcat.id}} <br> {{ startcat | json_encode }}</div>
 
       {% for category in categories %}
           {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}

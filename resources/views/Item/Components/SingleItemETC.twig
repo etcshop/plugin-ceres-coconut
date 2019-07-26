@@ -60,7 +60,7 @@
             <tbody>
               <tr>
                 <td>{{ trans("CeresCoconut::Template.ETC_Artikelnummer") }}:</td>
-                <td itemprop="sku">${ currentVariation.variation.number }</td>
+                <td itemprop="sku" id="SingleArticle_VarNumber">${ currentVariation.variation.number }</td>
               </tr>
               <!-- Variation -->
               <tr v-if="variations.length > 1">
