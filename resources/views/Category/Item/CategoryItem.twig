@@ -78,8 +78,8 @@
                     {% endif %}
 
                     <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-9 col-xs-12 p-x-0">
-                      <div style="display: none">{{ itemList | json_encode }}</div>
                         {% for item in itemList %}
+                          <div style="display: none">{{ item | json_encode }}</div>
                           {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                         {% endfor %}
                     </ul>
