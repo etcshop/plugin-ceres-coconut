@@ -2,7 +2,7 @@
 {% set homepageURL = services.url.getHomepageURL() %}
 
 {% if categoryBreadcrumbs is not empty %}
-    <div class="breadcrumbs_main 1" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
+    <div class="breadcrumbs_main firstBreadcrumbContainer" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12 breadcrumbs_container">
@@ -33,7 +33,7 @@
     </div>
     <!-- <category-breadcrumbs template="#vue-category-breadcrumbs"></category-breadcrumbs> -->
     {% else %}
-    <div class="breadcrumbs_main 2" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
+    <div class="breadcrumbs_main secondBreadcrumbContainer" itemscope itemtype="htto://data-vocabulary.org/Breadcrumb">
       {% set currTpl = services.template.getCurrentTemplate() %}
       {% set brNameAdd = "" %}
       {% if currTpl == 'tpl.privacy-policy' %}
