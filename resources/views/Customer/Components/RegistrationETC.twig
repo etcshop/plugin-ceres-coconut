@@ -1,4 +1,4 @@
-{{ component( "Ceres::Customer.Components.AddressInputGroup.AddressInputGroupETC" ) }}
+{{ component( "CeresCoconut::Customer.Components.AddressInputGroup.AddressInputGroupETC" ) }}
 <script type="x/template" id="vue-registrationETC">
     <div id="registration_form">
         <div class="modal-body" id="ContentAddressForm">
@@ -44,7 +44,7 @@
                   <h3 class="panel-title">{{ trans("CeresCoconut::Template.ETC_Rechnungsadresse") }}:</h3>
                 </div>
                 <address-input-group
-                    template="#vue-address-input-group"
+                    template="#vue-address-input-groupETC"
                     v-if="!isSimpleRegistration"
                     address-type="1"
                     :value="billingAddress"
