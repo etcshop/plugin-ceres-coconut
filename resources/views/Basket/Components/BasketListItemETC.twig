@@ -19,7 +19,7 @@
         <img class="BasketPreviewItemPic img-responsive" :src="image" :alt="basketItem.variation.data | itemName">
       </div>
       <div class="basketPreviewInfo">
-        <div class="BasketPreviewItemName">${ basketItem.variation.data | itemName }</div>
+        <div class="BasketPreviewItemName">{{ ItemName.get(item.data | basketItem.variation.data | itemName, item.data.variation.bundleType) }}</div>
         <div class="BasketPreviewItemPrice">${ itemTotalPrice | currency(basketItem.variation.data.prices.default.currency) }<br></div>
       </div>
     </a>
