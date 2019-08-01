@@ -39,7 +39,7 @@
     <div slot="CrossSellingAccessory">
     {% if replacementPart|length > 0 %}
             <div class="crossSelling">
-                <container-item-list-direct-cross :items="{{ replacementPart | json_encode }}" :mainprice="10" :mainid="{{ item.documents[0].data.variation.id }}"></container-item-list-direct-cross>
+                <container-item-list-direct-cross :items="{{ replacementPart | json_encode }}" :mainprice="{{ item.documents[0].data.calculatedPrices.default.price }}" :mainid="{{ item.documents[0].data.variation.id }}"></container-item-list-direct-cross>
             </div>
     {% endif %}
     </div>
