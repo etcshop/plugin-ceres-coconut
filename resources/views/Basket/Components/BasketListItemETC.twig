@@ -1,4 +1,5 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
 
 {{ component( "Ceres::Item.Components.OrderPropertyValue" ) }}
 {{ component( "CeresCoconut::Item.Components.QuantityInputETC" ) }}
@@ -19,7 +20,7 @@
         <img class="BasketPreviewItemPic img-responsive" :src="image" :alt="basketItem.variation.data | itemName">
       </div>
       <div class="basketPreviewInfo">
-        <div class="BasketPreviewItemName">{{ ItemName.get(basketItem.variation.data | itemName, item.data.variation.bundleType) }}</div>
+        <div class="BasketPreviewItemName">{{ ItemName.get(basketItem.variation.data | itemName, basketItem.variation.bundleType) }}</div>
         <div class="BasketPreviewItemPrice">${ itemTotalPrice | currency(basketItem.variation.data.prices.default.currency) }<br></div>
       </div>
     </a>
