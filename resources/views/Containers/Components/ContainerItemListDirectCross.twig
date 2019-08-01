@@ -24,7 +24,7 @@
       <!-- START [ItemViewCrossSellingItemsList3] -->
       <div class="CrossSelling_Direct_Item" v-for="item in items">
          <div class="CRRadio" onclick="CRRadioClick(this.id)" :id="item.id"><input name="rdCrossSelling" type="radio" id="{{ item.id }}"></div>
-         <div class="CRPrice"><label for="CRItem81059894">+${ formatPrice((Number(item.data.salesPrices[0].price) - mainprice)) } €</label></div>
+         <div class="CRPrice"><label for="CRItem81059894">+${ formatPrice((Number(item.data.prices.default.price.value) - mainprice)) } €</label></div>
          <div class="CRImage"><label for="CRItem81059894"><img :src="getLastItemURL(item.data.images.all)" data-plenty="UI.initLazyload(this, 'fadeIn')" style="display: inline-block;"></label></div>
          <div class="CRName"><label for="CRItem81059894">${ item.data.texts.name3 }</label></div>
          <div class="CREEK"><img :src="getEEK(item.data.properties)"></div>
