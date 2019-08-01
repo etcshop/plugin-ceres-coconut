@@ -1,6 +1,7 @@
 {% extends getPartial('page-design') %}
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% import "CeresCoconut::PageDesign.Macros.ItemName" as ItemName %}
+{% set companyName  = config("Ceres.header.company_name") %}
 
 {% block PartialHead %}
     <meta name="description" content="{{ item.documents[0].data.texts.metaDescription }}">
