@@ -54,12 +54,10 @@
                                             <span class="col-xs-6 col-sm-5">{{ trans("CeresCoconut::Template.orderHistoryDate") }}</span>
                                             <span class="col-xs-6 col-sm-7">{{ entry.order.createdAt | formatDateTime | date( trans("Ceres::Template.devDateTimeFormat") ) }} {{ trans("Ceres::Template.orderHistoryTime") }}</span>
                                         </div>
-                                        {% if entry.status is defined and entry.status is not empty %}
-                                          <div class="row my-account-no-line TEST1526" v-if="entry.status.trim().length > 0">
+                                          <div class="row my-account-no-line TEST1526">
                                               <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryStatus") }}</span>
                                               <span class="col-xs-6 col-sm-7">{{ entry.status }}</span>
                                           </div>
-                                      {% endif %}
                                         {% if entry.paymentMethodName | trim is not empty %}
                                             <div class="row">
                                                 <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryPaymentMethod") }}</span>
