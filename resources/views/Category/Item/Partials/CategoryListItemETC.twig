@@ -5,6 +5,7 @@
 
 {% set image = item.data.images.all | first %}
 {% set itemUrl =  item.data | itemURL %}
+{% set nameItem = itemData.texts.name1 %}
 
 {% if enableCarousel is not defined %}
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
@@ -51,7 +52,7 @@
         </div>
       </div>
     </div>
-    <a class="name block" href="{{ itemUrl }}">{{ ItemName.get(item.data | itemName, item.data.variation.bundleType) }}</a>
+    <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
     <p class="price js-link">
       <span class="test large linkToItem">
         {% if item.data.variation.mainVariationId is not null %}
