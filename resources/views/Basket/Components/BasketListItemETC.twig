@@ -20,7 +20,7 @@
         <img class="BasketPreviewItemPic img-responsive" :src="image" :alt="basketItem.variation.data | itemName">
       </div>
       <div class="basketPreviewInfo">
-        <div class="BasketPreviewItemName">${ basketItem.variation.data | itemName }</div>
+        <div class="BasketPreviewItemName">${ basketItem.variation.data.texts.name1 }</div>
         <div class="BasketPreviewItemPrice">${ itemTotalPrice | currency(basketItem.variation.data.prices.default.currency) }<br></div>
       </div>
     </a>
