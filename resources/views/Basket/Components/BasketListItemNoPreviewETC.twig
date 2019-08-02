@@ -21,7 +21,7 @@
         <!-- ./preview images -->
         <!-- item info -->
         <div id="chk_ItemData" class="col-xs-12 col-sm-8 col-md-8 col-lg-7">
-          <a class="name block" :href="basketItem.variation.data | itemURL" :title="basketItem.variation.data | itemName">${ basketItem.variation.data | itemName }</a>
+          <a class="name block" :href="basketItem.variation.data | itemURL" :title="basketItem.variation.data.texts.name1">${ basketItem.variation.data.texts.name1 }</a>
           <dl>
             <dt class="col-xs-5 BasketItemArtNr"> {{ trans("CeresCoconut::Template.ETC_Artikelnummer") }} </dt>
             <dd class="col-xs-7"> ${ basketItem.variation.data.variation.number } </dd>
