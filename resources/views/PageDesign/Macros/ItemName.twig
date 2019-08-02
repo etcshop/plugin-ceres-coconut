@@ -14,6 +14,5 @@
     {% else %}
         {{ itemName }}
     {% endif %}
-    {% set itemName = itemName | replace({"[PAKET]": ""}) | trim %}
     {% set itemName = itemName | replace({"[Paket]": ""}) | trim %}
 {% endmacro %}
