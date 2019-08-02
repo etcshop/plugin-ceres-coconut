@@ -5,7 +5,7 @@
 
 {% set image = item.data.images.all | first %}
 {% set itemUrl =  item.data | itemURL %}
-{% set nameItem = itemData.texts.name1 %}
+{% set nameItem = item.data.texts.name1 %}
 
 {% if enableCarousel is not defined %}
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
