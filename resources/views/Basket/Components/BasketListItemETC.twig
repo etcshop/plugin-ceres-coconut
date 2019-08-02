@@ -3,6 +3,7 @@
 {{ component( "Ceres::Item.Components.OrderPropertyValue" ) }}
 {{ component( "CeresCoconut::Item.Components.QuantityInputETC" ) }}
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
+{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
 
 {% set itemsData = config("Ceres.basket.item_data")|split(', ') %}
 {% set showItemVariation = config("Ceres.basket.variations") %}
