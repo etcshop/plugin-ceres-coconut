@@ -24,7 +24,7 @@
                     {% if orderData.status is defined and orderData.status is not empty %}
                     <div class="row test1329" v-if="orderData.status.trim().length > 0">
                         <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationStatus") }}</strong>
-                        <span class="col-xs-6 col-sm-7">{{ orderData.order.statusName }}</span>
+                        <span class="col-xs-6 col-sm-7">{{ orderData.order.statusName }} - {{ orderData.status }}</span>
                     </div>
                     {% endif %}
                 </div>
