@@ -31,8 +31,8 @@
           </div>
         </div>
       </div>
-      <a class="name block" :href="altUrl" v-if="altUrl">${ itemData | itemName }</a>
-      <a class="name block" :href="itemData | itemURL" v-else>${ itemData | itemName }</a>
+      <a class="name block" :href="altUrl" v-if="altUrl">${ itemData.texts.name1 }</a>
+      <a class="name block" :href="itemData | itemURL" v-else>${ itemData.texts.name1 }</a>
       <p class="price js-link">
         <span class="test large linkToItem">
           <span class="Price test1337">${ itemData.prices.default.unitPrice.formatted }</span>

@@ -3,7 +3,7 @@
 <transition-group name="wish-list-item-transition" tag="div">
     <article v-for="(wishListItem, index) in wishListItems" :key="wishListItem.id" class="wish-list-item col-xs-12 TEST0950" :id="'article_' + index ">
       <div class="wish-list-itemName col-lg-12">
-          <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data | itemName }</strong></a>
+          <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data.texts.name1 }</strong></a>
       </div>
       <div class="wish-list-itemImage col-lg-3 col-md-3 col-xs-5">
         <a :href="wishListItem.data | itemURL">
@@ -28,7 +28,7 @@
         {{ AddToBasket.printVueComponentWishList(
             "wishListItem.data.variation.id",
             "wishListItem.data",
-            false, 
+            false,
             true,
             {
                 ":missing-order-properties":"",
