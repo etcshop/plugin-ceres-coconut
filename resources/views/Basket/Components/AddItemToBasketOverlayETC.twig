@@ -65,11 +65,15 @@
                     <div class="modal-footer TEST1046">
                         <div class="row">
                             <div class="col-sm-8 offset-sm-2 item-confirm-special-case-close">
-                                <a v-waiting-animation-infinite href="{{ urls.basket }}" class="btn btn-primary btn-medium btn-m-r btn-outline-primary">
-                                    <!--<i class="fa fa-shopping-cart" aria-hidden="true"></i>-->
-                                    {{ trans("Ceres::Template.singleItemBasket") }}
-                                </a>
-                                {{ trans("CeresCoconut::Template.ETC_Or") }}
+                                <div id="content_basket_info_tobasketcontainer" data-dismiss="modal" aria-label="Close">
+                                  <a v-waiting-animation-infinite href="{{ urls.basket }}" class="btn btn-primary btn-medium btn-m-r btn-outline-primary" id="content_basket_info_tobasketcontainer_link">
+                                      <!--<i class="fa fa-shopping-cart" aria-hidden="true"></i>-->
+                                      {{ trans("Ceres::Template.singleItemBasket") }}
+                                  </a>
+                                </div>
+                                <div id="content_basket_info_or">
+                                  {{ trans("CeresCoconut::Template.ETC_Or") }}
+                                </diV>
                                 <div id="content_basket_info_proceedcontainer" data-dismiss="modal" aria-label="Close">
                                   <a id="content_basket_info_proceedcontainer_link" data-dismiss="modal" aria-label="Close">{{ trans("CeresCoconut::Template.ETC_Weiter_einkaufen") }}</a>
                                 </div>
