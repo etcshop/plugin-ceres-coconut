@@ -52,9 +52,9 @@
                 <div class="ContentText">{{ trans("CeresCoconut::Template.ETC_MeinKonto_Text") }}</div>
                 {% if frontend.Account.getIsAccountLoggedIn %}
                     {% if userObject.firstName|length > 0 and userObject.lastName|length > 0 %}
-                        <span class="text-muted">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
+                        <span class="text-muted etc_invisible">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
                     {% else %}
-                        <span class="text-muted">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.email}) }}</span>
+                        <span class="text-muted etc_invisible">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.email}) }}</span>
                     {% endif %}
                 {% endif %}
             </div>
