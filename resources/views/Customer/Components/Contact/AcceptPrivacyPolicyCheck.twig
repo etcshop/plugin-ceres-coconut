@@ -5,11 +5,11 @@
         {% autoescape false %}
             {% set policyContent %}<!--
                 --><a href="{{ urls.privacyPolicy }}" target="_blank">
-                    <span>{{ trans("Ceres::Template.contactPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
+                    <span>{{ trans("CeresCoconut::Template.contactPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
                 </a><!--
             -->{% endset %}
 
-            {{ trans("Ceres::Template.contactAcceptPrivacyPolicy", {"policy": policyContent}) }}
+            {{ trans("CeresCoconut::Template.contactAcceptPrivacyPolicy", {"policy": policyContent}) }}
         {% endautoescape %}
     </label>
 </script>
