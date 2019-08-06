@@ -10,21 +10,21 @@
           {% autoescape false %}
               {% set gtcContent %}<!--
                   --><a href="{{ urls.gtc }}" target="_blank">
-                      <span>{{ trans("Ceres::Template.checkoutGtc") }}</span>
+                      <span>{{ trans("CeresCoconut::Template.checkoutGtc") }}</span>
                   </a><!--
               -->{% endset %}
               {% set cancellationContent %}<!--
                   --><a href="{{ urls.cancellationRights }}" target="_blank">
-                      <strong>{{ trans("Ceres::Template.checkoutCancellationRight", {"hyphen": "&shy;"}) }}</strong>
+                      <strong>{{ trans("CeresCoconut::Template.checkoutCancellationRight", {"hyphen": "&shy;"}) }}</strong>
                   </a><!--
               -->{% endset %}
               {% set policyContent %}<!--
                   --><a href="{{ urls.privacyPolicy }}" target="_blank">
-                      <span>{{ trans("Ceres::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
+                      <span>{{ trans("CeresCoconut::Template.checkoutPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
                   </a><!--
               -->{% endset %}
 
-              {{ trans("Ceres::Template.checkoutChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent}) }}
+              {{ trans("CeresCoconut::Template.checkoutChooseOur", {"gtc": gtcContent, "cancellation": cancellationContent, "policy": policyContent}) }}
           {% endautoescape %}
         </li>
       </ul>
