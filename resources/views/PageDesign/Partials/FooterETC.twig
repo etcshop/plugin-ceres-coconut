@@ -123,7 +123,7 @@
         </div>
         <div id="footer5" class="footerbox col-xs-6 col-sm-6 col-md-3 col-lg-3">
           <h1>{{ trans("CeresCoconut::Template.ETC_EinfachZahlen") }}</h1>
-          {% set zahlung = services.category.get(725, lang) %}
+          {% set zahlung = services.category.get(725, lang) %} 
 
           <a href="{{ services.category.getURL(zahlung, lang) }}" title="PayPal">{{ trans("CeresCoconut::Template.ETC_Payment_Paypal") }}</a>
           <a href="{{ services.category.getURL(zahlung, lang) }}" title="Lastschrift">{{ trans("CeresCoconut::Template.ETC_Payment_Lastschrift") }}</a>
