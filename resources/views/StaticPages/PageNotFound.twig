@@ -27,7 +27,15 @@
                         </div>
                     </div>
                 </div>
+                <div id="ContentCheckout_BasketEmpty">
+                  {% set itemList3 = services.itemList.getItemList( "category", 429, "variation.position_desc",50 ).documents %}
 
+                  <ul id="twig-rendered-item-list" class="row categoryDetails isGridView">
+                    {% for item in itemList3 %}
+                      {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+                    {% endfor %}
+                  </ul>
+                </div>
                 {{ LayoutContainer.show("Ceres::StaticPages.PageNotFound") }}
 
             </div>
