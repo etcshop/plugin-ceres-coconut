@@ -149,7 +149,6 @@
               <div class="Lang_Text">DE</div>
             </div>
             <div class="active">
-              {{ queryString() }}
               <a href="{% if languageUrls["en"] is defined %}{{ languageUrls["de"] ~ queryString() }}{% elseif "de" != defaultLanguage %}/de{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url title="Deutsch">
                 <picture>
                   <!-- Tablet/Desptop -->
