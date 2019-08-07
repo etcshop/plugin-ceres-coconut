@@ -150,7 +150,7 @@
               <div class="Lang_Text">DE</div>
             </div>
             <div class="active">
-              <a href="{% if languageUrls["en"] is defined %}{{ languageUrls["de"] ~ queryString() }}{% elseif "de" != defaultLanguage %}/de{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url title="Deutsch">
+              <a href="{% if languageUrls["de"] is defined %}{{ languageUrls["de"] ~ queryString() }}{% elseif "de" != defaultLanguage %}/de{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url title="Deutsch">
                 <picture>
                   <!-- Tablet/Desptop -->
                   <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_de_active.png">
@@ -215,7 +215,6 @@
             </div>
             <div class="active">
               <a href="{% if languageUrls["fr"] is defined %}{{ languageUrls["fr"] ~ queryString() }}{% elseif "fr" != defaultLanguage %}/fr{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url title="Französisch">
-              <a href="/fr/" title="Französisch">
                 <picture>
                   <!-- Tablet/Desptop -->
                   <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_fr_active.png">
