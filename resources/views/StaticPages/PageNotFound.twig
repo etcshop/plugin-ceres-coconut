@@ -3,12 +3,11 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
-    <title>{{ config("Ceres.header.company_name") }} - 404</title>
+    <title>{{ config("Ceres.header.company_name") }} - 404 {{ trans("CeresCoconut::Template.ETC_PageNotFoundPageTitle") }}</title>
 {% endblock %}
 
 {% block PageBody %}
-
-    <div class="container-max page-content page-not-found">
+<div class="container-max page-content page-not-found">
         <div style="display: none">{% set canonicalUrl = services.url.getCanonicalURL() %}</div>
         <div class="row">
             <div class="col-xs-12">
@@ -19,7 +18,7 @@
                             <p class="lead">{{ trans("Ceres::Template.pageNotFoundPage") }}</p>
                             <hr class="m-y-2">
                             <p class="lead">
-                                <a class="btn btn-primary btn-lg" href="{{ homepageURL }}" role="button"><i class="fa fa-home" aria-hidden="true"></i> {{ trans("Ceres::Template.pageNotFoundHomepage") }}</a>
+                                <a class="btn btn-primary btn-lg" href="{{ homepageURL }}" role="button"><i class="fa fa-home" aria-hidden="true"></i> {{ trans("CeresCoconut::Template.pageNotFoundHomepage") }}</a>
                             </p>
                         </div>
                         <div class="col-md-6 text-md-right not-found-text">
@@ -28,18 +27,15 @@
                     </div>
                 </div>
                 <div id="ContentCheckout_BasketEmpty">
-                  {% set itemList3 = services.itemList.getItemList( "category", 429, "variation.position_desc",50 ).documents %}
-
-                  <ul id="twig-rendered-item-list" class="row categoryDetails isGridView">
-                    {% for item in itemList3 %}
-                      {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
-                    {% endfor %}
+                  <ul class="row isGridView categoryDetails" id="twig-rendered-item-list" style="margin-top: 5px;">
+                    {% set itemListX = services.itemList.getItemList("category", 429, "variation.position_desc", 50).documents %}
+                  {% for item in itemListX %}
+                    {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+                  {% endfor %}
                   </ul>
                 </div>
                 {{ LayoutContainer.show("Ceres::StaticPages.PageNotFound") }}
-
             </div>
         </div>
     </div>
-
 {% endblock %}
