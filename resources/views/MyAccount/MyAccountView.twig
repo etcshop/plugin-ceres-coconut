@@ -48,13 +48,13 @@
         <!-- HEADER -->
         <div class="row m-b-3">
             <div class="col-sm-12 col-lg-12">
-                <div class="ContentCaption">{{ trans("Ceres::Template.myAccount") }}</div>
+                <div class="ContentCaption">{{ trans("CeresCoconut::Template.myAccount") }}</div>
                 <div class="ContentText">{{ trans("CeresCoconut::Template.ETC_MeinKonto_Text") }}</div>
                 {% if frontend.Account.getIsAccountLoggedIn %}
                     {% if userObject.firstName|length > 0 and userObject.lastName|length > 0 %}
-                        <span class="text-muted etc_invisible">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
+                        <span class="text-muted etc_invisible">{{ trans("CeresCoconut::Template.myAccountHello", {"username": userObject.firstName ~ " " ~ userObject.lastName}) }}</span>
                     {% else %}
-                        <span class="text-muted etc_invisible">{{ trans("Ceres::Template.myAccountHello", {"username": userObject.email}) }}</span>
+                        <span class="text-muted etc_invisible">{{ trans("CeresCoconut::Template.myAccountHello", {"username": userObject.email}) }}</span>
                     {% endif %}
                 {% endif %}
             </div>
@@ -65,7 +65,7 @@
         <div class="row">
             <div id="MyAccount_InvoiceAddressContainer" class="col-md-12">
                 <h4>
-                    {{ trans("Ceres::Template.myAccountInvoiceAddresses") }}
+                    {{ trans("CeresCoconut::Template.myAccountInvoiceAddresses") }}
                 </h4>
                 <p class="text-muted small font-italic etc_invisible">{{ trans("Ceres::Template.myAccountAll") }} {{ trans("Ceres::Template.myAccountInvoiceAddresses") }}</p>
                 <div class="shipping-addresses-select test1121">
@@ -78,7 +78,7 @@
             </div>
             <div id="MyAccount_ShippingAddressContainer" class="col-md-12">
                 <h4>
-                    {{ trans("Ceres::Template.myAccountShippingAddresses") }}
+                    {{ trans("CeresCoconut::Template.myAccountShippingAddresses") }}
                 </h4>
                 <p class="text-muted small font-italic etc_invisible">{{ trans("Ceres::Template.myAccountAll") }} {{ trans("Ceres::Template.myAccountShippingAddresses") }}</p>
                 <div class="shipping-addresses-select">
@@ -96,7 +96,7 @@
         <div class="row">
             <div class="col-md-12" id="MyAccount_PasswordSettings">
                 <h4>
-                    {{ trans("Ceres::Template.myAccountSettings") }}
+                    {{ trans("CeresCoconut::Template.myAccountSettings") }}
                 </h4>
                 <p class="text-muted small font-italic etc_invisible">{{ trans("Ceres::Template.myAccountChangeLoginData") }}</p>
 
@@ -108,7 +108,7 @@
 
             <div id="MyAccount_BankDetails" class="col-md-12">
                 <h4>
-                    {{ trans("Ceres::Template.myAccountBankDetails") }}
+                    {{ trans("CeresCoconut::Template.myAccountBankDetails") }}
                 </h4>
 
 
