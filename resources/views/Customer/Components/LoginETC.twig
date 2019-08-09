@@ -20,16 +20,16 @@
         <div class="form-group">
           <div class="form-label-container">
             {% set uid_pwd = uid() %}
-            <label for="{{ uid_pwd }}">{{ trans("Ceres::Template.loginPassword") }}</label>
+            <label for="{{ uid_pwd }}">{{ trans("CeresCoconut::Template.loginPassword") }}</label>
           </div>
           <input class="form-control" id="{{ uid_pwd }}" name="loginPassword" type="password" placeholder="" v-model="password">
         </div>
-        <button @click.prevent="validateLogin" class="btn btn-default btn-block test0916" type="submit">{{ trans("Ceres::Template.login") }}</button>
-        <span class="error-msg">{{ trans("Ceres::Template.loginEmptyPassword") }}</span>
+        <button @click.prevent="validateLogin" class="btn btn-default btn-block test0916" type="submit">{{ trans("CeresCoconut::Template.login") }}</button>
+        <span class="error-msg">{{ trans("CeresCoconut::Template.loginEmptyPassword") }}</span>
       </form>
       <br>
       <a href="javascript:void(0)" @click="showResetPwdView" class="iconLink small reset-pwd-direction" :class="{'col-xs-7 col-sm-4': !modalElement}">
-      	<span class="glyphicon glyphicon-question-sign"></span> {{ trans("Ceres::Template.loginForgotPassword") }}
+      	<span class="glyphicon glyphicon-question-sign"></span> {{ trans("CeresCoconut::Template.loginForgotPassword") }}
       </a>
     </div>
   </div>
