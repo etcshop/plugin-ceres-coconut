@@ -2,7 +2,7 @@
 
 <div class="BillingAddressContainer col-lg-12 test1258" id="BillingSalutation">
         <label :for="'txtSalutation' + _uid" v-validate="isInRequiredFields('de', 'billing_address.salutation')">
-            ${ transformTranslation("Ceres::Template.addressSalutation", "de", "billing_address.salutation") }
+            ${ transformTranslation("CeresCoconut::Template.addressSalutation", "de", "billing_address.salutation") }
         </label>
         <div
             class="input-unit single">
@@ -11,7 +11,7 @@
 </div>
 <div class="BillingAddressContainer col-lg-12 TEST1612" id="BillingCompany" v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
         <label :for="'txtCompany' + _uid"  v-if="isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'billing_address.name1') && !isInOptionalFields('de', 'billing_address.salutation')">
-            {{ trans("Ceres::Template.addressCompany") }}*
+            {{ trans("CeresCoconut::Template.addressCompany") }}*
         </label>
         <div class="input-unit single" data-validate="text" data-model="name1">
             <input type="text" name="company" :id="'txtCompany' + _uid" :value="value.name1" @input="emitInputEvent('name1', $event.target.value)" data-autofocus>
@@ -19,7 +19,7 @@
 </div>
 <div class="BillingAddressContainer col-lg-12" id="BillingVatNumber" v-if="(isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company') || isInOptionalFields('de', 'billing_address.vatNumber')">
         <label :for="'txtVatNumber' + _uid" v-if="(isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company') || isInOptionalFields('de', 'billing_address.vatNumber')">
-            ${ transformTranslation("Ceres::Template.addressVatNumber", "de", "billing_address.vatNumber") }
+            ${ transformTranslation("CeresCoconut::Template.addressVatNumber", "de", "billing_address.vatNumber") }
         </label>
         <div
             class="input-unit single"
@@ -44,7 +44,7 @@
 
 <div class="BillingAddressContainer col-lg-12" id="BillingAdditionalData">
         <label :for="'txtAdditionalName' + _uid" v-if="isInOptionalFields('de', 'billing_address.name4')">
-            ${ transformTranslation("Ceres::Template.addressAdditionalName", "de", "billing_address.name4") }
+            ${ transformTranslation("CeresCoconut::Template.addressAdditionalName", "de", "billing_address.name4") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.name4')" class="col-lg-12 col-sm-4">
             <div
@@ -56,18 +56,18 @@
         </div>
 
         <label :for="'txtBirthdate' + _uid" v-if="isInOptionalFields('de', 'billing_address.birthday')">
-            ${ transformTranslation("Ceres::Template.addressBirthdate", "de", "billing_address.birthday") }
+            ${ transformTranslation("CeresCoconut::Template.addressBirthdate", "de", "billing_address.birthday") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.birthday')" class="col-lg-12 col-sm-4">
             <div
                 class="input-unit"
                 data-model="birthday"
                 v-validate:date="isInRequiredFields('de', 'billing_address.birthday') || !!value.birthday && !!value.birthday.length">
-                <input type="date" min="1901-12-14" :max="new Date().toISOString().split('T')[0]" name="birthday" placeholder="{{ trans("Ceres::Template.addressBirthdatePlaceholder") }}" :id="'txtBirthdate' + _uid" :value="value.birthday" @input="emitInputEvent('birthday', $event.target.value)">
+                <input type="date" min="1901-12-14" :max="new Date().toISOString().split('T')[0]" name="birthday" placeholder="{{ trans("CeresCoconut::Template.addressBirthdatePlaceholder") }}" :id="'txtBirthdate' + _uid" :value="value.birthday" @input="emitInputEvent('birthday', $event.target.value)">
             </div>
         </div>
         <label :for="'txtTelephone' + _uid" v-if="isInOptionalFields('de', 'billing_address.phoneNumber')">
-            ${ transformTranslation("Ceres::Template.addressTelephone", "de", "billing_address.phoneNumber") }
+            ${ transformTranslation("CeresCoconut::Template.addressTelephone", "de", "billing_address.phoneNumber") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.phoneNumber')" class="col-lg-12 col-sm-4">
             <div
@@ -80,7 +80,7 @@
 </div>
 
 <div class="BillingAddressContainer col-lg-12" id="BillingStreetNr">
-        <label :for="'txtStreet' + _uid">{{ trans("Ceres::Template.addressStreet") }} {{ trans("Ceres::Template.addressNumber") }}*</label>
+        <label :for="'txtStreet' + _uid">{{ trans("CeresCoconut::Template.addressStreet") }} {{ trans("CeresCoconut::Template.addressNumber") }}*</label>
         <div class="input-unit first street" data-validate="text" data-model="address1">
             <input type="text" name="street" autocomplete="address-line1" :id="'txtStreet' + _uid" :value="value.address1" @input="emitInputEvent('address1', $event.target.value)">
         </div>
@@ -91,7 +91,7 @@
 
 <div class="BillingAddressContainer col-lg-12" id="BillingAddress3And4">
         <label :for="'decorateAddress0' + _uid" v-if="isInOptionalFields('de', 'billing_address.address3')">
-            ${ transformTranslation("Ceres::Template.addressAdditionalAddress1", "de", "billing_address.address3") }
+            ${ transformTranslation("CeresCoconut::Template.addressAdditionalAddress1", "de", "billing_address.address3") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.address3')" class="col-lg-12 col-sm-6">
             <div
@@ -104,7 +104,7 @@
         </div>
 
         <label :for="'decorateAddress1' + _uid" v-if="isInOptionalFields('de', 'billing_address.address4')">
-            ${ transformTranslation("Ceres::Template.addressAdditionalAddress2", "de", "billing_address.address4") }
+            ${ transformTranslation("CeresCoconut::Template.addressAdditionalAddress2", "de", "billing_address.address4") }
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.address4')" class="col-lg-12 col-sm-6">
             <div
@@ -117,7 +117,7 @@
 </div>
 
 <div class="BillingAddressContainer col-lg-12" id="BillingZipTown">
-        <label :for="'txtZip' + _uid">{{ trans("Ceres::Template.addressZip") }} {{ trans("Ceres::Template.addressPlace") }}*</label>
+        <label :for="'txtZip' + _uid">{{ trans("CeresCoconut::Template.addressZip") }} {{ trans("CeresCoconut::Template.addressPlace") }}*</label>
         <div class="input-unit first postalCode" data-validate="text" data-model="postalCode">
             <input class="input-unit" type="text" name="zip" :id="'txtZip' + _uid" :value="value.postalCode" @input="emitInputEvent('postalCode', $event.target.value)">
         </div>
