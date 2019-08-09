@@ -28,7 +28,7 @@
                 </div>
                 <div id="PageNotFound_Plenty_Inner">
                   <ul class="row isGridView categoryDetails" id="twig-rendered-item-list" style="margin-top: 5px;">
-                    {% set itemListX = services.itemList.getItemList("category", 421, "variation.position_desc", 50).documents %}
+                    {% set itemListX = services.itemList.getItemList("category", 429, "variation.position_desc", 50).documents %}
                   {% for item in itemListX %}
                     {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                   {% endfor %}
