@@ -116,7 +116,7 @@
         </div>
 </div>
 
-<div class="BillingAddressContainer col-lg-12 col-sm-4" id="BillingZipTown">
+<div class="BillingAddressContainer col-lg-12" id="BillingZipTown">
         <label :for="'txtZip' + _uid">{{ trans("Ceres::Template.addressZip") }} {{ trans("Ceres::Template.addressPlace") }}*</label>
         <div class="input-unit first postalCode" data-validate="text" data-model="postalCode">
             <input class="input-unit" type="text" name="zip" :id="'txtZip' + _uid" :value="value.postalCode" @input="emitInputEvent('postalCode', $event.target.value)">
