@@ -17,7 +17,7 @@
 
 <div class="DeliveryAddressContainer col-lg-12" id="DeliveryCompany" v-if="isInOptionalFields('de', 'delivery_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'delivery_address.name1') && !isInOptionalFields('de', 'delivery_address.salutation')">
         <label :for="'txtCompany' + _uid" v-if="isInOptionalFields('de', 'delivery_address.salutation') && value.gender === 'company' || isInOptionalFields('de', 'delivery_address.name1') && !isInOptionalFields('de', 'delivery_address.salutation')">
-            {{ trans("Ceres::Template.addressCompany") }}*
+            {{ trans("CeresCoconut::Template.addressCompany") }}*
         </label>
         <div class="input-unit single" data-validate="text" data-model="name1">
                 <input type="text" name="company" :id="'txtCompany' + _uid" :value="value.name1" @input="emitInputEvent('name1', $event.target.value)" data-autofocus>
@@ -86,14 +86,14 @@
 </div>
 
 <div class="col-lg-12" v-if="isParcelOrOfficeAvailable" id="DeliveryPickupstation">
-        <label :for="'showPickup' + _uid">{{ trans("Ceres::Template.addressToPickupStation") }}</label>
+        <label :for="'showPickup' + _uid">{{ trans("CeresCoconut::Template.addressToPickupStation") }}</label>
         <div class="col-lg-12">
             <input type="checkbox" name="togglePickup" :checked="value.showPickupStation" @change="togglePickupStation($event.target.checked)" :id="'showPickup' + _uid">
         </div>
 </div>
 
 <div class="DeliveryAddressContainer col-lg-12" id="DeliveryStreetNr">
-    <label :for="'txtStreet' + _uid">{{ trans("Ceres::Template.addressStreet") }} {{ trans("Ceres::Template.addressNumber") }}*</label>
+    <label :for="'txtStreet' + _uid">{{ trans("CeresCoconut::Template.addressStreet") }} {{ trans("CeresCoconut::Template.addressNumber") }}*</label>
     <div class="input-unit first street" data-validate="text" data-model="address1">
         <input type="text" name="street" autocomplete="address-line1" :id="'txtStreet' + _uid" :value="value.address1" @input="emitInputEvent('address1', $event.target.value)">
     </div>
@@ -131,7 +131,7 @@
 </div>
 
 <div class="DeliveryAddressContainer col-lg-12" id="DeliveryZipTown">
-    <label :for="'txtZip' + _uid">{{ trans("Ceres::Template.addressZip") }} {{ trans("Ceres::Template.addressPlace") }}*</label>
+    <label :for="'txtZip' + _uid">{{ trans("CeresCoconut::Template.addressZip") }} {{ trans("CeresCoconut::Template.addressPlace") }}*</label>
     <div class="input-unit first postalCode" data-validate="text" data-model="postalCode">
         <input type="text" name="zip" :id="'txtZip' + _uid" :value="value.postalCode" @input="emitInputEvent('postalCode', $event.target.value)">
     </div>
