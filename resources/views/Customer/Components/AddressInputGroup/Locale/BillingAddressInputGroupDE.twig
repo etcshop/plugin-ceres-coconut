@@ -2,7 +2,7 @@
 
 <div class="BillingAddressContainer col-lg-12 test1258" id="BillingSalutation">
         <label :for="'txtSalutation' + _uid" v-validate="isInRequiredFields('de', 'billing_address.salutation')">
-            {{ trans("CeresCoconut::Template.addressSalutation" }}
+            {{ trans("CeresCoconut::Template.addressSalutation") }}
         </label>
         <div
             class="input-unit single">
@@ -19,7 +19,7 @@
 </div>
 <div class="BillingAddressContainer col-lg-12" id="BillingVatNumber" v-if="(isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company') || isInOptionalFields('de', 'billing_address.vatNumber')">
         <label :for="'txtVatNumber' + _uid" v-if="(isInOptionalFields('de', 'billing_address.salutation') && value.gender === 'company') || isInOptionalFields('de', 'billing_address.vatNumber')">
-            {{ trans("CeresCoconut::Template.addressVatNumber" }}
+            {{ trans("CeresCoconut::Template.addressVatNumber") }}
         </label>
         <div
             class="input-unit single"
@@ -44,7 +44,7 @@
 
 <div class="BillingAddressContainer col-lg-12" id="BillingAdditionalData">
         <label :for="'txtAdditionalName' + _uid" v-if="isInOptionalFields('de', 'billing_address.name4')">
-            {{ trans("CeresCoconut::Template.addressAdditionalName" }}
+            {{ trans("CeresCoconut::Template.addressAdditionalName") }}
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.name4')" class="col-lg-12 col-sm-4">
             <div
@@ -56,7 +56,7 @@
         </div>
 
         <label :for="'txtBirthdate' + _uid" v-if="isInOptionalFields('de', 'billing_address.birthday')">
-            {{ trans("CeresCoconut::Template.addressBirthdate" }}
+            {{ trans("CeresCoconut::Template.addressBirthdate") }}
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.birthday')" class="col-lg-12 col-sm-4">
             <div
@@ -67,7 +67,7 @@
             </div>
         </div>
         <label :for="'txtTelephone' + _uid" v-if="isInOptionalFields('de', 'billing_address.phoneNumber')">
-            {{ trans("CeresCoconut::Template.addressTelephone" }}
+            {{ trans("CeresCoconut::Template.addressTelephone") }}
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.phoneNumber')" class="col-lg-12 col-sm-4">
             <div
@@ -91,7 +91,7 @@
 
 <div class="BillingAddressContainer col-lg-12" id="BillingAddress3And4">
         <label :for="'decorateAddress0' + _uid" v-if="isInOptionalFields('de', 'billing_address.address3')">
-            {{ trans("CeresCoconut::Template.addressAdditionalAddress1" }}
+            {{ trans("CeresCoconut::Template.addressAdditionalAddress1") }}
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.address3')" class="col-lg-12 col-sm-6">
             <div
@@ -104,7 +104,7 @@
         </div>
 
         <label :for="'decorateAddress1' + _uid" v-if="isInOptionalFields('de', 'billing_address.address4')">
-            {{ trans("CeresCoconut::Template.addressAdditionalAddress2" }}
+            {{ trans("CeresCoconut::Template.addressAdditionalAddress2") }}
         </label>
         <div v-if="isInOptionalFields('de', 'billing_address.address4')" class="col-lg-12 col-sm-6">
             <div
