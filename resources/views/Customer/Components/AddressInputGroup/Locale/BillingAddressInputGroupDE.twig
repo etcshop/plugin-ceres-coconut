@@ -2,7 +2,8 @@
 
 <div class="BillingAddressContainer col-lg-12 test1258" id="BillingSalutation">
         <label :for="'txtSalutation' + _uid" v-validate="isInRequiredFields('de', 'billing_address.salutation')">
-            {{ trans("CeresCoconut::Template.addressSalutation") }}
+
+            ${ transformTranslation("Ceres::Template.addressSalutation", "de", "billing_address.salutation") }
         </label>
         <div
             class="input-unit single">
