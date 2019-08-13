@@ -233,13 +233,13 @@
               <div class="col-lg-3 col-md-4 col-sm-5" id="MyAccount_left">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <ul class="Test1702">
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Kontakt">
+                    <li class="col-lg-4 col-xs-3 MyAccoutMenu_Point" id="MyAccoutMenu_Kontakt">
                       <a href="{{ urls.contact }}" title="Kontakt">
                         <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Kontakt") }}</div>
                         <i id="MyAccountKontaktIcon" class="material-icons MyAccountIcon">contact_mail</i>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Retoure">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Retoure">
                         {% if lang == "en" %}
                           <a href="http://s141963554.online.de/retoure/voll/retoure_en.php" target="_blank" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}">
                         {% elseif lang == "fr" %}
@@ -251,48 +251,48 @@
                         <i id="MyAccountRetoureIcon" class="material-icons MyAccountIcon">reply</i>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Newsletter">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Newsletter">
                       {% set newsletter = services.category.get(802, lang) %}
                       <a href="{{ services.category.getURL(newsletter, lang) }}" title="Newsletter">
                         <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Newsletter") }}</div>
                         <i id="MyAccountNewsletterIcon" class="material-icons MyAccountIcon">email</i>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Versand">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Versand">
                       {% set versand = services.category.get(722, lang) %}
                       <a href="{{ services.category.getURL(versand, lang) }}" title="Versand">
                         <div class="MyAccountLabel">{{ services.category.get(722, lang).details[0].name }}</div>
                         <i id="MyAccountVersandIcon" class="material-icons MyAccountIcon">send</i>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Zahlung">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Zahlung">
                       {% set zahlung = services.category.get(725, lang) %}
                       <a href="{{ services.category.getURL(zahlung, lang) }}" title="Zahlung">
                         <div class="MyAccountLabel">{{ services.category.get(725, lang).details[0].name }}</div>
                         <i id="MyAccountZahlungIcon" class="material-icons MyAccountIcon">euro_symbol</i>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_FAQ">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_FAQ">
                       {% set FAQ = services.category.get(714, lang) %}
                       <a href="{{ services.category.getURL(FAQ, lang) }}" title="FAQ">
                         <div class="MyAccountLabel">{{ services.category.get(714, lang).details[0].name }}</div>
                         <i id="MyAccountFAQIcon" class="material-icons MyAccountIcon">info_outline</i>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Kundendaten">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Kundendaten">
                       <a href="{{ urls.myAccount }}?sc_Kundendaten=" title="Mein Konto">
                         <div class="MyAccountLabel">{{ trans("Ceres::Template.loginMyAccount") }}</div>
                         <i id="MyAccountKundenkontoIcon" class="material-icons MyAccountIcon">account_box</i>
                       </a>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Auftraege">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Auftraege">
                       <a href="{{ urls.myAccount }}?sc_Auftraghistorie=" title="Auftragshistorie">
                         <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Bestellungen") }}</div>
                         <i id="MyAccountAuftragIcon" class="material-icons MyAccountIcon">restore</i>
                       </a>
                     </li>
-                    <li class="col-lg-4 col-xs-4 MyAccoutMenu_Point" id="MyAccoutMenu_Merkliste">
+                    <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Merkliste">
                       <a href="{{ urls.wishList }}?sc_Merkliste=" title="Merkliste">
                         <div class="MyAccountLabel">{{ trans("CeresCoconut::Template.ETC_Merkliste") }}</div>
                         <i id="MyAccountMerklisteIcon" class="material-icons MyAccountIcon">list</i>
