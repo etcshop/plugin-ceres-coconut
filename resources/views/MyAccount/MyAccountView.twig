@@ -47,7 +47,7 @@
         :selected-billing-address="{{ services.checkout.getBillingAddressId() | json_encode }}">
         <!-- HEADER -->
         <div class="row m-b-3">
-            <div class="col-sm-12 col-lg-12">
+            <div id="myAccountHeaderInfo" class="col-sm-12 col-lg-12">
                 <div class="ContentCaption">{{ trans("CeresCoconut::Template.myAccount") }}</div>
                 <div class="ContentText">{{ trans("CeresCoconut::Template.ETC_MeinKonto_Text") }}</div>
                 {% if frontend.Account.getIsAccountLoggedIn %}
