@@ -1,1 +1,86 @@
-<!-- Insert markup for category item view here -->
+{% extends getPartial('page-design') %}
+
+{% block PageBody %}
+
+    {{ component( "Ceres::ItemList.Components.ItemList" ) }}
+    {{ component( "Ceres::ItemList.Components.ItemListSortingETC" ) }}
+    {{ component( "Ceres::ItemList.Components.ItemsPerPage" ) }}
+    {{ component( "Ceres::ItemList.Components.PaginationETC" ) }}
+    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
+    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
+
+        <div class="container categoryView isGridView isList-1">
+          <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
+            <div class="SubnavigationTitle">{{ trans("Ceres::Template.ETC_SucheEingrenzen") }}</div>
+            <div id="SubnavigationContent">
+              <item-filter-tag-list></item-filter-tag-list>
+              {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets) %}
+              {% if overrideSearchFilters | trim is empty %}
+                  <item-filter-list :facet-data="{{ facets | json_encode }}"></item-filter-list>
+              {% else %}
+                  {{ overrideSearchFilters }}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
+            <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
+              <div class="categoryPagination row margin-top-2 margin-bottom-2">
+                <nav class="navbar navbar-default">
+                  <ul class="pagination nav navbar-left col-lg-4 p-x-0">
+                    {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
+                        {% include "Ceres::Category.Item.Partials.PaginationETC" %}
+                    {% endif %}
+                  </ul>
+                  <ul class="nav navbar-right col-lg-8">
+                    <li>
+                      <span>{{ itemCountTotal }} Artikel</span>
+                    </li>
+                    <li>
+                      <item-list-sorting template="#vue-item-list-sortingETC" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
+                      <items-per-page
+                        template="#vue-items-per-page"
+                        :pagination-values="{{ searchOptions.itemsPerPage | json_encode }}"></items-per-page>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              {# TAGS
+              <item-filter-tag-list></item-filter-tag-list>#}
+
+              {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
+                <div class="col-xs-3 hidden-md-down">
+                  <div class="sidebar-categories">
+                    <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
+                    {{ include('Ceres::PageDesign.Partials.Header.SideNavigation.twig') }}
+                  </div>
+                  {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
+                </div>
+              {% endif %}
+
+                        {% if ceresConfig.item.loadingAnimationType != "blur" %}
+                            {% include "Ceres::ItemList.Partials.LoadingAnimation" %}
+                        {% endif %}
+
+                        <ul id="twig-rendered-item-list" class="row categoryDetails isGridView" v-is-loading-watcher="$store.state.itemList.isLoading">
+                            {% for item in itemList %}
+                              {% include "Ceres::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+                            {% endfor %}
+                        </ul>
+
+                        <ul class="pagination nav navbar-left col-lg-4 p-x-0">
+                          {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
+                              {% include "Ceres::Category.Item.Partials.PaginationETC" %}
+                          {% endif %}
+                        </ul>
+          </div>
+        </div>
+
+{% endblock %}
+
+{% block PartialHead %}
+<script type="application/ld+json">{"@context": "http://schema.org","@type": "WebSite","url": "{{ webstoreConfig.domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ webstoreConfig.domainSsl }}/search?query={search_term}","query-input": "required name=search_term"}}</script>
+    {% if isSearch %}
+        <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }}</title>
+    {% endif %}
+{% endblock %}
