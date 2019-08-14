@@ -27,11 +27,9 @@
             <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
               <div class="categoryPagination row margin-top-2 margin-bottom-2">
                 <nav class="navbar navbar-default">
-                  <ul class="pagination nav navbar-left col-lg-4 p-x-0">
                     {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
                         {% include "CeresCoconut::Category.Item.Partials.PaginationETC" %}
                     {% endif %}
-                  </ul>
                   <ul class="nav navbar-right col-lg-8">
                     <li>
                       <span>{{ itemCountTotal }} Artikel</span>
@@ -67,12 +65,13 @@
                               {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                             {% endfor %}
                         </ul>
-
-                        <ul class="pagination nav navbar-left col-lg-4 p-x-0">
-                          {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
+                        <div id="PaginationBottom" class="categoryPagination row margin-top-2 margin-bottom-2 col-lg-9">
+                          <nav class="navbar navbar-default">
+                            {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
                               {% include "CeresCoconut::Category.Item.Partials.PaginationETC" %}
-                          {% endif %}
-                        </ul>
+                            {% endif %}
+                          </nav>
+                        </div>
           </div>
         </div>
 
