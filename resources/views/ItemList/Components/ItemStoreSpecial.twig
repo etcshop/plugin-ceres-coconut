@@ -1,1 +1,10 @@
-<!-- Insert markup for item store special here -->
+<script type="x/template" id="vue-item-store-special">
+    <div class="special-tags">
+        <span v-if="bundleType === 'bundle'" class="tag bg-info">
+            {{ trans("Ceres::Template.itemBundle") }}
+        </span>
+        <span v-else class="tag" v-bind:class="tagClass">
+            ${ label }
+        </span>
+    </div>
+</script>

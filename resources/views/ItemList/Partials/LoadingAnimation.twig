@@ -1,1 +1,14 @@
-<!-- Insert markup for loading animation here -->
+<div class="loading-animation-frame col-xs-12 col-lg-12">
+
+    {% if ceresConfig.item.loadingAnimationType == "bars" %}
+        {% include "CeresCoconut::ItemList.Partials.LoadingAnimationBars" %}
+
+    {% elseif ceresConfig.item.loadingAnimationType == "spinner" %}
+        {% include "CeresCoconut::ItemList.Partials.LoadingAnimationSpinner" %}
+
+    {% else %}
+        {% include "CeresCoconut::ItemList.Partials.LoadingAnimationBars" %}
+
+    {% endif %}
+
+</div>

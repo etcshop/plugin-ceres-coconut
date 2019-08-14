@@ -1,1 +1,17 @@
-<!-- Insert markup for item filter tag list here -->
+<script type="x/template" id="vue-item-filter-tag-list">
+    <div v-if="tagList.length > 0" class="selected-filters clearfix">
+        <div class="h3 openedBox">Gewählte Filter</div>
+
+        <div class="form-check" v-for="tag in tagList" :key="tag.id" @click="removeTag(tag)">
+
+            <input :id="'option-' + tag.id" class="form-check-input hidden-xs-up" type="checkbox">
+            <label :for="'option-' + tag.id" class="form-check-label">
+                <div class="form-check-label-group">${ tag.id }:</div> <div class="form-check-label-name">${ tag.name }</div>
+            </label>
+            <div class="filter-badge">${ tag.count }</div>
+        </div>
+        <span v-if="tagList.length >= 1" style="display: block" class="selected-filter reset-all" @click="resetAllTags()">
+            Filter zurücksetzen
+        </span>
+    </div>
+</script>

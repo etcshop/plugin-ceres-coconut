@@ -2,12 +2,12 @@
 
 {% block PageBody %}
 
-    {{ component( "Ceres::ItemList.Components.ItemList" ) }}
-    {{ component( "Ceres::ItemList.Components.ItemListSortingETC" ) }}
-    {{ component( "Ceres::ItemList.Components.ItemsPerPage" ) }}
-    {{ component( "Ceres::ItemList.Components.PaginationETC" ) }}
-    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
-    {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
+    {{ component( "CeresCoconut::ItemList.Components.ItemList" ) }}
+    {{ component( "CeresCoconut::ItemList.Components.ItemListSortingETC" ) }}
+    {{ component( "CeresCoconut::ItemList.Components.ItemsPerPage" ) }}
+    {{ component( "CeresCoconut::ItemList.Components.PaginationETC" ) }}
+    {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterList") }}
+    {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterTagList") }}
 
         <div class="container categoryView isGridView isList-1">
           <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
@@ -52,25 +52,25 @@
                 <div class="col-xs-3 hidden-md-down">
                   <div class="sidebar-categories">
                     <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
-                    {{ include('Ceres::PageDesign.Partials.Header.SideNavigation.twig') }}
+                    {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigation.twig') }}
                   </div>
                   {{ LayoutContainer.show("Ceres::CategoryItem.SideNavBarBottom") }}
                 </div>
               {% endif %}
 
                         {% if ceresConfig.item.loadingAnimationType != "blur" %}
-                            {% include "Ceres::ItemList.Partials.LoadingAnimation" %}
+                            {% include "CeresCoconut::ItemList.Partials.LoadingAnimation" %}
                         {% endif %}
 
                         <ul id="twig-rendered-item-list" class="row categoryDetails isGridView" v-is-loading-watcher="$store.state.itemList.isLoading">
                             {% for item in itemList %}
-                              {% include "Ceres::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+                              {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                             {% endfor %}
                         </ul>
 
                         <ul class="pagination nav navbar-left col-lg-4 p-x-0">
                           {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
-                              {% include "Ceres::Category.Item.Partials.PaginationETC" %}
+                              {% include "CeresCoconut::Category.Item.Partials.PaginationETC" %}
                           {% endif %}
                         </ul>
           </div>

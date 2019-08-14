@@ -1,1 +1,11 @@
-<!-- Insert markup for side navigation here -->
+{% import "CeresCoconut::Category.Macros.CategoryTreeETC" as Tree %}
+
+{% set lang = services.sessionStorage.getLang() %}
+{% set categoryBreadcrumbs = services.category.getHierarchy() %}
+{% set currentCategory = services.category.getCurrentCategory() %}
+
+{% if lang != "de" %}
+  {{ Tree.get_sidemenu_onlysub(categoryBreadcrumbs, categories, "", currentCategory, "false", lang) }}
+{% else %}
+  {{ Tree.get_sidemenu_onlysub(categoryBreadcrumbs, categories, "", currentCategory, "false", "") }}
+{% endif %}
