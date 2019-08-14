@@ -1,0 +1,7 @@
+<script type="x/template" id="vue-item-list-sortingETC">
+    <select name="ItemSorting" class="custom-select ArticleOrderSelect form-control" id="itemOrderSelect" v-model="selectedSorting" @change="updateSorting()">
+      <option :value="key" v-for="(value, key) in sortingList" :selected="selectedSorting == key">
+        ${ value }
+        </option>
+    </select>
+</script>
