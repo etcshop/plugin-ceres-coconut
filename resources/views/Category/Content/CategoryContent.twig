@@ -1,1 +1,18 @@
-<!-- Insert markup for content category template here -->
+{% extends getPartial('page-design') %}
+
+{% block PageBody %}
+
+    {% set shopBuilderTemplate = shop_builder_category_template(category.id) %}
+    {% if shopBuilderTemplate | trim is not empty %}
+        <div class="container-max">
+            <div class="row">
+                <div class="col">
+                    {{ shopBuilderTemplate | raw }}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {% include category_template( category.id, lang, webstoreConfig.webstoreId ) ignore missing %}
+    {% endif %}
+
+{% endblock %}
