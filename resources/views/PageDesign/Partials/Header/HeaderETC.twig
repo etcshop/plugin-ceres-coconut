@@ -61,7 +61,7 @@
       </div>
       <div id="BasketButton" class="ToolButton">
         <div id="BasketButtonBox" class="hidden-xs hidden-sm">{{ trans("CeresCoconut::Template.ETC_Warenkorb") }}</div>
-        {% set q = $store.state.basket.data.itemQuantity %}
+        {% set q = store.state.basket.data.itemQuantity %}
         {{ q }}
         <i id="BasketButtonIcon" class="material-icons BasketEmpty" v-if="$store.state.basket.data.itemQuantity==0">shopping_cart</i>
         <i id="BasketButtonIcon" class="material-icons BasketFull" v-else>shopping_cart</i>
