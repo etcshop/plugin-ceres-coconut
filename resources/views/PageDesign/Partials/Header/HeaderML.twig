@@ -14,8 +14,6 @@
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set currencyFormatSelect = config("Ceres.currency.format_selection") %}
 
-{% set headerContainer = LayoutContainer.show("Ceres::HeaderETC") | trim %}
-
 {% set requestUrl = webstoreConfig.domainSsl ~ request.getRequestUri() %}
 {% if ('/login' in requestUrl) %}
     {% set showMainMenu = false %}
