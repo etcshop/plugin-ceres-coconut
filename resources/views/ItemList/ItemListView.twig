@@ -11,7 +11,7 @@
 
         <div class="container categoryView isGridView isList-1">
           <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
-            <div class="SubnavigationTitle">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</div>
+            <div class="SubnavigationTitle ITEMFILTERTAGLIST"><span class="hidden-xs">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</span><span class="hidden-lg"><i class="material-icons w3-xxxlarge">filter_list</i></span></div>
             <div id="SubnavigationContent">
               <item-filter-tag-list></item-filter-tag-list>
               {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets) %}
