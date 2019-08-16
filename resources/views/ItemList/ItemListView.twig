@@ -22,30 +22,29 @@
               {% endif %}
             </div>
           </div>
+            <div class="categoryPagination ItemListView row margin-top-2 margin-bottom-2 col-lg-9 col-xs-10">
+              <nav class="navbar navbar-default">
+                  {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
+                      {% include "CeresCoconut::Category.Item.Partials.PaginationETC" %}
+                  {% endif %}
+                <ul class="nav navbar-right col-lg-8">
+                  <li>
+                    <span>{{ itemCountTotal }} Artikel</span>
+                  </li>
+                  <li>
+                    <item-list-sorting template="#vue-item-list-sortingETC" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
+                    <items-per-page
+                      template="#vue-items-per-page"
+                      :pagination-values="{{ searchOptions.itemsPerPage | json_encode }}"></items-per-page>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            {# TAGS
+            <item-filter-tag-list></item-filter-tag-list>#}
 
           <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
             <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
-              <div class="categoryPagination row margin-top-2 margin-bottom-2">
-                <nav class="navbar navbar-default">
-                    {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
-                        {% include "CeresCoconut::Category.Item.Partials.PaginationETC" %}
-                    {% endif %}
-                  <ul class="nav navbar-right col-lg-8">
-                    <li>
-                      <span>{{ itemCountTotal }} Artikel</span>
-                    </li>
-                    <li>
-                      <item-list-sorting template="#vue-item-list-sortingETC" :sorting-list="{{ searchOptions.sorting | json_encode }}" :default-sorting="{{ searchOptions.defaultSorting | json_encode }}"></item-list-sorting>
-                      <items-per-page
-                        template="#vue-items-per-page"
-                        :pagination-values="{{ searchOptions.itemsPerPage | json_encode }}"></items-per-page>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-              {# TAGS
-              <item-filter-tag-list></item-filter-tag-list>#}
-
               {% if ceresConfig.header.showNavBars == "side" or ceresConfig.header.showNavBars == "both" %}
                 <div class="col-xs-3 hidden-md-down">
                   <div class="sidebar-categories">
