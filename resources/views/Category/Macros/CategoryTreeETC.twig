@@ -32,14 +32,15 @@
 
     {% for category in categories %}
 
-        {% if category.id == 429 %}
+    {% if webstoreConfig.webstoreId != 4 %}
+        {% if (webstoreConfig.webstoreId != 4 and category.id == 429) or (webstoreConfig.webstoreId == 4 and category.id == 378) %}
           {% if urls.includeLanguage %}
               {% set topsellerURL = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
           {% else %}
               {% set topsellerURL = "/" ~ category.details[0].nameUrl %}
           {% endif %}
         {% endif %}
-        {% if category.details | length > 0 and category.id != 429 and category.id != 439 %}
+        {% if category.details | length > 0 and category.id != 429 and category.id != 439 and category.id != 378 %}
 
             {% if urls.includeLanguage %}
                 {% set currentScopeUrl = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
@@ -53,11 +54,7 @@
 
             <div class="catLvl1 test1431">
               <!--<a class="Category_Link" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">-->
-              {% if category.id != 378 %}
-                <a class="Category_Link">
-              {% else %}
-                <a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}" class="Category_Link">
-              {% endif %}
+              <a class="Category_Link">
                 <li id="{{ category.id }}" rel="/documents/{{ category.details[0].imagePath }}">
                   {{ category.details[0].name | raw }}
                 </li>
@@ -112,13 +109,11 @@
 
         {% endif %}
     {% endfor %}
-    {% if webstoreConfig.webstoreId != 4 %}
       <div class="catLvl1 menu_bargain TESTETC0900">
         <a href="{{ topsellerURL }}" class="Category_Link" title="Top Seller">
           <li>Top Seller</li>
         </a>
       </div>
-    {% endif %}
 {% endmacro %}
 
 {% macro get_sidemenu(breadcrumbs, categories, currentScopeUrl) %}
