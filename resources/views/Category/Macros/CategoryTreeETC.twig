@@ -53,7 +53,11 @@
 
             <div class="catLvl1">
               <!--<a class="Category_Link" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">-->
-              <a class="Category_Link">
+              {% if category.id == 378 %}
+                <a class="Category_Link">
+              {% else %}
+                <a href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl" class="Category_Link">
+              {% endif %}
                 <li id="{{ category.id }}" rel="/documents/{{ category.details[0].imagePath }}">
                   {{ category.details[0].name | raw }}
                 </li>
