@@ -13,7 +13,7 @@
     <meta property="og:image" content="{{  item.documents[0].data.images.all[0].url }}" />
     <meta property="og:description" content="{{ item.documents[0].data.texts.shortDescription }}" />
 
-    {% set BelboonTrackActive = config("Ceres.tracking.belboonTrackingActive") %}
+    {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
     {% if BelboonTrackActive == "true" %}
       {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
     <!-- START BELBOON ITEM TRACKING -->
