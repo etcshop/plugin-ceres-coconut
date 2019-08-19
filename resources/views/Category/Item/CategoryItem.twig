@@ -127,6 +127,7 @@
     <meta name="robots" content="{{ metaRobots }}">
     {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
     {% if BelboonTrackActive == "true" %}
+      {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
       <script type="text/javascript">
         belboonTag = {
             categoryId: "{{ category.id }}"
@@ -136,7 +137,7 @@
           (function(d) {
               var s = d.createElement("script");
               s.async = true;
-              s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId=18842&page=category&type=dynamic";
+              s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=category&type=dynamic";
               var a = d.getElementsByTagName("script")[0];
               a.parentNode.insertBefore(s, a);
           }(document));

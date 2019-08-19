@@ -55,6 +55,7 @@
       {% if (currTpl == 'tpl.basket') %}
         {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
         {% if BelboonTrackActive == "true" %}
+          {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
           <!-- START BELBOON BASKET TRACKING TEST1206-->
             {% if basketItemsETC is not defined %}
                 {% set basketItemsETC = services.basket.getBasketItems() %}
@@ -80,7 +81,7 @@
                 (function(d) {
                     var s = d.createElement("script");
                     s.async = true;
-                    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId=18842&page=basket&type=dynamic";
+                    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=basket&type=dynamic";
                     var a = d.getElementsByTagName("script")[0];
                     a.parentNode.insertBefore(s, a);
                 }(document));

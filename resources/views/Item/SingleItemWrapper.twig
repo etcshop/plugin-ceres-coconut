@@ -12,9 +12,10 @@
     <meta property="og:url" content="{{ webstoreConfig.domainSsl }}{{ item.documents[0].data | itemURL }}" />
     <meta property="og:image" content="{{  item.documents[0].data.images.all[0].url }}" />
     <meta property="og:description" content="{{ item.documents[0].data.texts.shortDescription }}" />
-    
+
     {% set BelboonTrackActive = config("Ceres.tracking.belboonTrackingActive") %}
     {% if BelboonTrackActive == "true" %}
+      {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
     <!-- START BELBOON ITEM TRACKING -->
       <script type="text/javascript">
           belboonTag = {
@@ -32,7 +33,7 @@
           (function(d) {
               var s = d.createElement("script");
               s.async = true;
-              s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId=18842&page=product&type=dynamic";
+              s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=product&type=dynamic";
               var a = d.getElementsByTagName("script")[0];
               a.parentNode.insertBefore(s, a);
           }(document));
