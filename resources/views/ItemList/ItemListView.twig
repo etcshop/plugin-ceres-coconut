@@ -8,7 +8,7 @@
     {{ component( "CeresCoconut::ItemList.Components.PaginationETC" ) }}
     {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterTagList") }}
-        <div style="display: none!">{{ itemList | raw }}</div>
+        <div style="display: none;">{{ itemList | raw }}</div>
         {% if itemList | length > 0 %}
         <div class="container categoryView isGridView isList-1">
           <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
