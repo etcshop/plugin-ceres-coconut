@@ -9,6 +9,7 @@
     {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterTagList") }}
 
+        {% if itemList | length > 0 %}
         <div class="container categoryView isGridView isList-1">
           <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
             <div class="SubnavigationTitle ITEMFILTERTAGLIST"><span class="hidden-xs">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</span><span class="hidden-lg"><i class="material-icons w3-xxxlarge">filter_list</i></span></div>
@@ -73,6 +74,9 @@
                         </div>
           </div>
         </div>
+        {% else %}
+          {% include "CeresCoconut::StaticPages.ItemNotFound" %}
+        {% endif %}
 
 {% endblock %}
 
