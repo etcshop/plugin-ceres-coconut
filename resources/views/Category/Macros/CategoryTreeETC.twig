@@ -31,8 +31,7 @@
     {% set topsellerURL = "" %}
 
     {% for category in categories %}
-
-    {% if webstoreConfig.webstoreId != 4 %}
+    
         {% if (webstoreConfig.webstoreId != 4 and category.id == 429) or (webstoreConfig.webstoreId == 4 and category.id == 378) %}
           {% if urls.includeLanguage %}
               {% set topsellerURL = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
