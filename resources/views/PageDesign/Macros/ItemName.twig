@@ -9,10 +9,11 @@
         {% if "[-]" in itemName %}
             {% set itemName = itemName | replace({"[-]": ""}) | trim %}
         {% endif %}
-
         {{ itemName }}
+    {% elseif "[Paket]" in itemName %}
+        {% set itemName = itemName | replace({"[Paket]": ""}) %}
     {% else %}
         {{ itemName }}
     {% endif %}
-    {% set itemName = itemName | replace({"[Paket]": ""}) | trim %}
+    {% set itemName = itemName | trim %}
 {% endmacro %}
