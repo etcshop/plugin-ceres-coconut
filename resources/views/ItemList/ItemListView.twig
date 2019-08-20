@@ -60,7 +60,7 @@
                             {% include "CeresCoconut::ItemList.Partials.LoadingAnimation" %}
                         {% endif %}
 
-                        <ul id="twig-rendered-item-list" class="row categoryDetails isGridView" v-is-loading-watcher="$store.state.itemList.isLoading">
+                        <ul id="twig-rendered-item-list" class="row categoryDetails isGridView">
                             {% for item in itemList %}
                               {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                             {% endfor %}
