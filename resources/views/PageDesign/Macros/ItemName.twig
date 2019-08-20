@@ -11,7 +11,7 @@
         {% endif %}
         {{ itemName }}
     {% elseif "[Paket]" in itemName %}
-        {% set itemName = itemName | replace({"[Paket]": ""}) %}
+        {% set itemName = itemName | trim %}
     {% else %}
         {{ itemName }}
     {% endif %}
