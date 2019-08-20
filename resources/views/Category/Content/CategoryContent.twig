@@ -1,5 +1,7 @@
 {% extends getPartial('page-design') %}
-
+{% block PartialHead %}
+    <title>{{ config("CeresCoconut.header.company_name") }} - {{ category.details[0].name }}</title>
+{% endblock %}
 {% block PageBody %}
 
     {% set shopBuilderTemplate = shop_builder_category_template(category.id) %}
