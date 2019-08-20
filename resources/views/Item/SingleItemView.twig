@@ -1,3 +1,4 @@
+{% import "CeresCoconut::PageDesign.Macros.ItemName" as ItemName %}
 {{ component( "Ceres::Item.Components.VariationSelect" ) }}
 {{ component( "CeresCoconut::Item.Components.ItemImageCarousel" ) }}
 {{ component( "CeresCoconut::Item.Components.AddToWishListETC" ) }}
@@ -27,7 +28,7 @@
     </template>
     <div slot="ItemListContainer">
       {% if similar is not empty %}
-        <div style="display: none;" id="dataRaw">{{ item.documents[0].data | json_encode }}</div>
+        <div style="display: none;" id="dataRaw">{{ ItemName.get(item.documents[0].data | itemName, item.documents[0].data.variation.bundleType) }}</div>
         <div class="CrossSellingCaption test1550">{{ trans("CeresCoconut::Template.ETC_PassendDazu") }}:</div>
         <crossselling-item-list class="CrossSelling_Similar" :items="{{ similar | json_encode }}" :mainprice="{{ item.documents[0].data.calculatedPrices.default.price }}" :mainid="{{ item.documents[0].data.variation.id }}"></crossselling-item-list>
       {% else %}
