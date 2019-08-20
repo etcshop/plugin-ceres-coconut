@@ -242,6 +242,15 @@
                       </a>
                     </li>
                     <li class="col-lg-4 col-xs-2 MyAccoutMenu_Point" id="MyAccoutMenu_Retoure">
+                      {% if webstoreConfig.webstoreId == 4 %}
+                        {% if lang == "en" %}
+                          <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_en.php" target="_blank" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}">
+                        {% elseif lang == "fr" %}
+                          <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_fr.php" target="_blank" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}">
+                        {% else %}
+                          <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}">
+                        {% endif %}
+                      {% else %}
                         {% if lang == "en" %}
                           <a href="http://s141963554.online.de/retoure/voll/retoure_en.php" target="_blank" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}">
                         {% elseif lang == "fr" %}

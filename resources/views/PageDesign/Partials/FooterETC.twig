@@ -74,9 +74,9 @@
           <a href="{{ services.category.getURL(versand, lang) }}" title="{{ services.category.get(722, lang).details[0].name }}">{{ services.category.get(722, lang).details[0].name }}</a><br>
           {% if webstoreConfig.webstoreId == 4 %}
               {% if lang == "en" %}
-                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_en.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% elseif lang == "fr" %}
-                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_fr.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% else %}
                   <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% endif %}
@@ -123,7 +123,7 @@
         </div>
         <div id="footer5" class="footerbox col-xs-6 col-sm-6 col-md-3 col-lg-3">
           <h1>{{ trans("CeresCoconut::Template.ETC_EinfachZahlen") }}</h1>
-          {% set zahlung = services.category.get(725, lang) %} 
+          {% set zahlung = services.category.get(725, lang) %}
 
           <a href="{{ services.category.getURL(zahlung, lang) }}" title="PayPal">{{ trans("CeresCoconut::Template.ETC_Payment_Paypal") }}</a>
           <a href="{{ services.category.getURL(zahlung, lang) }}" title="Lastschrift">{{ trans("CeresCoconut::Template.ETC_Payment_Lastschrift") }}</a>
