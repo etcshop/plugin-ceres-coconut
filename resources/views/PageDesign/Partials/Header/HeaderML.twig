@@ -81,9 +81,9 @@
               {% set zahlung = services.category.get(725, lang) %}
               <a href="{{ services.category.getURL(zahlung, lang) }}" title="{{ zahlung.details[0].name }}"><li>{{ zahlung.details[0].name }}</li></a>
               {% if lang == "en" %}
-                <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
+                <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_en.php" target="_blank" title="Retourenportal"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
               {% elseif lang == "fr" %}
-                <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
+                <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_fr.php" target="_blank" title="Retourenportal"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
               {% else %}
                 <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
               {% endif %}
