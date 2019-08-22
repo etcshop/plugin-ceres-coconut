@@ -1,4 +1,3 @@
-{% import "Ceres::" %}
 {% set mailRegex		= "[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?" %}
 {% set gCapture 		= config("Ceres.global.google_recaptcha_api_key") %}
 {% set contactConfigSet = not config("Ceres.contact.show_data") is empty or config("Ceres.contact.show_data") == "all" %}
