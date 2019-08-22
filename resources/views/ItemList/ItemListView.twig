@@ -8,7 +8,7 @@
     {{ component( "CeresCoconut::ItemList.Components.PaginationETC" ) }}
     {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "CeresCoconut::ItemList.Components.Filter.ItemFilterTagList") }}
-    
+
         {% if itemList | length > 0 %}
         <div class="container categoryView isGridView isList-1">
           <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
@@ -65,7 +65,7 @@
                               {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                             {% endfor %}
                         </ul>
-                        <div id="PaginationBottom" class="categoryPagination row margin-top-2 margin-bottom-2 col-lg-9">
+                        <div id="PaginationBottom" class="categoryPagination row margin-top-2 margin-bottom-2 col-lg-9" style="float: right;">
                           <nav class="navbar navbar-default">
                             {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
                               {% include "CeresCoconut::Category.Item.Partials.PaginationETC" %}
