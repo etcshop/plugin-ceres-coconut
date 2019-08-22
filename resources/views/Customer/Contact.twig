@@ -1,22 +1,9 @@
 {% extends getPartial('page-design') %}
 
-{% set mailRegex		= "[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?" %}
-{% set gCapture 		= config("Ceres.global.google_recaptcha_api_key") %}
-{% set contactConfigSet = not config("Ceres.contact.show_data") is empty or config("Ceres.contact.show_data") == "all" %}
-{% set googleApiKey 	= config("Ceres.contact.api_key") %}
-{% set zip				= config("system.company.zip") %}
-{% set street 			= config("system.company.street") %}
-{% set mapZoom 			= config("Ceres.contact.map_zoom") %}
-{% set showMapInMobile	= config("Ceres.contact.map_show_in_mobile") %}
+
 
 {% block PartialHead %}
-    <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
-    <meta name="robots" content="{{ config("Ceres.meta.robots_contact") }}">
-    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.contact") }}</title>
 
-    {% if gCapture | length > 0 %}
-        <script src='https://www.google.com/recaptcha/api.js' async defer></script>	        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    {% endif %}	    {% endif %}
 
 {% endblock %}
 
