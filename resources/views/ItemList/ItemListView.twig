@@ -65,7 +65,7 @@
                               {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                             {% endfor %}
                         </ul>
-                        <div id="PaginationBottom" class="categoryPagination row margin-top-2 margin-bottom-2 col-lg-9" style="float: right;">
+                        <div id="PaginationBottom" class="categoryPagination row margin-top-2 margin-bottom-2 col-lg-9" style="float: left;">
                           <nav class="navbar navbar-default">
                             {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
                               {% include "CeresCoconut::Category.Item.Partials.PaginationETC" %}
