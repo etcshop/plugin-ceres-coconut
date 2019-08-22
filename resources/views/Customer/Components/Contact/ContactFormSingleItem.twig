@@ -114,8 +114,6 @@
 
 
 <script>
-	import { isNullOrUndefined } from "https://cdn02.plentymarkets.com/9krpwzxa6mmo/plugin/1/ceres/js/src/app/helper/utils.js";
-
 	const ApiService = require("services/ApiService");
 	const NotificationService = require("services/NotificationService");
 
@@ -248,7 +246,7 @@
 	                })
 	                .always(() =>
 	                {
-	                    if (!isNullOrUndefined(window.grecaptcha))
+	                    if (!(window.grecaptcha === null) && !(typeof window.grecaptcha === typeof void 0))
 	                    {
 	                        window.grecaptcha.reset();
 	                    }
