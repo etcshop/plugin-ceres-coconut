@@ -22,7 +22,6 @@
 
 {% block PageBody %}
 
-{{ component("CeresCoconut::Customer.Components.Contact.AcceptPrivacyPolicyCheck") }}
 {{ component("Ceres::Customer.Components.Contact.ContactMap") }}
 
     	<div class="container_centered">
@@ -116,7 +115,27 @@
     					</div>
 
     					<div class="col-xs-12 col-md-12 col-lg-8 p-x-0">
-    						<accept-privacy-policy-check template="#vue-accept-privacy-policy-checkETC" class="m-b-1" v-if="enableConfirmingPrivacyPolicy" v-model="privacyPolicyAccepted" @input="privacyPolicyValueChanged($event)" :show-error="privacyPolicyShowError"></accept-privacy-policy-check>
+
+                  {% if ceresConfig.contact.enableConfirmingPrivacyPolicy %}
+                          <div class="col-12">
+                              <div class="form-check" data-validate="">
+                                  <input class="form-check-input" type="checkbox" id="{{ formId }}_privacy_check" name="{{ formId }}_privacy_check">
+                                  <label class="form-check-label" for="{{ formId }}_privacy_check">
+                                      {% autoescape false %}
+                                          {% spaceless %}
+                                              {% set policyContent %}
+                                                  <a href="{{ urls.privacyPolicy }}" target="_blank">
+                                                      <span>{{ trans("Ceres::Template.contactPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
+                                                  </a>
+                                              {% endset %}
+                                          {% endspaceless %}
+
+                                          {{ trans("Ceres::Template.contactAcceptPrivacyPolicy", {"policy": policyContent}) }}<sup>*</sup>
+                                      {% endautoescape %}
+                                  </label>
+                              </div>
+                          </div>
+                  {% endif %}
     					</div>
 
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
