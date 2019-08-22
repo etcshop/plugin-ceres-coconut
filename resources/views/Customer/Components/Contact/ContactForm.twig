@@ -128,42 +128,7 @@
 </script>
 
 <script>
-	/**
-	 * Check if a given value equals to null
-	 *
-	 * @param {*}   object
-	 *
-	 * @returns {boolean}
-	 */
-	export function isNull(object)
-	{
-	    return object === null;
-	}
-
-	/**
-	 * Check if a given value is undefined
-	 *
-	 * @param {*} object
-	 *
-	 * @returns {boolean}
-	 */
-	export function isUndefined(object)
-	{
-	    // eslint-disable-next-line
-	    return typeof object === typeof void 0;
-	}
-
-	/**
-	 * Check if a given value is null or undefined
-	 *
-	 * @param {*}   object
-	 *
-	 * @returns {boolean}
-	 */
-	export function isNullOrUndefined(object)
-	{
-	    return isNull(object) || isUndefined(object);
-	}
+	import { isNullOrUndefined } from "https://cdn02.plentymarkets.com/9krpwzxa6mmo/plugin/1/ceres/js/src/app/helper/utils.js";
 
 	const ApiService = require("services/ApiService");
 	const NotificationService = require("services/NotificationService");
