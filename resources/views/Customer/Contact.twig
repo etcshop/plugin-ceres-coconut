@@ -13,6 +13,57 @@
     <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
     <meta name="robots" content="{{ config("Ceres.meta.robots_contact") }}">
     <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.contact") }}</title>
+    <script>
+    validate(event.target)
+                            .done(() =>
+                            {
+                                disableForm(event.target, true);
+
+                                const formData    = serializeForm(event.target);
+                                const formOptions = readFormOptions(event.target, formData);
+
+                                ApiService.post(
+                                    "/rest/io/customer/contact/mail",
+                                    {
+                                        data:       formData,
+                                        recipient:  formOptions.recipient,
+                                        subject:    formOptions.subject || "",
+                                        cc:         formOptions.cc,
+                                        replyTo:    formOptions.replyTo,
+                                        recaptchaToken: recaptchaResponse
+                                    }
+                                )
+                                    .done(reponse =>
+                                    {
+                                        event.target.reset();
+                                        disableForm(event.target, false);
+                                        NotificationService.success(
+                                            TranslationService.translate("Ceres::Template.contactSendSuccess")
+                                        );
+                                    })
+                                    .fail(response =>
+                                    {
+                                        disableForm(event.target, false);
+                                        NotificationService.error(
+                                            TranslationService.translate("Ceres::Template.contactSendFail")
+                                        );
+                                    });
+                            })
+                            .fail(invalidFields =>
+                            {
+                                const fieldNames = [];
+
+                                for (const field of invalidFields)
+                                {
+                                    fieldNames.push(getLabel(field));
+                                }
+
+                                ValidationService.markInvalidFields(invalidFields, "error");
+                                NotificationService.error(
+                                    TranslationService.translate("Ceres::Template.checkoutCheckAddressFormFields", { fields: fieldNames.join(", ") })
+                                );
+                            });
+    </script>
 
     {% if gCapture | length > 0 %}
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>	        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -104,25 +155,13 @@
     	          {% endif %}
     					</div>
 
-    					<!--<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
-    						<input class="mailToMe" id="cc" type="checkbox" v-model="cc" value="cc" name="mailToMe">
+    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
+    						<input class="mailToMe" id="cc" type="checkbox" value="cc" name="mailToMe">
     						<label for="cc">
     							<div class="ETC-Checkbox"><i class="material-icons w3-xxxlarge">clear</i></div>
     							{{ trans("Ceres::Template.contactSendMeACopy") }}
     						</label>
-    					</div>-->
-              <div class="col-12 col-md-9">
-                        <div class="form-check">
-                            <input class="form-check-input"
-                                   data-mail="cc"
-                                   value="{{ formId }}_mail"
-                                   type="checkbox"
-                                   id="{{ formId }}_copy_to_me">
-                            <label class="form-check-label" for="{{ formId }}_copy_to_me">
-                                {{ trans("Ceres::Template.contactSendMeACopy") }}
-                            </label>
-                        </div>
-                    </div>
+    					</div>
 
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
     						<hr>
@@ -152,19 +191,13 @@
                   {% endif %}
     					</div>
 
-    					<!--<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
-                <button type="submit" class="btn btn-primary btn-block" :disabled="waiting" @click="validate({{ gCapture | length > 0 }})">
-    							<i v-waiting-animation="waiting" class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
+                <button type="submit" class="btn btn-primary btn-block" @click="validate({{ gCapture | length > 0 }})">
+    							<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
     							{{ trans("CeresCoconut::Template.contactSend") }}
     						</button>
-    					</div>-->
-              <div class="col-12 col-md-3 offset-md-9 send-mail">
-                                      <button type="submit" class="btn btn-primary btn-block">
-                                          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                          {{ trans("Ceres::Template.contactSend") }}
-                                      </button>
-                                  </div>
-                                  
+    					</div>
+
     	        {% if googleApiKey and not contactConfigSet %}
     						<div class="col-xs-12 m-t-3{% if showMapInMobile == "false" %} hidden-sm-down{% endif %}">
     							<contact-map template="#vue-contact-map" zip="{{ zip }}" street="{{ street }}" map-zoom="{{ mapZoom }}" google-api-key="{{ googleApiKey }}"></contact-map>
