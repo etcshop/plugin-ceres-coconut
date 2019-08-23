@@ -13,57 +13,6 @@
     <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
     <meta name="robots" content="{{ config("Ceres.meta.robots_contact") }}">
     <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.contact") }}</title>
-    <script>
-    validate(event.target)
-                            .done(() =>
-                            {
-                                disableForm(event.target, true);
-
-                                const formData    = serializeForm(event.target);
-                                const formOptions = readFormOptions(event.target, formData);
-
-                                ApiService.post(
-                                    "/rest/io/customer/contact/mail",
-                                    {
-                                        data:       formData,
-                                        recipient:  formOptions.recipient,
-                                        subject:    formOptions.subject || "",
-                                        cc:         formOptions.cc,
-                                        replyTo:    formOptions.replyTo,
-                                        recaptchaToken: recaptchaResponse
-                                    }
-                                )
-                                    .done(reponse =>
-                                    {
-                                        event.target.reset();
-                                        disableForm(event.target, false);
-                                        NotificationService.success(
-                                            TranslationService.translate("Ceres::Template.contactSendSuccess")
-                                        );
-                                    })
-                                    .fail(response =>
-                                    {
-                                        disableForm(event.target, false);
-                                        NotificationService.error(
-                                            TranslationService.translate("Ceres::Template.contactSendFail")
-                                        );
-                                    });
-                            })
-                            .fail(invalidFields =>
-                            {
-                                const fieldNames = [];
-
-                                for (const field of invalidFields)
-                                {
-                                    fieldNames.push(getLabel(field));
-                                }
-
-                                ValidationService.markInvalidFields(invalidFields, "error");
-                                NotificationService.error(
-                                    TranslationService.translate("Ceres::Template.checkoutCheckAddressFormFields", { fields: fieldNames.join(", ") })
-                                );
-                            });
-    </script>
 
     {% if gCapture | length > 0 %}
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>	        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
