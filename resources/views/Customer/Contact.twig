@@ -58,33 +58,39 @@
                 {% set formId = uid() %}
     						<form id="contact-form" @submit.prevent="$store.dispatch('sendContactForm', $event)">
 
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
+    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactName">
     								<div class="input-unit input-name-field">
                       <input type="text" name="{{ formId }}_name" id="{{ formId }}_name">
                       <label for="{{ formId }}_name">{{ trans("CeresCoconut::Template.contactName") }}</label>
                       <input type="hidden" data-mail="reply-to-name" value="{{ formId }}_name">
     								</div>
     							</div>
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
-    								<div class="input-unit input-mail-field" data-validate="regex" data-model="userMail">
-    									{% set uid_mail = uid() %}
-    									<input type="email" name="email" v-model="userMail" id="{{ uid_mail }}" data-validate-ref="{{ mailRegex }}">
-    									<label for="{{ uid_mail }}">{{ trans("CeresCoconut::Template.contactMail") }}*</label>
+    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMail">
+    								<div class="input-unit input-mail-field" data-validate="regex">
+                      <input type="email" name="{{ formId }}_mail" id="{{ formId }}_mail">
+                      <label for="{{ formId }}_mail">{{ trans("CeresCoconut::Template.contactMail") }}*</label>
+                      <input type="hidden" data-mail="reply-to-address" value="{{ formId }}_mail">
     								</div>
     								<div class="error-feedback">{{ trans("CeresCoconut::Template.contactEnterConfirmEmail") }}</div>
     							</div>
     							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactBetreff">
-    								<div class="input-unit" data-validate="text" data-model="subject">
-    									<input type="subject" name="subject" v-model="subject" id="txt_subject" value="FORMULAR Kontakt http://www.etc-shop.de">
-    									<label for="txt_subject">{{ trans("CeresCoconut::Template.contactSubject") }}*</label>
+    								<div class="input-unit" data-validate="text">
+                      <input type="text" name="{{ formId }}_subject" id="{{ formId }}_subject">
+                      <label for="{{ formId }}_subject">{{ trans("CeresCoconut::Template.contactSubject") }}*</label>
+                      <input type="hidden" data-mail="subject" value="{{ formId }}_subject">
     								</div>
     								<div class="error-feedback">{{ trans("CeresCoconut::Template.contactEditSubject") }}</div>
     							</div>
-
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
-    								<div class="input-unit textarea" data-validate="text" data-model="message">
-    									<label for="txt_message">{{ trans('CeresCoconut::Template.contactMessage') }}*</label>
-    									<textarea name="message" id="txt_message" v-model="message" class="no-resize" rows="15" cols="25"></textarea>
+                  <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactOrderId">
+                    <div class="input-unit">
+                      <input type="text" name="{{ formId }}_order" id="{{ formId }}_order">
+                      <label for="{{ formId }}_order">{{ trans("CeresCoconut::Template.contactOrderId") }}({{ trans("CeresCoconut::Template.contactOptional") }})</label>
+                    </div>
+                  </div>
+    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMessage">
+    								<div class="input-unit textarea" data-validate="text">
+                      <textarea name="{{ formId }}_message" id="{{ formId }}_message" class="no-resize" rows="15"></textarea>
+                      <label for="{{ formId }}_message">{{ trans("CeresCoconut::Template.contactMessage") }}*</label>
     								</div>
     								<div class="error-feedback">{{ trans("CeresCoconut::Template.contactEditMessage") }}</div>
     							</div>
