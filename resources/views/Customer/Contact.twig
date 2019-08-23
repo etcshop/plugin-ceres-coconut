@@ -104,13 +104,25 @@
     	          {% endif %}
     					</div>
 
-    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
+    					<!--<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
     						<input class="mailToMe" id="cc" type="checkbox" v-model="cc" value="cc" name="mailToMe">
     						<label for="cc">
     							<div class="ETC-Checkbox"><i class="material-icons w3-xxxlarge">clear</i></div>
     							{{ trans("Ceres::Template.contactSendMeACopy") }}
     						</label>
-    					</div>
+    					</div>-->
+              <div class="col-12 col-md-9">
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   data-mail="cc"
+                                   value="{{ formId }}_mail"
+                                   type="checkbox"
+                                   id="{{ formId }}_copy_to_me">
+                            <label class="form-check-label" for="{{ formId }}_copy_to_me">
+                                {{ trans("Ceres::Template.contactSendMeACopy") }}
+                            </label>
+                        </div>
+                    </div>
 
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
     						<hr>
@@ -140,12 +152,12 @@
                   {% endif %}
     					</div>
 
-    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
+    					<!--<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
                 <button type="submit" class="btn btn-primary btn-block" :disabled="waiting" @click="validate({{ gCapture | length > 0 }})">
     							<i v-waiting-animation="waiting" class="fa fa-paper-plane-o" aria-hidden="true"></i>
     							{{ trans("CeresCoconut::Template.contactSend") }}
     						</button>
-    					</div>
+    					</div>-->
 
     	        {% if googleApiKey and not contactConfigSet %}
     						<div class="col-xs-12 m-t-3{% if showMapInMobile == "false" %} hidden-sm-down{% endif %}">
