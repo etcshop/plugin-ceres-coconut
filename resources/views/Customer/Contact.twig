@@ -67,7 +67,7 @@
     							</div>
     							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMail">
     								<div class="input-unit input-mail-field" data-validate="regex">
-                      <input type="email" name="{{ formId }}_mail" id="{{ formId }}_mail">
+                      <input type="email" name="{{ formId }}_mail" id="txt_mail">
                       <label for="{{ formId }}_mail">{{ trans("CeresCoconut::Template.contactMail") }}*</label>
                       <input type="hidden" data-mail="reply-to-address" value="{{ formId }}_mail">
     								</div>
@@ -81,12 +81,6 @@
     								</div>
     								<div class="error-feedback">{{ trans("CeresCoconut::Template.contactEditSubject") }}</div>
     							</div>
-                  <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactOrderId">
-                    <div class="input-unit">
-                      <input type="text" name="{{ formId }}_order" id="{{ formId }}_order">
-                      <label for="{{ formId }}_order">{{ trans("CeresCoconut::Template.contactOrderId") }}({{ trans("CeresCoconut::Template.contactOptional") }})</label>
-                    </div>
-                  </div>
     							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMessage">
     								<div class="input-unit textarea" data-validate="text">
                       <label for="{{ formId }}_message">{{ trans("CeresCoconut::Template.contactMessage") }}*</label>
@@ -147,10 +141,10 @@
     					</div>
 
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
-                <button type="submit" class="btn btn-primary btn-block">
-                  <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                  {{ trans("CeresCoconut::Template.contactSend") }}
-                </button>
+                <button type="submit" class="btn btn-primary btn-block" :disabled="waiting" @click="validate({{ gCapture | length > 0 }})">
+    							<i v-waiting-animation="waiting" class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    							{{ trans("CeresCoconut::Template.contactSend") }}
+    						</button>
     					</div>
 
     	        {% if googleApiKey and not contactConfigSet %}
