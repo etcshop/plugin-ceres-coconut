@@ -158,7 +158,13 @@
     							{{ trans("CeresCoconut::Template.contactSend") }}
     						</button>
     					</div>-->
-
+              <div class="col-12 col-md-3 offset-md-9 send-mail">
+                                      <button type="submit" class="btn btn-primary btn-block">
+                                          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                          {{ trans("Ceres::Template.contactSend") }}
+                                      </button>
+                                  </div>
+                                  
     	        {% if googleApiKey and not contactConfigSet %}
     						<div class="col-xs-12 m-t-3{% if showMapInMobile == "false" %} hidden-sm-down{% endif %}">
     							<contact-map template="#vue-contact-map" zip="{{ zip }}" street="{{ street }}" map-zoom="{{ mapZoom }}" google-api-key="{{ googleApiKey }}"></contact-map>
