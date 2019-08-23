@@ -99,16 +99,24 @@
     						</form>
     					</div>
 
-    					<div class="col-xs-12 col-md-12 re-captcha-container">
-    	          {% if gCapture | length > 0 %}
-    							<div id="recaptcha" class="g-recaptcha"
-    								 data-sitekey="{{ gCapture }}"
-    								 data-callback="sendMail"
-    								 data-size="invisible"
-    								 data-badge="bottomleft">
-    							</div>
-    	          {% endif %}
-    					</div>
+              <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
+                {% if ceresConfig.global.googleRecaptchaApiKey | trim is not defined %}
+                  <recaptcha></recaptcha>
+                {% endif %}
+              </div>
+
+    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
+                <div class="form-check">
+                  <input class="form-check-input"
+                    data-mail="cc"
+                    value="{{ formId }}_mail"
+                    type="checkbox"
+                    id="{{ formId }}_copy_to_me">
+                    <label class="form-check-label" for="{{ formId }}_copy_to_me">
+                      {{ trans("CeresCoconut::Template.contactSendMeACopy") }}
+                    </label>
+                </div>
+              </div>
 
     					<!--<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
     						<input class="mailToMe" id="cc" type="checkbox" v-model="cc" value="cc" name="mailToMe">
