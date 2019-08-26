@@ -103,14 +103,17 @@
     					</div>
 
     					<div class="col-xs-12 col-md-12 re-captcha-container">
-    	          {% if gCapture | length > 0 %}
+    	          <!--{% if gCapture | length > 0 %}
     							<div id="recaptcha" class="g-recaptcha"
     								 data-sitekey="{{ gCapture }}"
     								 data-callback="sendMail"
     								 data-size="invisible"
     								 data-badge="bottomleft">
     							</div>
-    	          {% endif %}
+    	          {% endif %}-->
+                {% if ceresConfig.global.googleRecaptchaApiKey | trim is not empty %}
+                  <recaptcha></recaptcha>
+                {% endif %}
     					</div>
 
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
@@ -165,5 +168,100 @@
     			</div>
     		</div>
     	</div>
+      <script>
+      let gRecaptchaApiLoaded;
+
+Vue.component("recaptcha", {
+
+  template: "<div data-recaptcha></div>",
+
+  data()
+  {
+      return {
+          version: App.config.global.googleRecaptchaVersion,
+          apiKey: App.config.global.googleRecaptchaApiKey
+      };
+  },
+
+  mounted()
+  {
+      this.$nextTick(() =>
+      {
+          this.createScript().then(() => this.initializeV3());
+      });
+  },
+
+  methods:
+  {
+      createScript()
+      {
+          if (!this.apiKey)
+          {
+              return Promise.resolve();
+          }
+
+          if (!gRecaptchaApiLoaded)
+          {
+              gRecaptchaApiLoaded = new Promise((resolve, reject) =>
+              {
+                  const script = document.createElement("script");
+                  let scriptSource;
+
+                  if (this.version === 3)
+                  {
+                      scriptSource = `https://www.google.com/recaptcha/api.js?render=${this.apiKey}`;
+                  }
+                  else
+                  {
+                      scriptSource = "https://www.google.com/recaptcha/api.js";
+                  }
+
+                  script.type = "text/javascript";
+                  script.id = "google-recaptcha-api";
+                  script.src = scriptSource;
+
+                  script.addEventListener("load", () => resolve(script), false);
+                  script.addEventListener("error", () => reject(script), false);
+
+                  document.body.appendChild(script);
+              });
+          }
+
+          return gRecaptchaApiLoaded;
+      },
+
+      initializeV3()
+      {
+          if (window.grecaptcha)
+          {
+              window.grecaptcha.ready(() =>
+              {
+                  if (this.version !== 3)
+                  {
+                      this.$el.dataset.recaptcha = window.grecaptcha.render(
+                          this.$el,
+                          {
+                              sitekey: this.apiKey,
+                              size: "invisible",
+                              badge: "bottomright",
+                              callback: this.recaptchaCallback.bind(this)
+                          }
+                      );
+                  }
+              });
+          }
+      },
+
+      recaptchaCallback(response)
+      {
+          this.$el.querySelector("[name=\"g-recaptcha-response\"]")
+              .dispatchEvent(
+                  new CustomEvent("recaptcha-response", { response: response })
+              );
+      }
+  }
+});
+
+      </script>
 
 {% endblock %}
