@@ -1,166 +1,164 @@
 {% extends getPartial('page-design') %}
 
 {% set mailRegex		= "[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?" %}
-{% set gCapture 		= config("Ceres.global.google_recaptcha_api_key") %}
-{% set contactConfigSet = not config("Ceres.contact.show_data") is empty or config("Ceres.contact.show_data") == "all" %}
-{% set googleApiKey 	= config("Ceres.contact.api_key") %}
-{% set zip				= config("system.company.zip") %}
-{% set street 			= config("system.company.street") %}
-{% set mapZoom 			= config("Ceres.contact.map_zoom") %}
-{% set showMapInMobile	= config("Ceres.contact.map_show_in_mobile") %}
+{% set gCapture = config("Ceres.global.google_recaptcha_api_key") %}
+{% set contactConfigSet = not config("Ceres.contact.show_data")is empty or config("Ceres.contact.show_data") == "all" %}
+{% set googleApiKey = config("Ceres.contact.api_key") %}
+{% set zip = config("system.company.zip") %}
+{% set street = config("system.company.street") %}
+{% set mapZoom = config("Ceres.contact.map_zoom") %}
+{% set showMapInMobile = config("Ceres.contact.map_show_in_mobile") %}
 
 {% block PartialHead %}
-    <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
-    <meta name="robots" content="{{ config("Ceres.meta.robots_contact") }}">
-    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.contact") }}</title>
-    <script type="text/javascript" src="https://cdn02.plentymarkets.com/9krpwzxa6mmo/plugin/1/ceres/js/src/app/services/ValidationService.js"></script>
-    {% if gCapture | length > 0 %}
-        <script src='https://www.google.com/recaptcha/api.js' async defer></script>	        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    {% endif %}
+  <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
+  <meta name="robots" content="{{ config(" ceres.meta.robots_contact") }}"="Ceres.meta.robots_contact") }}"">
+  <title>{{ config("Ceres.header.company_name") }}
+    -
+    {{ trans("Ceres::Template.contact") }}</title>
+  <script></script>
+  {% if gCapture | length > 0 %}
+    <script src='https://www.google.com/recaptcha/api.js' async="async" defer="defer"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async="async" defer="defer"></script>
+  {% endif %}
 
 {% endblock %}
 
 {% block PageBody %}
 
-{{ component("Ceres::Customer.Components.Contact.ContactMap") }}
+  {{ component("Ceres::Customer.Components.Contact.ContactMap") }}
 
-    	<div class="container_centered">
-    		<div class="ContentPage" id="ContentKontakt">
-    			<div class="ContentCaption col-xs-12">{{ trans("Ceres::Template.contact") }}</div>
-    			<span class="ContentText col-xs-12">
-    				{{ trans("CeresCoconut::Template.contactShopMessage") | raw }}
-    			</span>
-    			<br>
-    			<br>
-    			<span class="ContentText col-xs-12">
-    				{{ trans("CeresCoconut::Template.ETC_AnrufOrtstarif") }}: <span class="ContentText_bold">{{ trans("CeresCoconut::Template.ETC_Telefonnummer") }}</span>
-    			</span>
-    			<br>
-    			<table class="col-xs-12 col-lg-6">
-    				<tr>
-    					<td class="ContentText col-xs-7">{{ trans("CeresCoconut::Template.ETC_MoBisDo") }}</td>
-    					<td class="ContentText col-xs-5">{{ trans("CeresCoconut::Template.ETC_Freitag") }}</td>
-    				</tr>
-    				<tr>
-    					<td class="ContentText col-xs-7">{{ trans("CeresCoconut::Template.ETC_8Bis17") }}</td>
-    					<td class="ContentText col-xs-5">{{ trans("CeresCoconut::Template.ETC_8Bis14") }}</td>
-    				</tr>
-    			</table>
-    			<br>
-    			<br>
-    			<br>
-    			<span class="ContentText col-xs-12">
-    				{{ trans("CeresCoconut::Template.ETC_KontaktFormText") }}
-    			</span>
-    			<div id="ContentKontakt_form">
-    				<div class="row">
-    					<div class="col-xs-12 p-x-0 {% if contactConfigSet and not googleApiKey %}col-sm-12 col-md-8 col-lg-9 {% endif %}well well-sm">
-                {% set formId = uid() %}
-    						<form id="contact-form" @submit.prevent="$store.dispatch('sendContactForm', $event)">
+  <div class="container_centered">
+    <div class="ContentPage" id="ContentKontakt">
+      <div class="ContentCaption col-xs-12">{{ trans("Ceres::Template.contact") }}</div>
+      <span class="ContentText col-xs-12">
+        {{ trans("CeresCoconut::Template.contactShopMessage") | raw }}
+      </span>
+      <br>
+      <br>
+      <span class="ContentText col-xs-12">
+        {{ trans("CeresCoconut::Template.ETC_AnrufOrtstarif") }}:
+        <span class="ContentText_bold">{{ trans("CeresCoconut::Template.ETC_Telefonnummer") }}</span>
+      </span>
+      <br>
+      <table class="col-xs-12 col-lg-6">
+        <tr>
+          <td class="ContentText col-xs-7">{{ trans("CeresCoconut::Template.ETC_MoBisDo") }}</td>
+          <td class="ContentText col-xs-5">{{ trans("CeresCoconut::Template.ETC_Freitag") }}</td>
+        </tr>
+        <tr>
+          <td class="ContentText col-xs-7">{{ trans("CeresCoconut::Template.ETC_8Bis17") }}</td>
+          <td class="ContentText col-xs-5">{{ trans("CeresCoconut::Template.ETC_8Bis14") }}</td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <br>
+      <span class="ContentText col-xs-12">
+        {{ trans("CeresCoconut::Template.ETC_KontaktFormText") }}
+      </span>
+      <div id="ContentKontakt_form">
+        <div class="row">
+          <div class="col-xs-12 p-x-0 {% if contactConfigSet and not googleApiKey %}col-sm-12 col-md-8 col-lg-9 {% endif %}well well-sm">
+            {% set formId = uid() %}
+            <form id="contact-form" @submit.prevent="$store.dispatch('sendContactForm', $event)">
 
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactName">
-    								<div class="input-unit input-name-field">
-                      <input type="text" name="{{ formId }}_name" id="{{ formId }}_name">
-                      <label for="{{ formId }}_name">{{ trans("CeresCoconut::Template.contactName") }}</label>
-                      <input type="hidden" data-mail="reply-to-name" value="{{ formId }}_name">
-    								</div>
-    							</div>
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMail">
-    								<div class="input-unit input-mail-field" data-validate="regex">
-                      <input type="email" name="{{ formId }}_mail" id="txt_mail">
-                      <label for="{{ formId }}_mail">{{ trans("CeresCoconut::Template.contactMail") }}*</label>
-                      <input type="hidden" data-mail="reply-to-address" value="{{ formId }}_mail">
-    								</div>
-    								<div class="error-feedback">{{ trans("CeresCoconut::Template.contactEnterConfirmEmail") }}</div>
-    							</div>
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactBetreff">
-    								<div class="input-unit" data-validate="text">
-                      <input type="text" name="{{ formId }}_subject" id="{{ formId }}_subject">
-                      <label for="{{ formId }}_subject">{{ trans("CeresCoconut::Template.contactSubject") }}*</label>
-                      <input type="hidden" data-mail="subject" value="{{ formId }}_subject">
-    								</div>
-    								<div class="error-feedback">{{ trans("CeresCoconut::Template.contactEditSubject") }}</div>
-    							</div>
-                  <!--<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactOrder">
-                    <div class="input-unit" data-validate="text">
-                      <input type="text" name="{{ formId }}_order" id="{{ formId }}_order">
-                      <label for="{{ formId }}_order">{{ trans("CeresCoconut::Template.contactSubject") }}*</label>
-                      <input type="hidden" data-mail="order" value="{{ formId }}_order">
-    								</div>
-                  </div>-->
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMessage">
-    								<div class="input-unit textarea" data-validate="text">
-                      <label for="{{ formId }}_message">{{ trans("CeresCoconut::Template.contactMessage") }}*</label>
-                      <textarea name="{{ formId }}_message" id="{{ formId }}_message" class="no-resize" rows="15" style="background-color: #eee;"></textarea>
-    								</div>
-    								<div class="error-feedback">{{ trans("CeresCoconut::Template.contactEditMessage") }}</div>
-    							</div>
+              <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactName">
+                <div class="input-unit input-name-field">
+                  <input type="text" name="{{ formId }}_name" id="{{ formId }}_name">
+                  <label for="{{ formId }}_name">{{ trans("CeresCoconut::Template.contactName") }}</label>
+                  <input type="hidden" data-mail="reply-to-name" value="{{ formId }}_name">
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMail">
+                <div class="input-unit input-mail-field" data-validate="regex">
+                  <input type="email" name="{{ formId }}_mail" id="txt_mail">
+                  <label for="{{ formId }}_mail">{{ trans("CeresCoconut::Template.contactMail") }}*</label>
+                  <input type="hidden" data-mail="reply-to-address" value="{{ formId }}_mail">
+                </div>
+                <div class="error-feedback">{{ trans("CeresCoconut::Template.contactEnterConfirmEmail") }}</div>
+              </div>
+              <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactBetreff">
+                <div class="input-unit" data-validate="text">
+                  <input type="text" name="{{ formId }}_subject" id="{{ formId }}_subject">
+                  <label for="{{ formId }}_subject">{{ trans("CeresCoconut::Template.contactSubject") }}*</label>
+                  <input type="hidden" data-mail="subject" value="{{ formId }}_subject">
+                </div>
+                <div class="error-feedback">{{ trans("CeresCoconut::Template.contactEditSubject") }}</div>
+              </div>
+              <!--<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactOrder"> <div class="input-unit" data-validate="text"> <input type="text" name="{{ formId }}_order" id="{{ formId }}_order"> <label for="{{ formId }}_order">{{
+              trans("CeresCoconut::Template.contactSubject") }}*</label> <input type="hidden" data-mail="order" value="{{ formId }}_order"> </div> </div>-->
+              <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMessage">
+                <div class="input-unit textarea" data-validate="text">
+                  <label for="{{ formId }}_message">{{ trans("CeresCoconut::Template.contactMessage") }}*</label>
+                  <textarea name="{{ formId }}_message" id="{{ formId }}_message" class="no-resize" rows="15" style="background-color: #eee;"></textarea>
+                </div>
+                <div class="error-feedback">{{ trans("CeresCoconut::Template.contactEditMessage") }}</div>
+              </div>
 
-    							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 text-sm-right">* {{ trans("CeresCoconut::Template.contactRequiredField") }}</div>
-    					</div>
+              <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 text-sm-right">*
+                {{ trans("CeresCoconut::Template.contactRequiredField") }}</div>
+            </div>
 
-    					<div class="col-xs-12 col-md-12 re-captcha-container">
-    	          {% if gCapture | length > 0 %}
-    							<div id="recaptcha" class="g-recaptcha"
-    								 data-sitekey="{{ gCapture }}"
-    								 data-callback="sendMail"
-    								 data-size="invisible"
-    								 data-badge="bottomleft">
-    							</div>
-    	          {% endif %}
-    					</div>
+            <div class="col-xs-12 col-md-12 re-captcha-container">
+              {% if gCapture | length > 0 %}
+                <div id="recaptcha" class="g-recaptcha" data-sitekey="{{ gCapture }}" data-callback="sendMail" data-size="invisible" data-badge="bottomleft"></div>
+              {% endif %}
+            </div>
 
-    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
-    						<input class="mailToMe" id="cc" type="checkbox" value="cc" name="mailToMe">
-    						<label for="cc">
-    							<div class="ETC-Checkbox"><i class="material-icons w3-xxxlarge">clear</i></div>
-    							{{ trans("Ceres::Template.contactSendMeACopy") }}
-    						</label>
-    					</div>
+            <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
+              <input class="mailToMe" id="cc" type="checkbox" value="cc" name="mailToMe">
+              <label for="cc">
+                <div class="ETC-Checkbox">
+                  <i class="material-icons w3-xxxlarge">clear</i>
+                </div>
+                {{ trans("Ceres::Template.contactSendMeACopy") }}
+              </label>
+            </div>
 
-    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
-    						<hr>
-    					</div>
+            <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0">
+              <hr>
+            </div>
 
-    					<div class="col-xs-12 col-md-12 col-lg-8 p-x-0">
+            <div class="col-xs-12 col-md-12 col-lg-8 p-x-0">
 
-                  {% if ceresConfig.contact.enableConfirmingPrivacyPolicy %}
-                          <div class="col-12">
-                              <div class="form-check" data-validate="">
-                                  <input class="form-check-input" type="checkbox" id="{{ formId }}_privacy_check" name="{{ formId }}_privacy_check">
-                                  <label class="form-check-label" for="{{ formId }}_privacy_check">
-                                      {% autoescape false %}
-                                          {% spaceless %}
-                                              {% set policyContent %}
-                                                  <a href="{{ urls.privacyPolicy }}" target="_blank">
-                                                      <span>{{ trans("Ceres::Template.contactPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
-                                                  </a>
-                                              {% endset %}
-                                          {% endspaceless %}
+              {% if ceresConfig.contact.enableConfirmingPrivacyPolicy %}
+                <div class="col-12">
+                  <div class="form-check" data-validate="">
+                    <input class="form-check-input" type="checkbox" id="{{ formId }}_privacy_check" name="{{ formId }}_privacy_check">
+                    <label class="form-check-label" for="{{ formId }}_privacy_check">
+                      {% autoescape false %}
+                        {% spaceless %}
+                          {% set policyContent %}
+                          <a href="{{ urls.privacyPolicy }}" target="_blank">
+                            <span>{{ trans("Ceres::Template.contactPrivacyPolicy", {"hyphen": "&shy;"}) }}</span>
+                          </a>
+                          {% endset %}
+                        {% endspaceless %}
 
-                                          {{ trans("Ceres::Template.contactAcceptPrivacyPolicy", {"policy": policyContent}) }}<sup>*</sup>
-                                      {% endautoescape %}
-                                  </label>
-                              </div>
-                          </div>
-                  {% endif %}
-    					</div>
-    					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
-                <button type="submit" class="btn btn-primary btn-block" @click="validate({{ gCapture | length > 0 }})">
+                        {{ trans("Ceres::Template.contactAcceptPrivacyPolicy", {"policy": policyContent}) }}
+                        <sup>*</sup>
+                      {% endautoescape %}
+                    </label>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            <div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
+              <button type="submit" class="btn btn-primary btn-block" @click="validate({{ gCapture | length > 0 }})">
                 <button type="submit" class="btn btn-primary btn-block">
-    							<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-    							{{ trans("CeresCoconut::Template.contactSend") }}
-    						</button>
-    					</div>
+                  <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                  {{ trans("CeresCoconut::Template.contactSend") }}
+                </button>
+              </div>
             </form>
-    	        {% if googleApiKey and not contactConfigSet %}
-    						<div class="col-xs-12 m-t-3{% if showMapInMobile == "false" %} hidden-sm-down{% endif %}">
-    							<contact-map template="#vue-contact-map" zip="{{ zip }}" street="{{ street }}" map-zoom="{{ mapZoom }}" google-api-key="{{ googleApiKey }}"></contact-map>
-    						</div>
-    	        {% endif %}
+            {% if googleApiKey and not contactConfigSet %}
+              <div class="col-xs-12 m-t-3{% if showMapInMobile == " false" %} hidden-sm-down{% endif %}"="false" %} hidden-sm-down{% endif %}"">
+                <contact-map template="#vue-contact-map" zip="{{ zip }}" street="{{ street }}" map-zoom="{{ mapZoom }}" google-api-key="{{ googleApiKey }}"></contact-map>
+              </div>
+            {% endif %}
 
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-{% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
