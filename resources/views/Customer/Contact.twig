@@ -54,9 +54,9 @@
     			</span>
     			<div id="ContentKontakt_form">
     				<div class="row">
-    					<div class="col-xs-12 p-x-0 {% if contactConfigSet and not googleApiKey %}col-sm-12 col-md-8 col-lg-9 {% endif %}well well-sm">
-                {% set formId = uid() %}
-    						<form id="contact-form" @submit.prevent="$store.dispatch('sendContactForm', $event)">
+              {% set formId = uid() %}
+              <form id="contact-form" @submit.prevent="$store.dispatch('sendContactForm', $event)">
+    					  <div class="col-xs-12 p-x-0 {% if contactConfigSet and not googleApiKey %}col-sm-12 col-md-8 col-lg-9 {% endif %}well well-sm">
 
     							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactName">
     								<div class="input-unit input-name-field">
@@ -90,7 +90,7 @@
     							</div>
 
     							<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 text-sm-right">* {{ trans("CeresCoconut::Template.contactRequiredField") }}</div>
-    						</form>
+
     					</div>
 
     					<div class="col-xs-12 col-md-12 re-captcha-container">
@@ -146,7 +146,7 @@
     							{{ trans("CeresCoconut::Template.contactSend") }}
     						</button>
     					</div>
-
+    				</form>
     	        {% if googleApiKey and not contactConfigSet %}
     						<div class="col-xs-12 m-t-3{% if showMapInMobile == "false" %} hidden-sm-down{% endif %}">
     							<contact-map template="#vue-contact-map" zip="{{ zip }}" street="{{ street }}" map-zoom="{{ mapZoom }}" google-api-key="{{ googleApiKey }}"></contact-map>
