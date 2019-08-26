@@ -13,7 +13,7 @@
     <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
     <meta name="robots" content="{{ config("Ceres.meta.robots_contact") }}">
     <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.contact") }}</title>
-
+    <script type="text/javascript" src="https://cdn02.plentymarkets.com/9krpwzxa6mmo/plugin/1/ceres/js/src/app/services/ValidationService.js"></script>
     {% if gCapture | length > 0 %}
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>	        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     {% endif %}
@@ -146,7 +146,7 @@
                   {% endif %}
     					</div>
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
-                <!--<button type="submit" class="btn btn-primary btn-block" @click="validate({{ gCapture | length > 0 }})">-->
+                <button type="submit" class="btn btn-primary btn-block" @click="validate({{ gCapture | length > 0 }})">
                 <button type="submit" class="btn btn-primary btn-block">
     							<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
     							{{ trans("CeresCoconut::Template.contactSend") }}
