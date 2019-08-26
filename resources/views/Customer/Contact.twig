@@ -8,6 +8,9 @@
 {% set street 			= config("system.company.street") %}
 {% set mapZoom 			= config("Ceres.contact.map_zoom") %}
 {% set showMapInMobile	= config("Ceres.contact.map_show_in_mobile") %}
+{% javascripts 'import https://cdn02.plentymarkets.com/9krpwzxa6mmo/plugin/1/ceres/js/src/app/services/ValidationService.js' %}
+  <script type="text/javascript" src="https://cdn02.plentymarkets.com/9krpwzxa6mmo/plugin/1/ceres/js/src/app/services/ValidationService.js"></script>
+{% endjavascripts %}
 
 {% block PartialHead %}
     <meta name="description" content="{{ trans('Ceres::Template.contactMetaDescription') }}">
