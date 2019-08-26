@@ -100,17 +100,14 @@
     					</div>
 
     					<div class="col-xs-12 col-md-12 re-captcha-container">
-    	          <!--{% if gCapture | length > 0 %}
+    	          {% if gCapture | length > 0 %}
     							<div id="recaptcha" class="g-recaptcha"
     								 data-sitekey="{{ gCapture }}"
     								 data-callback="sendMail"
     								 data-size="invisible"
     								 data-badge="bottomleft">
     							</div>
-    	          {% endif %}-->
-                {% if ceresConfig.global.googleRecaptchaApiKey | trim is not empty %}
-                  <recaptcha></recaptcha>
-                {% endif %}
+    	          {% endif %}
     					</div>
 
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0" id="ContactMailToMe">
@@ -149,7 +146,8 @@
                   {% endif %}
     					</div>
     					<div class="col-xs-12 col-md-12 col-lg-8 m-y-0 p-x-0 send-mail">
-                <button type="submit" class="btn btn-primary btn-block" @click="validate({{ gCapture | length > 0 }})">
+                <!--<button type="submit" class="btn btn-primary btn-block" @click="validate({{ gCapture | length > 0 }})">-->
+                <button type="submit" class="btn btn-primary btn-block">
     							<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
     							{{ trans("CeresCoconut::Template.contactSend") }}
     						</button>
