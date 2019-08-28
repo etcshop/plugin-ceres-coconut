@@ -47,7 +47,7 @@
 {% endblock %}
 
 {% block PageBody %}
-
+    {{ item | json_encode }}
     {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "CeresCoconut::Item.SingleItemView"] %}
 
 {% endblock %}
