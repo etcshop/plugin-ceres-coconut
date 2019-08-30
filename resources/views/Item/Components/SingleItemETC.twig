@@ -232,18 +232,7 @@
         {% set shopBuilderTemplate = shop_builder_category_template(currentCategory.id, "singleitem") %}
       {% endif %}
 
-      {% if item.documents[0].data.item.add_cms_page > 0 and not isShopBuilder %}
-        {# Item template is configured for the item #}
-        {% set template %}
-            {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "Ceres::Item.SingleItemView"] %}
-        {% endset %}
-
-        {% if template | trim is not empty %}
-            {{ template }}
-        {% endif %}
-
-      {% elseif shopBuilderTemplate | trim is not empty or isShopBuilder %}
-        {# Shopbuilder template #}
+      {# Shopbuilder template #}
         <div class="single container-max page-content">
             <div class="row">
                 <div class="col">
@@ -255,7 +244,6 @@
                 </div>
             </div>
         </div>
-      {% endif %}
   </div>
 </div>
 </script>
