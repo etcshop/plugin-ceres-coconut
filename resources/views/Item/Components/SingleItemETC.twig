@@ -223,7 +223,6 @@
 
   <div style="display: none;">
       {{ set_item_data_base(item.documents[0].data) }}
-      {{ component("Ceres::Item.Components.SingleItem") }}
 
       {% set shopBuilderTemplate = "" %}
       {% set currentCategory = services.category.getCurrentCategory() %}
@@ -241,8 +240,6 @@
 
         {% if template | trim is not empty %}
             {{ template }}
-        {% else %}
-            {% include "Ceres::Item.SingleItemView" %}
         {% endif %}
 
       {% elseif shopBuilderTemplate | trim is not empty or isShopBuilder %}
