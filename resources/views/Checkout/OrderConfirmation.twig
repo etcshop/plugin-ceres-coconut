@@ -173,7 +173,8 @@
 
         </div>
     {% else %}
-      <div style="display: none">vor Override</div>
+      <div style="display: none">{{ data.order | json_encode }}</div>
+
 
         {{ overrideConfirmation }}
     {% endif %}
