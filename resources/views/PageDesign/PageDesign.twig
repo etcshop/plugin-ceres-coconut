@@ -101,13 +101,15 @@
                     "orderProducts": [
                           {% set c = 0 %}
                           {% for item in data.order.orderItems %}
-                            {% if c >= 1 %},{% endif %}
-                            {
-                              "id": "{{ item.itemVariationId }}",
-                              "price": "{{ item.amounts.purchasePrice }}",
-                              "qty": "{{ item.quantity }}"
-                              {% set c = 1 %}
-                            }
+                            {% if item.typeId == 1 %}
+                              {% if c >= 1 %},{% endif %}
+                              {
+                                "id": "{{ item.itemVariationId }}",
+                                "price": "{{ item.amounts[0].purchasePrice }}",
+                                "qty": "{{ item.quantity }}"
+                                {% set c = 1 %}
+                              }
+                            {% endif %}
                           {% endfor %}
                     ]
                 };
