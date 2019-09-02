@@ -90,6 +90,41 @@
         {% endif %}
       {% endif %}
 
+      {% if (currTpl == 'tpl.confirmation') %}
+        {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+        {% if BelboonTrackActive == "true" %}
+          {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
+          <!-- START BELBOON BASKET TRACKING TEST1206-->
+
+            <script type="text/javascript">
+                belboonTag = {
+                    "orderProducts": [
+                          {% set c = 0 %}
+                          {% for item in data.order.orderItems %}
+                            {% if c >= 1 %},{% endif %}
+                            {
+                              "id": "{{ item.itemVariationId }}",
+                              "price": "{{ item.amounts.purchasePrice }}",
+                              "qty": "{{ item.quantity }}"
+                              {% set c = 1 %}
+                            }
+                          {% endfor %}
+                    ]
+                };
+            </script>
+            <script type="text/javascript">
+                (function(d) {
+                    var s = d.createElement("script");
+                    s.async = true;
+                    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=checkout&type=dynamic";
+                    var a = d.getElementsByTagName("script")[0];
+                    a.parentNode.insertBefore(s, a);
+                }(document));
+            </script>
+          <!-- ENDE BELBOON BASKET TRACKING -->
+        {% endif %}
+      {% endif %}
+
 </head>
 
 <body>
