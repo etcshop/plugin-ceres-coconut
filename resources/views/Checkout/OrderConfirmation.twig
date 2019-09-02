@@ -173,12 +173,12 @@
 
         </div>
     {% else %}
-      <div style="display: none">{{ data.order | json_encode }}</div>
+      <div style="display: none"></div>
 
 
         {{ overrideConfirmation }}
     {% endif %}
-      <div style="display: none">vor Override</div>
+      <div style="display: none">{{ data.order | json_encode }}</div>
     {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
     {% if BelboonTrackActive == "true" %}
       {% if data.order.referrerId == 10 %}
