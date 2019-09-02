@@ -52,7 +52,7 @@
           </script>
         {% endif %}
     {% endif %}
-      {% if (currTpl == 'tpl.basket') %}
+      {% if (currTpl == 'tpl.basket') of (currTpl == 'tpl.confirmation') %}
         {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
         {% if BelboonTrackActive == "true" %}
           {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
