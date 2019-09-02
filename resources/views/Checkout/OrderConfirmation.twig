@@ -178,11 +178,11 @@
 
         {{ overrideConfirmation }}
     {% endif %}
-      <div style="display: none">vor Override</div>
+      <div style="display: none">{{ orderData.order.orderItems | json_encode }}</div>
       {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
       {% if BelboonTrackActive == "true" %}
         {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
-        <!-- START BELBOON BASKET TRACKING TEST1411-->
+        <!-- START BELBOON BASKET TRACKING TEST1411
 
           <script type="text/javascript">
               belboonTag = {
@@ -209,6 +209,6 @@
                   a.parentNode.insertBefore(s, a);
               }(document));
           </script>
-        <!-- ENDE BELBOON BASKET TRACKING -->
+        ENDE BELBOON BASKET TRACKING -->
       {% endif %}
 {% endblock %}
