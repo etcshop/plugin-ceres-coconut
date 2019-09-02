@@ -102,7 +102,6 @@
           </script>
         <!-- END Event snippet for Tracking-Test conversion page -->
     {% endif %}
-
 {% endblock %}
 
 {% block PageBody %}
@@ -178,37 +177,13 @@
 
         {{ overrideConfirmation }}
     {% endif %}
-      <div style="display: none">{{ orderData.order.orderItems | json_encode }}</div>
-      {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
-      {% if BelboonTrackActive == "true" %}
-        {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
-        <!-- START BELBOON BASKET TRACKING TEST1411
-
-          <script type="text/javascript">
-              belboonTag = {
-                  "orderProducts": [
-                        {% set c = 0 %}
-                        {% for item in orderData.order.orderItems %}
-                          {% if c >= 1 %},{% endif %}
-                          {
-                            "id": "{{ item.itemId }}",
-                            "price": "{{ item.variation.data.calculatedPrices.default.price }}",
-                            "qty": "{{ item.quantity }}"
-                            {% set c = 1 %}
-                          }
-                        {% endfor %}
-                  ]
-              };
-          </script>
-          <script type="text/javascript">
-              (function(d) {
-                  var s = d.createElement("script");
-                  s.async = true;
-                  s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=checkout&type=dynamic";
-                  var a = d.getElementsByTagName("script")[0];
-                  a.parentNode.insertBefore(s, a);
-              }(document));
-          </script>
-        ENDE BELBOON BASKET TRACKING -->
+      <div style="display: none">vor Override</div>
+    {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+    {% if BelboonTrackActive == "true" %}
+      {% if data.order.referrerId == 10 %}
+        <!-- BEGIN BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
+        <img src="//pluto.r.powuta.com/ts/i5534189/tsa?typ=i&trc=default&ctg=sale&sid=check-out&cid={{ data.order.id }}&orv={{ data.order.amounts[0].netTotal }}&orc=EUR" width="1" height="1" border="0" style="display:none;">
+        <!-- END BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
+      {% endif %}
       {% endif %}
 {% endblock %}
