@@ -102,7 +102,7 @@
             <graduated-prices template="#vue-graduated-prices"></graduated-prices>
             <span style="display: none;" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
               <span style="display: none;" itemprop="itemCondition">Neu</span>
-              <span style="display: none;" itemprop="availability">InStock</span>
+              <span style="display: none;"  itemprop="availability" content="http://schema.org/InStock"></span>
               <span style="display: none;" itemprop="price">
 
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup'" value="0">
