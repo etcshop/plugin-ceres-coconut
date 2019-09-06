@@ -15,7 +15,6 @@
     {{ component( "CeresCoconut::Basket.Components.BasketTotalsNoPreviewETC" ) }}
     <div id="ContentCheckout_Plenty" data-plenty-checkout-catcontent="665">
       {% set basketItemQuantity = basket.basketAmount %}
-      <div id="basketQuantity_ct" style="display: none;">{% basketItemQuantity %}</div>
       {% if (basketItemQuantity > 0) %}
           <div class="ContentPage" id="ContentWarenkorb">
             <div class="ContentCaption">
