@@ -9,9 +9,7 @@
     {{ component( "Ceres::ItemList.Components.ItemList") }}
     {{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
 
-    {% if ceresConfig.item.showCategoryImage %}
-        {% include "Ceres::Category.Item.Partials.CategoryParallaxImage" with { 'category': category } %}
-    {% endif %}
+    <!-- include parallax image -->
 
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
     <div style="display: none">{{ category | json_encode }}</div>
