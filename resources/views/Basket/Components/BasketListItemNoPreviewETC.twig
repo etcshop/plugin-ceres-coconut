@@ -44,7 +44,7 @@
           </div>
           <a>
             <i v-waiting-animation="waitingForDelete" class="fa" aria-hidden="true"></i>
-            <span id="chk_RemoveItemText" @click="deleteItem"> {{ trans("CeresCoconut::Template.ETC_ArtikelEntfernen") }} </span> <i id="chk_RemoveItem" class="material-icons w3-xxxlarge" @click="deleteItem">clear</i>
+            <span id="chk_RemoveItemText" onclick="refreshSite()" @click="deleteItem"> {{ trans("CeresCoconut::Template.ETC_ArtikelEntfernen") }} </span> <i id="chk_RemoveItem" class="material-icons w3-xxxlarge" onclick="refreshSite()" @click="deleteItem">clear</i>
           </a>
         </div>
         <!-- ./item info -->
