@@ -31,7 +31,7 @@
           <div id="ContentCheckout_BasketEmpty">
             {% set itemList3 = services.itemList.getItemList( "category", 429, "variation.position_desc",50 ).documents %}
             <div class="ContentCaption test1119">{{ trans("CeresCoconut::Template.ETC_WarenkorbLeer") }}</div>
-				    {{ trans("CeresCoconut::Template.ETC_WarenkorbLeer_Text") }}
+				    <div class="ContentText_ct">{{ trans("CeresCoconut::Template.ETC_WarenkorbLeer_Text") }}</div>
 				    <br>
 				    <br>
             <ul id="twig-rendered-item-list" class="row categoryDetails isGridView">
