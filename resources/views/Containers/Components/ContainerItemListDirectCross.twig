@@ -98,7 +98,6 @@ Vue.component("container-item-list-direct-cross", {
       return "";
     },
     changeItemForBasket: function changeItemForBasket(item) {
-      alert(item);
       // this.variation = item.data.variation;
       // this.$store.commit("setVariation", item.data.variation);
       vue.$refs.addtobasketref.updateItemWithCrossSelling(item.data.variation.id);
