@@ -188,25 +188,20 @@ Vue.component("add-to-basketetc", {
             basketItemOrderParams: this.orderProperties
           };
         }
-        this.$store.dispatch("addBasketItem", basketObject).then(
-          response =>
-          {
-            const basketItem = response.find(item => item.variationId === this.variationId);
-            const variation = !isNullOrUndefined(basketItem) ? basketItem.variation.data : null;
-            const orderParams = !isNullOrUndefined(basketObject) ? basketObject.basketOrderParams : null;
-
-            document.dispatchEvent(new CustomEvent("afterBasketItemAdded", { detail: basketObject }));
-            this.waiting = false;
-            this.openAddToBasketOverlay(basketObject.quantity, variation, orderParams);
-          },
+        this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
+          var basketItem = response.find(function (item) {
+            return item.variationId === _this.variationId;
+          });
           //var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
-          /*var variation = basketItem.variation.data;
+          var variation = basketItem.variation.data;
           var orderParams = !(_typeof(basketObject) === _typeof(void 0)) && !(basketObject != null) ? basketObject.basketItemOrderParams : null;
-          document.dispatchEvent(new CustomEvent("afterBasketItemAdded", { detail: basketObject }));
+          document.dispatchEvent(new CustomEvent("afterBasketItemAdded", {
+            detail: basketObject
+          }));
           _this.waiting = false;
 
-          _this.openAddToBasketOverlay(basketObject.quantity, variation, orderParams);*/
-        error => {
+          _this.openAddToBasketOverlay(basketObject.quantity, variation, orderParams);
+        }, function (error) {
           _this.waiting = false;
 
           if (error.data) {//    NotificationService.error(
