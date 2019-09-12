@@ -175,22 +175,25 @@ Vue.component("add-to-basketetc", {
           }
         });
         if (this.fromSingleItem){
-          var basketObject = {
+          const basketObject = {
             variationId: document.querySelector("input[name=VarIDforBasket]").value,
             quantity: this.quantity,
             basketItemOrderParams: this.orderProperties
           };
         }
         else {
-          var basketObject = {
+          const basketObject = {
             variationId: this.variationId,
             quantity: this.quantity,
             basketItemOrderParams: this.orderProperties
           };
         }
-        this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
-          var basketItem = response.find(function (item) {
-            return item.variationId === _this.variationId;
+        this.$store.dispatch("addBasketItem", basketObject).then(
+          response =>
+          {
+            const basketItem = response.find(item => item.variationId === this.variationId);
+            const variation = !isNullOrUndefined(basketItem) ? basketItem.variation.data : null;
+            const orderParams = !isNullOrUndefined(basketObject) ? basketObject.basketOrderParams : null;
           });
           //var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
           var variation = basketItem.variation.data;
