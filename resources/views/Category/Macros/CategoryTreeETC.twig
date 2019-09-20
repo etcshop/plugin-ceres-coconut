@@ -29,7 +29,6 @@
     {% set counter = 0 %}
     {% set megaMenuLevels = not config('Ceres.header.megamenu_levels') ? 1 : config('Ceres.header.megamenu_levels') %}
     {% set topsellerURL = "" %}
-    {% set catCounter = 0 %}
 
     {% for category in categories %}
 
@@ -108,7 +107,6 @@
             </div>
 
         {% endif %}
-        {% catCounter = catCounter + 1 %}
     {% endfor %}
       <div class="catLvl1 menu_bargain TESTETC0900">
         <a href="{{ topsellerURL }}" class="Category_Link" title="Top Seller">
