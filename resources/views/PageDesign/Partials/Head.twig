@@ -96,6 +96,9 @@
   <link href="https://www.etc-shop.de/layout/ETCeres/css/etc_en.css" rel="stylesheet" type="text/css" />
 {% endif %}
 
+{% if pluginSetId() != 11 %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/pbuchholz.css" rel="stylesheet" type="text/css" />
+{% endif %}
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
