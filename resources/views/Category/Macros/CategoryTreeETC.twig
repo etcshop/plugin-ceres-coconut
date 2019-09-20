@@ -101,44 +101,7 @@
                   </div>
                   <img src="" class="catpic hidden-xs" alt="">
                   {% else %}
-                    <img src="" class="catpic hidden-xs" alt="">
-                    <div class="catinfo">
-                          {% set cat =  services.category.get(category.id, lang) %}
-                          {{ cat.details[0].description2 | raw }}
-                    </div>
-                    <div class="subcat">
-                      {% set counter = counter + 1 %}
-                      {% for child in category.children %}
-                        <div class="catLvl2">
-                          <div class="NavigationArrow">
-                            <span class="hidden-xs">•</span>
-                            <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
-                          </div>
-                          <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
-                            <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
-                              {{ child.details[0].name | raw }}
-                            </li>
-                          </a>
-                          {% if child.children > 0 %}
-                            <div class="sub2cat">
-                              {% for child2 in child.children %}
-                                <div class="catLvl2">
-                                  <div class="NavigationArrow">
-                                    <span class="hidden-xs">•</span>
-                                    <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
-                                  </div>
-                                  <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
-                                    <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
-                                      {{ child2.details[0].name | raw }}
-                                    </li>
-                                  </a>
-                                </div>
-                              {% endfor %}
-                            </div>
-                          {% endif %}
-                        </div>
-                      {% endfor %}
-                    </div>
+                    <div style="background-color: red; height: 100px; width: 100px;" id="test13_33">HI</div>
                   {% endif %}
                 </div>
               {% endif %}
