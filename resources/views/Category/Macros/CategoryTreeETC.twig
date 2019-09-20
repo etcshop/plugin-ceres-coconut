@@ -61,7 +61,6 @@
               </a>
               {% if category.children and translatedChildren > 0 %}
                 <div class="subcat_container" id="subcat_{{ category.id }}">
-                  {% if catCount < 4 %}
                   <div class="subcat">
                     {% set counter = counter + 1 %}
                     {% for child in category.children %}
@@ -100,9 +99,6 @@
                         {{ cat.details[0].description2 | raw }}
                   </div>
                   <img src="" class="catpic hidden-xs" alt="">
-                  {% else %}
-                    <div style="background-color: red; height: 100px; width: 100px;" id="test13_33">HI</div>
-                  {% endif %}
                 </div>
               {% endif %}
             </div>
@@ -112,6 +108,7 @@
             </div>
 
         {% endif %}
+        <div style="display: none;">{{ catCount }}</div>
         {% catCount = catCount + 1 %}
     {% endfor %}
       <div class="catLvl1 menu_bargain TESTETC0900">
