@@ -29,6 +29,7 @@
     {% set counter = 0 %}
     {% set megaMenuLevels = not config('Ceres.header.megamenu_levels') ? 1 : config('Ceres.header.megamenu_levels') %}
     {% set topsellerURL = "" %}
+    {% set catCount = 0 %}
 
     {% for category in categories %}
 
@@ -60,6 +61,7 @@
               </a>
               {% if category.children and translatedChildren > 0 %}
                 <div class="subcat_container" id="subcat_{{ category.id }}">
+                {% if catCount < 4 %}
                   <div class="subcat">
                     {% set counter = counter + 1 %}
                     {% for child in category.children %}
@@ -98,6 +100,46 @@
                         {{ cat.details[0].description2 | raw }}
                   </div>
                   <img src="" class="catpic hidden-xs" alt="">
+                  {% else %}
+                    <img src="" class="catpic hidden-xs" alt="">
+                    <div class="catinfo">
+                          {% set cat =  services.category.get(category.id, lang) %}
+                          {{ cat.details[0].description2 | raw }}
+                    </div>
+                    <div class="subcat">
+                      {% set counter = counter + 1 %}
+                      {% for child in category.children %}
+                        <div class="catLvl2">
+                          <div class="NavigationArrow">
+                            <span class="hidden-xs">•</span>
+                            <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                          </div>
+                          <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                            <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
+                              {{ child.details[0].name | raw }}
+                            </li>
+                          </a>
+                          {% if child.children > 0 %}
+                            <div class="sub2cat">
+                              {% for child2 in child.children %}
+                                <div class="catLvl2">
+                                  <div class="NavigationArrow">
+                                    <span class="hidden-xs">•</span>
+                                    <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                                  </div>
+                                  <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                                    <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
+                                      {{ child2.details[0].name | raw }}
+                                    </li>
+                                  </a>
+                                </div>
+                              {% endfor %}
+                            </div>
+                          {% endif %}
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
                 </div>
               {% endif %}
             </div>
@@ -107,6 +149,7 @@
             </div>
 
         {% endif %}
+        {% set catCount = catCount + 1 %}
     {% endfor %}
       <div class="catLvl1 menu_bargain TESTETC0900">
         <a href="{{ topsellerURL }}" class="Category_Link" title="Top Seller">
