@@ -110,11 +110,11 @@
                       {% set counter = counter + 1 %}
                       {% for child in category.children %}
                         <div class="catLvl2">
-                          <div class="NavigationArrow">
+                          <div class="NavigationArrow" style="float: right!important;">
                             <span class="hidden-xs">•</span>
                             <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                           </div>
-                          <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                          <a class="Category_Link" style="float: right!important; margin-right: 30px!important;" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
                             <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
                               {{ child.details[0].name | raw }}
                             </li>
@@ -123,12 +123,11 @@
                             <div class="sub2cat">
                               {% for child2 in child.children %}
                                 <div class="catLvl2">
-                                  <div id="test_23_09" style="display: none"></div>
-                                  <div class="NavigationArrow" style="float: right!important;">
+                                  <div class="NavigationArrow">
                                     <span class="hidden-xs">•</span>
                                     <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                                   </div>
-                                  <a class="Category_Link" style="float: right!important; margin-right: 30px!important;" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                                  <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
                                     <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
                                       {{ child2.details[0].name | raw }}
                                     </li>
