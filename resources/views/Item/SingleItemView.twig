@@ -44,5 +44,7 @@
             </div>
     {% endif %}
     </div>
+    {% set tagItemsPB = services.itemList.getItemList("tag_list", [1], "texts.name1_asc", 8) %}
+    <div style="display: none!important;" id="TestDiv_15_16">{{ tagItemsPB | josn_encode }}</div>
 
 </single-item>
