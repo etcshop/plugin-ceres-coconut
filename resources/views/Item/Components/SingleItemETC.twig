@@ -231,6 +231,6 @@
 
   <div style="display: none;">
   </div>
-  <div style="display: none;" id="hiddenImg"><img src="{{ currentVariation.item.manufacturer.logo | raw }}" alt="" /></div>
+  <div style="display: none;" id="hiddenImg">{{ currentVariation.item.manufacturer.logo | json_encode }}</div>
 </div>
 </script>
