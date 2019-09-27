@@ -152,6 +152,7 @@
             </div>
             {% endif %}
             <div class="row rowBottomButtons" id="OrderConfirmation_Bottom_Buttons">
+              <div style="display: none;" id="testHerkunft">{{ data.order | json_encode }}</div>
                 {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
                 <div id="OrderConfirmation_ToHomeButton" class="col-xs-6 col-md-4 {% if loggedIn %}offset-md-2{% else %}offset-xs-3 offset-md-4{% endif %}">
                     <a v-waiting-animation-infinite href="{{ homepageURL }}" type="" class="btn btn-primary btn-block bg-primary">
