@@ -2,16 +2,6 @@
 
 {{ component( "Ceres::ItemList.Components.StartBoxItemETC" ) }}
 
-<script type="x/template" id="vue-start-box-item-listETC">
-<div>
-  <div style="display: none;">{{ items | json_encode }}</div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 StartBoxItem" v-for="(item, index) in items" >
-        <div id="LabelP2B1" class="StartBoxLabel test0828">${ label }</div>
-        <startbox-item :key="item.data.variation.id" :alt-url="altUrl" :item-data="item.data" decimal-count="{{ decimalCount | json_encode }}" image-url-accessor="urlMiddle"></startbox-item>
-    </div>
-</div>
-</script>
-
 <script>
 
 Vue.component("start-box-item-list", {
@@ -116,4 +106,13 @@ Vue.component("start-box-item-list", {
 });
 
 
+</script>
+
+<script type="x/template" id="vue-start-box-item-listETC">
+<div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 StartBoxItem" v-for="(item, index) in items" >
+        <div id="LabelP2B1" class="StartBoxLabel test0828">${ label }</div>
+        <startbox-item :key="item.data.variation.id" :alt-url="altUrl" :item-data="item.data" decimal-count="{{ decimalCount | json_encode }}" image-url-accessor="urlMiddle"></startbox-item>
+    </div>
+</div>
 </script>
