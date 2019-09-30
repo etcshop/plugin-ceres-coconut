@@ -304,10 +304,10 @@
       {% endif %}
 
        <div class="container_centered">
-
+<div style="display: none;">{{ itemsP2B1 }}</div>
          {% if itemsP2B1 != 'NULL' or itemsP2B2 != 'NULL' or itemsP2B3 != 'NULL' or itemsP2B4 != 'NULL' %}
            <div class="container_centered PromoBox col-lg-12 col-md-12 col-sm-12 col-xs-12" id="cnt_Start_Pos2">
-             <div style="display: none;">{{ itemsP2B1 }}</div>
+
               <div class="container">
                  {% if itemsLastSeen %}
                    <start-box-item-list class="StartBoxItemList LastSeenList col-xs-12 col-sm-6 col-lg-3" :items="{{ itemsLastSeen | json_encode }}" :label="{{ itemLastSeenLbl | json_encode }}"></start-box-item-list>
