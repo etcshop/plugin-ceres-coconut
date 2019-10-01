@@ -89,11 +89,10 @@ Vue.component("startbox-item", {
 
       return retImg;
     },
-    ...Vuex.mapState({
-      showNetPrices: function showNetPrices(state) {
-        return state.basket.showNetPrices;
-      }
-    })
+    showNetPrices: function showNetPrices()
+    {
+      return vueApp.$store.basket.showNetPrices;
+    }
   },
   created: function created() {
     if (this.itemData.prices.rrp) {
