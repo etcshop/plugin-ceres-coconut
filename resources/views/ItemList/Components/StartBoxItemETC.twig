@@ -50,87 +50,66 @@
 </script>
 
 <script>
+"use strict";
+
 Vue.component("startbox-item", {
-
-    delimiters: ["${", "}"],
-
-    template: "#vue-startbox-itemETC",
-
-    props: [
-        "decimalCount",
-        "itemData",
-        "imageUrlAccessor",
-        "altUrl"
-    ],
-
-    data()
-    {
-        return {
-            recommendedRetailPrice: 0,
-            variationRetailPrice  : 0
-        };
+  delimiters: ["${", "}"],
+  template: "#vue-startbox-itemETC",
+  props: ["decimalCount", "itemData", "imageUrlAccessor", "altUrl"],
+  data: function data() {
+    return {
+      recommendedRetailPrice: 0,
+      variationRetailPrice: 0
+    };
+  },
+  computed: {
+    /**
+     * returns itemData.item.storeSpecial
+     */
+    storeSpecial: function storeSpecial() {
+      return this.itemData.item.storeSpecial;
     },
 
-    computed:
-    {
-        /**
-         * returns itemData.item.storeSpecial
-         */
-        storeSpecial()
-        {
-            return this.itemData.item.storeSpecial;
-        },
-
-        /**
-         * returns itemData.texts[0]
-         */
-        texts()
-        {
-            return this.itemData.texts;
-        },
-
-        firstImageByPosition()
-        {
-            let pos = 10000;
-            let retImg = "";
-
-            for (var i = 0; i < this.itemData.images.all.length; i++)
-            {
-                if (this.itemData.images.all[i].position < pos && this.itemData.images.all[i].position != 0)
-              {
-                    pos = this.itemData.images.all[i].position;
-                    retImg = this.itemData.images.all[i].urlMiddle;
-                }
-            }
-            return retImg;
-        },
-
-        mapState({
-            showNetPrices: state => state.basket.showNetPrices
-        })
+    /**
+     * returns itemData.texts[0]
+     */
+    texts: function texts() {
+      return this.itemData.texts;
     },
+    firstImageByPosition: function firstImageByPosition() {
+      var pos = 10000;
+      var retImg = "";
 
-    created()
-    {
-        if (this.itemData.prices.rrp)
-        {
-            this.recommendedRetailPrice = this.itemData.prices.rrp.price.value;
+      for (var i = 0; i < this.itemData.images.all.length; i++) {
+        if (this.itemData.images.all[i].position < pos && this.itemData.images.all[i].position != 0) {
+          pos = this.itemData.images.all[i].position;
+          retImg = this.itemData.images.all[i].urlMiddle;
         }
-        this.variationRetailPrice = this.itemData.prices.default.price.value;
+      }
+
+      return retImg;
     },
-
-    methods:
-    {
-        loadFirstImage()
-        {
-            const categoryImageCarousel = this.$refs.categoryImageCarousel;
-
-            if (categoryImageCarousel)
-            {
-                categoryImageCarousel.loadFirstImage();
-            }
-        }
+    ...Vuex.mapState({
+      showNetPrices: function showNetPrices(state) {
+        return state.basket.showNetPrices;
+      }
+    })
+  },
+  created: function created() {
+    if (this.itemData.prices.rrp) {
+      this.recommendedRetailPrice = this.itemData.prices.rrp.price.value;
     }
 
+    this.variationRetailPrice = this.itemData.prices.default.price.value;
+  },
+  methods: {
+    loadFirstImage: function loadFirstImage() {
+      var categoryImageCarousel = this.$refs.categoryImageCarousel;
+
+      if (categoryImageCarousel) {
+        categoryImageCarousel.loadFirstImage();
+      }
+    }
+  }
 });
 </script>
