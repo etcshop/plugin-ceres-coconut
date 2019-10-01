@@ -31,3 +31,62 @@
     </form>
   </div>
 </script>
+
+<script>
+Vue.component("accept-gtc-check", {
+  props: {
+    template: {
+      type: String,
+      "default": "#vue-accept-gtc-checkETC"
+    },
+    hideCheckbox: {
+      type: Boolean
+    },
+    isPreselected: {
+      type: Boolean
+    },
+    isRequired: {
+      type: Boolean,
+      "default": true
+    },
+    customText: {
+      type: String,
+      "default": ""
+    }
+  },
+  data: function data() {
+    return {
+      isChecked: this.isPreselected
+    };
+  },
+  computed: _objectSpread({}, Vuex.mapState({
+    showError: function showError(state) {
+      return state.checkout.validation.gtc.showError;
+    }
+  })),
+  created: function created() {
+    if (this.hideCheckbox) {
+      this.isChecked = true;
+    } else if (this.isRequired) {
+      this.$store.commit("setGtcValidator", this.validate);
+    }
+  },
+  methods: {
+    validate: function validate() {
+      var showError = !this.isChecked;
+      this.$store.commit("setGtcShowError", showError);
+
+      if (showError) {
+        NotificationService.error(_TranslationService["default"].translate("Ceres::Template.checkoutCheckAcceptGtc"));
+      }
+    }
+  },
+  watch: {
+    isChecked: function isChecked() {
+      if (this.showError) {
+        this.validate();
+      }
+    }
+  }
+});
+</script>
