@@ -145,11 +145,10 @@ Vue.component("add-to-basketetc", {
         return property.property.isShownOnItemPage;
       }).length > 0;
     },
-    ...Vuex.mapState({
-      isBasketLoading: function isBasketLoading(state) {
-        return state.basket.isBasketLoading;
-      }
-    })
+    isBasketLoading: function isBasketLoading(state)
+    {
+      return vueApp.$store.state.basket.isBasketLoading;
+    }
   },
   data: function data() {
     return {
