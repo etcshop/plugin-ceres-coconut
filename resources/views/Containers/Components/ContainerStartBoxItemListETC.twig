@@ -16,105 +16,91 @@
 <script>
 
 Vue.component("start-box-item-list", {
-
-    delimiters: ["${", "}"],
-
-    props:
-    {
-        template:
-        {
-            type: String,
-            default: "#vue-start-box-item-listETC"
-        },
-        items:
-        {
-            type: Array,
-            default: []
-        },
-        label:
-        {
-            type: String,
-            default: ""
-        },
-        altUrl:
-        {
-            type: String,
-            default: ""
-        }
+  delimiters: ["${", "}"],
+  props: {
+    template: {
+      type: String,
+      default: "#vue-start-box-item-listETC"
     },
-
-    created: function created()
-    {
-        this.$options.template = this.template;
+    items: {
+      type: Array,
+      default: []
     },
-
-    mounted: function mounted()
-    {
-        this.$nextTick(() =>
-        {
-            if (this.items.length > 4)
-            {
-                this.initializeCarousel();
-            }
-        });
+    label: {
+      type: String,
+      default: ""
     },
-
-    methods:
-    {
-        initializeCarousel()
-        {
-            $(this.$refs.carouselContainer).owlCarousel({
-                autoHeight       : true,
-                dots             : true,
-                items            : 4,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    544: {
-                        items: 2
-                    },
-                    768: {
-                        items: 3
-                    },
-                    1000: {
-                        items: 4
-                    }
-                },
-                lazyLoad         : false,
-                loop             : false,
-                margin           : 30,
-                mouseDrag        : true,
-                nav              : true,
-                navClass         : [
-                    "owl-single-item-nav left carousel-control list-control-special",
-                    "owl-single-item-nav right carousel-control list-control-special"
-                ],
-                navContainerClass: "",
-                navText          : [
-                    "<i class=\"owl-single-item-control fa fa-chevron-left\" aria-hidden=\"true\"></i>",
-                    "<i class=\"owl-single-item-control fa fa-chevron-right\" aria-hidden=\"true\"></i>"
-                ],
-                smartSpeed       : 350,
-                onChanged: property =>
-                {
-                    const begin = property.item.index;
-                    const end = begin + property.page.size;
-
-                    for (let i = begin; i < end; i++)
-                    {
-                        const categoryItem = this.$refs["categoryItem_" + i];
-
-                        if (categoryItem)
-                        {
-                            categoryItem[0].loadFirstImage();
-                        }
-                    }
-                }
-            });
-        }
+    altUrl: {
+      type: String,
+      default: ""
     }
+  },
+  created: function created() {
+    this.$options.template = this.template;
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$nextTick(function() {
+      if (_this.items.length > 4) {
+        _this.initializeCarousel();
+      }
+    });
+  },
+  methods: {
+    initializeCarousel: function initializeCarousel() {
+      var _this2 = this;
+
+      $(this.$refs.carouselContainer).owlCarousel({
+        autoHeight: true,
+        dots: true,
+        items: 4,
+        responsive: {
+          0: {
+            items: 1
+          },
+          544: {
+            items: 2
+          },
+          768: {
+            items: 3
+          },
+          1000: {
+            items: 4
+          }
+        },
+        lazyLoad: false,
+        loop: false,
+        margin: 30,
+        mouseDrag: true,
+        nav: true,
+        navClass: [
+          "owl-single-item-nav left carousel-control list-control-special",
+          "owl-single-item-nav right carousel-control list-control-special"
+        ],
+        navContainerClass: "",
+        navText: [
+          '<i class="owl-single-item-control fa fa-chevron-left" aria-hidden="true"></i>',
+          '<i class="owl-single-item-control fa fa-chevron-right" aria-hidden="true"></i>'
+        ],
+        smartSpeed: 350,
+        onChanged: function onChanged(property) {
+          var begin = property.item.index;
+          var end = begin + property.page.size;
+
+          for (var i = begin; i < end; i++) {
+            var categoryItem = _this2.$refs["categoryItem_" + i];
+
+            if (categoryItem) {
+              categoryItem[0].loadFirstImage();
+            }
+          }
+        }
+      });
+    }
+  }
 });
+
 
 
 </script>
