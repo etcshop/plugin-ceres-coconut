@@ -10,7 +10,7 @@
 
     {{ component( "CeresCoconut::Customer.Components.AddressSelect.AddressSelect" ) }}
     {{ component( "CeresCoconut::Checkout.Components.AcceptGtcCheckETC" ) }}
-    {{ component( "CeresCoconut::Checkout.Components.PaymentProviderSelectETC" ) }}
+    {{ component( "Ceres::Checkout.Components.PaymentProviderSelect" ) }}
     {{ component( "Ceres::Checkout.Components.ShippingPrivacyHintCheck" ) }}
     {{ component( "CeresCoconut::Checkout.Components.ShippingProfileSelect" ) }}
     {{ component( "CeresCoconut::Checkout.Components.PlaceOrderETC" ) }}
@@ -114,7 +114,7 @@
                   {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
                   {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
                   {% if overridePaymentList|trim is empty %}
-                        <payment-provider-select template="#vue-payment-provider-selectETC"></payment-provider-select>
+                        <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
                   {% else %}
                       {{ overridePaymentList }}
                   {% endif %}
