@@ -16,7 +16,7 @@
     <template #additional-content-after-vat>{{ LayoutContainer.show("Ceres::SingleItem.AdditionalContentAfterVAT", item.documents[0].data) }}</template>
     <template #add-detail-tabs>{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabs", item.documents[0].data) }}</template>
     <template #add-detail-tabs-content>{{ LayoutContainer.show("Ceres::SingleItem.AddDetailTabsContent", item.documents[0].data) }}</template>
-    <template #feedback-container>{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</template>
+    <div slot="FeedbackContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
     <template #image-carousel>
         {% set ImageCarouselOverride = LayoutContainer.show("Ceres::SingleItem.ImageCarousel") %}
         {% if ImageCarouselOverride|trim is empty %}
@@ -26,7 +26,6 @@
         {% endif %}
     </template>
     <div slot="ItemListContainer">
-      <div slot="FeedbackContainer" style="display: none;" id="hiddenContainer">{{ LayoutContainer.show("Ceres::SingleItem.FeedbackContainer", item) }}</div>
       {% if similar is not empty %}
         <div class="CrossSellingCaption test1550">{{ trans("CeresCoconut::Template.ETC_PassendDazu") }}:</div>
         <crossselling-item-list class="CrossSelling_Similar" :items="{{ similar | json_encode }}" :mainprice="{{ item.documents[0].data.calculatedPrices.default.price }}" :mainid="{{ item.documents[0].data.variation.id }}"></crossselling-item-list>
