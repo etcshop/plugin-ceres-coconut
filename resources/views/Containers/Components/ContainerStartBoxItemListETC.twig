@@ -43,12 +43,12 @@ Vue.component("start-box-item-list", {
         }
     },
 
-    created()
+    created; function()
     {
         this.$options.template = this.template;
     },
 
-    mounted()
+    mounted: function()
     {
         this.$nextTick(() =>
         {
