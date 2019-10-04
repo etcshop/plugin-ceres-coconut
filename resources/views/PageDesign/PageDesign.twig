@@ -433,7 +433,7 @@
         language: "{{ lang }}",
         defaultLanguage: "{{ defaultLanguage }}",
         decimalSeparator: "{{ config("IO.format.separator_decimal") }}",
-        urlTrailingSlash: {{ urls.appendTrailingSlash | json_encode }}
+        urlTrailingSlash: {{ urls.appendTrailingSlash | json_encode }},
         initialData: {
             shippingCountries: {{ services.country.getActiveCountriesList() | filterFields(["id", "currLangName", "isoCode2", "states.id", "states.name"]) | json_encode | raw }},
             shippingCountryId: {{ services.checkout.getShippingCountryId() | json_encode }}
