@@ -235,7 +235,7 @@
             {{ canonicalUrl }}
             Aktuelles Template: {{ currTpl }}<br>
             <br>
-            CookieState = {{ cookieState }}
+            CookieState = {{ cookieState | json_encode }}
           </div>
         <div class="content">
           <div class="container_centered">
