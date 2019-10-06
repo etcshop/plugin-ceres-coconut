@@ -11,6 +11,6 @@ class CoconutGlobalContext extends GlobalContext implements ContextInterface
 
     public function init($params)
     {
-        $this->cookieState = "Nicht bestätigt";
+        $this->cookieState = 1;
     }
 }
