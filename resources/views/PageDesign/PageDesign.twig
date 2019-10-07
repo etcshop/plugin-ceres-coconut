@@ -11,6 +11,7 @@
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
 {{ component("Ceres::Customer.Components.Contact.AcceptPrivacyPolicyCheck") }}
+{{ component( "Ceres::PageDesign.Components.CookieBannerETC" ) }}
 
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
@@ -236,6 +237,10 @@
             Aktuelles Template: {{ currTpl }}<br>
             <br>
             CookieState = {{ cookieState }}
+
+
+            <cookie-banner></cookie-banner>
+
           </div>
         <div class="content">
           <div class="container_centered">
