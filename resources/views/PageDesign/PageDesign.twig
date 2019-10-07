@@ -236,6 +236,15 @@
             Aktuelles Template: {{ currTpl }}<br>
             <br>
             CookieState = {{ cookieState }}
+            <br>
+            <br>
+            {% services.sessionStorage.setSessionValue("sessionCookieStatus", "aus") %}
+            {% set CookieStatusSession = services.sessionStorage.getSessionValue("sessionCookieStatus") %}
+            1. CookieStatus Session: {{ CookieStatusSession }}<br>
+            <br>
+            {% services.sessionStorage.setSessionValue("sessionCookieStatus", "an") %}
+            {% set CookieStatusSession = services.sessionStorage.getSessionValue("sessionCookieStatus") %}
+            2. CookieStatus Session: {{ CookieStatusSession }}
           </div>
         <div class="content">
           <div class="container_centered">
