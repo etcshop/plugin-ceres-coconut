@@ -86,10 +86,11 @@
 <div class="wrapper">
    <div class="content">
      <div style="display: none">
-
+       {% services.sessionStorage.setSessionValue("sessionCookieStatus", "aus") %}
        {% set CookieStatusSession = services.sessionStorage.getSessionValue("sessionCookieStatus") %}
        1. CookieStatus Session: {{ CookieStatusSession }}<br>
        <br>
+       {% services.sessionStorage.setSessionValue("sessionCookieStatus", "an") %}
        {% set CookieStatusSession = services.sessionStorage.getSessionValue("sessionCookieStatus") %}
        2. CookieStatus Session: {{ CookieStatusSession }}
      </div>
