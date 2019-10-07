@@ -1,7 +1,7 @@
 <script type="x/template" id="vue-cookie-banner">
     <div>
       <div style="backgroud-color: #FFF; padding: 20px;">
-        <div style="width: 500px; height: 500px; border: 1px solid #000; background-color: #FFF">{{ cookieSessionStatus }}</div>
+        <div style="width: 100px; height: 50px; border: 1px solid #000; background-color: #FFF">{{ cookieSessionStatus }}</div>
         <div style="width: 50px; height: 50px; border: 1px solid #000; background-color: #00FF4D; cursor: pointer" @click="Accepted()">Ja</div>
         <div style="width: 50px; height: 50px; border: 1px solid #000; background-color: #F00; cursor: pointer" @click="Declined">Nö</div>
       </div>
@@ -43,7 +43,7 @@ Vue.component("cookie-banner", {
     Accepted()
     {
       this.cookieSessionStatus = "1";
-      this.$store.dispatch("cookiesAccepted", this.cookieSessionStatus).then(
+      this.$store.dispatch("updateOrderReturnNote", this.cookieSessionStatus).then(
         response =>
         {
             this.waiting = false;
@@ -56,7 +56,7 @@ Vue.component("cookie-banner", {
     Declined()
     {
       this.cookieSessionStatus = "0";
-      this.$store.dispatch("cookiesAccepted", this.cookieSessionStatus).then(
+      this.$store.dispatch("updateOrderReturnNote", this.cookieSessionStatus).then(
         response =>
         {
             this.waiting = false;
