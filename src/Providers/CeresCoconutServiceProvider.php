@@ -69,7 +69,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
            return false;
        }, 0);
 
-       $dispatcher->listen('IO.ctx.global', function (TemplateContainer $templateContainer, $templateData = [])
+       $dispatcher->listen('IO.ctx.*', function (TemplateContainer $templateContainer, $templateData = [])
        {
            $templateContainer->setContext( CoconutGlobalContext::class);
            return false;
