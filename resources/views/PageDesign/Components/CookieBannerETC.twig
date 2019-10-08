@@ -58,6 +58,7 @@ Vue.component("cookie-banner", {
         }
         if (c.indexOf(name) == 0) {
           this.cookieSessionStatus = c.substring(name.length, c.length);
+          document.getElementById("CookieBanner_StateInputPD").value = this.cookieSessionStatus;
           return this.cookieSessionStatus;
         }
       }
