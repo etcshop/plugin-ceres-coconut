@@ -403,10 +403,10 @@
 
         {% include getPartial('footer') %}
 
-        {% block PartialFooter %} 
+        {% block PartialFooter %}
         {% endblock %}
 
-        <input type="hidden" name="CookieBanner_StateInputPD" id="CookieBanner_StateInputPD" value="{{ cookieState }}">
+        <input type="hidden" name="CookieBanner_StateInputPD" id="CookieBanner_StateInputPD" :value="cookieState">
         <cookie-banner></cookie-banner>
         <tracking></tracking>
     </div>
