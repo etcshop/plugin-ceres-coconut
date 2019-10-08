@@ -14,7 +14,7 @@ Vue.component("tracking", {
   data()
   {
     return {
-        cookieStatus: getCookieStatus()
+        cookieStatus: -1
     };
   },
   created()
@@ -24,7 +24,7 @@ Vue.component("tracking", {
   methods: {
     getCookieStatus()
     {
-      this.cookieStatus = document.getElementById("CookieBanner_StateInput").value;
+      this.cookieStatus = document.document.querySelector("input[name=CookieBanner_StateInput]").value;
     }
   }
 });
