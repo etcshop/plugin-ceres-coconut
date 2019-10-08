@@ -43,10 +43,12 @@ Vue.component("cookie-banner", {
     Accepted()
     {
       document.cookie = "mcoo=acc";
+      this.getCookie();
     },
     Declined()
     {
       document.cookie = "mcoo=dec";
+      this.getCookie();
     },
     getCookie() {
       this.cookieSessionStatus = "";
