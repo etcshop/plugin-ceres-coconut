@@ -28,8 +28,12 @@ Vue.component("cookie-banner", {
   data()
   {
     return {
-        cookieSessionStatus: getCookie()
+        cookieSessionStatus: -1
     };
+  },
+  created()
+  {
+      this.getCookie();
   },
   methods: {
     Accepted()
