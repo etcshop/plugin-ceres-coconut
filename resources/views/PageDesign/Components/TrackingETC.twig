@@ -22,9 +22,22 @@ Vue.component("tracking", {
       this.getCookieStatus();
   },
   methods: {
-    getCookieStatus()
-    {
-      this.cookieStatus = document.querySelector("input[name=CookieBanner_StateInput]").value;
+    getCookieStatus() {
+      this.cookieStatus = -1;
+      var name = "mcoo=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          this.cookieStatus = c.substring(name.length, c.length);
+          return this.cookieStatus;
+        }
+      }
+      return -1;
     }
   }
 });
