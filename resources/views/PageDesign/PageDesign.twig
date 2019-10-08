@@ -237,10 +237,6 @@
             Aktuelles Template: {{ currTpl }}<br>
             <br>
             CookieState = {{ cookieState }}
-
-
-            <cookie-banner></cookie-banner>
-
           </div>
         <div class="content">
           <div class="container_centered">
@@ -427,7 +423,7 @@
     <img src="https://www.etc-shop.de/layout/ETCeres/img/banner/ec_banner_120230.png">
   </a>
 </div>
-
+<cookie-banner></cookie-banner>
 <script>
     App = {
         config: {{ ceresConfig | json_encode | raw }},

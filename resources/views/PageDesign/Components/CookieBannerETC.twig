@@ -1,9 +1,16 @@
 <script type="x/template" id="vue-cookie-banner">
     <div>
-      <div style="backgroud-color: #FFF; padding: 20px;" v-if="cookieSessionStatus === 0">
-        <div style="width: 100px; height: 50px; border: 1px solid #000; background-color: #FFF" v-html="cookieSessionStatus"></div>
-        <div style="width: 50px; height: 50px; border: 1px solid #000; background-color: #00FF4D; cursor: pointer" @click="Accepted()">Ja</div>
-        <div style="width: 50px; height: 50px; border: 1px solid #000; background-color: #F00; cursor: pointer" @click="Declined">Nö</div>
+      <div id="CookieBanner" v-if="cookieSessionStatus === 0">
+        <div id="CookieBanner_State" v-html="cookieSessionStatus"></div>
+        <div id="CookieBanner_Text">
+          Wir verwenden Cookies, um Inhalte zu personalisieren, Werbeanzeigen anzupassen, diese zu messen und die Sicherheit für unsere Besucher zu
+          steigern. Durch das Navigieren in unserem Shop oder das Klicken innerhalb unseres Shops, stimmen Sie der Sammlung von Informationen mittels 
+          Cookies auf und außerhalb unseres Shops zu.<br> <br>
+          Weitere Informationen über unsere Cookies und deren Handhabung findest Du hier:
+          <a href="{{ urls.privacyPolicy }}" title="{{ trans("CeresCoconut::Template.footerPrivacyPolicy") }}">Weitere Informationen</a>
+        </div>
+        <div id="CookieBanner_Accept" @click="Accepted()">Akzeptieren</div>
+        <div id="CookieBanner_Decline" @click="Declined">Ablehnen</div>
       </div>
     </div>
 </script>
