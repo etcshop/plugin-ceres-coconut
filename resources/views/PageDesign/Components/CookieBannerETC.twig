@@ -8,9 +8,9 @@
           Cookies auf und außerhalb unseres Shops zu.<br> <br>
           Weitere Informationen über unsere Cookies und deren Handhabung findest Du hier:
           <a href="{{ urls.privacyPolicy }}" title="{{ trans("CeresCoconut::Template.footerPrivacyPolicy") }}">Weitere Informationen</a>
+          <div id="CookieBanner_Accept" class="CookieBanner_Button btn btn-primary" @click="Accepted()">Akzeptieren</div>
+          <div id="CookieBanner_Decline" class="CookieBanner_Button btn btn-secondary" @click="Declined">Ablehnen</div>
         </div>
-        <div id="CookieBanner_Accept" class="CookieBanner_Button btn btn-primary" @click="Accepted()">Akzeptieren</div>
-        <div id="CookieBanner_Decline" class="CookieBanner_Button btn btn-secondary" @click="Declined">Ablehnen</div>
       </div>
     </div>
 </script>
