@@ -1,7 +1,7 @@
 <script type="x/template" id="vue-cookie-banner">
     <div>
+      <div id="CookieBanner_State"><input type="hidden" name="CookieBanner_StateInput" id="CookieBanner_StateInput" :value="cookieSessionStatus"></div>
       <div id="CookieBanner" v-if="cookieSessionStatus === -1">
-        <div id="CookieBanner_State" v-html="cookieSessionStatus"></div>
         <div id="CookieBanner_Text">
           Wir verwenden Cookies, um Inhalte zu personalisieren, Werbeanzeigen anzupassen, diese zu messen und die Sicherheit für unsere Besucher zu
           steigern. Mit einem Klick auf den Button "Akzeptieren" stimmen Sie der Sammlung von Informationen mittels Cookies auf und außerhalb
