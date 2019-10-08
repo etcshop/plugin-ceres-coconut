@@ -1,6 +1,6 @@
 <script type="x/template" id="vue-cookie-banner">
     <div>
-      <div id="CookieBanner" v-if="cookieSessionStatus === 0">
+      <div id="CookieBanner" v-if="cookieSessionStatus === -1">
         <div id="CookieBanner_State" v-html="cookieSessionStatus"></div>
         <div id="CookieBanner_Text">
           Wir verwenden Cookies, um Inhalte zu personalisieren, Werbeanzeigen anzupassen, diese zu messen und die Sicherheit für unsere Besucher zu
@@ -28,7 +28,7 @@ Vue.component("cookie-banner", {
   data()
   {
     return {
-        cookieSessionStatus: 0
+        cookieSessionStatus: getCookie()
     };
   },
   methods: {
@@ -43,7 +43,7 @@ Vue.component("cookie-banner", {
       this.getCookie();
     },
     getCookie() {
-      this.cookieSessionStatus = "";
+      this.cookieSessionStatus = -1;
       var name = "mcoo=";
       var decodedCookie = decodeURIComponent(document.cookie);
       var ca = decodedCookie.split(';');
@@ -57,7 +57,7 @@ Vue.component("cookie-banner", {
           return this.cookieSessionStatus;
         }
       }
-      return "";
+      return -1;
     }
   }
 });
