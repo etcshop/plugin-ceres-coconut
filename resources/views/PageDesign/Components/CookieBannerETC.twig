@@ -42,29 +42,11 @@ Vue.component("cookie-banner", {
   methods: {
     Accepted()
     {
-      this.cookieSessionStatus = "1";
-      this.$store.dispatch("updateOrderReturnNote", this.cookieSessionStatus).then(
-        response =>
-        {
-            this.waiting = false;
-        },
-        error =>
-        {
-            this.waiting = false;
-      });
+      document.cookie = "mcoo=acc";
     },
     Declined()
     {
-      this.cookieSessionStatus = "0";
-      this.$store.dispatch("updateOrderReturnNote", this.cookieSessionStatus).then(
-        response =>
-        {
-            this.waiting = false;
-        },
-        error =>
-        {
-            this.waiting = false;
-      });
+      document.cookie = "mcoo=dec";
     }
   }
 });
