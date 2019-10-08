@@ -13,6 +13,6 @@ class CoconutGlobalContext extends GlobalContext implements ContextInterface
     {
         parent::init($params);
 
-        $this->cookieState = 1;
+        $this->cookieState = $_COOKIE['mcoo'];
     }
 }
