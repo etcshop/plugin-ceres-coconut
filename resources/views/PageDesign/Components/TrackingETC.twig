@@ -1,0 +1,31 @@
+<script type="x/template" id="vue-tracking">
+    <div>
+      <div style="position: absolute; font-size: 15px; font-weight: bold; left: 0; top: 0; width: 100px; height: 100px; background-color: #41CFFF; z-index: 999999999" v-html="cookieStatus"></div>
+    </div>
+</script>
+
+<script>
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Vue.component("tracking", {
+  template: "#vue-tracking",
+  delimiters: ["${", "}"],
+  data()
+  {
+    return {
+        cookieStatus: getCookieStatus()
+    };
+  },
+  created()
+  {
+      this.getCookieStatus();
+  },
+  methods: {
+    getCookieStatus()
+    {
+      this.cookieStatus = document.querySelector("#CookieBanner_State").value;
+    }
+  }
+});
+</script>
