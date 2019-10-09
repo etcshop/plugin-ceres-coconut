@@ -4,6 +4,6 @@
 
 <script type="x/template" id="vue-basket-listETC">
   <ul class="list-unstyled basketItemsList">
-    <basket-list-item template="#vue-basket-list-itemETC" v-for="basketItem in basketItems" :key="basketItem.id" :basket-item="basketItem" :size="size" language="{{ services.sessionStorage.getLang() }}"></basket-list-item>
+    <basket-list-item template="#vue-basket-list-itemETC" v-for="basketItem in basketItems" :key="basketItem.id" :basket-item="basketItem" language="{{ services.sessionStorage.getLang() }}"></basket-list-item>
   </ul>
 </script>
