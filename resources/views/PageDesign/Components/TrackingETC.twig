@@ -9,18 +9,18 @@
               {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
               {% if BelboonTrackActive == "true" %}
                 {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
-                <script type="text/javascript">
+                <script2>
                     belboonTag = {};
-                </script>
-                <script type="text/javascript">
-                (function(d) {
-                    var s = d.createElement("script");
-                    s.async = true;
-                    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=start&type=dynamic";
-                    var a = d.getElementsByTagName("script")[0];
-                    a.parentNode.insertBefore(s, a);
-                }(document));
-                </script>
+                </script2>
+                <script2>
+                  (function(d) {
+                      var s = d.createElement("script");
+                      s.async = true;
+                      s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=start&type=dynamic";
+                      var a = d.getElementsByTagName("script")[0];
+                      a.parentNode.insertBefore(s, a);
+                  }(document));
+                </script2>
               {% endif %}
           {% endif %}
             {% if (currTpl == 'tpl.basket') %}
@@ -32,7 +32,7 @@
                       {% set basketItemsETC = services.basket.getBasketItems() %}
                   {% endif %}
 
-                  <script type="text/javascript">
+                  <script2>
                       belboonTag = {
                           "orderProducts": [
                                 {% set c = 0 %}
@@ -47,8 +47,8 @@
                                 {% endfor %}
                           ]
                       };
-                  </script>
-                  <script type="text/javascript">
+                  </script2>
+                  <script2>
                       (function(d) {
                           var s = d.createElement("script");
                           s.async = true;
@@ -56,7 +56,7 @@
                           var a = d.getElementsByTagName("script")[0];
                           a.parentNode.insertBefore(s, a);
                       }(document));
-                  </script>
+                  </script2>
                 <!-- ENDE BELBOON BASKET TRACKING -->
               {% endif %}
             {% endif %}
@@ -67,7 +67,7 @@
                 {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
                 <!-- START BELBOON BASKET TRACKING TEST1206-->
 
-                  <script type="text/javascript">
+                  <script2>
                       belboonTag = {
                           "orderProducts": [
                                 {% set c = 0 %}
@@ -84,8 +84,8 @@
                                 {% endfor %}
                           ]
                       };
-                  </script>
-                  <script type="text/javascript">
+                  </script2>
+                  <script2>
                       (function(d) {
                           var s = d.createElement("script");
                           s.async = true;
@@ -93,7 +93,7 @@
                           var a = d.getElementsByTagName("script")[0];
                           a.parentNode.insertBefore(s, a);
                       }(document));
-                  </script>
+                  </script2>
                 <!-- ENDE BELBOON BASKET TRACKING -->
               {% endif %}
             {% endif %}
