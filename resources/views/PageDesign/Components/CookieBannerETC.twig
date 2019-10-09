@@ -15,7 +15,6 @@
           <div id="CookieBanner_Decline" class="CookieBanner_Button btn btn-secondary" @click="Declined">Ablehnen</div>
         </div>
       </div>
-      <div v-else-if="cookieSessionStatus == 1">
         Tracking anzeigen
       </div>
     </div>
@@ -31,29 +30,23 @@ Vue.component("cookie-banner", {
   data()
   {
     return {
-        cookieSessionStatus: -1,
-        componentKey: 0
+        cookieSessionStatus: -1
     };
   },
   created()
   {
       this.getCookie();
   },
-  methods: {{
-    forceRerender() {
-      this.componentKey += 1;
-    },
+  methods: {
     Accepted()
     {
       document.cookie = "mcoo=1";
       this.getCookie();
-      this.forceRerender();
     },
     Declined()
     {
       document.cookie = "mcoo=0";
       this.getCookie();
-      this.forceRerender();
     },
     getCookie() {
       this.cookieSessionStatus = -1;
@@ -68,7 +61,6 @@ Vue.component("cookie-banner", {
         if (c.indexOf(name) == 0) {
           this.cookieSessionStatus = c.substring(name.length, c.length);
           document.getElementById("CookieBanner_StateInputPD").value = this.cookieSessionStatus;
-
           return this.cookieSessionStatus;
         }
       }
