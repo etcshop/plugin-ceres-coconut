@@ -32,21 +32,21 @@
                                   <strong>${ itemName }</strong>
                                 </span>
                                 <span id="AddItemToBasketOvrlay_ItemAmountPrice" class="text-muted">
-                                  ${ this.basketItem.quantity } x ${ price | currency }
+                                  ${ latestBasketEntry.quantity } x ${ price | currency }
                                 </span>
 
                                 {# <p>
-                                    <item-bundle v-if="isLastBasketEntrySet" :bundle-type="variation.variation.bundleType" :bundle-components="variation.bundleComponents"></item-bundle>
+                                    <item-bundle v-if="isLastBasketEntrySet" :bundle-type="latestBasketEntry.item.variation.bundleType" :bundle-components="latestBasketEntry.item.bundleComponents"></item-bundle>
                                 </p> #}
 
-                                <p class="small" v-for="attribute in variation.attributes">
+                                <p class="small" v-for="attribute in latestBasketEntry.item.attributes">
                                     <strong>${ attribute.attribute.names.name }</strong>:
                                     <span>${ attribute.value.names.name }</span>
                                 </p>
 
-                                <p class="small" v-for="property in variation.properties">
+                                <p class="small" v-for="property in latestBasketEntry.item.properties">
                                     <template v-if="property.property.value">
-                                        <strong>${ property.property.names.name } (+ ${ variation.properties | propertySurcharge(property.property.id) | currency }):</strong>
+                                        <strong>${ property.property.names.name } (+ ${ latestBasketEntry.item.properties | propertySurcharge(property.property.id) | currency }):</strong>
                                         <span v-if="property.property.valueType === 'file'">
                                             <a :href="property.property.value | fileUploadPath" target="_blank">
                                                 <i class="fa fa-external-link" aria-hidden="true"></i>
@@ -92,4 +92,137 @@
         </div>
     </div>
 
+</script>
+
+<script>
+Vue.component("add-item-to-basket-overlay", {
+
+    delimiters: ["${", "}"],
+
+    props: {
+        template: {
+            type: String,
+            default: "#vue-add-item-to-basket-overlayETC"
+        },
+        defaultTimeToClose: {
+            type: Number,
+            default: 15
+        }
+    },
+
+    data()
+    {
+        return {
+            currency: "",
+            price: 0
+        };
+    },
+
+    computed:
+    {
+        isLastBasketEntrySet()
+        {
+            return Object.keys(this.latestBasketEntry.item).length !== 0;
+        },
+
+        itemName()
+        {
+            if (this.isLastBasketEntrySet)
+            {
+                return this.$options.filters.itemName(this.latestBasketEntry.item);
+            }
+
+            return "";
+        },
+
+        imageUrl()
+        {
+            if (this.isLastBasketEntrySet)
+            {
+                const images = this.$options.filters.itemImages(this.latestBasketEntry.item.images, "urlPreview");
+                const img = this.$options.filters.itemImage(images);
+
+                return img;
+            }
+
+            return "";
+        },
+        imageAlternativeText()
+        {
+            if (this.isLastBasketEntrySet)
+            {
+                const images = this.$options.filters.itemImages(this.latestBasketEntry.item.images, "urlPreview");
+
+                return this.$options.filters.itemImageAlternativeText(images);
+            }
+
+            return "";
+        },
+
+        ...Vuex.mapState({
+            latestBasketEntry: state => state.basket.latestEntry
+        })
+    },
+
+    watch:
+    {
+        latestBasketEntry()
+        {
+            if (App.config.basket.addItemToBasketConfirm === "overlay")
+            {
+                this.setPriceFromData();
+
+            }
+        }
+    },
+
+    methods:
+    {
+        setPriceFromData()
+        {
+            if (this.latestBasketEntry.item.prices)
+            {
+                this.currency = this.latestBasketEntry.item.prices.default.currency;
+                const graduatedPrice = this.$options.filters.graduatedPrice(this.latestBasketEntry.item, this.latestBasketEntry.quantity);
+                const propertySurcharge = this.$options.filters.propertySurchargeSum(this.latestBasketEntry.item);
+
+                this.price = this.$options.filters.specialOffer(graduatedPrice, this.latestBasketEntry.item.prices, "price", "value") + propertySurcharge;
+            }
+        },
+
+        orderParamValue(propertyId)
+        {
+            const orderParams = this.latestBasketEntry.orderParams;
+
+            if (isNullOrUndefined(orderParams))
+            {
+                return "";
+            }
+
+            const property = this.latestBasketEntry.item.properties.find(property =>
+            {
+                return parseInt(property.property.id) === parseInt(propertyId);
+            });
+
+            if (isNullOrUndefined(property) || !property.property.isOderProperty)
+            {
+                return "";
+            }
+
+            const orderParam = orderParams.find(param =>
+            {
+                return parseInt(param.property.id) === parseInt(propertyId);
+            });
+
+            const orderParamValue = orderParam.property.value;
+
+            if (property.property.valueType === "selection" && orderParamValue)
+            {
+                return orderParam.property.selectionValues[orderParamValue].name;
+            }
+
+            return orderParamValue;
+        }
+    }
+});
 </script>
