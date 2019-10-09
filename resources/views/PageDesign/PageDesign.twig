@@ -406,7 +406,7 @@
         {% endblock %}
 
         <input type="hidden" name="CookieBanner_StateInputPD" id="CookieBanner_StateInputPD" v-html="{{ cookieState }}">
-        <cookie-banner></cookie-banner>
+        <cookie-banner :key="componentKey"></cookie-banner>
     </div>
 
     {% if basket is not defined %}
