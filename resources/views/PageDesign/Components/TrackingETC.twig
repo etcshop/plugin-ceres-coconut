@@ -22,7 +22,7 @@
                 </script2>
               {% endif %}
           {% endif %}
-            {% if (currTpl == 'tpl.basket') %}
+          {% if (currTpl == 'tpl.basket') %}
               {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
               {% if BelboonTrackActive == "true" %}
                 {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
@@ -61,40 +61,153 @@
             {% endif %}
 
             {% if (currTpl == 'tpl.confirmation') %}
-              {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
-              {% if BelboonTrackActive == "true" %}
-                {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
-                <!-- START BELBOON BASKET TRACKING TEST1206-->
 
-                  <script2>
-                      belboonTag = {
-                          "orderProducts": [
-                                {% set c = 0 %}
-                                {% for item in data.order.orderItems %}
-                                  {% if item.typeId == 1 %}
-                                    {% if c >= 1 %},{% endif %}
+            	<!-- ########################### BELBOON TRACKING ########################### -->
+
+                  {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+                  {% if BelboonTrackActive == "true" %}
+                    {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
+                    <!-- START BELBOON BASKET TRACKING TEST1206-->
+
+                      <script2>
+                          belboonTag = {
+                              "orderProducts": [
+                                    {% set c = 0 %}
+                                    {% for item in data.order.orderItems %}
+                                      {% if item.typeId == 1 %}
+                                        {% if c >= 1 %},{% endif %}
+                                        {
+                                          "id": "{{ item.itemVariationId }}",
+                                          "price": "{{ item.amounts[0].purchasePrice }}",
+                                          "qty": "{{ item.quantity }}"
+                                          {% set c = 1 %}
+                                        }
+                                      {% endif %}
+                                    {% endfor %}
+                              ]
+                          };
+                      </script2>
+                      <script2>
+                          (function(d) {
+                              var s = d.createElement("script");
+                              s.async = true;
+                              s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=checkout&type=dynamic";
+                              var a = d.getElementsByTagName("script")[0];
+                              a.parentNode.insertBefore(s, a);
+                          }(document));
+                      </script2>
+                    <!-- ENDE BELBOON BASKET TRACKING -->
+                  {% endif %}
+
+                  	<!-- ########################### GOOGLE TRACKING ########################### -->
+
+
+                        {% if webstoreConfig.webstoreId == 0 %}
+                            <!-- BEGIN Google Kundenrezensionen -->
+
+                            {% set deliveryAddress = data.order.deliveryAddress %}
+                            {% set deliveryCountryId = deliveryAddress.countryId %}
+
+                            {% set billingAddress = data.order.billingAddress %}
+
+                            {% set email = "" %}
+                            {% for option in billingAddress.options %}
+                                {% if option.typeId == 5 %}
+                                    {% set email = option.value %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% set estimatedShippingDate = "" %}
+                            {% set orderDates = data.order.dates %}
+                            {% for date in orderDates %}
+                                {% if date.typeId == 2 %}
+                                    {% set estimatedShippingDate = date.date %}
+                                {% endif %}
+                            {% endfor %}
+
+                            <script2 src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script2>
+
+                            <script2>
+                              window.renderOptIn = function() {
+                                window.gapi.load('surveyoptin', function() {
+                                  window.gapi.surveyoptin.render(
                                     {
-                                      "id": "{{ item.itemVariationId }}",
-                                      "price": "{{ item.amounts[0].purchasePrice }}",
-                                      "qty": "{{ item.quantity }}"
-                                      {% set c = 1 %}
-                                    }
-                                  {% endif %}
-                                {% endfor %}
-                          ]
-                      };
-                  </script2>
-                  <script2>
-                      (function(d) {
-                          var s = d.createElement("script");
-                          s.async = true;
-                          s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=checkout&type=dynamic";
-                          var a = d.getElementsByTagName("script")[0];
-                          a.parentNode.insertBefore(s, a);
-                      }(document));
-                  </script2>
-                <!-- ENDE BELBOON BASKET TRACKING -->
-              {% endif %}
+                                      // REQUIRED FIELDS
+                                      "merchant_id": 1340904,
+                                      "order_id": "{{ data.order.id }}",
+                                      "email": "{{ email }}",
+                                      "delivery_country": "{{ services.country.getCountryById(data.order.deliveryAddress.countryId).isoCode2 }}",
+                                      "estimated_delivery_date": "{{ estimatedShippingDate | date_modify("3 weekdays") | date("Y-m-j")}}",
+
+                                      // OPTIONAL FIELDS
+                                      //"products": [{"gtin":"GTIN1"}, {"gtin":"GTIN2"}]
+                                      "opt_in_style": "BOTTOM_RIGHT_DIALOG"
+                                    });
+                                });
+                              }
+                            </script2>
+
+                            <!-- ANFANG Sprachcode für Google Kundenrezensionen -->
+
+                              <script2>
+                                window.___gcfg = {
+                                  lang: 'de'
+                                };
+                              </script2>
+
+                            <!-- ENDE Sprachcode für Google Kundenrezensionen -->
+
+                            <!-- BEGIN GCR Badge Code -->
+
+                            <script2 src="https://apis.google.com/js/platform.js?onload=renderBadge"
+                              async defer>
+                            </script2>
+
+                            <script2>
+                              window.renderBadge = function() {
+                                var ratingBadgeContainer = document.createElement("div");
+                                  document.body.appendChild(ratingBadgeContainer);
+                                  window.gapi.load('ratingbadge', function() {
+                                    window.gapi.ratingbadge.render(
+                                      ratingBadgeContainer, {
+                                        // REQUIRED
+                                        "merchant_id": 1340904,
+                                        // OPTIONAL
+                                        "position": "BOTTOM_RIGHT"
+                                      });
+                                 });
+                              }
+                            </script2>
+
+                            <!-- END GCR Badge Code -->
+
+                            <!-- BEGIN Global site tag (gtag.js) - Google Ads: 1072374430 -->
+
+                              <script2 async src="https://www.googletagmanager.com/gtag/js?id=AW-1072374430"></script2>
+                              <script2>
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+
+                                gtag('config', 'AW-1072374430');
+                              </script2>
+
+                            <!-- END Global site tag (gtag.js) - Google Ads: 1072374430 -->
+
+                            <!-- BEGIN Event snippet for Tracking-Test conversion page -->
+
+                              <script2>
+                                gtag('event', 'conversion', {
+                                    'send_to': 'AW-1072374430/0IYNCLzmhX4QnsWs_wM',
+                                    'value': {{ data.order.amounts[0].netTotal }},
+                                    'currency': 'EUR',
+                                    'transaction_id': '{{ data.order.id }}'
+                                });
+                              </script2>
+
+                            <!-- END Event snippet for Tracking-Test conversion page -->
+                        {% endif %}
+
             {% endif %}
         </div>
     </div>
