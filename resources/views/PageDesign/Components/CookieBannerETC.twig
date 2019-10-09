@@ -15,6 +15,7 @@
           <div id="CookieBanner_Decline" class="CookieBanner_Button btn btn-secondary" @click="Declined">Ablehnen</div>
         </div>
       </div>
+      <div v-else-if="cookieSessionStatus === 1">
         Tracking anzeigen
       </div>
     </div>
