@@ -31,25 +31,29 @@ Vue.component("cookie-banner", {
   data()
   {
     return {
-        cookieSessionStatus: -1
+        cookieSessionStatus: -1,
+        componentKey: 0,
     };
   },
   created()
   {
       this.getCookie();
   },
-  methods: {
+  methods: {{
+    forceRerender() {
+      this.componentKey += 1;
+    },
     Accepted()
     {
       document.cookie = "mcoo=1";
       this.getCookie();
-      this.$forceUpdate();
+      this.forceRerender();
     },
     Declined()
     {
       document.cookie = "mcoo=0";
       this.getCookie();
-      this.$forceUpdate();
+      this.forceRerender();
     },
     getCookie() {
       this.cookieSessionStatus = -1;
