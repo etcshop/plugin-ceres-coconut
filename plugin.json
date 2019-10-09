@@ -43,7 +43,7 @@
     ],
     "containers"        :
     [
-        { 
+        {
             "key"           : "Template.Tracking",
             "name"          : "Template: Tracking",
             "description"   : "Tracking-Bereich für Plugins"
