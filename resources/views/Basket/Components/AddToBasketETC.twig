@@ -199,7 +199,6 @@ Vue.component("add-to-basketetc", {
           }));
           _this.waiting = false;
 
-
         }, function (error) {
           _this.waiting = false;
 
@@ -249,14 +248,7 @@ Vue.component("add-to-basketetc", {
     /**
      * open the AddItemToBasketOverlay
      */
-    openAddToBasketOverlay: function openAddToBasketOverlay(stashedQuantity, item, orderParams) {
-      var latestBasketEntry = {
-        item: item,
-        quantity: stashedQuantity,
-        orderParams: orderParams
-      };
-      this.$store.commit("setLatestBasketEntry", latestBasketEntry);
-    },
+
 
     /**
      * update the property quantity of the current instance
