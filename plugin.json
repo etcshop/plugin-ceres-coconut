@@ -40,5 +40,13 @@
             "name"          :"Anbindung der VueScripts",
             "description"   :"Hier werden eigene Komponenten eingebunden."
         }
+    ],
+    "containers"        :
+    [
+        {
+            "key"           : "Template.Tracking",
+            "name"          : "Template: Tracking",
+            "description"   : "Tracking-Bereich für Plugins"
+        }
     ]
 }
