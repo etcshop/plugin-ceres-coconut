@@ -12,7 +12,6 @@
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
 {{ component("Ceres::Customer.Components.Contact.AcceptPrivacyPolicyCheck") }}
 {{ component( "Ceres::PageDesign.Components.CookieBannerETC" ) }}
-{{ component( "Ceres::PageDesign.Components.Tracking" ) }}
 
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
@@ -407,7 +406,7 @@
         {% endblock %}
 
         <input type="hidden" name="CookieBanner_StateInputPD" id="CookieBanner_StateInputPD" v-html="{{ cookieState }}">
-        <cookie-banner :componentKey="componentKey"></cookie-banner>
+        <cookie-banner></cookie-banner>
     </div>
 
     {% if basket is not defined %}
