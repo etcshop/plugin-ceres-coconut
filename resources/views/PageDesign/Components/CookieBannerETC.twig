@@ -28,9 +28,6 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Vue.component("cookie-banner", {
   template: "#vue-cookie-banner",
   delimiters: ["${", "}"],
-  props: {
-    cookieStateProp: Number,
-  },
   data()
   {
     return {
@@ -46,11 +43,13 @@ Vue.component("cookie-banner", {
     {
       document.cookie = "mcoo=1";
       this.getCookie();
+      this.$forceUpdate();
     },
     Declined()
     {
       document.cookie = "mcoo=0";
       this.getCookie();
+      this.$forceUpdate();
     },
     getCookie() {
       this.cookieSessionStatus = -1;
@@ -65,7 +64,7 @@ Vue.component("cookie-banner", {
         if (c.indexOf(name) == 0) {
           this.cookieSessionStatus = c.substring(name.length, c.length);
           document.getElementById("CookieBanner_StateInputPD").value = this.cookieSessionStatus;
-          this.cookieStateProp = this.cookieSessionStatus;
+
           return this.cookieSessionStatus;
         }
       }
