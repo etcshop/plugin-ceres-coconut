@@ -1,3 +1,5 @@
+{{ component( "Ceres::PageDesign.Components.TrackingETC" ) }}
+
 <script type="x/template" id="vue-cookie-banner">
     <div>
       <div id="CookieBanner_State"><input type="hidden" name="CookieBanner_StateInput" id="CookieBanner_StateInput" :value="cookieSessionStatus"></div>
@@ -16,7 +18,7 @@
         </div>
       </div>
       <div v-else-if="cookieSessionStatus === 1">
-        Tracking anzeigen
+        <tracking></tracking>
       </div>
     </div>
 </script>
