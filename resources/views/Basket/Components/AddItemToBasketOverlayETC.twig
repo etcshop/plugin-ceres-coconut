@@ -26,7 +26,7 @@
                             <div class="col-md-4" style="min-height: 80px;">
                                 <img style="max-height: 140px;" class="img-fluid m-x-auto" :src="imageUrl" :alt="itemName"/>
                             </div>
-                            <div style="display: none;" id="hiddenVariationText">${ variation | json_encode }</div>
+                            <div style="display: none;" id="hiddenVariationText">${ variation.variation.bundleType }</div>
                             <div class="col-md-8">
 
                                 <span id="AddItemToBasketOverlay_ItemName">
