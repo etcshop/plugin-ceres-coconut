@@ -2,8 +2,7 @@
     <div>
       <div v-html="cookieStatus"></div>
       {{ cookieStatus }}
-      <div style="position: absolute; font-size: 15px; font-weight: bold; left: 0; top: 0; width: 100px; height: 100px; background-color: #41CFFF; z-index: 999999999" v-if="cookieStatus == 1"></div>
-
+      <div v-if="cookieStatus == 1">
           {% if services.template.isHome() %}
 
               {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
@@ -97,6 +96,7 @@
                 <!-- ENDE BELBOON BASKET TRACKING -->
               {% endif %}
             {% endif %}
+        </div>
     </div>
 </script>
 
