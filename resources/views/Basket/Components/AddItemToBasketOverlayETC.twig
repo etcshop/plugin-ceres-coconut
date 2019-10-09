@@ -21,45 +21,6 @@
 
                     <!-- MODAL BODY -->
                     <div class="modal-body">
-                      <div class="modal-item">
-                        <div class="row is-table-row">
-                            <div class="col-md-4" style="min-height: 80px;">
-                                <img style="max-height: 140px;" class="img-fluid m-x-auto" :src="imageUrl" :alt="itemName"/>
-                            </div>
-                            <div style="display: none;" id="hiddenVariationText">${ variation.variation.bundleType }</div>
-                            <div class="col-md-8">
-
-                                <span id="AddItemToBasketOverlay_ItemName">
-                                  <strong>${ itemName }</strong>
-                                </span>
-                                <span id="AddItemToBasketOvrlay_ItemAmountPrice" class="text-muted">
-                                  ${ latestBasketEntry.quantity } x ${ price | currency }
-                                </span>
-
-                                {# <p>
-                                    <item-bundle v-if="isLastBasketEntrySet" :bundle-type="latestBasketEntry.item.variation.bundleType" :bundle-components="latestBasketEntry.item.bundleComponents"></item-bundle>
-                                </p> #}
-
-                                <p class="small" v-for="attribute in latestBasketEntry.item.attributes">
-                                    <strong>${ attribute.attribute.names.name }</strong>:
-                                    <span>${ attribute.value.names.name }</span>
-                                </p>
-
-                                <p class="small" v-for="property in latestBasketEntry.item.properties">
-                                    <template v-if="property.property.value">
-                                        <strong>${ property.property.names.name } (+ ${ latestBasketEntry.item.properties | propertySurcharge(property.property.id) | currency }):</strong>
-                                        <span v-if="property.property.valueType === 'file'">
-                                            <a :href="property.property.value | fileUploadPath" target="_blank">
-                                                <i class="fa fa-external-link" aria-hidden="true"></i>
-                                                ${ property.property.value | fileName }
-                                            </a>
-                                        </span>
-                                        <span v-else>${ property.property.value }</span>
-                                    </template>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                     <!-- ./MODAL BODY -->
 
                     <!-- MODAL FOOTER -->
