@@ -3,8 +3,8 @@
 {% import "Ceres::PageDesign.Macros.Translations" as Translations %}
 {{ component( "Ceres::PageDesign.Components.Notifications" ) }}
 {{ component( "Ceres::Basket.Components.BasketPreview" ) }}
-{{ component( "CeresCoconut::Customer.Components.loginETC" ) }}
-{{ component( "Ceres::Customer.Components.Registration" ) }}
+{{ component( "Ceres::Customer.Components.login" ) }}
+{{ component( "CeresCoconut::Customer.Components.RegistrationETC" ) }}
 {{ component( "CeresCoconut::Basket.Components.AddItemToBasketOverlayETC" ) }}
 {{ component( "Ceres::PageDesign.Components.Popper" ) }}
 {{ component( "Ceres::Containers.Components.ContainerItemList" ) }}
@@ -53,7 +53,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <div class="modal-title h3">{{ trans("Ceres::Template.login") }}</div>
                             </div>
-                            <login template="#vue-loginETC" modal-element="login-modal-wrapper"></login>
+                            <login template="#vue-login" modal-element="login-modal-wrapper"></login>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                                     </popper>
                                 </div>
                             </div>
-                            <registration template="#vue-registration" :is-simple-registration="true" modal-element="simple-registration-modal-wrapper"></registration>
+                            <registration template="#vue-registrationETC" :is-simple-registration="true" modal-element="simple-registration-modal-wrapper"></registration>
                         </div>
                     </div>
                 </div>
