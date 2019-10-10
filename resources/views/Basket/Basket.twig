@@ -1,8 +1,6 @@
 {% extends getPartial('page-design') %}
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
-{% set basketDetailsData = config("Ceres.basket.item_data")|split(', ') %}
-
 {% block PartialHead %}
     <meta name="robots" content="NOINDEX, NOFOLLOW">
     <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.basket") }}</title>
@@ -23,7 +21,7 @@
             </div>
             <div class="ContentSeperator"></div>
             <div id="chk_BasketContent" class="ContentText">
-              <basket-list template="#vue-basket-list-nopreviewETC" size="large"></basket-list>
+              <basket-list template="#vue-basket-list-nopreviewETC" size="large" :basket-details-data="{{ ceresConfig.basket.itemData | json_encode }}"></basket-list>
               <basket-totals class="m-b-2" template="#vue-basket-totals-nopreviewETC"></basket-totals>
             </div>
           </div>
