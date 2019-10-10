@@ -1,0 +1,80 @@
+{{ component( "Ceres::PageDesign.Components.TrackingETC" ) }}
+
+<script type="x/template" id="vue-cookie-banner">
+    <div>
+      <div id="CookieBanner_State"><input type="hidden" name="CookieBanner_StateInput" id="CookieBanner_StateInput" :value="cookieSessionStatus"></div>
+      <div id="CookieBanner" v-if="cookieSessionStatus === -1">
+        <div id="CookieBanner_Text">
+          Wir verwenden Cookies, um Inhalte zu personalisieren, Werbeanzeigen anzupassen, diese zu messen und die Sicherheit für unsere Besucher zu
+          steigern. Mit einem Klick auf den Button "Akzeptieren" stimmen Sie der Sammlung von Informationen mittels Cookies auf und außerhalb
+          unseres Shops zu.
+          <br>
+          <br>
+          Weitere Informationen über unsere Cookies und deren Handhabung finden Sie hier:
+          <a href="{{ urls.privacyPolicy }}" title="{{ trans("CeresCoconut::Template.footerPrivacyPolicy") }}">Weitere Informationen</a><br>
+          <br>
+          <div id="CookieBanner_Accept" class="CookieBanner_Button btn btn-primary" @click="Accepted()">Akzeptieren</div>
+          <div id="CookieBanner_Decline" class="CookieBanner_Button btn btn-secondary" @click="Declined">Ablehnen</div>
+        </div>
+      </div>
+      <div>
+        <tracking :key="componentKey" :cookie-status="cookieSessionStatus"></tracking>
+      </div>
+    </div>
+</script>
+
+<script>
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Vue.component("cookie-banner", {
+  template: "#vue-cookie-banner",
+  delimiters: ["${", "}"],
+  data()
+  {
+    return {
+        cookieSessionStatus: -1,
+        componentKey: 0
+    };
+  },
+  created()
+  {
+      this.getCookie();
+  },
+  methods: {
+    Accepted()
+    {
+      document.cookie = "mcoo=1";
+      this.getCookie();
+      this.forceRerender();
+    },
+    Declined()
+    {
+      document.cookie = "mcoo=0";
+      this.getCookie();
+      this.forceRerender();
+    },
+    getCookie() {
+      this.cookieSessionStatus = -1;
+      var name = "mcoo=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          this.cookieSessionStatus = c.substring(name.length, c.length);
+          document.getElementById("CookieBanner_StateInputPD").value = this.cookieSessionStatus;
+          return this.cookieSessionStatus;
+        }
+      }
+      return -1;
+    },
+    forceRerender() {
+      this.componentKey += 1;
+    }
+  }
+});
+</script>

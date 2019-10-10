@@ -85,6 +85,13 @@
 
 <div class="wrapper">
    <div class="content">
+     <div style="display: none">
+       {% set CookieStatusSession = services.sessionStorage.getSessionValue("sessionCookieStatus") %}
+       1. CookieStatus Session: {{ CookieStatusSession }}<br>
+       <br>
+       {% set CookieStatusSession = services.sessionStorage.getSessionValue("sessionCookieStatus") %}
+       2. CookieStatus Session: {{ CookieStatusSession }}
+     </div>
       <!--    <div class="container_centered">-->
       <div class="col-xs-12" id="cnt_Start">
         <div class="carousel slide" data-interval="5000" data-ride="carousel" id="carousel-example">

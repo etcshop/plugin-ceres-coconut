@@ -10,6 +10,7 @@ use IO\Extensions\Functions\Partial;
 use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
 use CeresCoconut\Contexts\CoconutSingleItemContext;
+use CeresCoconut\Contexts\CoconutGlobalContext;
 
 
 /**
@@ -65,6 +66,12 @@ class CeresCoconutServiceProvider extends ServiceProvider
        $dispatcher->listen('IO.ctx.item', function (TemplateContainer $templateContainer, $templateData = [])
        {
            $templateContainer->setContext(CoconutSingleItemContext::class);
+           return false;
+       }, 0);
+
+       $dispatcher->listen('IO.ctx.*', function (TemplateContainer $templateContainer, $templateData = [])
+       {
+           $templateContainer->setContext( CoconutGlobalContext::class);
            return false;
        }, 0);
 
