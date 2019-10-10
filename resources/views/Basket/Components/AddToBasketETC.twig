@@ -3,7 +3,7 @@
 <script type="x/template" id="vue-add-to-basketETC">
     <div>
         <input id="VarIDforBasket" name="VarIDforBasket" type="hidden" ref="VarIDforBasket" v-model="variationId">
-        <div :class="{'no-pointer-events': waiting}" class="add-to-basket-lg-container hidden-md-down test2255" v-if="!showQuantity && useLargeScale && canBeAddedToBasket"
+        <div :class="{'no-pointer-events': waiting}" class="add-to-basket-lg-container hidden-md-down" v-if="!showQuantity && useLargeScale && canBeAddedToBasket"
              v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.singleItemAddToBasket") }}" @click="addToBasket()">
             <i v-waiting-animation="waiting" class="fa fa-cart-plus fa-lg mobile-icon-right"></i>
         </div>
@@ -188,6 +188,12 @@ Vue.component("add-to-basketetc", {
           };
         }
         this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
+          var basketItem = response.find(function (item) {
+            return item.variationId === _this.variationId;
+          });
+          //var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
+          var variation = basketItem.variation.data;
+          var orderParams = !(_typeof(basketObject) === _typeof(void 0)) && !(basketObject != null) ? basketObject.basketItemOrderParams : null;
           document.dispatchEvent(new CustomEvent("afterBasketItemAdded", {
             detail: basketObject
           }));
