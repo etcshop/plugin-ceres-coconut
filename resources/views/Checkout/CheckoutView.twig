@@ -113,7 +113,15 @@
                   <!--<button class="btn btn-primary pull-right" data-plenty="click:Redirect.toCheckoutTab('#shipping-payment')"><i id="CountrySelectionModify" class="material-icons w3-xxxlarge SettingContainerModify">create</i></button>-->
                   <h4>{{ trans("CeresCoconut::Template.ETC_ZahlungVersand") }}</h4>
                   {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
-                    <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
+                  {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
+                  {% if overridePaymentList|trim is empty %}
+                      <div class="test1057 paymentproviderCoconut"></div>
+                        <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
+                  {% else %}
+
+                      <div class="test1057 paymentproviderOverride"></div>
+                      {{ overridePaymentList }}
+                  {% endif %}
                   {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
 
                   {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingProfileList") }}
