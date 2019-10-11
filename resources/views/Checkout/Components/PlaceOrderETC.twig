@@ -1,13 +1,19 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
-<script type="x/template" id="vue-place-orderETC">
+<script type="x/template" id="vue-place-order">
     <div>
-      {% set buttonReplacement = LayoutContainer.show("Ceres::Checkout.PlaceOrder") %}
-      {% if buttonReplacement|trim is not empty %}
-          {{ buttonReplacement }}
-      {% endif %}
-      <button id="ButtonPlaceOrder" class="btn btn-primary btn-lg btn-block-xs col-lg-12" @click="placeOrder()" :disabled="waiting || isBasketLoading || !isBasketInitiallyLoaded">
-          <span>{{ trans("CeresCoconut::Template.checkoutBuyNow") }}</span>
-      </button>
+        {% set buttonReplacement = LayoutContainer.show("Ceres::Checkout.PlaceOrder") %}
+        {% if buttonReplacement|trim is not empty %}
+            {{ buttonReplacement }}
+        {% else %}
+            <button
+                class="btn btn-block btn-primary btn-appearance"
+                :class="buttonClasses"
+                :style="paddingInlineStyles"
+                @click="placeOrder()"
+                :disabled="waiting || isBasketLoading || !isBasketInitiallyLoaded">
+                <i v-waiting-animation="waiting" class="fa fa-arrow-right" aria-hidden="true"></i> {{ trans("Ceres::Template.checkoutBuyNow") }}
+            </button>
+        {% endif %}
     </div>
 </script>
