@@ -79,7 +79,7 @@
                       {{ LayoutContainer.show("Ceres::Checkout.AfterBasketTotals") }}
                       <!--<img id="TrustedShops-Banner" src="https://www.etc-shop.de/img/base/trustedshops.jpg">-->
                       {{ LayoutContainer.show("Ceres::Checkout.BeforePlaceOrder") }}
-                      <place-order target-continue="{{ homepageURL }}{% if homepageURL | last != '/'%}/{% endif %}place-order{% if urls.appendTrailingSlash %}/{% endif %}{% if services.checkout.getReadOnlyCheckout() == 1 %}?readonlyCheckout=1{% endif %}" @payment-response="checkoutComp.showModal($event)"></place-order>
+                      <place-order template="#vue-place-orderETC" target-continue="{{ homepageURL }}{% if homepageURL | last != '/'%}/{% endif %}place-order{% if urls.appendTrailingSlash %}/{% endif %}" @payment-response="checkoutComp.showModal($event)"></place-order>
                       {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
                     </div>
                   </div>
@@ -116,6 +116,7 @@
                   {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
                   {% if overridePaymentList|trim is empty %}
                       <div class="test1057 paymentproviderCoconut"></div>
+                        <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
                   {% else %}
 
                       <div class="test1057 paymentproviderOverride"></div>
