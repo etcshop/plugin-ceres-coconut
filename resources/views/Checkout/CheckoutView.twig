@@ -115,7 +115,7 @@
                   {{ LayoutContainer.show("Ceres::Checkout.BeforePaymentList") }}
                   {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
                   {% if overridePaymentList|trim is empty %}
-                        <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
+                        <payment-provider-select template="#vue-payment-provider-selectETC"></payment-provider-select>
                   {% else %}
                       {{ overridePaymentList }}
                   {% endif %}
