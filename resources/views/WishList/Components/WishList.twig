@@ -1,10 +1,6 @@
+{{ component("CeresCoconut::WishList.Components.WishListItem") }}
 <script type="x/template" id="vue-wish-list">
-
     <div>
-        {% include "CeresCoconut::WishList.Components.WishListItem" %}
-
         <p class="h4 text-muted wish-list-no-items-label" v-if="!wishListItems[0]">{{ trans("Ceres::Template.wishListNoItems") }}</p>
-
     </div>
-
 </script>
