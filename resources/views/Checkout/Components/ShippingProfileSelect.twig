@@ -9,7 +9,7 @@
                         :value="shippingProfile.parcelServicePresetId"
                         @change="onShippingProfileChange(shippingProfile.parcelServicePresetId)"
                         :checked="shippingProfileId === shippingProfile.parcelServicePresetId"
-                        :disabled = "isBasketLoading"
+                        :disabled="isBasketLoading || isCheckoutReadonly || (paymentContainerIsOverwritten && isPaymentMethodExcluded(shippingProfile, selectedPaymentMethodId))"
                 >
                 <label :for="'ShippingProfileID' +  _uid + shippingProfile.parcelServicePresetId">
                     <div class="icon">
