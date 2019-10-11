@@ -122,7 +122,15 @@
                   {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
 
                   {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingProfileList") }}
-                  <shipping-profile-select template="#vue-shipping-profile-select"></shipping-profile-select>
+                  {% if overrideShippingProfiles|trim is empty %}
+                      <div class="shipping-method-select">
+                          <shipping-profile-select
+                              :payment-container-is-overwritten="{{ isOverwritten | json_encode }}"
+                          ></shipping-profile-select>
+                      </div>
+                  {% else %}
+                      {{ overrideShippingProfiles }}
+                  {% endif %}
                   {{ LayoutContainer.show("Ceres::Checkout.AfterShippingProfileList") }}
                 </div>
               </div>
