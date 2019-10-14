@@ -3,8 +3,6 @@
     <div>
         <p class="h4 text-muted wish-list-no-items-label" v-if="!wishListItems[0]">{{ trans("Ceres::Template.wishListNoItems") }}</p>
         <wish-list-item
-          v-for="wishListItem in wishListItems"
-          template="#vue-wish-list-itemETC"
           :key="wishListItem.id"
           :wish-list-item-raw="wishListItem"
           :item-detail-data="itemDetailsData">

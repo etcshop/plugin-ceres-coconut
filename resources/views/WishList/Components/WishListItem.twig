@@ -2,8 +2,8 @@
 {{ component( "CeresCoconut::Basket.Components.AddToBasket" ) }}
 {% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %}
 
-<script type="x/template" id="vue-wish-list-itemETC">
-  <div>
+<script type="x/template" id="vue-wish-list-item">
+  <article v-for="(wishListItem, index) in wishListItems" :key="wishListItem.id" class="wish-list-item col-xs-12 Test0950" :id="'article_' + index">
     <div style="display: none;" id="hiddenwishListItem">${ wishListItem.data }</div>
       <div class="wish-list-itemName col-lg-12">
           <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data.texts.name1 }</strong></a>
@@ -44,5 +44,5 @@
           <i class="material-icons MyAccountIcon_delete">delete</i>
         </a>
       </div>
-    </div>
+    </article>
 </script>
