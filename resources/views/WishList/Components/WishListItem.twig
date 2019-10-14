@@ -4,7 +4,6 @@
 
 <script type="x/template" id="vue-wish-list-item">
   <article v-for="(wishListItem, index) in wishListItems" :key="wishListItem.id" class="wish-list-item col-xs-12 Test0950" :id="'article_' + index">
-    <div style="display: none;" id="hiddenwishListItem">${ wishListItem.data }</div>
       <div class="wish-list-itemName col-lg-12">
           <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data.texts.name1 }</strong></a>
       </div>
