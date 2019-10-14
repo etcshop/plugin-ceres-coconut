@@ -4,6 +4,7 @@
 
 <script type="x/template" id="vue-wish-list-itemETC">
   <div>
+    <div style="display: none;" id="hiddenwishListItem">${ wishListItem.data | json_encode }</div>
       <div class="wish-list-itemName col-lg-12">
           <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data.texts.name1 }</strong></a>
       </div>
