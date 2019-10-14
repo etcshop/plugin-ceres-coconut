@@ -16,7 +16,7 @@
       </div>
 
       <hr>
-        <div style="display: none;" id="hiddenWishList">{{ wishList | json_encode() }}</div>
+        <div style="display: none;" id="hiddenWishList">{{ wishList | raw }}</div>
        <wish-list></wish-list>
     </div>
 {% endblock %}
