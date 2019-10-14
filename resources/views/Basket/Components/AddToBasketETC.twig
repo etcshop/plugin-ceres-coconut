@@ -4,12 +4,12 @@
     <div>
         <input id="VarIDforBasket" name="VarIDforBasket" type="hidden" ref="VarIDforBasket" v-model="variationId">
         <div :class="{'no-pointer-events': waiting}" class="add-to-basket-lg-container hidden-md-down" v-if="!showQuantity && useLargeScale && canBeAddedToBasket"
-             v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.singleItemAddToBasket") }}" @click="addToBasket()">
+             data-placement="top" title="{{ trans("Ceres::Template.singleItemAddToBasket") }}" @click="addToBasket()">
             <i v-waiting-animation="waiting" class="fa fa-cart-plus fa-lg mobile-icon-right"></i>
         </div>
 
         <div class="add-to-basket-lg-container hidden-md-down" v-if="!showQuantity && useLargeScale && !canBeAddedToBasket"
-             v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.itemShowItem") }}" @click="directToItem()">
+             data-placement="top" title="{{ trans("Ceres::Template.itemShowItem") }}" @click="directToItem()">
             <i class="fa fa-arrow-right fa-lg mobile-icon-right"></i>
         </div>
 
@@ -29,7 +29,7 @@
                                         template="#vue-quantity-inputETC"></quantity-input>
                         </div>
 
-                        <button v-if="!isVariationSelected" class="btn btn-block btn-primary disabled" v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.singleItemPleaseSelectValidVariation") }}">
+                        <button v-if="!isVariationSelected" class="btn btn-block btn-primary disabled" data-placement="top" title="{{ trans("Ceres::Template.singleItemPleaseSelectValidVariation") }}">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             {{ trans("CeresCoconut::Template.singleItemAddToBasket") }}
                         </button>

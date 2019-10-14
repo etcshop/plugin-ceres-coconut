@@ -17,7 +17,7 @@
 
         <div class="col-12 col-md-6 col-lg-4 variation-select second" v-if="possibleUnitIds.length > 1">
             <div class="input-unit">
-                <label v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.singleItemContent") }}">{{ trans("Ceres::Template.singleItemContent") }}</label>
+                <label data-placement="top" title="{{ trans("Ceres::Template.singleItemContent") }}">{{ trans("Ceres::Template.singleItemContent") }}</label>
                 <select class="custom-select" v-model="selectedUnitId" @change="onSelectionChange(possibleUnitIds[selectedUnitId])">
                     <option :value="0" v-if="hasEmptyOption">{{ trans("Ceres::Template.singleItemPleaseSelect") }}</option>
                     <option
