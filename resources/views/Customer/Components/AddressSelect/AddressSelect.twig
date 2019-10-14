@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="add-item" v-if="isAddAddressEnabled">
-                    <button v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.addressAddAddress") }}" class="btn btn-primary btn-appearance btn-medium btn-only-icon-xs-down" @click.prevent="showAddModal()">
+                    <button data-placement="top" title="{{ trans("Ceres::Template.addressAddAddress") }}" class="btn btn-primary btn-appearance btn-medium btn-only-icon-xs-down" @click.prevent="showAddModal()">
                         <span>{{ trans("Ceres::Template.addressAddAddress") }}</span>
                         <i class="fa fa-plus-square" aria-hidden="true"></i>
                     </button>
@@ -56,12 +56,12 @@
                                 <!---->
                                 <div class="item-controls" v-if="address.id != -99">
                                 <span class="item-edit">
-                                    <button v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.addressEdit") }}" class="btn btn-primary btn-appearance" @click.prevent="showEditModal(address)">
+                                    <button data-placement="top" title="{{ trans("Ceres::Template.addressEdit") }}" class="btn btn-primary btn-appearance" @click.prevent="showEditModal(address)">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                     </button>
                                 </span>
                                 <span class="item-remove">
-                                    <button v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.addressDelete") }}" class="btn btn-danger" @click.prevent="showDeleteModal(address)">
+                                    <button data-placement="top" title="{{ trans("Ceres::Template.addressDelete") }}" class="btn btn-danger" @click.prevent="showDeleteModal(address)">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </button>
                                 </span>
