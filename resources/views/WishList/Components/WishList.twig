@@ -4,11 +4,12 @@
 <script type="x/template" id="vue-wish-list">
     <div>
         <transition-group name="wish-list-item-transition" tag="div">
-          <wish-list-items
-            v-for="wishListItem in WishListItems"
+          <wish-list-item
+            v-for="wishListItem in wishListItems"
             :key="wishListItem.id"
             :wish-list-item-raw="wishListItem"
-            :item-details-data="itemDetailsData"
+            :item-details-data="itemDetailsData">
+          </wish-list-item>
         </transition-group>
         <p class="h4 text-muted wish-list-no-items-label" v-if="!wishListItems[0]">{{ trans("Ceres::Template.wishListNoItems") }}</p>
     </div>
