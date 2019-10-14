@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block PageBody %}
+<div style="display: none;" id="hiddenWishList">{{ wishList | raw }}</div>
     {{ component( "CeresCoconut::WishList.Components.WishList" ) }}
 
     <div class="page-content wish-list container-max m-b-3">
@@ -16,7 +17,6 @@
       </div>
 
       <hr>
-        <div style="display: none;" id="hiddenWishList">{{ wishList | raw }}</div>
        <wish-list></wish-list>
     </div>
 {% endblock %}
