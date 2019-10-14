@@ -2,7 +2,7 @@
 {{ component( "CeresCoconut::Basket.Components.AddToBasket" ) }}
 {% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %}
 
-<script type="x/template" id="vue-wish-list-item">
+<transition-group name="wish-list-item-transition" tag="div">
   <article v-for="(wishListItem, index) in wishListItems" :key="wishListItem.id" class="wish-list-item col-xs-12 Test0950" :id="'article_' + index">
       <div class="wish-list-itemName col-lg-12">
           <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data.texts.name1 }</strong></a>
@@ -44,4 +44,4 @@
         </a>
       </div>
     </article>
-</script>
+</transition-group>
