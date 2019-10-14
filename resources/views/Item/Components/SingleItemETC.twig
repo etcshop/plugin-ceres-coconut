@@ -1,4 +1,4 @@
-{% import "Ceres::Basket.Macros.AddToBasket" as AddToBasket %}
+{% import "Ceres::Basket.Macros.AddToBasket" as AddToBasket %} 
 {% set itemData = config("Ceres.item.data") | split(', ') %}
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
