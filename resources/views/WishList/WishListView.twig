@@ -5,18 +5,6 @@
 {% endblock %}
 
 {% block PageBody %}
-<div style="display: none;" id="hiddenWishList">{{ wishList | raw }}</div>
-    {{ component( "CeresCoconut::WishList.Components.WishList" ) }}
+<div style="display: none;" id="hiddenWishList">Hallo</div>
 
-    <div class="page-content wish-list container-max m-b-3">
-      <div class="row">
-          <div class="col-sm-12 col-lg-12">
-              <div class="ContentCaption">{{ trans("CeresCoconut::Template.ETC_Merkliste") }}</div>
-              <div class="ContentText">{{ trans("CeresCoconut::Template.ETC_Merkliste_Text") }}</div>
-          </div>
-      </div>
-
-      <hr>
-       <wish-list></wish-list>
-    </div>
 {% endblock %}
