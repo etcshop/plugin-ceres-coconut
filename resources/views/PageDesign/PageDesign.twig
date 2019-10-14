@@ -370,12 +370,10 @@
 {% endfor %}
 
 
-{% if isShopBuilder %}
-    {% include "Ceres::Widgets.ShopBuilderDataStore" %}
-{% endif %}
-
 
 {{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
+{{ get_filtered_tags() }}
+{{ get_json_data() }}
 
 <script>
     vueEventHub = new Vue();
@@ -545,9 +543,7 @@
 
     })(jQuery);
 </script>
-{{ get_filtered_tags() }}
-{{ get_json_data() }}
-{{ get_shop_builder_scripts( "latest", ceresConfig.log.performanceLevel == 'live') }}
+{{ get_shop_builder_scripts() }}
     <!--<script src="{{ plugin_path('Ceres') }}/js/dist/etc.js"></script>-->
 
   {% if webstoreConfig.webstoreId == 4 %}
@@ -555,10 +551,6 @@
   {% else %}
     <script src="https://www.etc-shop.de/layout/ETCeres/js/etc.js"></script>
   {% endif %}
-
-{% if not services.template.shouldBeCached() %}
-    <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
-{% endif %}
 
 {{ component( "CeresCoconut::VueScripts" ) }}
 
