@@ -70,198 +70,286 @@
 
 <script>
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+Vue.component("add-to-basket", {
 
-Vue.component("add-to-basketetc", {
-  template: "#vue-add-to-basketETC",
-  delimiters: ["${", "}"],
-  props: {
-    itemUrl: String,
-    showQuantity: {
-      type: Boolean,
-      default: false
-    },
-    useLargeScale: {
-      type: Boolean,
-      default: false
-    },
-    missingOrderProperties: {
-      type: Array,
-      default: function _default() {
-        return [];
-      }
-    },
-    isVariationSelected: {
-      type: Boolean,
-      default: true
-    },
-    variationId: {
-      type: Number
-    },
-    isSalable: {
-      type: Boolean,
-      default: false
-    },
-    hasChildren: {
-      type: Boolean,
-      default: false
-    },
-    intervalQuantity: {
-      type: Number,
-      default: 1
-    },
-    minimumQuantity: {
-      type: Number,
-      default: 0
-    },
-    maximumQuantity: {
-      type: Number,
-      default: null
-    },
-    orderProperties: {
-      type: Array,
-      default: function _default() {
-        return [];
-      }
-    },
-    hasPrice: {
-      type: Boolean,
-      default: true
-    },
-    fromSingleItem: {
-      type: Boolean,
-      default: true
-    }
-  },
-  computed: {
-    computedMinimumQuantity: function computedMinimumQuantity() {
-      return this.minimumQuantity <= 0 ? this.intervalQuantity : this.minimumQuantity;
-    },
-    canBeAddedToBasket: function canBeAddedToBasket() {
-      return this.isSalable && !this.hasChildren && (this.computedMinimumQuantity === this.intervalQuantity || this.intervalQuantity === 0) && !this.requiresProperties && this.hasPrice;
-    },
-    requiresProperties: function requiresProperties() {
-      return App.config.item.requireOrderProperties && this.orderProperties.filter(function (property) {
-        return property.property.isShownOnItemPage;
-      }).length > 0;
-    },
-    isBasketLoading: function isBasketLoading(state)
+    props:
     {
-      return vueApp.$store.state.basket.isBasketLoading;
-    }
-  },
-  data: function data() {
-    return {
-      quantity: 1,
-      buttonLockState: false,
-      waiting: false
-    };
-  },
-  methods: {
-    /**
-     * add an item to basket-resource
-     */
-    addToBasket: function addToBasket() {
-      var _this = this;
-
-      if (this.missingOrderProperties.length) {
-        this.showMissingPropertiesError();
-      } else if (this.isSalable) {
-        this.waiting = true;
-        this.orderProperties.forEach(function (orderProperty) {
-          if (orderProperty.property.valueType === "float" && !(_typeof(orderProperty.property.value) === _typeof(void 0)) && orderProperty.property.value != null && orderProperty.property.value.slice(-1) === App.decimalSeparator) {
-            orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
-          }
-        });
-        if (this.fromSingleItem){
-          var basketObject = {
-            variationId: document.querySelector("input[name=VarIDforBasket]").value,
-            quantity: this.quantity,
-            basketItemOrderParams: this.orderProperties
-          };
+        template:
+        {
+            type: String,
+            default: "#vue-add-to-basket"
+        },
+        itemUrl: String,
+        showQuantity:
+        {
+            type: Boolean,
+            default: false
+        },
+        useLargeScale:
+        {
+            type: Boolean,
+            default: false
+        },
+        missingOrderProperties:
+        {
+            type: Array,
+            default: () => []
+        },
+        variationId:
+        {
+            type: Number
+        },
+        isSalable:
+        {
+            type: Boolean,
+            default: false
+        },
+        hasChildren:
+        {
+            type: Boolean,
+            default: false
+        },
+        intervalQuantity:
+        {
+            type: Number,
+            default: 1
+        },
+        minimumQuantity:
+        {
+            type: Number,
+            default: 0
+        },
+        maximumQuantity:
+        {
+            type: Number,
+            default: null
+        },
+        orderProperties:
+        {
+            type: Array,
+            default: () => []
+        },
+        hasPrice:
+        {
+            type: Boolean,
+            default: true
+        },
+        buttonSize:
+        {
+            type: [String, null],
+            default: null,
+            validator: value =>
+            {
+                return ["btn-sm", "", "btn-lg"].indexOf(value) !== -1;
+            }
+        },
+        paddingClasses:
+        {
+            type: String,
+            default: null
+        },
+        paddingInlineStyles:
+        {
+            type: String,
+            default: null
+        },
+        isWishList:
+        {
+            type: String,
+            default: "false"
         }
-        else {
-          var basketObject = {
-            variationId: this.variationId,
-            quantity: this.quantity,
-            basketItemOrderParams: this.orderProperties
-          };
+    },
+    computed:
+    {
+        canBeAddedToBasket()
+        {
+            return this.isSalable &&
+                !this.hasChildren &&
+                !(this.minimumQuantity != 1 || this.intervalQuantity != 1) &&
+                !this.requiresProperties &&
+                this.hasPrice;
+        },
+
+        requiresProperties()
+        {
+            return App.config.item.requireOrderProperties &&
+                this.orderProperties.filter(property => property.property.isShownOnItemPage).length > 0;
+        },
+
+        buttonClasses()
+        {
+            const classes = [];
+
+            if (isDefined(this.buttonSize))
+            {
+                classes.push(this.buttonSize);
+            }
+
+            if (isDefined(this.paddingClasses))
+            {
+                classes.push(this.paddingClasses.split(" "));
+            }
+
+            return classes;
+        },
+
+        tooltipText()
+        {
+            if (this.hasAvailableVariations)
+            {
+                return TranslationService.translate("Ceres::Template.singleItemPleaseSelectValidVariation");
+            }
+            else
+            {
+                return TranslationService.translate("Ceres::Template.singleItemPleaseSelectNotAvailable");
+            }
+        },
+
+        ...mapState({
+            basketItems: state => state.basket.items,
+            isBasketLoading: state => state.basket.isBasketLoading,
+            isVariationSelected: state => state.variationSelect.isVariationSelected,
+            hasAvailableVariations: state => state.variationSelect.variations.some(variation => variation.isSalable),
+            variationOrderQuantity: state => state.item.variationOrderQuantity
+        })
+    },
+    data()
+    {
+        return {
+            quantity: 1,
+            buttonLockState: false,
+            waiting: false
+        };
+    },
+    methods:
+    {
+        /**
+         * Check if a given value equals to null
+         *
+         * @param {*}   object
+         *
+         * @returns {boolean}
+         */
+        export function isNull(object)
+        {
+            return object === null;
         }
-        this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
-          var basketItem = response.find(function (item) {
-            return item.variationId === _this.variationId;
-          });
-          //var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
-          var variation = basketItem.variation.data;
-          var orderParams = !(_typeof(basketObject) === _typeof(void 0)) && !(basketObject != null) ? basketObject.basketItemOrderParams : null;
-          document.dispatchEvent(new CustomEvent("afterBasketItemAdded", {
-            detail: basketObject
-          }));
-          _this.waiting = false;
-
-        }, function (error) {
-          _this.waiting = false;
-
-          if (error.data) {//    NotificationService.error(
-            //            "Ceres::Template.AddToBasketETC"
-            //    ).closeAfter(5000);
-          }
-        });
-      }
-    },
-    showMissingPropertiesError: function showMissingPropertiesError() {
-      this.$store.commit("setVariationMarkInvalidProps", true);
-      var propertyNames = this.missingOrderProperties.map(function (property) {
-        return property.property.names.name;
-      });
-      var errorMsgContent = "";
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = propertyNames[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var name = _step.value;
-          errorMsgContent += name + "<br>";
-        } //NotificationService.error("Ceres::Template.singleItemMissingOrderPropertiesError").replace("<properties>", errorMsgContent);
-
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
+        /**
+         * Check if a given value is undefined
+         *
+         * @param {*} object
+         *
+         * @returns {boolean}
+         */
+        isUndefined(object)
+        {
+            // eslint-disable-next-line
+            return typeof object === typeof void 0;
         }
-      }
+        /**
+         * Check if a given value is null or undefined
+         *
+         * @param {*}   object
+         *
+         * @returns {boolean}
+         */
+        isNullOrUndefined(object)
+        {
+            return this.isNull(object) || this.isUndefined(object);
+        }
+        /**
+         * add an item to basket-resource
+         */
+        addToBasket()
+        {
+            if (this.missingOrderProperties.length)
+            {
+                this.showMissingPropertiesError();
+            }
+
+            else if (this.isSalable)
+            {
+                this.waiting = true;
+
+                this.orderProperties.forEach(function(orderProperty)
+                {
+                    if (orderProperty.property.valueType === "float" &&
+                        !this.isNullOrUndefined(orderProperty.property.value) &&
+                        orderProperty.property.value.slice(-1) === App.decimalSeparator)
+                    {
+                        orderProperty.property.value = orderProperty.property.value.substr(0, orderProperty.property.value.length - 1);
+                    }
+                });
+
+                const basketObject =
+                    {
+                        variationId             :   this.variationId,
+                        quantity                :   this.quantity,
+                        basketItemOrderParams   :   this.orderProperties
+                    };
+
+                this.$store.dispatch("addBasketItem", basketObject).then(
+                    response =>
+                    {
+                        document.dispatchEvent(new CustomEvent("afterBasketItemAdded", { detail: basketObject }));
+                        this.waiting = false;
+                    },
+                    error =>
+                    {
+                        this.waiting = false;
+
+                        if (error.data)
+                        {
+                        }
+                    });
+            }
+        },
+        showMissingPropertiesError()
+        {
+            this.$store.commit("setVariationMarkInvalidProps", true);
+
+            const propertyNames = this.missingOrderProperties.map(property => property.property.names.name);
+            let errorMsgContent = "";
+
+            for (const name of propertyNames)
+            {
+                errorMsgContent += name + "<br>";
+            }
+        },
+
+        directToItem()
+        {
+            navigateTo(this.itemUrl);
+        },
+
+        handleButtonState(value)
+        {
+            this.buttonLockState = value;
+        },
+
+        /**
+         * update the property quantity of the current instance
+         * @param value
+         */
+        updateQuantity(value)
+        {
+            this.quantity = value;
+        }
     },
-    directToItem: function directToItem() {},
-    handleButtonState: function handleButtonState(value) {
-      this.buttonLockState = value;
-    },
+    watch:
+    {
+        quantity(value)
+        {
+            this.$store.commit("setVariationOrderQuantity", value);
+        },
 
-    /**
-     * open the AddItemToBasketOverlay
-     */
-
-
-    /**
-     * update the property quantity of the current instance
-     * @param value
-     */
-    updateQuantity: function updateQuantity(value) {
-      this.quantity = value;
+        variationOrderQuantity(value)
+        {
+            if (this.quantity !== value)
+            {
+                this.quantity = value;
+            }
+        }
     }
-  },
-  watch: {
-    quantity: function quantity(newValue, oldValue) {
-      this.$store.commit("setVariationOrderQuantity", newValue);
-    }
-  }
 });
 </script>
