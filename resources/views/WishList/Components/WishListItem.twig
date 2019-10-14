@@ -39,7 +39,7 @@
                 ":has-price": "wishListItem | hasItemDefaultPrice"
             }
         ) }}
-        <a class="PlentyWebshopButton delete" id="button_deleteWebMyAccountWatchListDelete" @click="removeItem({id: wishListItem.variation.id, wishListItem: wishListItem, index: index})">
+        <a class="PlentyWebshopButton delete" id="button_deleteWebMyAccountWatchListDelete" @click="removeItem()">
           {{ trans("CeresCoconut::Template.ETC_ArtikelEntfernen") }}
           <i class="material-icons MyAccountIcon_delete">delete</i>
         </a>
