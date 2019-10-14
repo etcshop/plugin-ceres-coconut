@@ -1,7 +1,8 @@
-{% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %}
 {{ component( "CeresCoconut::Item.Components.QuantityInput" ) }}
-<transition-group name="wish-list-item-transition" tag="div">
-    <article v-for="(wishListItem, index) in wishListItems" :key="wishListItem.id" class="wish-list-item col-xs-12 TEST0950" :id="'article_' + index ">
+{{ component( "CeresCoconut::Basket.Components.AddToBasket" ) }}
+{% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %}
+
+<script type="x/template" id="vue-wish-list-item">
       <div class="wish-list-itemName col-lg-12">
           <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data.texts.name1 }</strong></a>
       </div>
@@ -41,5 +42,4 @@
           <i class="material-icons MyAccountIcon_delete">delete</i>
         </a>
       </div>
-    </article>
-</transition-group>
+</script>
