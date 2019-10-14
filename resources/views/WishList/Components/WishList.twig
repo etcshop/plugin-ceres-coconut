@@ -1,6 +1,15 @@
+{{ component("CeresCoconut::WishList.Components.WishListItem")}}
+{{ component("CeresCoconut::ItemList.Components.CategoryItemETC")}}
+
 <script type="x/template" id="vue-wish-list">
     <div>
-        {% include "CeresCoconut::WishList.Components.WishListItem" %}
+        <transition-group name="wish-list-item-transition" tag="div">
+          <wish-list-items
+            v-for="wishListItem in WishListItems"
+            :key="wishListItem.id"
+            :wish-list-item-raw="wishListItem"
+            :item-details-data="itemDetailsData"
+        </transition-group>
         <p class="h4 text-muted wish-list-no-items-label" v-if="!wishListItems[0]">{{ trans("Ceres::Template.wishListNoItems") }}</p>
     </div>
 </script>
