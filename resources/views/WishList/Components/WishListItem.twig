@@ -3,6 +3,7 @@
 {% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %}
 
 <script type="x/template" id="vue-wish-list-itemETC">
+  <div>
       <div class="wish-list-itemName col-lg-12">
           <a :href="wishListItem.data | itemURL"><strong>${ wishListItem.data.texts.name1 }</strong></a>
       </div>
@@ -42,4 +43,5 @@
           <i class="material-icons MyAccountIcon_delete">delete</i>
         </a>
       </div>
+    </div>
 </script>
