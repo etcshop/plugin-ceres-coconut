@@ -53,19 +53,7 @@
                                 <span v-else class="item-content small">
                                 <address-header :address="address" :class="paddingClasses" :style="paddingInlineStyles"></address-header>
                             </span>
-                                <!---->
-                                <div class="item-controls" v-if="address.id != -99">
-                                <span class="item-edit">
-                                    <button data-placement="top" title="{{ trans("Ceres::Template.addressEdit") }}" class="btn btn-primary btn-appearance" @click.prevent="showEditModal(address)">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </button>
-                                </span>
-                                <span class="item-remove">
-                                    <button data-placement="top" title="{{ trans("Ceres::Template.addressDelete") }}" class="btn btn-danger" @click.prevent="showDeleteModal(address)">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                                </span>
-                                </div>
+
                             </label>
                         </li>
                     </ul>
