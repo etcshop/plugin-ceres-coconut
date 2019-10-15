@@ -149,7 +149,7 @@
 
             {{ LayoutContainer.show("Ceres::OrderConfirmation.BeforeOrderDetails", data.order) }}
 
-              <div style="display: none;">{{ data.order | json_encode }}</div>
+              <div style="display: none;">{{ data | json_encode }}</div>
             {% include "CeresCoconut::Checkout.OrderDetails" with { orderData: data } %}
 
             <div class="row rowTrustedShops">
