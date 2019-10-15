@@ -188,7 +188,12 @@ Vue.component("add-to-basketETC", {
           };
         }
         this.$store.dispatch("addBasketItem", basketObject).then(function (response) {
-          var basketItem = response.find(function (item) {
+          document.dispatchEvent(
+            new CustomEvent("afterBasketItemAdded", {
+              detail: basketObject
+            })
+          )
+          /*var basketItem = response.find(function (item) {
             return item.variationId === _this.variationId;
           });
           //var variation = !(_typeof(basketItem) === _typeof(void 0)) && !(basketItem != null) ? basketItem.variation.data : null;
@@ -196,7 +201,7 @@ Vue.component("add-to-basketETC", {
           var orderParams = !(_typeof(basketObject) === _typeof(void 0)) && !(basketObject != null) ? basketObject.basketItemOrderParams : null;
           document.dispatchEvent(new CustomEvent("afterBasketItemAdded", {
             detail: basketObject
-          }));
+          }));*/
           _this.waiting = false;
 
         }, function (error) {
