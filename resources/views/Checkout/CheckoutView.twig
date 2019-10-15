@@ -124,6 +124,13 @@
                   {% endif %}
                   {{ LayoutContainer.show("Ceres::Checkout.AfterPaymentList") }}
 
+                  {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
+                  {% if overridePaymentList|trim is empty %}
+                    {% set isOverwritten = false %}
+                  {% else %}
+                    {% set isOverwritten = true %}
+                  {% endif %}
+
                   {{ LayoutContainer.show("Ceres::Checkout.BeforeShippingProfileList") }}
                   {% set overrideShippingProfiles = LayoutContainer.show("Ceres::Checkout.ShippingProfileList") %}
                   {% if overrideShippingProfiles|trim is empty %}
