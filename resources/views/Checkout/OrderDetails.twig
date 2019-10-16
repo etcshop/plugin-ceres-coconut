@@ -1,41 +1,42 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
-{% import "CeresCoconut::Checkout.Macros.OrderTotals" as Totals %}
+{% import "Ceres::Checkout.Macros.OrderTotals" as Totals %}
 
-{% import "CeresCoconut::PageDesign.Macros.ItemName" as ItemName %}
+{% import "Ceres::PageDesign.Macros.ItemName" as ItemName %}
 
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 
 {% set basketTotalsCurrency = totals.currency %}
 
 <div class="row">
-    <div class="col-md-12 col-lg-6 OrderInformation test0923">
+    <div class="col-md-6 mb-4">
         <div class="card small">
             <!-- ORDER -->
             <div class="card-header">
                 <h5>{{ trans("Ceres::Template.orderConfirmationOrderId") }} {{ orderData.order.id }}</h5>
             </div>
-
-            <div class="card-block">
+            <div class="card-body">
                 <div class="details">
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationDate") }}</strong>
-                        <span class="col-xs-6 col-sm-7">{{ orderData.order.createdAt | formatDateTime | date(trans("Ceres::Template.devDateTimeFormat")) }}</span>
+                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationDate") }}</strong>
+                        <span class="col-6 col-sm-7">{{ orderData.order.createdAt | formatDateTime | date(trans("Ceres::Template.devDateTimeFormat")) }}</span>
                     </div>
 
                     {% if orderData.status is defined and orderData.status is not empty %}
-                      <div class="row test1329">
-                          <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationStatus") }}</strong>
-                          <span class="col-xs-6 col-sm-7">{{ orderData.order.statusName }} - {{ orderData.status }}</span>
-                      </div>
+                        <div class="row">
+                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationStatus") }}</strong>
+                            <span class="col-6 col-sm-7">{{ orderData.status }}</span>
+                        </div>
                     {% endif %}
                 </div>
 
+                <hr>
 
                 <div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationInvoiceAddress") }}</strong>
-                        <span class="col-xs-6 col-sm-7">
+                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationInvoiceAddress") }}</strong>
+                        <span class="col-6 col-sm-7">
                             <div>{{ orderData.order.billingAddress.name1 }}</div>
+                            <div>{{ orderData.order.billingAddress | addressOptionType(12) }}</div>
                             <div>{{ orderData.order.billingAddress.name2 }} {{ orderData.order.billingAddress.name3 }}</div>
                             <div>{{ orderData.order.billingAddress.name4 }}</div>
                             <div>{{ orderData.order.billingAddress.address1 }} {{ orderData.order.billingAddress.address2 }}</div>
@@ -44,9 +45,9 @@
                         </span>
                     </div>
 
-                    <div class="row m-t-1">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingAddress") }}</strong>
-                        <span class="col-xs-6 col-sm-7">
+                    <div class="row mt-3">
+                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingAddress") }}</strong>
+                        <span class="col-6 col-sm-7">
                             {% if orderData.order.billingAddress.id == orderData.order.deliveryAddress.id %}
                                 <span>
                                     {{ trans("Ceres::Template.orderConfirmationSameAsInvoice") }}
@@ -54,9 +55,18 @@
                             {% else %}
                                 <span>
                                     <div>{{ orderData.order.deliveryAddress.name1 }}</div>
+                                    <div>{{ orderData.order.deliveryAddress | addressOptionType(12) }}</div>
                                     <div>{{ orderData.order.deliveryAddress.name2 }} {{ orderData.order.deliveryAddress.name3 }}</div>
                                     <div>{{ orderData.order.deliveryAddress.name4 }}</div>
                                     <div>{{ orderData.order.deliveryAddress.address1 }} {{ orderData.order.deliveryAddress.address2 }}</div>
+                                    <div>
+                                        {% if orderData.order.deliveryAddress.address1 == 'PACKSTATION' or orderData.order.deliveryAddress.address1 == 'POSTFILIALE' %}
+                                            {{ trans("Ceres::Template.addressPostNummer") }}
+                                            {{ orderData.order.deliveryAddress | addressOptionType(6) }}
+                                        {% endif %}
+
+                                        {{ orderData.order.deliveryAddress.address3 }}
+                                    </div>
                                     <div>{{ orderData.order.deliveryAddress.postalCode }} {{ orderData.order.deliveryAddress.town }}</div>
                                     <div>{{ services.country.getCountryName(orderData.order.deliveryAddress.countryId) }}</div>
                                 </span>
@@ -65,18 +75,20 @@
                     </div>
                 </div>
 
+                <hr>
+
                 <div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</strong>
-                        <span class="col-xs-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
+                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</strong>
+                        <span class="col-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
                     </div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</strong>
+                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</strong>
                         {% set paymentMethodId = -1 %}
                         {% for propertyKey in orderData.order.properties %}
                             {% if orderData.order.properties[loop.index0].typeId == 4 %}
                                 {% set paymentStatus = entry.order.properties[loop.index0].value %}
-                                <span class="col-xs-6 col-sm-7" id="payment_state_{{ orderData.order.id }}">{{ trans("Ceres::Template.orderConfirmationPaymentStatus_" ~ orderData.order.properties[loop.index0].value) }}</span>
+                                <span class="col-6 col-sm-7" id="payment_state_{{ orderData.order.id }}">{{ trans("Ceres::Template.orderConfirmationPaymentStatus_" ~ orderData.order.properties[loop.index0].value) }}</span>
                             {% elseif orderData.order.properties[loop.index0].typeId == 3 %}
                                 {% set paymentMethodId = orderData.order.properties[loop.index0].value %}
                             {% endif %}
@@ -85,14 +97,14 @@
 
                     {% set currentTemplate = services.template.getCurrentTemplate() %}
 
-                    {% if paymentMethoId != -1 and showAdditionalPaymentInformation == true %}
-                        <change-payment-method  template="#vue-change-payment-method"
-                                                :current-order="{{ orderData.order | json_encode() }}"
-                                                :change-possible="{{ services.order.allowPaymentMethodSwitchFrom(paymentMethodId, orderData.order.id) | json_encode() }}"
-                                                :allowed-payment-methods="{{ services.order.getPaymentMethodListForSwitch(paymentMethodId, orderData.order.id) | json_encode() }}"
-                                                :payment-status="{{ paymentStatus | json_encode() }}"
-                                                :current-payment-method-name="{{ orderData.paymentMethodName | json_encode() }}"
-                                                :current-template="{{ currentTemplate | json_encode() }}">
+                    {% if paymentMethodId != -1 and showAdditionalPaymentInformation == true %}
+                        <change-payment-method
+                            :current-order="{{ orderData.order | json_encode() }}"
+                            :change-possible="{{ services.order.allowPaymentMethodSwitchFrom(paymentMethodId, orderData.order.id) | json_encode() }}"
+                            :allowed-payment-methods="{{ services.order.getPaymentMethodListForSwitch(paymentMethodId, orderData.order.id) | json_encode() }}"
+                            :payment-status="{{ paymentStatus | json_encode() }}"
+                            :current-payment-method-name="{{ orderData.paymentMethodName | json_encode() }}"
+                            :current-template="{{ currentTemplate | json_encode() }}">
                         </change-payment-method>
                     {% endif %}
 
@@ -100,10 +112,12 @@
 
                 </div>
 
+                <hr>
+
                 <div>
                     <div class="row">
-                        <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingProfile") }}</strong>
-                        <span class="col-xs-6 col-sm-7">{{ orderData.shippingProvider }} {{ orderData.shippingProfileName }}</span>
+                        <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationShippingProfile") }}</strong>
+                        <span class="col-6 col-sm-7">{{ orderData.shippingProvider }} - {{ orderData.shippingProfileName }}</span>
                     </div>
 
                     {% set shippingDate = "" %}
@@ -115,8 +129,8 @@
 
                     {% if shippingDate %}
                         <div class="row">
-                            <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationEstimatedShippingDate") }}</strong>
-                            <span class="col-xs-6 col-sm-7">{{ shippingDate | date(trans("Ceres::Template.devDateFormat")) }}</span>
+                            <strong class="col-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationEstimatedShippingDate") }}</strong>
+                            <span class="col-6 col-sm-7">{{ shippingDate | date(trans("Ceres::Template.devDateFormat")) }}</span>
                         </div>
                     {% endif %}
 
@@ -128,19 +142,15 @@
         </div>
 
     </div>
-    <div class="col-md-12 col-lg-6 OrderItemsTotals">
-      <div class="confirmation-order-list">
-        <div class="col-md-6 col-lg-12">
-            <h3>{{ trans("CeresCoconut::Template.ETC_Artikel") }}</h3>
+
+    <div class="col-md-6">
+        <div class="confirmation-order-list">
             {% for item in orderData.order.orderItems %}
-              <div style="display: none">{{ orderData | json_encode }}</div>
                 {% if item.itemVariationId > 0 and not ('[-]' in item.orderItemName) %}
                     {% set currentVariationId = item.itemVariationId | trimNewlines %}
-                    {% set priceNet = orderData.order.amounts[0].isNet %}
                     <article class="cmp cmp-order-item">
-                        <div style="display: none;" id="hiddenImgHrefAndUrl">currentVariationId - {{ orderData.itemURLs | getObjectValue(currentVariationId) }}</div>
                         <a href="{{ orderData.itemURLs | getObjectValue(currentVariationId) }}" class="item-image">
-                            <img alt="{{ item.orderItemName }}" src="{{ orderData.itemImages | getObjectValue(currentVariationId) }}">
+                            <img src="{{ orderData.itemImages | getObjectValue(currentVariationId) }}" alt="{{ item.orderItemName }}" title="{{ item.orderItemName }}">
                         </a>
                         <div class="item-details small">
                             <a href="{{ orderData.itemURLs | getObjectValue(currentVariationId)  }}" class="clearfix">
@@ -150,7 +160,7 @@
                             </a>
 
                             {% if splitItemBundle != "1" and item.bundleType == "bundle" %}
-                                <div class="m-b-1 item-bundle">
+                                <div class="mb-3 item-bundle">
                                     {% for bundleComponent in item.bundleComponents %}
                                         <div>
                                             <span class="text-muted">{{ bundleComponent.quantity }} x</span>
@@ -160,32 +170,80 @@
                                 </div>
                             {% endif %}
 
+                            {% set itemAmount = item.amounts[0] %}
+                            {% for amount in item.amouts if not amout.isSystemCurrency %}
+                                {% set itemAmount = amount %}
+                            {% endfor %}
+
+                            {% set itemPrice = 0 %}
+                            {% if orderData.highlightNetPrices %}
+                                {% set itemPrice = itemAmount.priceOriginalNet %}
+                                {% set discountAmount = itemAmount.priceOriginalNet - itemAmount.priceNet %}
+                                {% set itemPriceTotal = item.quantity * itemAmount.priceNet %}
+                            {% else %}
+                                {% set itemPrice = itemAmount.priceOriginalGross %}
+                                {% set discountAmount = itemAmount.priceOriginalGross - itemAmount.priceGross %}
+                                {% set itemPriceTotal = item.quantity * itemAmount.priceGross %}
+                            {% endif %}
+
                             <div class="row">
-                                <strong class="col-xs-6 col-sm-3">{{ trans("Ceres::Template.orderConfirmationPricePerPiece") }}</strong>
-                                <span class="col-xs-6 col-sm-9">{{ (priceNet ? item.amounts[0].priceNet : item.amounts[0].priceGross) | formatMonetary( item.amounts[0].currency ) }}</span>
+                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationPricePerPiece") }}</strong>
+                                <span class="col-6 col-sm-9 col-md-7 text-right">{{ itemPrice | formatMonetary( itemAmount.currency ) }}</span>
+                            </div>
+                            {% if discountAmount > 0 %}
+                                <div class="row rebate-hint">
+                                    <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationItemDiscount") }}</strong>
+                                    <span class="col-6 col-sm-9 col-md-7 text-right">{{ discountAmount | formatMonetary( itemAmount.currency ) }}</span>
+                                </div>
+                            {% endif %}
+                            <div class="row">
+                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationQuantity") }}</strong>
+                                <span class="col-6 col-sm-9 col-md-7 text-right">{{ item.quantity }}</span>
                             </div>
                             <div class="row">
-                                <strong class="col-xs-6 col-sm-3">{{ trans("CeresCoconut::Template.orderConfirmationPeace") }}</strong>
-                                <span class="col-xs-6 col-sm-9">{{ item.quantity }}</span>
+                                <strong class="col-6 col-sm-3 col-md-5">{{ trans("Ceres::Template.orderConfirmationTotal") }}</strong>
+                                <strong class="col-6 col-sm-9 col-md-7 text-right">{{ itemPriceTotal | formatMonetary( itemAmount.currency ) }}</strong>
                             </div>
-                            <div class="row">
-                                <strong class="col-xs-6 col-sm-3">{{ trans("Ceres::Template.orderConfirmationTotal") }}</strong>
-                                <strong class="col-xs-6 col-sm-9">{{ (item.quantity * (priceNet ? item.amounts[0].priceNet : item.amounts[0].priceGross)) | formatMonetary( item.amounts[0].currency ) }}</strong>
-                            </div>
+
+                            {% for attribute in item.attributes %}
+                                <div>
+                                    <strong>{{ attribute.name }}: </strong>
+                                    <span>{{ attribute.value }}</span>
+                                </div>
+                            {% endfor %}
+
                             {% if item.orderProperties %}
                                 {% for property in item.orderProperties %}
                                     <div class="row">
-                                        <strong class="col-xs-6 col-sm-3 item-word-break">{{ property.name }}</strong>
-                                        {% if property.value matches '{^[0-9a-f]{8}\/[0-9a-f]{8}\/}' %}
-                                            <span class="col-xs-6 col-sm-9 item-word-break">
-                                                <a href="order-property-file/{{ property.value }}?orderId={{ orderData.order.id }}" target="_blank">
+                                        <strong class="col-6 col-sm-3 col-md-5 item-word-break">{{ property | propertyName }}</strong>
+                                        {% if property.type == 'file' %}
+                                            <span class="col-6 col-sm-9 item-word-break">
+                                                {% set splitPath = property.value |split('/') %}
+                                                {% set filename = '' %}
+                                                {% set path = '' %}
+
+                                                {% for temp in splitPath %}
+                                                    {% if loop.first %}
+                                                        {% set path =  temp %}
+                                                    {% elseif loop.last %}
+                                                        {% set filename = temp %}
+                                                    {% else %}
+                                                        {% set path =  path ~ '/' ~ temp %}
+                                                    {% endif %}
+                                                {% endfor %}
+
+
+                                                <a href="{{ urls.orderPropertyFile(path) }}?filename={{ filename }}{% if services.customer.getContactId() == 0 %}&orderId={{ orderData.order.id }}{% endif %}" target="_blank">
                                                     <i class="fa fa-external-link" aria-hidden="true"></i>
-                                                    {% set splitPath = property.value |split('/') %}
                                                     {{ splitPath | last }}
                                                 </a>
                                             </span>
-                                        {% else %}
-                                            <span class="col-xs-6 col-sm-9 item-word-break">{{ property.value }}</span>
+                                        {% elseif property.type == "selection" %}
+                                            <span class="col-6 col-sm-9 col-md-7 item-word-break">
+                                                {{ property | propertySelectionValueName }}
+                                            </span>
+                                        {% elseif property.type | length > 0 %}
+                                            <span class="col-6 col-sm-9 col-md-7 item-word-break">{{ property.value }}</span>
                                         {% endif %}
                                     </div>
                                 {% endfor %}
@@ -194,10 +252,9 @@
                     </article>
                 {% endif %}
             {% endfor %}
-          </div>
-          <div class="col-md-6 col-lg-12">
-            {{ Totals.forOrder(orderData) }}
-          </div>
+
         </div>
+
+        {{ Totals.forOrder(orderData) }}
     </div>
 </div>
