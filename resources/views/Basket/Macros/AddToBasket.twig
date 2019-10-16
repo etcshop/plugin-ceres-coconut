@@ -1,3 +1,5 @@
+{{ component( "CeresCoconut::Basket.Components.AddToBasketETC" ) }}
+
 {% macro printTwigComponent( item, useLargeScale, showQuantity ) %}
     {% set orderProperties = [] %}
     {% for property in item.properties if property.property.isOderProperty %}
