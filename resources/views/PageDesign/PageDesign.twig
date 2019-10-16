@@ -20,6 +20,10 @@
 {% set currTpl = services.template.getCurrentTemplate() %}
 {% set buttonSize = 0 %}
 
+{% if request.get('openBasketPreview') == 1 %}
+    {% set openBasketClass = "open-" ~ ceresConfig.basket.previewType %}
+{% endif %}
+
 <!DOCTYPE html>
 
 <html lang="{{ lang }}" data-framework="vue" prefix="og: http://ogp.me/ns#">
@@ -360,6 +364,8 @@
 
 {{ Translations.add( "Ceres", "Template" ) }}
 
+{{ get_json_data() }}
+
 {% if ceresConfig.log.performanceLevel  == 'development' %}
     <script src="{{ plugin_path('Ceres') }}/js/dist/ceres.js?v={{ buildHash }}"></script>
 {% else %}
@@ -371,9 +377,6 @@
 {% endfor %}
 
 {{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
-{{ get_filtered_tags() }}
-{{ get_json_data() }}
-
 <script>
     vueEventHub = new Vue();
 
@@ -542,6 +545,8 @@
 
     })(jQuery);
 </script>
+{{ get_filtered_tags() }}
+
 {{ get_shop_builder_scripts() }}
     <!--<script src="{{ plugin_path('Ceres') }}/js/dist/etc.js"></script>-->
 
