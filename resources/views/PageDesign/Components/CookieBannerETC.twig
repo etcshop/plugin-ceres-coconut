@@ -32,8 +32,8 @@ Vue.component("cookie-banner", {
   delimiters: ["${", "}"],
   props: {
     webshopId: {
-      type: String,
-      default: "0"
+      type: Number,
+      default: 0
     }
   },
   data()
@@ -64,7 +64,7 @@ Vue.component("cookie-banner", {
     Declined()
     {
       console.log(this.webshopId);
-       
+
       if (this.webshopId == "0"){
         document.cookie = "mcoo=0";
       }
