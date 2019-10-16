@@ -50,19 +50,35 @@ Vue.component("cookie-banner", {
   methods: {
     Accepted()
     {
-      document.cookie = "mcoo=1";
+      if (webshopId == "0"){
+        document.cookie = "mcoo=1";
+      }
+      else {
+        document.cookie = "mlcoo=1";
+      }
       this.getCookie();
       this.forceRerender();
     },
     Declined()
     {
-      document.cookie = "mcoo=0";
+      if (webshopId == "0"){
+        document.cookie = "mcoo=0";
+      }
+      else {
+        document.cookie = "mlcoo=0";
+      }
       this.getCookie();
       this.forceRerender();
     },
     getCookie() {
       this.cookieSessionStatus = -1;
       var name = "mcoo=";
+      if (webshopId == "0"){
+        name = "mcoo=";
+      }
+      else {
+        name = "mlcoo=";
+      }
       var decodedCookie = decodeURIComponent(document.cookie);
       var ca = decodedCookie.split(';');
       for(var i = 0; i <ca.length; i++) {
