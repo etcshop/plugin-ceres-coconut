@@ -30,6 +30,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Vue.component("cookie-banner", {
   template: "#vue-cookie-banner",
   delimiters: ["${", "}"],
+  props: {
+    webshopId: {
+      type: String,
+      default: "0"
+    }
+  },
   data()
   {
     return {
