@@ -565,6 +565,8 @@
 {{ component( "CeresCoconut::Basket.Components.AddToBasketETC" ) }}
 {{ component( "CeresCoconut::Containers.Components.ContainerStartBoxItemListETC" ) }}
 {{ component( "CeresCoconut::ItemList.Components.StartBoxItemETC" ) }}
+{{ component( "CeresCoconut::PageDesign.Components.CookieBannerETC" ) }}
+{{ component( "CeresCoconut::PageDesign.Components.TrackingETC" ) }}
 {% if not services.template.shouldBeCached() %}
     <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
 {% endif %}
