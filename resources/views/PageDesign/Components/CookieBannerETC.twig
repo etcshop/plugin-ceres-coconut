@@ -50,6 +50,8 @@ Vue.component("cookie-banner", {
   methods: {
     Accepted()
     {
+      console.log(this.webshopId);
+
       if (this.webshopId == "0"){
         document.cookie = "mcoo=1";
       }
@@ -61,6 +63,8 @@ Vue.component("cookie-banner", {
     },
     Declined()
     {
+      console.log(this.webshopId);
+      
       if (this.webshopId == "0"){
         document.cookie = "mcoo=0";
       }
