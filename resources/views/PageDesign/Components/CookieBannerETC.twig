@@ -50,7 +50,9 @@ Vue.component("cookie-banner", {
   methods: {
     Accepted()
     {
-      if (webshopId == "0"){
+      console.log(this.webshopId);
+
+      if (this.webshopId == "0"){
         document.cookie = "mcoo=1";
       }
       else {
@@ -61,7 +63,9 @@ Vue.component("cookie-banner", {
     },
     Declined()
     {
-      if (webshopId == "0"){
+      console.log(this.webshopId);
+      
+      if (this.webshopId == "0"){
         document.cookie = "mcoo=0";
       }
       else {
@@ -73,7 +77,7 @@ Vue.component("cookie-banner", {
     getCookie() {
       this.cookieSessionStatus = -1;
       var name = "mcoo=";
-      if (webshopId == "0"){
+      if (this.webshopId == "0"){
         name = "mcoo=";
       }
       else {
