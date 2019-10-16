@@ -133,6 +133,7 @@
         <div class="col-md-6 col-lg-12">
             <h3>{{ trans("CeresCoconut::Template.ETC_Artikel") }}</h3>
             {% for item in orderData.order.orderItems %}
+              <div style="display: none">{{ item | json_encode }}</div>
                 {% if item.itemVariationId > 0 and not ('[-]' in item.orderItemName) %}
                     {% set currentVariationId = item.itemVariationId | trimNewlines %}
                     {% set priceNet = orderData.order.amounts[0].isNet %}
