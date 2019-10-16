@@ -314,7 +314,7 @@
 
         <input type="hidden" name="CookieBanner_StateInputPD" id="CookieBanner_StateInputPD">
         {% set wid = webstoreConfig.webstoreId %}
-        <cookie-banner :webshopId="wid"></cookie-banner>
+        <cookie-banner webshopId="{{ webstoreConfig.webstoreId }}"></cookie-banner>
     </div>
 
     {% if basket is not defined %}
