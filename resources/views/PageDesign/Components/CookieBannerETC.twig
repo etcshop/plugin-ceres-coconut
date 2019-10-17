@@ -5,7 +5,7 @@
       <div id="CookieBanner_State"><input type="hidden" name="CookieBanner_StateInput" id="CookieBanner_StateInput" :value="cookieSessionStatus"></div>
       <div id="CookieBanner" v-if="cookieSessionStatus === -1">
         <div id="CookieBanner_Text">
-          {{ trans("CeresCoconut::Template.ETC_CookieBanner_Text") }}
+          {{ trans("CeresCoconut::Template.ETC_CookieBanner_Text") | raw }}
           <a href="{{ urls.privacyPolicy }}" title="{{ trans("CeresCoconut::Template.footerPrivacyPolicy") }}">{{ trans("CeresCoconut::Template.ETC_WeitereInformationen") }}</a><br>
           <br>
           <div id="CookieBanner_Accept" class="CookieBanner_Button btn btn-primary" @click="Accepted()">{{ trans("CeresCoconut::Template.ETC_Akzeptieren") }}</div>
