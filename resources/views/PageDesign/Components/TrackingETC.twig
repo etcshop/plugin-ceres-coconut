@@ -7,7 +7,7 @@
           {% if services.template.isHome() %}
               {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
               {% if BelboonTrackActive == "true" %}
-                {% set BelboonTrack = conöfig("CeresCoconut.tracking.belboonProgramId") %}
+                {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
                 <script2>
                     belboonTag = {};
                 </script2>
@@ -212,7 +212,11 @@
           <!-- ################Google Analytics TRACKING################-->
 
             <script2 type="text/javascript">
-              var gaProperty = 'UA-2427652-2';
+              {% if webstoreConfig.webstoreId == 0 %}
+                var gaProperty = 'UA-2427652-2';
+              {% else %}
+                var gaProperty = 'UA-49657156-1';
+              {% endif %}
 
               // disable tracking if the opt-out cookie exists.
               var disableStr = 'ga-disable-' + gaProperty;
