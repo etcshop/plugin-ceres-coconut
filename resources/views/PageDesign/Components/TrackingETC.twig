@@ -4,7 +4,7 @@
     <div>
       <div style="display: none">{{ webstoreConfig.webstoreId }}</div>
       <div v-if="cookieStatus == 1">
-        <!-- ################BELBOON TRACKING################-->
+          <!-- ################BELBOON TRACKING################-->
           {% if services.template.isHome() %}
               {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
               {% if BelboonTrackActive == "true" %}
@@ -61,55 +61,56 @@
               {% endif %}
             {% endif %}
             {% if (currTpl == 'tpl.item') %}
-                          {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
-                          {% if BelboonTrackActive == "true" %}
-                            {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
-                          <!-- START BELBOON ITEM TRACKING -->
-                            <script type="text/javascript">
-                                belboonTag = {
-                                    "productBrand": "{{ item.documents[0].data.item.manufacturer.externalName }}",
-                                    "categoryId": "{{ item.documents[0].data.defaultCategories[0].id }}",
-                                    "products": [
-                                        {
-                                            "id": "{{ item.documents[0].data.variation.id }}",
-                                            "price": "{{ item.documents[0].data.salesPrices[0].price }}"
-                                        }
-                                    ]
-                                };
-                            </script>
-                            <script type="text/javascript">
-                                (function(d) {
-                                    var s = d.createElement("script");
-                                    s.async = true;
+                {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+                {% if BelboonTrackActive == "true" %}
+                  {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
+                  <!-- START BELBOON ITEM TRACKING -->
+                  <script2 type="text/javascript">
+                      belboonTag = {
+                          "productBrand": "{{ item.documents[0].data.item.manufacturer.externalName }}",
+                          "categoryId": "{{ item.documents[0].data.defaultCategories[0].id }}",
+                          "products": [
+                            {
+                              "id": "{{ item.documents[0].data.variation.id }}",
+                              "price": "{{ item.documents[0].data.salesPrices[0].price }}"
+                            }
+                          ]
+                      };
+                  </script2>
+                  <script2 type="text/javascript">
+                      (function(d) {
+                        var s = d.createElement("script");
+                        s.async = true;
                         s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=product&type=dynamic";
                         var a = d.getElementsByTagName("script")[0];
                         a.parentNode.insertBefore(s, a);
-                    }(document));
-                </script>
-              <!-- ENDE BELBOON ITEM TRACKING -->
+                      }(document));
+                    </script2>
+                <!-- ENDE BELBOON ITEM TRACKING -->
+                {% endif %}
             {% endif %}
             {% if (currTpl == 'tpl.category.item') %}
-              {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
-              {% if BelboonTrackActive == "true" %}
-                {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
-                <script type="text/javascript">
-                  belboonTag = {
-                      categoryId: "{{ category.id }}"
-                  };
-                </script>
-                <script type="text/javascript">
-                    (function(d) {
-                        var s = d.createElement("script");
-                        s.async = true;
-                        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=category&type=dynamic";
-                        var a = d.getElementsByTagName("script")[0];
-                        a.parentNode.insertBefore(s, a);
-                    }(document));
-                </script>
-              {% endif %}
+                {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+                {% if BelboonTrackActive == "true" %}
+                    {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
+                    <script2 type="text/javascript">
+                        belboonTag = {
+                          categoryId: "{{ category.id }}"
+                        };
+                    </script2>
+                    <script2 type="text/javascript">
+                      (function(d) {
+                          var s = d.createElement("script");
+                          s.async = true;
+                          s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=category&type=dynamic";
+                          var a = d.getElementsByTagName("script")[0];
+                          a.parentNode.insertBefore(s, a);
+                      }(document));
+                    </script2>
+                {% endif %}
             {% endif %}
             {% if (currTpl == 'tpl.confirmation') %}
-            	<!-- ########################### BELBOON TRACKING ########################### -->
+            	    <!-- ########################### BELBOON TRACKING ########################### -->
                   {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
                   {% if BelboonTrackActive == "true" %}
                     {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
@@ -142,9 +143,6 @@
                           }(document));
                       </script2>
                     <!-- ENDE BELBOON BASKET TRACKING -->
-                  {% endif %}
-                  {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
-                  {% if BelboonTrackActive == "true" %}
                     {% if data.order.referrerId == 10 %}
                       <!-- BEGIN BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
                       <img src="//pluto.r.powuta.com/ts/i5534189/tsa?typ=i&trc=default&ctg=sale&sid=check-out&cid={{ data.order.id }}&orv={{ data.order.amounts[0].netTotal }}&orc=EUR" width="1" height="1" border="0" style="display:none;">
