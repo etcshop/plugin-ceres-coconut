@@ -1,6 +1,7 @@
 {{ component( "CeresCoconut::Customer.Components.AddressInputGroup.AddressInputGroupETC" ) }}
 <script type="x/template" id="vue-registrationETC">
     <div id="registration_form">
+      <form class="w-100" autocomplete="on" @submit.prevent="validateRegistration()" ref="registrationForm">
         <div class="modal-body" id="ContentAddressForm">
             <div class="row panel-body" :id="'registration' + _uid">
                 <div class="panel-heading">
@@ -55,7 +56,7 @@
         <div class="modal-footer">
             {{ LayoutContainer.show("Ceres::RegistrationOverlay.ExtendOverlayButtons") }}
 
-            <button @click="validateRegistration" :disabled="isDisabled" class="btn btn-primary btn-medium btn-right">
+            <button :disabled="isDisabled" class="btn btn-primary btn-medium btn-right">
                 <i class="fa fa-user-plus" v-waiting-animation="isDisabled" aria-hidden="true"></i>
                 {{ trans("CeresCoconut::Template.regRegister") }}
             </button>
@@ -64,5 +65,6 @@
         {% if ceresConfig.global.googleRecaptchaApiKey | trim is not empty %}
             <recaptcha></recaptcha>
         {% endif %}
+      </form>
     </div>
 </script>
