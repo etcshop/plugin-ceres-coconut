@@ -60,6 +60,54 @@
                 <!-- ENDE BELBOON BASKET TRACKING -->
               {% endif %}
             {% endif %}
+            {% if (currTpl == 'tpl.item') %}
+                          {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+                          {% if BelboonTrackActive == "true" %}
+                            {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
+                          <!-- START BELBOON ITEM TRACKING -->
+                            <script type="text/javascript">
+                                belboonTag = {
+                                    "productBrand": "{{ item.documents[0].data.item.manufacturer.externalName }}",
+                                    "categoryId": "{{ item.documents[0].data.defaultCategories[0].id }}",
+                                    "products": [
+                                        {
+                                            "id": "{{ item.documents[0].data.variation.id }}",
+                                            "price": "{{ item.documents[0].data.salesPrices[0].price }}"
+                                        }
+                                    ]
+                                };
+                            </script>
+                            <script type="text/javascript">
+                                (function(d) {
+                                    var s = d.createElement("script");
+                                    s.async = true;
+                        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=product&type=dynamic";
+                        var a = d.getElementsByTagName("script")[0];
+                        a.parentNode.insertBefore(s, a);
+                    }(document));
+                </script>
+              <!-- ENDE BELBOON ITEM TRACKING -->
+            {% endif %}
+            {% if (currTpl == 'tpl.category.item') %}
+              {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+              {% if BelboonTrackActive == "true" %}
+                {% set BelboonTrack = config("CeresCoconut.tracking.belboonProgramId") %}
+                <script type="text/javascript">
+                  belboonTag = {
+                      categoryId: "{{ category.id }}"
+                  };
+                </script>
+                <script type="text/javascript">
+                    (function(d) {
+                        var s = d.createElement("script");
+                        s.async = true;
+                        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//containertags.belboon.de/belboonTag.js.php?pId={{ BelboonTrack }}&page=category&type=dynamic";
+                        var a = d.getElementsByTagName("script")[0];
+                        a.parentNode.insertBefore(s, a);
+                    }(document));
+                </script>
+              {% endif %}
+            {% endif %}
             {% if (currTpl == 'tpl.confirmation') %}
             	<!-- ########################### BELBOON TRACKING ########################### -->
                   {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
@@ -95,8 +143,16 @@
                       </script2>
                     <!-- ENDE BELBOON BASKET TRACKING -->
                   {% endif %}
+                  {% set BelboonTrackActive = config("CeresCoconut.tracking.belboonTrackingActive") %}
+                  {% if BelboonTrackActive == "true" %}
+                    {% if data.order.referrerId == 10 %}
+                      <!-- BEGIN BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
+                      <img src="//pluto.r.powuta.com/ts/i5534189/tsa?typ=i&trc=default&ctg=sale&sid=check-out&cid={{ data.order.id }}&orv={{ data.order.amounts[0].netTotal }}&orc=EUR" width="1" height="1" border="0" style="display:none;">
+                      <!-- END BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
+                    {% endif %}
+                  {% endif %}
                   	<!-- ########################### GOOGLE TRACKING ########################### -->
-                        {% if webstoreConfig.webstoreId == 0 %}
+                  {% if webstoreConfig.webstoreId == 0 %}
                             <!-- BEGIN Google Kundenrezensionen -->
                             {% set deliveryAddress = data.order.deliveryAddress %}
                             {% set deliveryCountryId = deliveryAddress.countryId %}
@@ -179,8 +235,9 @@
                                 });
                               </script2>
                             <!-- END Event snippet for Tracking-Test conversion page -->
-                        {% endif %}
+                  {% endif %}
             {% endif %}
+
           <!-- ################Google Analytics TRACKING################-->
             <script2 type="text/javascript">
             {% if webstoreConfig.webstoreId == 0 %}
