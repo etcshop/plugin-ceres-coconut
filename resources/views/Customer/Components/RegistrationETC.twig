@@ -17,18 +17,25 @@
 
                 <div class="col-sm-6" v-if="!guestMode" id="Registration_Password">
                     <div class="input-unit" :class="{'no-bottom media-xs-d': modalElement}" data-validate="password" ref="passwordInput">
-                        <label for="{{ uid_pwd }}" class="form_musthave">{{ trans("Ceres::Template.regPassword") }}</label>
+                        <label :for="'new-password-' + _uid" class="form_musthave">{{ trans("Ceres::Template.regPassword") }}</label>
                         <popper v-cloak trigger="focus" placement="left" ref="passwordHint">
                             {% set uid_pwd = uid() %}
-                            <input slot="handle" type="password" name="password" id="{{ uid_pwd }}" v-model="password">
-                            <div slot="title">
-                                {{ trans("Ceres::Template.regPasswordHintTitle") }}
-                            </div>
-                            <ul slot="content" class="p-l-1">
-                                <li>{{ trans("Ceres::Template.regPasswordHintLength") }}</li>
-                                <li>{{ trans("Ceres::Template.regPasswordHintDigit") }}</li>
-                                <li>{{ trans("Ceres::Template.regPasswordHintChar") }}</li>
-                            </ul>
+                            <template #handle>
+                              <input slot="handle" type="password" name="password" :id="'new-password-' + _uid" v-model="password">
+                            </template>
+                            <template #title>
+                              <div slot="title">
+                                  {{ trans("Ceres::Template.regPasswordHintTitle") }}
+                              </div>
+                            </template>
+
+                            <template #content>
+                              <ul slot="content" class="p-l-1">
+                                  <li>{{ trans("Ceres::Template.regPasswordHintLength") }}</li>
+                                  <li>{{ trans("Ceres::Template.regPasswordHintDigit") }}</li>
+                                  <li>{{ trans("Ceres::Template.regPasswordHintChar") }}</li>
+                              </ul>
+                            </template>
                         </popper>
 
                     </div>
@@ -36,8 +43,8 @@
                 <div class="col-sm-6 input-unit-group" v-if="!guestMode" id="Registration_PasswordRepeat">
                     <div class="input-unit" :class="{'no-bottom': modalElement}" data-validate="ref">
                         {% set uid_pwd_repeat = uid() %}
-                        <label for="{{ uid_pwd_repeat }}" class="form_musthave">{{ trans("Ceres::Template.regRepeatPassword") }}</label>
-                        <input type="password" name="password-repeat" id="{{ uid_pwd_repeat }}" v-model="passwordRepeat" data-validate-ref="#{{ uid_pwd }}">
+                        <label :for="'new-password-repeat' + _uid" class="form_musthave">{{ trans("Ceres::Template.regRepeatPassword") }}</label>
+                        <input type="password" name="password-repeat" :id="'new-password-repeat-' + _uid" v-model="passwordRepeat" :data-validate-ref="'#new-password-' + _uid">
                     </div>
                 </div>
                 <div class="ContentSeperator"></div>
