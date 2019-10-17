@@ -317,7 +317,7 @@
         {% endblock %}
 
         <input type="hidden" name="CookieBanner_StateInputPD" id="CookieBanner_StateInputPD">
-        <div style="display: none;"> webstoreConfig.webstoreId %} </div>
+        <div style="display: none;"> {{ webstoreConfig.webstoreId }} </div>
         <cookie-banner :webshopId="{{ webstoreConfig.webstoreId }}"></cookie-banner>
     </div>
 

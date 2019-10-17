@@ -2,6 +2,7 @@
 
 <script type="x/template" id="vue-tracking">
     <div>
+      <div style="display: none">{{ webstoreConfig.webstoreId }}</div>
       <div v-if="cookieStatus == 1">
         <!-- ################BELBOON TRACKING################-->
           {% if services.template.isHome() %}
