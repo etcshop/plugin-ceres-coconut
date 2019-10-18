@@ -71,6 +71,20 @@ Keine Neuerungen implementiert.
 
 # User Guide
 
+## Plugin-Konfigurationen
+
+### Allgemeines
+
+- Über die Schraube innerhalb eines Plugin-Sets können Konfigurationen im- und exportiert werden. Für den Fall einer Wiederherstellung eines Plugin-Sets  wurden die Konfigurationen der Plugin-Sets "etc-shop" und "meine-lampe" exportiert.
+
+### Plugin-Set etc-shop
+
+- Die Konfiguration kann unter http://www.etc-shop.de/layout/ETCeres/conf/pluginConfig_plentyId2227_setId1_2019-10-18_10-26.json heruntergeladen werden.
+
+### Plugin-Set meine-lampe
+
+- Die Konfiguration kann unter http://www.etc-shop.de/layout/ETCeres/conf/pluginConfig_plentyId2227_setId2_2019-10-18_10-27.json heruntergeladen werden.
+
 ## Container-Verknüpfungen
 
 - Hier sind die Container-Verknüpfungen, die für den Betrieb von Coconut gesetzt werden müssen.
