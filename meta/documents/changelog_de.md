@@ -67,9 +67,11 @@ Keine Neuerungen implementiert.
 - Funktionalität zum Überschreiben von Result Fields in der Plugin-Konfiguration.
 - Funktionalität zum Überschreiben von von CSS, Templates und Partials durch Aktivierung der Templates in der Plugin-Konfiguration.
 
-## -----------------------------------------------------------------------------------------------------
+## ------------------------------------------------------------------------------------
 
 # User Guide
+
+## Container-Verknüpfungen
 
 ### First item list (Ceres)
 -	Homepage: Container 1 
