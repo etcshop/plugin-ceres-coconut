@@ -67,11 +67,11 @@ Keine Neuerungen implementiert.
 - Funktionalität zum Überschreiben von Result Fields in der Plugin-Konfiguration.
 - Funktionalität zum Überschreiben von von CSS, Templates und Partials durch Aktivierung der Templates in der Plugin-Konfiguration.
 
-##-----------------------------------------------------------------------------------------------------
+## -----------------------------------------------------------------------------------------------------
 
 # User Guide
 
-## First item list (Ceres)
+### First item list (Ceres)
 -	Homepage: Container 1 
 -	Homepage: Container 2 
 -	Homepage: Container 3 
@@ -83,7 +83,7 @@ Keine Neuerungen implementiert.
 -	Homepage: Container 9 
 -	Homepage: Container 10 
 -	Single item: Container for item lists
-## Second item list (Ceres)
+### Second item list (Ceres)
 - Homepage: Container 1 
 -	Homepage: Container 2 
 -	Homepage: Container 3 
@@ -94,87 +94,87 @@ Keine Neuerungen implementiert.
 -	Homepage: Container 8 
 -	Homepage: Container 9 
 -	Homepage: Container 10
-## Third item list (Ceres)
+### Third item list (Ceres)
 - Homepage: Container 1 
 -	Homepage: Container 2 
 -	Homepage: Container 3 
 -	Homepage: Container 4
-## Filters (Findologic)
+### Filters (Findologic)
 - Category item list: Container below side navigation 
 -	Search: Override search filters
-## Search Bar (Findologic)
+### Search Bar (Findologic)
 - Search: Override search filters
-## Promotion (Findologic)
-## Feedback Javascript (Feedback)	#
+### Promotion (Findologic)
+### Feedback Javascript (Feedback)	#
 -	Script loader: Register/load JS
-## Feedback CSS (Ceres) (Feedback)
+### Feedback CSS (Ceres) (Feedback)
 -	Template: Style
-## Feedback ratings (Feedback)
+### Feedback ratings (Feedback)
 -	Single item: Container for customer feedback
-## Feedback category ratings (Feedback)
+### Feedback category ratings (Feedback)
 -	Single item: Additional content after „VAT“ information 
 -	Category item list: Before prices container
-## Amazon Login & Pay - Checkout-Button (AmazonLoginAndPay)
+### Amazon Login & Pay - Checkout-Button (AmazonLoginAndPay)
 -	Shopping cart: After „Checkout“ button 
 -	Shopping cart overlay: Extend buttons 
 -	Shopping cart preview: After „Checkout“ button 
 -	Checkout: After payment method
-## Amazon Login & Pay - Checkout-Button auf Artikelseite (Schnellkauf) (AmazonLoginAndPay)
-## Amazon Login & Pay - Login-Button (AmazonLoginAndPay)
-## Amazon Login & Pay - Zahlungshinweis auf Bestätigungsseite (AmazonLoginAndPay)
+### Amazon Login & Pay - Checkout-Button auf Artikelseite (Schnellkauf) (AmazonLoginAndPay)
+### Amazon Login & Pay - Login-Button (AmazonLoginAndPay)
+### Amazon Login & Pay - Zahlungshinweis auf Bestätigungsseite (AmazonLoginAndPay)
 -	Order confirmation: Additional payment information
-## Amazon Login & Pay - JavaScript (AmazonLoginAndPay)
+### Amazon Login & Pay - JavaScript (AmazonLoginAndPay)
 -	Script loader: Register/load JS
-## Amazon Login & Pay - Logo (AmazonLoginAndPay)
-## Sofort Logo (SOFORT)
-## Cash in advance icon (PrePayment)
-## Cash in advance bank details (PrePayment)
+### Amazon Login & Pay - Logo (AmazonLoginAndPay)
+### Sofort Logo (SOFORT)
+### Cash in advance icon (PrePayment)
+### Cash in advance bank details (PrePayment)
 -	Order Confirmation: Additional payment information
-## Cash in advance Reinitialise Payment (PrePayment)
-## Cash in advance Reinitialise Payment Script (PrePayment)
-## PayUponPickup icon (PayUponPickup)
-## PayPal icon (PayPal)
-## PayPal PLUS icon (PayPal)
-## PayPal Installments icon (PayPal)
-## PayPal Scripts (PayPal)
+### Cash in advance Reinitialise Payment (PrePayment)
+### Cash in advance Reinitialise Payment Script (PrePayment)
+### PayUponPickup icon (PayUponPickup)
+### PayPal icon (PayPal)
+### PayPal PLUS icon (PayPal)
+### PayPal Installments icon (PayPal)
+### PayPal Scripts (PayPal)
 -	Script loader: After scripts loaded
-## PayPal Styles (PayPal)
+### PayPal Styles (PayPal)
 -	Template: Style
-## PayPal Express Button (PayPal)
+### PayPal Express Button (PayPal)
 -	Shopping cart overlay: Extended butrtons
-## PayPal Plus Wall (PayPal)
+### PayPal Plus Wall (PayPal)
 -	Checkout: Override payment method
-## PayPal Installment Generic Promotion (PayPal)
-## PayPal Installment Specific Promotion (PayPal)
-## PayPal Installment Financing Costs (PayPal)
-## PayPal Installment Prepare Button (PayPal)
-## PayPal Reinitialize Payment (PayPal)		
-## PayPalPlus Reinitialize Payment (PayPal)
+### PayPal Installment Generic Promotion (PayPal)
+### PayPal Installment Specific Promotion (PayPal)
+### PayPal Installment Financing Costs (PayPal)
+### PayPal Installment Prepare Button (PayPal)
+### PayPal Reinitialize Payment (PayPal)		
+### PayPalPlus Reinitialize Payment (PayPal)
 -	Order confirmation: Additional payment information 
 -	My account: Additional payment information
-## EasyCredit Scripts (easyCredit)
-## Item Best Installment Rate / Installment Information (easyCredit)
+### EasyCredit Scripts (easyCredit)
+### Item Best Installment Rate / Installment Information (easyCredit)
 -	Single item: Before price
-## Checkout Installment Agreement Checkbox (easyCredit)
-## Checkout Next Button (easyCredit)
-## Installment Check (easyCredit)
-## Finanzierungsdetails (easyCredit)
+### Checkout Installment Agreement Checkbox (easyCredit)
+### Checkout Next Button (easyCredit)
+### Installment Check (easyCredit)
+### Finanzierungsdetails (easyCredit)
 -	Order confirmation: Add content after totals
-## Checkout Error Messages (easyCredit)
-## Google Analytics tracking code (GoogleAnalytics)
-## Google Analytics opt out (GoogleAnalytics)
+### Checkout Error Messages (easyCredit)
+### Google Analytics opt out (GoogleAnalytics)
+### Google Analytics tracking code (GoogleAnalytics)
 -	Static Pages: Privacy Policy
-## Trustbadge (TrustedShops)
+### Trustbadge (TrustedShops)
 -	Order confirmation: Add content after totals
-## Checkout Trustcard (TrustedShops)
+### Checkout Trustcard (TrustedShops)
 -	Order confirmation: Add content before "Back to Homepage" link
-## Produktbewertung auf der Produktdetailseite (TrustedShops)
-## Produktbewertungssterne auf der Artikeldetailseite (TrustedShops)
-## Review Sticker (Shop Bewertungen (Trusted Shops)
-## Rich Snippet (TrustedShops)
+### Produktbewertung auf der Produktdetailseite (TrustedShops)
+### Produktbewertungssterne auf der Artikeldetailseite (TrustedShops)
+### Rich Snippet (TrustedShops)
+### Review Sticker (Shop Bewertungen (Trusted Shops)
 -	Order confirmation: Before order details
-## Stylesheet (CeresCoconut)
-## First item list (CeresCoconut)
+### Stylesheet (CeresCoconut)
+### First item list (CeresCoconut)
 -	Homepage: Container 1
 -	Homepage: Container 2
 -	Homepage: Container 3
@@ -185,15 +185,15 @@ Keine Neuerungen implementiert.
 -	Homepage: Container 8
 -	Homepage: Container 9
 -	Homepage: Container 10
-## Second item list (CeresCoconut)
+### Second item list (CeresCoconut)
 -	Homepage: Container 1
 -	Homepage: Container 2
 -	Homepage: Container 3
 -	Homepage: Container 4
-## Third item list (CeresCoconut)
+### Third item list (CeresCoconut)
 -	Homepage: Container 1
 -	Homepage: Container 2
 -	Homepage: Container 3
 -	Homepage: Container 4
-## Anbindung der VueScripts (CeresCoconut)
+### Anbindung der VueScripts (CeresCoconut)
 -	Script loader: After scripts loaded
