@@ -3,14 +3,19 @@
 
 <div class="container_centered">
   <nav class="navbar navbar-default nav-main">
-    <form action="/" style="padding:0px;margin:0px;" name="search_form" class="search_form" method="get">
-      <input type="hidden" name="ActionCall" value="WebActionArticleSearch">
-      <input type="hidden" name="BranchId" value="0"><!-- I need a textfield with name Params[SearchParam] //-->
-      <input id="customer_class" type="hidden" name="customer_class" value="5">
-      <input type="submit" class="submitpic LiveSearch hidden-md hidden-lg" value="">
-      <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-      <input type="text" class="textinput_mobile hidden-md hidden-lg ui-autocomplete-input" value="Suche" onfocus="if(this.value=='Suche'){this.value=''}" onblur="if(this.value==''){this.value='Suche'}" id="flAutocompleteInputText" name="Params[SearchParam]" autocomplete="off">
-    </form>
+    {% set overrideSearchBar = LayoutContainer.show("Ceres::Search.SearchBar") %}
+    {% if overrideSearchBar | trim is empty %}
+      <form action="/" style="padding:0px;margin:0px;" name="search_form" class="search_form" method="get">
+        <input type="hidden" name="ActionCall" value="WebActionArticleSearch">
+        <input type="hidden" name="BranchId" value="0"><!-- I need a textfield with name Params[SearchParam] //-->
+        <input id="customer_class" type="hidden" name="customer_class" value="5">
+        <input type="submit" class="submitpic LiveSearch hidden-md hidden-lg" value="">
+        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+        <input type="text" class="textinput_mobile hidden-md hidden-lg ui-autocomplete-input" value="Suche" onfocus="if(this.value=='Suche'){this.value=''}" onblur="if(this.value==''){this.value='Suche'}" id="flAutocompleteInputText" name="Params[SearchParam]" autocomplete="off">
+      </form>
+    {% else %}
+        {{ overrideSearchBar | raw }}
+    {% endif %}
     <button id="btnMainMenuToggler" v-open-mobile-navigation class="navbar-toggler hidden-lg-up" type="button">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
