@@ -41,14 +41,19 @@
       </div>
     </div>
     <div id="SearchFormContainer" class="col-lg-5 col-md-4 col-sm-5 hidden-xs">
-      <form action="/" style="padding:0px;margin:0px;" name="search_form" class="search_form" method="get">
-        <input type="hidden" name="ActionCall" value="WebActionArticleSearch">
-        <input type="hidden" name="BranchId" value="0">
-        <input id="multishop_id" type="hidden" name="multishop_id" value="0">
-        <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-        <input type="text" class="textinput hidden-xs ui-autocomplete-input" value="{{ trans("CeresCoconut::Template.ETC_Suche") }}" onFocus="if(this.value=='{{ trans("CeresCoconut::Template.ETC_Suche") }}'){this.value=''}" onBlur="if(this.value==''){this.value='{{ trans("CeresCoconut::Template.ETC_Suche") }}'}" id="flAutocompleteInputTextTEST0839" name="Params[SearchParam]" autocomplete="off">
-        <input type="submit" class="submitinput LiveSearch" value="{{ trans("CeresCoconut::Template.ETC_Los") }}">
-      </form>
+      {% set overrideSearchBar = LayoutContainer.show("Ceres::Search.SearchBar") %}
+      {% if overrideSearchBar | trim is empty %}
+          <form action="/" style="padding:0px;margin:0px;" name="search_form" class="search_form" method="get">
+            <input type="hidden" name="ActionCall" value="WebActionArticleSearch">
+            <input type="hidden" name="BranchId" value="0">
+            <input id="multishop_id" type="hidden" name="multishop_id" value="0">
+            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+            <input type="text" class="textinput hidden-xs ui-autocomplete-input" value="{{ trans("CeresCoconut::Template.ETC_Suche") }}" onFocus="if(this.value=='{{ trans("CeresCoconut::Template.ETC_Suche") }}'){this.value=''}" onBlur="if(this.value==''){this.value='{{ trans("CeresCoconut::Template.ETC_Suche") }}'}" id="flAutocompleteInputTextTEST0839" name="Params[SearchParam]" autocomplete="off">
+            <input type="submit" class="submitinput LiveSearch" value="{{ trans("CeresCoconut::Template.ETC_Los") }}">
+          </form>
+      {% else %}
+          {{ overrideSearchBar | raw }}
+      {% endif %}
     </div>
     <div id="headicons" class="col-lg-5 col-md-5 col-sm-4 col-xs-6">
       <div style="display: none;">
