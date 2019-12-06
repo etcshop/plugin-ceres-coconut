@@ -46,7 +46,7 @@
 
               <ul class="nav navbar-right col-lg-8">
                 <li>
-                  <span>{{ itemCountTotal }} {{ trans("CeresCoconut::Template.ETC_Artikel") }}</span>
+                  <span class="hidden-xs">{{ itemCountTotal }} {{ trans("CeresCoconut::Template.ETC_Artikel") }}</span>
                 </li>
                 <li>
                   {% include "CeresCoconut::Category.Item.Partials.ItemSorting" with { 'sortingData': searchOptions.sorting, 'selectedSorting': itemSorting } %}
