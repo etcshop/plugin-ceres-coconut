@@ -20,10 +20,10 @@
                 <div class="owl-item" style="width: 180px;">
                   <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height">
                     <a :href="altUrl" v-if="altUrl">
-                        <img class="img-fluid lazy" :data-original="firstImageByPosition" ref="lazyImg">
+                        <img class="img-fluid lazy" :data-original="firstImageByPosition" :src="firstImageByPosition" ref="lazyImg">
                     </a>
                     <a :href="itemData | itemURL" v-else>
-                        <img class="img-fluid lazy" :data-original="firstImageByPosition" ref="lazyImg">
+                        <img class="img-fluid lazy" :data-original="firstImageByPosition" :src="firstImageByPosition" ref="lazyImg">
                     </a>
                   </div>
                 </div>
