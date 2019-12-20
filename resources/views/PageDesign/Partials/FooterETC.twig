@@ -94,17 +94,17 @@
         <div id="footer4" class="footerbox footer-LastPerRow col-xs-6 col-sm-6 col-md-3 col-lg-3">
           {% if webstoreConfig.webstoreId == 4 %}
             <h1>{{ trans("Ceres::Template.itemCategories") }}</h1>
-              {% set innen = services.category.get(355, lang) %}
-              {% set aussen = services.category.get(347, lang) %}
-              {% set raeume = services.category.get(365, lang) %}
-              {% set gewerbe = services.category.get(908, lang) %}
+              {% set innen = services.category.get(1059, lang) %}
+              {% set aussen = services.category.get(1061, lang) %}
+              {% set smart = services.category.get(1063, lang) %}
+              {% set gewerbe = services.category.get(1062, lang) %}
               {% set leucht = services.category.get(337, lang) %}
               {% set moebel = services.category.get(460, lang) %}
               {% set top = services.category.get(378, lang) %}
-              <a href="{{ services.category.getURL(innen, lang) }}" title="{{ services.category.get(355, lang).details[0].name }}">{{ services.category.get(355, lang).details[0].name }}</a> <br>
-              <a href="{{ services.category.getURL(aussen, lang) }}" title="{{ services.category.get(347, lang).details[0].name }}">{{ services.category.get(347, lang).details[0].name }}</a> <br>
-              <a href="{{ services.category.getURL(raeume, lang) }}" title="{{ services.category.get(365, lang).details[0].name }}">{{ services.category.get(365, lang).details[0].name }}</a> <br>
-              <a href="{{ services.category.getURL(gewerbe, lang) }}" title="{{ services.category.get(908, lang).details[0].name }}">{{ services.category.get(908, lang).details[0].name }}</a> <br>
+              <a href="{{ services.category.getURL(innen, lang) }}" title="{{ services.category.get(1059, lang).details[0].name }}">{{ services.category.get(1059, lang).details[0].name }}</a> <br>
+              <a href="{{ services.category.getURL(aussen, lang) }}" title="{{ services.category.get(1061, lang).details[0].name }}">{{ services.category.get(1061, lang).details[0].name }}</a> <br>
+              <a href="{{ services.category.getURL(smart, lang) }}" title="{{ services.category.get(1063, lang).details[0].name }}">{{ services.category.get(1063, lang).details[0].name }}</a> <br>
+              <a href="{{ services.category.getURL(gewerbe, lang) }}" title="{{ services.category.get(1062, lang).details[0].name }}">{{ services.category.get(1062, lang).details[0].name }}</a> <br>
               <a href="{{ services.category.getURL(leucht, lang) }}" title="{{ services.category.get(337, lang).details[0].name }}">{{ services.category.get(337, lang).details[0].name }}</a> <br>
               <a href="{{ services.category.getURL(moebel, lang) }}" title="{{ services.category.get(460, lang).details[0].name }}">{{ services.category.get(460, lang).details[0].name }}</a> <br>
               <a href="{{ services.category.getURL(top, lang) }}" title="{{ services.category.get(378, lang).details[0].name }}">{{ services.category.get(378, lang).details[0].name }}</a> <br>
