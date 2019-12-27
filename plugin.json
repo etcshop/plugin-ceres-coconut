@@ -47,6 +47,11 @@
             "key"           : "Template.Tracking",
             "name"          : "Template: Tracking",
             "description"   : "Tracking-Bereich für Plugins"
+        },
+        {
+            "key"           : "SingleItem.FeedbackContainer",
+            "name"          : "SingleItem: FeedbackContainer",
+            "description"   : "Bereich für das Feedback-Plugin"
         }
     ]
 }
