@@ -1,9 +1,17 @@
-{{ component( "CeresCoconut::ItemList.Components.ItemLazyImg" ) }}
+{{ component( "Ceres::Components.common.LazyImg" ) }}
 
 <script type="x/template" id="vue-category-image-carousel">
     <a :id="'owl-carousel-' + _uid" v-if="$_enableCarousel" class="owl-carousel owl-theme" :href="itemUrl">
         <div v-for="(imageUrl, index) in imageUrls">
-            <img ref="itemLazyImage" template="#vue-item-lazy-img" v-if="index === 0 && !disableLazyLoad" :src="imageUrl.url" :alt="getAltText(imageUrl)"></img>
+            <lazy-img
+                class="img-basket-small"
+                v-if="image"
+                :image-url="imageUrl.url"
+                :alt="getAltText(imageUrl)"
+                :title="getAltText(imageUrl)"
+                v-if="index === 0 && !disableLazyLoad" >
+            </lazy-img>
+            
             <img v-else-if="index !== 0 && !disableLazyLoad" class="img-fluid owl-lazy" :data-src="imageUrl.url" :alt="getAltText(imageUrl)">
             <img v-else class="img-fluid" :src="imageUrl.url" :alt="getAltText(imageUrl)">
         </div>
