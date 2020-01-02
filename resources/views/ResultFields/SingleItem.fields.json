@@ -71,5 +71,7 @@
   "filter.isSalable",
   "filter.hasManufacturer",
 
-  "tags.*"
+  "tags.*",
+
+  "barcodes.*"
 ]
