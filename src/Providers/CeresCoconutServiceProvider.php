@@ -8,6 +8,7 @@ use IO\Extensions\Functions\Partial;
 use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
 use CeresCoconut\Contexts\CoconutSingleItemContext;
+use Ceres\Contexts\TagSearchContext;
 /**
  * Class CeresCoconutServiceProvider
  * @package CeresCoconut\Providers
