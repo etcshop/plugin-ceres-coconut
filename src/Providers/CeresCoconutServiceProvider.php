@@ -267,6 +267,13 @@ class CeresCoconutServiceProvider extends ServiceProvider
                 return false;
             }, self::PRIORITY);
         }
+
+        $dispatcher->listen('IO.tpl.tags', function (TemplateContainer $container)
+        {
+            $container->setTemplate('CeresCoconut::Category.Item.CategoryItem');
+            return false;
+        }, self::PRIORITY);
+
         $enabledResultFields = [];
         if(!empty($config->get("CeresCoconut.result_fields.override")))
         {
