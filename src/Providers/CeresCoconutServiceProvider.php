@@ -8,7 +8,6 @@ use IO\Extensions\Functions\Partial;
 use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
 use CeresCoconut\Contexts\CoconutSingleItemContext;
-use Ceres\Contexts\TagSearchContext;
 /**
  * Class CeresCoconutServiceProvider
  * @package CeresCoconut\Providers
@@ -16,11 +15,6 @@ use Ceres\Contexts\TagSearchContext;
 class CeresCoconutServiceProvider extends ServiceProvider
 {
     const PRIORITY = 0;
-
-    private static $templateKeyToViewMap =
-            [
-                'tpl.tags' => ['Category.Item.CategoryItem', TagSearchContext::class]
-            ];
 
     public function register()
     {
