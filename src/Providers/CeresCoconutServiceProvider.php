@@ -15,6 +15,12 @@ use CeresCoconut\Contexts\CoconutSingleItemContext;
 class CeresCoconutServiceProvider extends ServiceProvider
 {
     const PRIORITY = 0;
+
+    private static $templateKeyToViewMap =
+            [
+                'tpl.tags' => ['Category.Item.CategoryItem', TagSearchContext::class]
+            ];
+
     public function register()
     {
     }
