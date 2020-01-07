@@ -57,7 +57,7 @@
       <span class="test large linkToItem">
         {% if item.data.variation.mainVariationId is not null %}
           <span class="Price">
-            &nbsp;
+            {{ item.data.prices.default.unitPrice.formatted }}
           </span>
         {% else %}
           <span class="Price">
