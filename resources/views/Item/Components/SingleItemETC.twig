@@ -5,10 +5,7 @@
 
 
 {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
-  {% set varPri = variationTotalPrice %}
-  {% set uvpPri = currentVariation.prices.rrp.unitPrice.formatted | itemCrossPrice  %}
-
-  {% set uvpSaving = (varPri/uvpPri) * 100%}
+  {% set uvpSaving = (currentVariation.prices.rrp.unitPrice.value / currentVariation.prices.default.unitPrice.value) * 100 %}
 {% endif %}
 
 <script type="x/template" id="vue-single-item">
