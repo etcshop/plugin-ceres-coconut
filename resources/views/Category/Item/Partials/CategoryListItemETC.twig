@@ -49,7 +49,7 @@
           </div>
         </div>
       </div>
-          <div class="crossprice_saving" v-if="item.data.prices.rrp && item.data.prices.rrp.unitPrice.value > 0 && item.data.prices.rrp.unitPrice.value > item.data.prices.default.unitPrice.value">
+          <div class="crossprice_saving" v-if="item.data.prices.rrp">
             -{{ uvpSaving }}%
           </div>
     </div>
