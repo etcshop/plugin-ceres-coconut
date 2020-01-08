@@ -1,4 +1,4 @@
-{% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %} 
+{% import "CeresCoconut::Basket.Macros.AddToBasket" as AddToBasket %}
 {% set itemData = config("Ceres.item.data") | split(', ') %}
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
@@ -113,6 +113,13 @@
               </span>
               <meta itemprop="priceCurrency" content="EUR">
             </span>
+            {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+                <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
+                    <del class="text-muted small">
+                        ${ currentVariation.prices.rrp.unitPrice.formatted | itemCrossPrice  }
+                    </del>
+                </div>
+            {% endif %}
             <span class="SingleArticle_MainPrice Price">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup" value="0">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_total" value="21.755">
