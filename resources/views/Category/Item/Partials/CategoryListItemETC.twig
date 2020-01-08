@@ -17,6 +17,10 @@
     {% set variantenArtikel = false %}
 {% endif %}
 
+{% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+  {% set uvpSaving = ((1 - (item.documents[0].data.prices.default.price.value / item.documents[0].data.prices.rrp.unitPrice.value)) * 100) | round %}
+{% endif %}
+
 <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
 
   <div class="itemBoxInner">
@@ -51,19 +55,25 @@
           </div>
         </div>
       </div>
+      {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+          <div class="crossprice_saving" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
+            -{{ uvpSaving }}%
+          </div>
+      {% endif %}
     </div>
     <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
     <p class="price js-link">
       <span class="test large linkToItem">
-        {% if item.data.variation.mainVariationId is not null %}
-          <span class="Price">
-            &nbsp;
-          </span>
-        {% else %}
           <span class="Price">
             {{ item.data.prices.default.unitPrice.formatted }}
           </span>
-        {% endif %}
+          {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+              <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
+                  <div class="text-muted small">
+                     UVP <del>${ currentVariation.prices.rrp.unitPrice.formatted }</del> <span class="crossprice_SavingText">Sie sparen {{ uvpSaving }}%</span>
+                  </div>
+              </div>
+          {% endif %}
       </span>
     </p>
     <p class="item_details hidden-xs"><a href="{{ itemUrl }}">Details</a></p>
