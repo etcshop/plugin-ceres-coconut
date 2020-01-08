@@ -63,8 +63,8 @@
                 {% set varVal =  currentVariation.prices.default.unitPrice.value %}
 
                 {% set saving =  ( rrpVal / varVal ) * 100 %}<br>
-                rrp: {{ rrpVal }}
-                default: {{ varVal }}
+                rrp: {{ currentVariation.prices.rrp.unitPrice.value }}
+                default: {{ currentVariation.prices.default.unitPrice.value }}
                 {{ saving }}<br>
                 <br>
                 {{ (rrpVal - varVal) }}
