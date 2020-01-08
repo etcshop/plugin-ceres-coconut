@@ -55,9 +55,8 @@
           </div>
         </div>
       </div>
-      ${ item.prices.rrp.unitPrice.formatted | itemCrossPrice }
       {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
-          <div class="crossprice_saving" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
+          <div class="crossprice_saving" v-if="item.data.prices.rrp && item.data.prices.rrp.unitPrice.value > 0 && item.data.prices.rrp.unitPrice.value > item.data.prices.default.unitPrice.value">
             -{{ uvpSaving }}%
           </div>
       {% endif %}
@@ -70,7 +69,7 @@
           </span>
           <div style="color: #F00; font-size: 2em">{{ item.data.prices.rrp.unitPrice.value }}</div>
           {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
-              <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
+              <div class="crossprice" v-if="item.data.prices.rrp && item.data.prices.rrp.unitPrice.value > 0 && item.data.prices.rrp.unitPrice.value > item.data.prices.default.unitPrice.value">
                   <div class="text-muted small">
                      UVP <del>{{ item.data.prices.rrp.unitPrice.value }}</del> <span class="crossprice_SavingText">Sie sparen {{ uvpSaving }}%</span>
                   </div>
