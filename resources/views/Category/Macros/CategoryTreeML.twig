@@ -34,7 +34,7 @@
         {% if MainCategory.id == 336 %}
           {%  for category in MainCategory.children %}
 
-            {% if category.id == 378 %}
+            {% if category.id == 429 %}
               {% if urls.includeLanguage %}
                   {% set topsellerURL = "/" ~ category.details[0].lang ~  "/" ~ MainCategory.details[0].nameUrl ~  "/" ~ category.details[0].nameUrl %}
               {% else %}

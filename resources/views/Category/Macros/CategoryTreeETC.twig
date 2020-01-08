@@ -33,14 +33,14 @@
 
     {% for category in categories %}
 
-        {% if (webstoreConfig.webstoreId != 4 and category.id == 429) or (webstoreConfig.webstoreId == 4 and category.id == 378) %}
+        {% if (webstoreConfig.webstoreId != 4 and category.id == 429) or (webstoreConfig.webstoreId == 4 and category.id == 429) %}
           {% if urls.includeLanguage %}
               {% set topsellerURL = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
           {% else %}
               {% set topsellerURL = "/" ~ category.details[0].nameUrl %}
           {% endif %}
         {% endif %}
-        {% if category.details | length > 0 and category.id != 429 and category.id != 439 and category.id != 378 %}
+        {% if category.details | length > 0 and category.id != 429 and category.id != 439 and category.id != 429 %}
 
             {% if urls.includeLanguage %}
                 {% set currentScopeUrl = "/" ~ category.details[0].lang ~  "/" ~ category.details[0].nameUrl %}
