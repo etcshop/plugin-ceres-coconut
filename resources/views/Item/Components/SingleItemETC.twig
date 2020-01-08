@@ -59,7 +59,7 @@
         </div>
         {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
             <div class="crossprice_saving" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
-                {{ ( currentVariation.prices.rrp.unitPrice.value / currentVariation.prices.default.unitPrice.value ) * 100 }}<br>
+                {{ ( currentVariation.prices.rrp.unitPrice.value|float - currentVariation.prices.default.unitPrice.value|float ) * 100 }}<br>
                 rrp: ${ currentVariation.prices.rrp.unitPrice.value }
                 default: ${ currentVariation.prices.default.unitPrice.value }
 
