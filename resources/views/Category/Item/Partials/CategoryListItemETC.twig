@@ -49,6 +49,11 @@
           </div>
         </div>
       </div>
+      {% if (item.data.prices.rrp) %}
+          <div class="crossprice_saving" v-if="item.data.prices.rrp && item.data.prices.rrp.unitPrice.value > 0 && item.data.prices.rrp.unitPrice.value > item.data.prices.default.unitPrice.value">
+            -{{ uvpSaving }}%
+          </div>
+      {% endif %}
     </div>
     <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
     <p class="price js-link">
