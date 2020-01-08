@@ -61,6 +61,11 @@
           <span class="Price">
             {{ item.data.prices.default.unitPrice.formatted }}
           </span>
+          {% if (uvpSaving) %}
+            <span class="crossprice_cat">
+              <del>{{ item.data.prices.rrp.unitPrice.value }}</del> UVP
+            </span>
+          {% endif %}
       </span>
     </p>
     <p class="item_details hidden-xs"><a href="{{ itemUrl }}">Details</a></p>
