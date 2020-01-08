@@ -3,6 +3,14 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
+
+{% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+  {% set varPri = variationTotalPrice %}
+  {% set uvpPri = currentVariation.prices.rrp.unitPrice.formatted | itemCrossPrice  %}
+
+  {% set uvpSaving = (varPri/uvpPri) * 100%}
+{% endif %}
+
 <script type="x/template" id="vue-single-item">
 <div class="container">
   <div class="row">
@@ -52,6 +60,11 @@
             </div>
           </div>
         </div>
+        {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+            <div class="crossprice_saving" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
+                {{ uvpSaving }}
+            </div>
+        {% endif %}
       </div>
     </div>
     <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top1">
@@ -113,13 +126,6 @@
               </span>
               <meta itemprop="priceCurrency" content="EUR">
             </span>
-            {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
-                <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
-                    <del class="text-muted small">
-                        ${ currentVariation.prices.rrp.unitPrice.formatted | itemCrossPrice  }
-                    </del>
-                </div>
-            {% endif %}
             <span class="SingleArticle_MainPrice Price">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup" value="0">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_total" value="21.755">
@@ -128,6 +134,13 @@
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_variationId" value="35165">
             </span>
           </div>
+          {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
+              <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
+                  <del class="text-muted small">
+                      ${ currentVariation.prices.rrp.unitPrice.formatted | itemCrossPrice  }
+                  </del>
+              </div>
+          {% endif %}
           <slot name="after-price"></slot>
           <div class="row m-y-1">
               <slot name="before-add-to-basket"></slot>
