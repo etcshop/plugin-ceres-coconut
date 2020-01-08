@@ -66,7 +66,7 @@
             {% endfor %}<br>
             Preis: {{ item.documents[0].data.prices.rrp.baseSinglePrice }}
             <span class="badge-discount-price">
-            -{{ ((1 - (item.documents[0].data.prices.default.price.value / item.documents[0].data.prices.rrp.unitPrice.value)) * 100) | round }}%
+            -{{ ((1 - (item.documents[0].data.prices.default.price.value / item.documents[0].data.prices.rrp.unitPrice.value)) * 100) }}%
             </span>   <br>
             Angebotspreis: {{ item.documents[0].data.prices.default.price.value }}
 
