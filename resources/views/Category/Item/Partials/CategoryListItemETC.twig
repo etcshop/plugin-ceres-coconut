@@ -55,6 +55,7 @@
           </div>
         </div>
       </div>
+      ${ item.prices.rrp.unitPrice.formatted | itemCrossPrice }
       {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
           <div class="crossprice_saving" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
             -{{ uvpSaving }}%
