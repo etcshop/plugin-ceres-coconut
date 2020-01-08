@@ -133,9 +133,9 @@
           </div>
           {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
               <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
-                  <del class="text-muted small">
+                  <div class="text-muted small">
                       ${ currentVariation.prices.rrp.unitPrice.formatted | itemCrossPrice  }
-                  </del>
+                  </div>
               </div>
           {% endif %}
           <slot name="after-price"></slot>
