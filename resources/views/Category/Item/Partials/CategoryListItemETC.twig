@@ -51,7 +51,7 @@
       </div>
       {% if (uvpSaving) %}
           <div class="crossprice_saving">
-            -{{ uvpSaving }}%
+            -{{ uvpSaving}}%
           </div>
       {% endif %}
     </div>
@@ -63,7 +63,7 @@
           </span>
           {% if (uvpSaving) %}
             <span class="crossprice_cat">
-              <del>{{ item.data.prices.rrp.unitPrice.value }}</del> UVP
+              <del>{{ item.data.prices.rrp.unitPrice.value | number_format(2, '.', ',') }}</del> UVP
             </span>
           {% endif %}
       </span>
