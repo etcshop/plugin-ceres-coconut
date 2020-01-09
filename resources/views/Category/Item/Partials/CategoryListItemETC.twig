@@ -69,6 +69,8 @@
         <span class="crossprice_cat">
           <del>{{ item.data.prices.rrp.unitPrice.value | number_format(2, '.', ',') }} {{ item.data.prices.rrp.currency }}</del> UVP
         </span>
+      {% else %}
+        <span class="crossprice_cat">&nbsp;</span>
       {% endif %}
     </p>
     <div id="CatOverviewTechnicalData">
