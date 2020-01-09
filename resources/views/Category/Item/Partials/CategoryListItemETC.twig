@@ -52,7 +52,7 @@
       {% if (uvpSaving) %}
           <div class="crossprice_saving">
             -{{ uvpSaving}}%
-          </div> 
+          </div>
       {% endif %}
     </div>
     <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
@@ -64,13 +64,13 @@
       </span>
     </p>
     <p class="item_details hidden-xs"><a href="{{ itemUrl }}">Details</a></p>
-    {% if (uvpSaving) %}
     <p class="crossprice_container">
-      <span class="crossprice_cat">
-        <del>{{ item.data.prices.rrp.unitPrice.value | number_format(2, '.', ',') }}</del> UVP
-      </span>
+      {% if (uvpSaving) %}
+        <span class="crossprice_cat">
+          <del>{{ item.data.prices.rrp.unitPrice.value | number_format(2, '.', ',') }}</del> UVP
+        </span>
+      {% endif %}
     </p>
-    {% endif %}
     <div id="CatOverviewTechnicalData">
       {{ item.data.texts.technicalData | raw }}
     </div>
