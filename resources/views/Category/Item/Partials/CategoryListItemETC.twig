@@ -11,7 +11,7 @@
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
 {% endif %}
 
-{% if (item.data.prices.rrp && item.data.prices.rrp.unitPrice.value > item.data.prices.default.price.value) %}
+{% if (item.data.prices.rrp) %}
   {% set uvpSaving = ((1 - (item.data.prices.default.price.value / item.data.prices.rrp.unitPrice.value)) * 100) | round %}
 {% endif %}
 
