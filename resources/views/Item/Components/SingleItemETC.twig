@@ -134,7 +134,7 @@
           {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
               <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
                   <div class="text-muted small">
-                     <del>${ currentVariation.prices.rrp.unitPrice.formatted }</del> UVP <span class="crossprice_SavingText">Sie sparen {{ uvpSaving }}%</span>
+                     <del>${ currentVariation.prices.rrp.unitPrice.formatted }</del> UVP <span class="crossprice_SavingText">{{ trans("CeresCoconut::Template.ETC_UVPSave") }} {{ uvpSaving }}%</span>
                   </div>
               </div>
           {% endif %}
