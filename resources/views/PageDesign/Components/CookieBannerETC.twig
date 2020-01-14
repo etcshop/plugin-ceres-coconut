@@ -25,12 +25,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 Vue.component("cookie-banner", {
   template: "#vue-cookie-banner",
   delimiters: ["${", "}"],
+  webshopId: -1,
+
   data()
   {
     return {
         cookieSessionStatus: -1,
-        componentKey: 0,
-        webshopId: -1
+        componentKey: 0
     };
   },
   created()
@@ -40,7 +41,7 @@ Vue.component("cookie-banner", {
   methods: {
     Accepted()
     {
-      console.log("Webshop ID: " + webshopId);
+      console.log("Webshop ID: " + this.webshopId);
 
       if (this.webshopId == 0){
         document.cookie = "mcoo=1";
