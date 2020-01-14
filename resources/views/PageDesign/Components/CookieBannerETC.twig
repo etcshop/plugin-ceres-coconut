@@ -1,7 +1,7 @@
 {{ component( "Ceres::PageDesign.Components.TrackingETC" ) }}
 
 <script type="x/template" id="vue-cookie-banner">
-    <div> 
+    <div>
       <div id="CookieBanner_State"><input type="hidden" name="CookieBanner_StateInput" id="CookieBanner_StateInput" :value="cookieSessionStatus"></div>
       <div id="CookieBanner" v-if="cookieSessionStatus === -1">
         <div id="CookieBanner_Text">
@@ -40,7 +40,7 @@ Vue.component("cookie-banner", {
   methods: {
     Accepted()
     {
-      console.log(this.webshopId);
+      console.log("Webshop ID: " + this.webshopId);
 
       if (this.webshopId == 0){
         document.cookie = "mcoo=1";
@@ -53,7 +53,7 @@ Vue.component("cookie-banner", {
     },
     Declined()
     {
-      console.log(this.webshopId);
+      console.log("Webshop ID: " + this.webshopId);
 
       if (this.webshopId == 0){
         document.cookie = "mcoo=0";
