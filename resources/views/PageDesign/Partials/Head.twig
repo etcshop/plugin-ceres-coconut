@@ -8,6 +8,8 @@
 {% endif %}
 {% set lang = services.sessionStorage.getLang() %}
 
+<link href="https://fonts.googleapis.com/css?family=Hind+Guntur:300,400,500,600,700&display=swap" rel="stylesheet">
+
 {% set defaultCSS = plugin_path('Ceres') ~ "/css/ceres-legacy.css" %}
 
 {% if ceresConfig.global.favicon is empty %}
@@ -83,7 +85,23 @@
 {% set performanceLevel = config('Ceres.log.performance.level') %}
 {% set itemName = config('Ceres.item.name') %}
 
-  <link href="https://www.etc-shop.de/layout/ETCeres/css/startseite_crit.css" rel="stylesheet" type="text/css" />
+{% if webstoreConfig.webstoreId == 4 %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/themeETC.css" rel="stylesheet" type="text/css" />
+  <link href="https://www.etc-shop.de/layout/ETCeres/ml/css/em-minml.css" rel="stylesheet" type="text/css" />
+  <link href="https://www.etc-shop.de/layout/ETCeres/ml/css/ml.css" rel="stylesheet" type="text/css" />
+{% else %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/etcmain.css" rel="stylesheet" type="text/css" />
+{% endif %}
+{% if lang == "fr" %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/etc_fr.css" rel="stylesheet" type="text/css" />
+{% elseif lang == "en" %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/etc_en.css" rel="stylesheet" type="text/css" />
+{% endif %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+{% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
+    <link data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ plugin_path('Ceres') }}/css/ceres-legacy.scss" rel="stylesheet" href="{{ defaultCSS }}">
+{% endif %}
 
 {{ LayoutContainer.show("Ceres::Template.StyleOverwrite") }}
 
