@@ -47,10 +47,10 @@ Vue.component("cookie-banner", {
       console.log("Webshop ID: " + this.webshopId);
 
       if (this.webshopId == 0){
-        document.cookie = "mcoo=1;max-age=60*60*24*30";
+        document.cookie = "mcoo=1;max-age=60*60*24*60";
       }
       else {
-        document.cookie = "mlcoo=1;max-age=60*60*24*30";
+        document.cookie = "mlcoo=1;max-age=60*60*24*60";
       }
       this.getCookie();
       this.forceRerender();
