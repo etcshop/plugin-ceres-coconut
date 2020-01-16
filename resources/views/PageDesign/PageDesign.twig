@@ -570,5 +570,22 @@
 {% if not services.template.shouldBeCached() %}
     <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
 {% endif %}
+
+
+{% if webstoreConfig.webstoreId == 4 %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/themeETC.css" rel="stylesheet" type="text/css" />
+  <link href="https://www.etc-shop.de/layout/ETCeres/ml/css/em-minml.css" rel="stylesheet" type="text/css" />
+  <link href="https://www.etc-shop.de/layout/ETCeres/ml/css/ml.css" rel="stylesheet" type="text/css" />
+{% else %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/etcmain_crit.css" rel="stylesheet" type="text/css" />
+{% endif %}
+{% if lang == "fr" %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/etc_fr.css" rel="stylesheet" type="text/css" />
+{% elseif lang == "en" %}
+  <link href="https://www.etc-shop.de/layout/ETCeres/css/etc_en.css" rel="stylesheet" type="text/css" />
+{% endif %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 </body>
 </html>
