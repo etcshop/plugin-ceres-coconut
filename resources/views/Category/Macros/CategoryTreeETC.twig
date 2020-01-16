@@ -99,9 +99,9 @@
                         {% set cat =  services.category.get(category.id, lang) %}
                         {{ cat.details[0].description2 | raw }}
                   </div>
-                  <img src="" class="catpic hidden-xs" alt="">
+                  <img src="" class="catpic hidden-xs" alt="Kategorie">
                   {% else %}
-                    <img src="" class="catpic hidden-xs" alt="">
+                    <img src="" class="catpic hidden-xs" alt="Kategorie">
                     <div class="catinfo" style="margin-left: 162px;">
                           {% set cat =  services.category.get(category.id, lang) %}
                           {{ cat.details[0].description2 | raw }}

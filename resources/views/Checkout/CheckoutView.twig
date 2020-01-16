@@ -77,7 +77,6 @@
                       {{ LayoutContainer.show("Ceres::Checkout.BeforeBasketTotals") }}
                       <basket-totals class="m-b-2" template="#vue-basket-totals-checkoutETC"></basket-totals>
                       {{ LayoutContainer.show("Ceres::Checkout.AfterBasketTotals") }}
-                      <!--<img id="TrustedShops-Banner" src="https://www.etc-shop.de/img/base/trustedshops.jpg">-->
                       {{ LayoutContainer.show("Ceres::Checkout.BeforePlaceOrder") }}
                       <place-order template="#vue-place-orderETC" target-continue="{{ homepageURL }}{% if homepageURL | last != '/'%}/{% endif %}place-order{% if urls.appendTrailingSlash %}/{% endif %}" @payment-response="checkoutComp.showModal($event)"></place-order>
                       {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
