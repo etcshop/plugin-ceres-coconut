@@ -32,10 +32,6 @@
               <div class="owl-item" style="width: 200px;">
                 <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
                   <a href="{{ itemUrl }}">
-                    <!--
-                    <img class="lazyOwl center img-responsive id-{{ item.data.item.id }} js-link" id="pic-81013547" src="{{ item.data.images.all[0].urlPreview }}" alt="Bild"
-                    data-plenty="click:Redirect.to( '{{ item.data.images.all[0].urlPreview }}' )" style="display: inline-block;">
-                  -->
                       <category-image-carousel
                           template="#vue-category-image-carousel"
                           :image-urls-data="{{ item.data.images | json_encode() }} | itemImages('urlMiddle')"
