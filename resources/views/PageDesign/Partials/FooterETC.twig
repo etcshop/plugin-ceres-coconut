@@ -74,19 +74,19 @@
           <a href="{{ services.category.getURL(versand, lang) }}" title="{{ services.category.get(722, lang).details[0].name }}">{{ services.category.get(722, lang).details[0].name }}</a><br>
           {% if webstoreConfig.webstoreId == 4 %}
               {% if lang == "en" %}
-                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_en.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_en.php" target="_blank" title="Retourenportal" rel="noopener">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% elseif lang == "fr" %}
-                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_fr.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure_fr.php" target="_blank" title="Retourenportal" rel="noopener">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% else %}
-                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/MeineLampe/retoure.php" target="_blank" title="Retourenportal" rel="noopener">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% endif %}
           {% else %}
               {% if lang == "en" %}
-                  <a href="http://s141963554.online.de/retoure/voll/retoure_en.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/voll/retoure_en.php" target="_blank" title="Retourenportal" rel="noopener">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% elseif lang == "fr" %}
-                  <a href="http://s141963554.online.de/retoure/voll/retoure_fr.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/voll/retoure_fr.php" target="_blank" title="Retourenportal" rel="noopener">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% else %}
-                  <a href="http://s141963554.online.de/retoure/voll/retoure.php" target="_blank" title="Retourenportal">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
+                  <a href="http://s141963554.online.de/retoure/voll/retoure.php" target="_blank" title="Retourenportal" rel="noopener">{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</a><br>
               {% endif %}
           {% endif %}
           <br>
@@ -148,7 +148,7 @@
           {% if webstoreConfig.webstoreId == 4 %}
               <h1>{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl") }}</h1>
 
-              <a href="https://www.meinelampe.de" title="{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_De") }}">{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_De") }}</a><br>
+              <a href="https://www.meinelampe.de" rel="noopener" title="{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_De") }}">{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_De") }}</a><br>
               <a href="/en/" title="{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_En") }}">{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_En") }}</a><br>
               <a href="/fr/" title="{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_Fr") }}">{{ trans("CeresCoconut::Template.ML_Footer_Sprachauswahl_Fr") }}</a> <br>
           {% else %}
@@ -194,15 +194,15 @@
             {% endif %}
           {% else %}
             {% if lang == "de" %}
-              <a href="https://www.meinelampe.de/" target="_blank" title="MeineLampe">
+              <a href="https://www.meinelampe.de/" target="_blank" title="MeineLampe" rel="noopener">
                 <img ref="itemLazyImage" template="#vue-item-lazy-img" src="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg" alt="MeineLampe" title="Partnershop MeineLampe"></img>
               </a>
             {% elseif lang == "en" %}
-              <a href="https://www.meinelampe.de/en" target="_blank" title="MeineLampe">
+              <a href="https://www.meinelampe.de/en" target="_blank" title="MeineLampe" rel="noopener">
                 <img ref="itemLazyImage" template="#vue-item-lazy-img" src="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg" alt="MeineLampe" title="Partnershop MeineLampe"></img>
               </a>
             {% elseif lang == "fr" %}
-              <a href="https://www.meinelampe.de/fr" target="_blank" title="MeineLampe">
+              <a href="https://www.meinelampe.de/fr" target="_blank" title="MeineLampe" rel="noopener">
                 <img ref="itemLazyImage" template="#vue-item-lazy-img" src="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg" alt="MeineLampe" title="Partnershop MeineLampe"></img>
               </a>
             {% endif %}
