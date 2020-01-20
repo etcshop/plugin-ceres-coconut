@@ -15,30 +15,20 @@
         </span>
       </div>
       <div class="h-lg-2 h-md-3 h-sm-2 h-xs-6 PreviewImageBig">
-        <div class="previewImageSlider owl-carousel owl-theme" style="opacity: 1; display: block;">
-          <div class="owl-wrapper-outer">
-            <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
-                <div class="owl-item" style="width: 180px;">
-                  <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height">
                     <a :href="altUrl" v-if="altUrl">
                         <lazy-img
-                            class="img-basket-small img-fluid lazy"
+                            class="img-basket-small img-fluid"
                             :image-url="firstImageByPosition"
                             :alt="itemData.texts.name1">
                         </lazy-img>
                     </a>
                     <a :href="itemData | itemURL" v-else>
                         <lazy-img
-                            class="img-basket-small img-fluid lazy"
+                            class="img-basket-small img-fluid"
                             :image-url="firstImageByPosition"
                             :alt="itemData.texts.name1">
                         </lazy-img>
                     </a>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
       </div>
       <a class="name block" :href="altUrl" v-if="altUrl">${ itemData.texts.name1 }</a>
       <a class="name block" :href="itemData | itemURL" v-else>${ itemData.texts.name1 }</a>
