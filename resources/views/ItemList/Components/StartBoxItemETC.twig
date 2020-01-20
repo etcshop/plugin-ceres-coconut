@@ -29,7 +29,8 @@
                     <a :href="itemData | itemURL" v-else>
                         <lazy-img
                             class="img-basket-small img-fluid lazy"
-                            :image-url="firstImageByPosition">
+                            :image-url="firstImageByPosition"
+                            :alt="itemData.texts.name1">
                         </lazy-img>
                     </a>
                   </div>
