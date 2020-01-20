@@ -8,7 +8,7 @@
             {% if (child.details | length > 0) %}
                 <li class="level{{ level }}">
                     {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
-                    <a href="{{ newScope }}{{ urls.trailingSlashSuffix }}">{{ child.details[0].name }}</a>
+                    <a href="{{ newScope }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name }}">{{ child.details[0].name }}</a>
                     {% if child.children %}
                         {% if level == 1 %}<ul>{% endif %}
                         {{ childlist.get_children(child, newScope, level + 1) }}
@@ -54,7 +54,7 @@
 
             <div class="catLvl1 test1431">
               <!--<a class="Category_Link" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">-->
-              <a class="Category_Link">
+              <a class="Category_Link" title="{{ category.details[0].name | raw }}">
                 <li id="{{ category.id }}" rel="/documents/{{ category.details[0].imagePath }}">
                   {{ category.details[0].name | raw }}
                 </li>
@@ -70,7 +70,7 @@
                           <span class="hidden-xs">•</span>
                           <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                         </div>
-                        <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                        <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name | raw }}">
                           <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
                             {{ child.details[0].name | raw }}
                           </li>
@@ -83,7 +83,7 @@
                                   <span class="hidden-xs">•</span>
                                   <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                                 </div>
-                                <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                                <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child2.details[0].name | raw }}">
                                   <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
                                     {{ child2.details[0].name | raw }}
                                   </li>
@@ -114,7 +114,7 @@
                             <span class="hidden-xs">•</span>
                             <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                           </div>
-                          <a class="Category_Link" style="float: right!important; margin-right: 15px!important;" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                          <a class="Category_Link" style="float: right!important; margin-right: 15px!important;" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name | raw }}">
                             <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
                               {{ child.details[0].name | raw }}
                             </li>
@@ -127,7 +127,7 @@
                                     <span class="hidden-xs">•</span>
                                     <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                                   </div>
-                                  <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}">
+                                  <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child2.details[0].name | raw }}">
                                     <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
                                       {{ child2.details[0].name | raw }}
                                     </li>
@@ -170,7 +170,7 @@
         {% if category.details[0] %}
             <ul>
                 <li class="nav-item{% for breadcrumb in breadcrumbs %}{% if category.id == breadcrumb.id %} active{% endif %}{% endfor %}" v-update-sidenav-selection="$store.getters.breadcrumbs" data-category-id="{{ category.id }}">
-                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">{{ category.details[0].name }}</a>
+                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ category.details[0].name }}">{{ category.details[0].name }}</a>
                     {% if category.children is not empty %}
                         {{ sidemenu.get_sidemenu(breadcrumbs, category.children, urlNow) }}
                     {% endif %}
@@ -204,7 +204,7 @@
                     {% if issub == "true" %}
                       <input id="option-{{ category.id }}" type="checkbox" class="form-check-input hidden-xs-up">
                       <label for="option-{{ category.id }}" class="form-check-label">
-                        <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">
+                        <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ category.details[0].name }}">
                           <div class="CategoryCheckDivInactive"></div>
                           {{ category.details[0].name }}
                         </a>
@@ -265,7 +265,7 @@
                             <div class="form-check">
                               <input id="option-{{ subcategory.id }}" type="checkbox" class="form-check-input hidden-xs-up">
                               <label for="option-{{ subcategory.id }}" class="form-check-label">
-                                <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">
+                                <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ subcategory.details[0].name }}">
                                   <div class="CategoryCheckDivInactive"></div>
                                   {{ subcategory.details[0].name }}
                                 </a>
@@ -290,7 +290,7 @@
                           <div class="form-check">
                             <input id="option-{{ category.id }}" type="checkbox" class="form-check-input hidden-xs-up">
                             <label for="option-{{ category.id }}" class="form-check-label">
-                              <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link">
+                              <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ category.details[0].name }}">
                               {% if (category.details[0] and startcat.id == category.id) %}
                                 <div class="CategoryCheckDivActive"></div>
                               {% else %}
