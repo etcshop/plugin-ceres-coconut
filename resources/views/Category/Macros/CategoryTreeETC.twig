@@ -6,7 +6,7 @@
     {% if level < megaMenuLevels %}
         {% for child in category.children if counter < maxitems[level] %}
             {% if (child.details | length > 0) %}
-                <ul><li class="level{{ level }}">
+                <li class="level{{ level }}">
                     {% set newScope = currentScopeUrl ~ "/" ~ child.details[0].nameUrl %}
                     <a href="{{ newScope }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name }}">{{ child.details[0].name }}</a>
                     {% if child.children %}
@@ -14,10 +14,10 @@
                         {{ childlist.get_children(child, newScope, level + 1) }}
                         {% if level == 1 %}</ul>{% endif %}
                     {% endif %}
-                </li></ul>
+                </li>
                 {% set counter = counter + 1 %}
                 {% if counter == maxitems[level]%}
-                    <ul><li class="level{{ level }} bt-more"><a href="{{ currentScopeUrl }}">{{ trans("Ceres::Template.itemShowMore") }}...</a></li></ul>
+                    <li class="level{{ level }} bt-more"><a href="{{ currentScopeUrl }}">{{ trans("Ceres::Template.itemShowMore") }}...</a></li>
                 {% endif %}
             {% endif %}
         {% endfor %}
@@ -55,9 +55,9 @@
             <div class="catLvl1 test1431">
               <!--<a class="Category_Link" href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">-->
               <a class="Category_Link" title="{{ category.details[0].name | raw }}">
-                <ul><li id="{{ category.id }}" rel="/documents/{{ category.details[0].imagePath }}">
+                <li id="{{ category.id }}" rel="/documents/{{ category.details[0].imagePath }}">
                   {{ category.details[0].name | raw }}
-                </li></ul>
+                </li>
               </a>
               {% if category.children and translatedChildren > 0 %}
                 <div class="subcat_container" id="subcat_{{ category.id }}">
@@ -71,9 +71,9 @@
                           <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                         </div>
                         <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name | raw }}">
-                          <ul><li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
+                          <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
                             {{ child.details[0].name | raw }}
-                          </li></ul>
+                          </li>
                         </a>
                         {% if child.children > 0 %}
                           <div class="sub2cat">
@@ -84,9 +84,9 @@
                                   <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                                 </div>
                                 <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child2.details[0].name | raw }}">
-                                  <ul><li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
+                                  <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
                                     {{ child2.details[0].name | raw }}
-                                  </li></ul>
+                                  </li>
                                 </a>
                               </div>
                             {% endfor %}
@@ -115,9 +115,9 @@
                             <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                           </div>
                           <a class="Category_Link" style="float: right!important; margin-right: 15px!important;" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name | raw }}">
-                            <ul><li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
+                            <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
                               {{ child.details[0].name | raw }}
-                            </li></ul>
+                            </li>
                           </a>
                           {% if child.children > 0 %}
                             <div class="sub2cat">
@@ -128,9 +128,9 @@
                                     <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
                                   </div>
                                   <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child2.details[0].name | raw }}">
-                                    <ul><li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
+                                    <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
                                       {{ child2.details[0].name | raw }}
-                                    </li></ul>
+                                    </li>
                                   </a>
                                 </div>
                               {% endfor %}
@@ -153,7 +153,7 @@
     {% endfor %}
       <div class="catLvl1 menu_bargain TESTETC0900">
         <a href="{{ topsellerURL }}" class="Category_Link" title="Top Seller">
-          <ul><li>Top Seller</li></ul>
+          <li>Top Seller</li>
         </a>
       </div>
 {% endmacro %}
