@@ -2,13 +2,17 @@
 {% set homepageURL = services.url.getHomepageURL() %}
 
 {% if categoryBreadcrumbs is not empty %}
-    <div class="breadcrumbs_main firstBreadcrumbContainer" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <div class="breadcrumbs_main firstBreadcrumbContainer">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12 breadcrumbs_container">
-            <ol class="breadcrumbs">
-              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
-              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_Start") }}</a></li>
+            <ol class="breadcrumbs" itemscope itemtype="http://data-vocabulary.org/BreadcrumbList">
+              <li id="Breadcrumbs_back" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a title="zurück" itemprop="item"><span itemprop="name">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_zurueck") }}</<span></a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+              </li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="/" title="Startseite" itemprop="item"><span itemprop="name">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_Start") }}</span></a>
+              </li>
               {% set break = false %}
               {% for category in categoryBreadcrumbs[:categoryBreadcrumbs | length ] if not break %}
                 {% if category.parentCategoryId != null %}
@@ -16,9 +20,9 @@
                 {% endif %}
                 {% if category.details[0] %}
                   {% if category.details[0].name != "pages" %}
-                    <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
-                      <a href="{{ services.category.getURLById( category.id ) }}" {{ firstcrumb }}  class="firstCrumb" title="{{ category.details[0].name }}" itemprop="url">
-                        <span itemprop="title">{{ category.details[0].name }}</span>
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+                      <a href="{{ services.category.getURLById( category.id ) }}" {{ firstcrumb }}  class="firstCrumb" title="{{ category.details[0].name }}" itemprop="item">
+                        <span itemprop="name">{{ category.details[0].name }}</span>
                       </a>
                     </li>
                   {% endif %}
