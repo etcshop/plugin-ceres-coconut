@@ -151,7 +151,11 @@
                     <!-- ENDE BELBOON BASKET TRACKING -->
                     {% if data.order.referrerId == 10 %}
                       <!-- BEGIN BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
-                      <img src="//pluto.r.powuta.com/ts/i5534189/tsa?typ=i&trc=default&ctg=sale&sid=check-out&cid={{ data.order.id }}&orv={{ data.order.amounts[0].netTotal }}&orc=EUR" width="1" height="1" border="0" style="display:none;">
+                      {% if webstoreConfig.webstoreId == 0 %}
+                        <img src="//pluto.r.powuta.com/ts/i5534189/tsa?typ=i&trc=default&ctg=sale&sid=check-out&cid={{ data.order.id }}&orv={{ data.order.amounts[0].netTotal }}&orc=EUR" width="1" height="1" border="0" style="display:none;">
+                      {% else %}
+                        <img src="//luna.r.lafamo.com/ts/i5533977/tsa?typ=i&trc=default&ctg=sale&sid=check-out&cid={{ data.order.id }}&orv={{ data.order.amounts[0].netTotal }}&orc=EUR" width="1" height="1" border="0" style="display:none;">
+                      {% endif %}
                       <!-- END BELBOON - PERFORMANCE MARKETING NETWORK TRACKING CODE -->
                     {% endif %}
                   {% endif %}
