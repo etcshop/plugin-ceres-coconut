@@ -28,7 +28,8 @@
          <div class="CRImage"><label for="CRItem81059894"><img :src="getLastItemURL(item.data.images.all)" data-plenty="UI.initLazyload(this, 'fadeIn')" style="display: inline-block;" alt="Energieeffizienzklasse"></label></div>
          <div class="CRName"><label for="CRItem81059894">${ item.data.texts.name3 }</label></div>
          <div class="CREEK"><img :src="getEEK(item.data.properties)" alt="Energieeffizienzklasse"></div>
-         <div class="CRLabel" style="display: none;">
+
+         <div class="CRLabel" style="display: none;" v-if="getLabelUrl(item.data.properties)">
             <div class="CloseCREEK hidden-lg"><span class="link PlentyGuiIcon TabCloseButton" title="Close Tab" id="DisplayOrders_2379904_liElement_closeButton"></span></div>
             <img :src="getLabelUrl(item.data.properties)" alt="Energieeffizienzklasse">
          </div>
@@ -91,7 +92,8 @@ Vue.component("container-item-list-direct-cross", {
     getLabelUrl: function getLabelUrl(itemProperties) {
       for (var i = 0; i < itemProperties.length; i++) {
         if (itemProperties[i].group.backendName == "Energieeffizienzklasse") {
-          if (itemProperties[i].property.backendName == "Label") return itemProperties[i].texts.value;
+          if (itemProperties[i].property.backendName == "Label")
+            return itemProperties[i].texts.value;
         }
       }
 
