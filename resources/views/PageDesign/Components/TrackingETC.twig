@@ -2,6 +2,25 @@
 
 <script type="x/template" id="vue-tracking">
     <div>
+      <link rel="preconnect" href="https://payments.amazon.de">
+      <link rel="preconnect" href="https://payments-de.amazon.com">
+      <link rel="preconnect" href="https://googleads.g.doubleclick.net">
+      <link rel="preconnect" href="https://ad.ad-srv.net">
+      <link rel="preconnect" href="https://pikkasrv.com">
+      <link rel="preconnect" href="https://www.googletagmanager.com">
+      <link rel="preconnect" href="https://www.googleadservices.com">
+      <link rel="preconnect" href="https://ad.doubleclick.net">
+      <link rel="preconnect" href="https://www.google-analytics.com">
+      <link rel="preconnect" href="https://www.google.com">
+      <link rel="preconnect" href="https://adservice.google.com">
+      <link rel="preconnect" href="https://tr.fatmedia.io">
+      <link rel="preconnect" href="https://d23yuld0pofhhw.cloudfront.net">
+      <link rel="preconnect" href="https://tr.mediards.de">
+      <link rel="preconnect" href="https://tr.mediards.com">
+      <link rel="preconnect" href="https://stats.g.doubleclick.net">
+      <link rel="preconnect" href="https://www.google.de">
+      <link rel="preconnect" href="https://widgets.trustedshops.com">
+      
       {% set currTpl = services.template.getCurrentTemplate() %}
       <div style="display: none">{{ currTpl }}</div>
       <div v-if="cookieStatus == 1">
