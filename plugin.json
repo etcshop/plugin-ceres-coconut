@@ -54,8 +54,8 @@
             "description"   : "Bereich für das Feedback-Plugin"
         },
         {
-            "key"           : "General.Scripts",
-            "name"          : "General: Scripts",
+            "key"           : "Payment.Scripts",
+            "name"          : "Payment: Scripts",
             "description"   : "Bereich für Scripte, die nicht überall geladen werden sollen."
         }
     ]
