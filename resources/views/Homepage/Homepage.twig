@@ -31,6 +31,7 @@
 
 {{ component( "Ceres::Containers.Components.ContainerStartBoxItemListETC" ) }}
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
+{{ component( "Ceres::Components.common.LazyImg" ) }}
 
 {% set currentLang = services.sessionStorage.getLang() %}
 {% set homepageJson = getExternalContent("https://cdn02.plentymarkets.com/pmsbpnokwu6a/plugin/production/marketingresource/js/HomepageContent.json") %}
@@ -128,7 +129,14 @@
                                 <!-- Mobile -->
                                 <source srcset="{{ slider2.url | replace({'.jpg': '-480.jpg'}) }}">
                                 <!-- Fallback (Desktop) -->
-                                <img class="lazy-owl" data-src="{{ slider2.url }}" src="{{ slider2.url }}" alt="Special 2">
+                                <lazy-img
+                                    class="lazy-owl"
+                                    :image-url="slider2.url"
+                                    :alt="Special 2"
+                                    :title="getAltText(imageUrl)"
+                                    data-src="{{ slider2.url }}"
+                                    v-if="index === 0 && !disableLazyLoad" >
+                                </lazy-img>
                               </picture>
                         </a>
                         <div class="carousel-caption">
@@ -162,54 +170,6 @@
             <a class="right carousel-control carousel-control-next" href="#carousel-example" data-slide="next" title="Vor"><i
                         class="icon-next fa fa-angle-right"></i></a>
         </div>
-        <!--
-         <div class="contentpageSlider owl-carousel owl-theme" style="opacity: 1; display: block;">
-            <div class="owl-wrapper-outer">
-               <div class="" style="width: 1480px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px); transition: all 0ms ease 0s;">
-                  <div class="owl-item" style="width: 1920px;">
-                     <div class="slide slide-1">
-                        <a href="https://www.etc-shop.de/audio-technik/dj-equipment/mobile-anlagen/" title="Mobile Anlagen">
-                           <picture>
-                              <source media="(min-width: 992px)" srcset="https://www.etc-shop.de//layout/content/kampagnen/kw01-19/content_start_slider1_1920_de.jpg">
-                              <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider1_992_de.jpg">
-                              <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider1_768_de.jpg">
-                              <source srcset="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider1_480_de.jpg">
-                              <img class="" data-src="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider1_1920_de.jpg" src="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider1_1920_de.jpg">
-                           </picture>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="owl-item" style="width: 370px;">
-                     <div class="slide slide-2">
-                        <a href="https://www.etc-shop.de/lampen-moebel/leuchtmittel/?multishop_id=0&amp;group%5B0%5D=1&amp;service=selector&amp;Params%5BSearchParam%5D=&amp;count=0&amp;attrib%5BFunktion%5D%5B0%5D=Vintage&amp;first=0" title="Leuchtmittel">
-                           <picture>
-                              <source media="(min-width: 992px)" srcset="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider2_1920_de.jpg">
-                              <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider2_992_de.jpg">
-                              <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider2_768_de.jpg">
-                              <source srcset="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider2_480_de.jpg">
-                              <img class="" data-src="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider2_1920_de.jpg" src="https://www.etc-shop.de/layout/content/kampagnen/kw01-19/content_start_slider2_1920_de.jpg">
-                           </picture>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="owl-controls clickable">
-               <div class="owl-pagination">
-                  <div class="owl-page active">
-                     <span class=""></span>
-                  </div>
-                  <div class="owl-page">
-                     <span class=""></span>
-                  </div>
-               </div>
-               <div class="owl-buttons">
-                  <div class="owl-prev"></div>
-                  <div class="owl-next"></div>
-               </div>
-            </div>
-         </div>
-       -->
 
 
       {% set itemsLastSeen = services.itemList.getItemList( "last_seen", config("CeresCoconut.homepage.cntStartDeP2B1Value"), "variation.position_asc",1 ).documents %}
@@ -361,7 +321,14 @@
                 <!-- Mobile -->
                 <source srcset="{{ picP3S1 | replace({'.jpg': '-480.jpg'}) }}">
                 <!-- Fallback (Desktop) -->
-                <img class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-src="{{ picP3S1 }}" src="{{ picP3S1 }}" alt="{{ altP3S1 }}">
+                <lazy-img
+                    class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                    :image-url="picP3S1"
+                    :alt="altP3S1"
+                    :title="altP3S1"
+                    data-src="{{ picP3S1 }}"
+                    v-if="index === 0 && !disableLazyLoad" >
+                </lazy-img>
               </picture>
 
             </a>
