@@ -3,7 +3,6 @@
     <title>{{ config("Ceres.header.company_name") }} - {{ category.details[0].name }}</title>
 {% endblock %}
 {% block PageBody %}
-<div style="display: none">TEST</div>
     {% set shopBuilderTemplate = shop_builder_category_template(category.id) %}
     {% if shopBuilderTemplate | trim is not empty %}
         <div class="container-max">

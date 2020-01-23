@@ -136,23 +136,6 @@
           {% include getPartial('header') %}
       {% endif %}
 
-          <div style="display: none; height: 100px; width: 100px; position: absolute; background-color: #F00; z-index: 111111111111111;">
-            {% set ETCUri = request.getRequestUri() %}
-            Request-URI (Funktion): {{ request.getRequestUri() }}
-            Request-URI (Variable): {{ ETCUri }}
-
-            {% if ("/en/confirmation" in ETCUri) or ("/fr/confirmation" in ETCUri) %}
-              <script>window.location.href = "{{ ETCUri }}";</script>
-            {% endif %}
-
-            {{ canonicalUrl }}
-            Aktuelles Template: {{ currTpl }}<br>
-            <br>
-            CookieState = {{ cookieState }}
-
-
-
-          </div>
         <div class="content">
           <div class="container_centered">
 
@@ -318,7 +301,6 @@
         {% endblock %}
 
         <input type="hidden" name="CookieBanner_StateInputPD" id="CookieBanner_StateInputPD">
-        <div style="display: none;"> {{ webstoreConfig.webstoreId }} </div>
         <cookie-banner :webshop-id="{{ webstoreConfig.webstoreId }}"></cookie-banner>
     </div>
 

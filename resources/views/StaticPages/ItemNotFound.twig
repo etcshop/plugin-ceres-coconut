@@ -1,11 +1,9 @@
 
 <div id="ItemNotFound_Plenty">
   <div id="ItemNotFound_Plenty_Inner">
-    <div style="display: none">{% set canonicalUrl = services.url.getCanonicalURL() %}</div>
     <div class="ContentCaption">{{ trans("CeresCoconut::Template.ETC_ItemNotFoundHead") }}</div>
     <span style="font-size: 14px;">{{ trans("CeresCoconut::Template.ETC_ItemNotFoundText", {"searchString": searchString}) }}</span>
     {% set itemListX = services.itemList.getItemList("category", 429, "variation.position_desc", 50).documents %}
-    <div style="display: none;">{{ itemListX | json_encode }}</div>
     <ul class="row isGridView categoryDetails" id="twig-rendered-item-list">
       {% for item in itemListX %}
         {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}

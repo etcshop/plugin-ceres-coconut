@@ -20,9 +20,8 @@
       <link rel="preconnect" href="https://stats.g.doubleclick.net">
       <link rel="preconnect" href="https://www.google.de">
       <link rel="preconnect" href="https://widgets.trustedshops.com">
-      
+
       {% set currTpl = services.template.getCurrentTemplate() %}
-      <div style="display: none">{{ currTpl }}</div>
       <div v-if="cookieStatus == 1">
           <!-- ################BELBOON TRACKING################-->
           {% if services.template.isHome() %}

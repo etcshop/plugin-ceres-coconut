@@ -51,7 +51,6 @@
       :billing-address-list="{{ services.customer.getAddresses(1) | json_encode }}"
       :selected-billing-address="{{ services.checkout.getBillingAddressId() | json_encode }}">
       <div class="checkout checkout-content checkout-tabpanel" slot-scope="checkoutComp">
-        <div style="display: none;">{{ checkout | json_encode() }}</div>
         <div class="container" id="checkoutPanelConfirm" aria-labelöledby="checkoutTabConfirm" role="tabpanel" style="display: block;">
           <div class="row">
             <div id="ContentOrderOverview" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-r-0">

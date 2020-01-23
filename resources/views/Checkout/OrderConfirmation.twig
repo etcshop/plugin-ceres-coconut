@@ -13,7 +13,6 @@
 
     {% set overrideConfirmation = LayoutContainer.show("Ceres::OrderConfirmation.Override") %}
     {% set addContentAfterOrderDetailsRow = LayoutContainer.show("Ceres::OrderConfirmation.AddContentAfterOrderDetailsRow") %}
-    <div style="display: none">{{ codedMail | url_encode}}</div>
 
     {% if overrideConfirmation|trim is empty %}
         <div class="page-content myaccount container-max m-t-1 p-b-3" id="OrderConfirmation_Container">
@@ -31,7 +30,6 @@
 
             {{ LayoutContainer.show("Ceres::OrderConfirmation.BeforeOrderDetails", data.order) }}
 
-              <div style="display: none;">{{ data | json_encode }}</div>
             {% include "CeresCoconut::Checkout.OrderDetails" with { orderData: data } %}
 
             <div class="row rowTrustedShops">
@@ -56,7 +54,6 @@
             </div>
             {% endif %}
             <div class="row rowBottomButtons" id="OrderConfirmation_Bottom_Buttons">
-              <div style="display: none;" id="testHerkunft">{{ data.order.referrerId }}</div>
                 {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
                 <div id="OrderConfirmation_ToHomeButton" class="col-xs-6 col-md-4 {% if loggedIn %}offset-md-2{% else %}offset-xs-3 offset-md-4{% endif %}">
                     <a v-waiting-animation-infinite href="{{ homepageURL }}" type="" class="btn btn-primary btn-block bg-primary">
@@ -78,11 +75,9 @@
 
         </div>
     {% else %}
-      <div style="display: none"></div>
 
 
         {{ overrideConfirmation }}
     {% endif %}
-      <div style="display: none">{{ data.order | json_encode }}</div>
 
 {% endblock %}
