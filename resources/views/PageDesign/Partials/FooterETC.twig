@@ -111,7 +111,11 @@
               <a href="{{ services.category.getURL(top, lang) }}" title="{{ services.category.get(378, lang).details[0].name }}">{{ services.category.get(378, lang).details[0].name }}</a> <br>
           {% else %}
             <div class="footersub footer_tslogo test1157">
-              <img ref="itemLazyImage" template="#vue-item-lazy-img" src="https://www.etc-shop.de/img/base/ts.png" alt="Trusted Shops" title="Käuferschutz"></img>
+              <lazy-img
+                  id="TSBadge"
+                  :image-url="https://www.etc-shop.de/img/base/ts.png"
+                  :alt="Trusted Shops">
+              </lazy-img>
             </div>
             <div class="footersub footer_tstext"> {{ trans("CeresCoconut::Template.ETC_Zertifiziert") }}<br>
               <br>
@@ -199,15 +203,27 @@
           {% else %}
             {% if lang == "de" %}
               <a href="https://www.meinelampe.de/" target="_blank" title="MeineLampe" rel="noopener">
-                <img ref="itemLazyImage" template="#vue-item-lazy-img" src="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg" alt="MeineLampe" title="Partnershop MeineLampe"></img>
+                <lazy-img
+                    id="TSBadge"
+                    :image-url="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg"
+                    :alt="MeineLampe">
+                </lazy-img>
               </a>
             {% elseif lang == "en" %}
               <a href="https://www.meinelampe.de/en" target="_blank" title="MeineLampe" rel="noopener">
-                <img ref="itemLazyImage" template="#vue-item-lazy-img" src="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg" alt="MeineLampe" title="Partnershop MeineLampe"></img>
+                <lazy-img
+                    id="TSBadge"
+                    :image-url="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg"
+                    :alt="MeineLampe">
+                </lazy-img>
               </a>
             {% elseif lang == "fr" %}
               <a href="https://www.meinelampe.de/fr" target="_blank" title="MeineLampe" rel="noopener">
-                <img ref="itemLazyImage" template="#vue-item-lazy-img" src="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg" alt="MeineLampe" title="Partnershop MeineLampe"></img>
+                <lazy-img
+                    id="TSBadge"
+                    :image-url="https://www.etc-shop.de/layout/ETCeres/img/base/footer_meinelampe.jpg"
+                    :alt="MeineLampe">
+                </lazy-img>
               </a>
             {% endif %}
           {% endif %}
