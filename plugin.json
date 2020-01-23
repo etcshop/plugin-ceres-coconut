@@ -52,6 +52,11 @@
             "key"           : "SingleItem.FeedbackContainer",
             "name"          : "SingleItem: FeedbackContainer",
             "description"   : "Bereich für das Feedback-Plugin"
+        },
+        {
+            "key"           : "General.Scripts",
+            "name"          : "General: Scripts",
+            "description"   : "Bereich für Scripte, die nicht überall geladen werden sollen."
         }
     ]
 }
