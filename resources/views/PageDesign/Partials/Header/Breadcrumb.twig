@@ -52,12 +52,26 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
-            <ol class="breadcrumbs">
-              <li id="Breadcrumbs_back"><a title="zurück">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_zurueck") }}</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;</li>
-              <li itemprop="title"><a href="/" title="Startseite" itemprop="url">{{ trans("CeresCoconut::Template.ETC_Breadcrumbs_Start") }}</a></li>
-              <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
-                <a href="#" title="{{ brNameAdd }}" itemprop="url">
-                  <span itemprop="title">{{ brNameAdd }}</span>
+            <ol class="breadcrumbs" itemscope itemtype="http://data-vocabulary.org/BreadcrumbList">
+              <li id="Breadcrumbs_back" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a title="zurück" itemprop="item">
+                  <span itemprop="name">
+                    {{ trans("CeresCoconut::Template.ETC_Breadcrumbs_zurueck") }}
+                  </span>
+                </a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+              </li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="/" title="Startseite" itemprop="item">
+                  <span itemprop="name">
+                    {{ trans("CeresCoconut::Template.ETC_Breadcrumbs_Start") }}
+                  </span>
+                </a>
+              </li>
+              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+                <a href="#" title="{{ brNameAdd }}" itemprop="item">
+                  <span itemprop="name">
+                    {{ brNameAdd }}
+                  </span>
                 </a>
               </li>
             </ol>
