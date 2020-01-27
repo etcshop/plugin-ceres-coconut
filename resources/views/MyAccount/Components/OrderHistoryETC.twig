@@ -68,6 +68,7 @@
                                             <span class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderHistoryPaymentStatus") }}</span>
                                             <span class="col-xs-6 col-sm-7" id="payment_state_{{ entry.order.id }}">
                                                 {% for propertyKey in entry.order.properties %}
+                                                  <div style="display: none">{{ entry.order.properties | json_encode }}</div>
                                                     {% if entry.order.properties[loop.index0].typeId == 4 %}
                                                         {% set paymentStatus = entry.order.properties[loop.index0].value %}
                                                         {{ trans("Ceres::Template.orderHistoryPaymentStatus_" ~ entry.order.properties[loop.index0].value) }}
