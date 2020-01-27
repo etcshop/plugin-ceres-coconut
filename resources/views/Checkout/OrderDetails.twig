@@ -92,13 +92,6 @@
                         {% endfor %}
                     </div>
 
-                    <div class="row PaymentComment {{ ETC_reference }} {{ paymentMethodId }}">
-                      {% if (ETC_reference != "") && (paymentMethodId == 5100) %}
-                        <span class="col-xs-6 col-sm-5"></span>
-                        <span class="col-xs-6 col-sm-7">{{ trans("CeresCoconut::Template.orderHistoryPaymentMethodComment") }}</span>
-                      {% endif %}
-                    </div>
-
                     {% set currentTemplate = services.template.getCurrentTemplate() %}
 
                     {% if paymentMethoId != -1 and showAdditionalPaymentInformation == true %}
