@@ -83,11 +83,12 @@
                                             </span>
                                         </div>
 
-                                        {% if reference != "" && paymentMethodId == 5100 %}
-                                            <div class="row">
-                                                <span class="col-xs-6 col-sm-5"></span>
-                                                <span class="col-xs-6 col-sm-7"">{{ trans("Ceres::Template.orderHistoryPaymentMethodComment") }}</span>
-                                            </div>
+                                        <div class="row {{ reference }} {{ paymentMethodId }}">
+                                          {% if reference != "" && paymentMethodId == 5100 %}
+                                            <span class="col-xs-6 col-sm-5"></span>
+                                            <span class="col-xs-6 col-sm-7">{{ trans("Ceres::Template.orderHistoryPaymentMethodComment") }}</span>
+                                          {% endif %}
+                                        </div>
                                     </div>
 
                                     {% set currentTemplate = services.template.getCurrentTemplate() %}
