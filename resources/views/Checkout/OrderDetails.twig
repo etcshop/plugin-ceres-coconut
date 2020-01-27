@@ -92,6 +92,11 @@
                         {% endfor %}
                     </div>
 
+                    <div class="row PaymentComment {{ ETC_reference }} {{ paymentMethodId }}">
+                        <span class="col-xs-6 col-sm-5"></span>
+                        <span class="col-xs-6 col-sm-7">{{ trans("CeresCoconut::Template.orderHistoryPaymentMethodComment") }}</span>
+                    </div>
+
                     {% set currentTemplate = services.template.getCurrentTemplate() %}
 
                     {% if paymentMethoId != -1 and showAdditionalPaymentInformation == true %}
