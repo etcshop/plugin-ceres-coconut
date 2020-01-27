@@ -68,7 +68,7 @@
                 <div>
                     <div class="row">
                         <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</strong>
-                        <div style="display: none">{{ orderData | json_encode }}
+                        <div style="display: none">{{ orderData | json_encode }}</div>
                         <span class="col-xs-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
                     </div>
                     <div class="row">
@@ -77,6 +77,7 @@
                         {% for propertyKey in orderData.order.properties %}
 
                           <div style="display: none">{{ orderData.order.properties | json_encode }}</div>
+
                             {% if orderData.order.properties[loop.index0].typeId == 4 %}
                                 {% set paymentStatus = entry.order.properties[loop.index0].value %}
                                 <span class="col-xs-6 col-sm-7" id="payment_state_{{ orderData.order.id }}">{{ trans("Ceres::Template.orderConfirmationPaymentStatus_" ~ orderData.order.properties[loop.index0].value) }}</span>
@@ -85,7 +86,9 @@
                             {% endif %}
                         {% endfor %}
                     </div>
+                    <div class="row">
 
+                    </div>
                     {% set currentTemplate = services.template.getCurrentTemplate() %}
 
                     {% if paymentMethoId != -1 and showAdditionalPaymentInformation == true %}

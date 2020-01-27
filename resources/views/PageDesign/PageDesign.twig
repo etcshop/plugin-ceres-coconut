@@ -49,7 +49,7 @@
     <div style="display: none; height: 100px; width: 100px; position: absolute; background-color: #F00; z-index: 111111111111111;">
       {% set ETCUri = request.getRequestUri() %}
       Request-URI (Funktion): {{ request.getRequestUri() }}
-      Request-URI (Variable): {{ ETCUri }}	
+      Request-URI (Variable): {{ ETCUri }}
 
       {% if ("/en/confirmation" in ETCUri) or ("/fr/confirmation" in ETCUri) %}
         <script>window.location.href = "{{ ETCUri }}";</script>
@@ -383,7 +383,6 @@
 </script>
 
 {{ Loader.include_components() }}
-{{ LayoutContainer.show("Ceres::Script.Loader") }}
 
 {{ Translations.add( "Ceres", "Template" ) }}
 
