@@ -94,7 +94,7 @@
 
                     <div class="row PaymentComment {{ ETC_reference }} {{ paymentMethodId }}">
                       {% if (ETC_reference != "") and (paymentMethodId == 6003) %}
-                        <span class="col-xs-6 col-sm-5"></span>
+                        <strong class="col-xs-6 col-sm-5">{{ trans("CeresCoconut::Template.orderHistoryPaymentStatusCommentLabel") }}</strong>
                         <span class="col-xs-6 col-sm-7"> {{ trans("CeresCoconut::Template.orderHistoryPaymentStatusComment") }}</span>
                       {% endif %}
                     </div>
