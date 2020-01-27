@@ -74,6 +74,8 @@
                         <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</strong>
                         {% set paymentMethodId = -1 %}
                         {% for propertyKey in orderData.order.properties %}
+
+                          <div style="display: none">{{ orderData.order.properties | json_encode }}</div>
                             {% if orderData.order.properties[loop.index0].typeId == 4 %}
                                 {% set paymentStatus = entry.order.properties[loop.index0].value %}
                                 <span class="col-xs-6 col-sm-7" id="payment_state_{{ orderData.order.id }}">{{ trans("Ceres::Template.orderConfirmationPaymentStatus_" ~ orderData.order.properties[loop.index0].value) }}</span>
