@@ -68,6 +68,7 @@
                 <div>
                     <div class="row">
                         <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentMethod") }}</strong>
+                        <div style="display: none">{{ orderData | json_encode }}
                         <span class="col-xs-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
                     </div>
                     <div class="row">
