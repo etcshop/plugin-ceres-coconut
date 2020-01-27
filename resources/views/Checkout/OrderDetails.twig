@@ -84,11 +84,19 @@
                             {% elseif orderData.order.properties[loop.index0].typeId == 3 %}
                                 {% set paymentMethodId = orderData.order.properties[loop.index0].value %}
                             {% endif %}
+                            {% if orderData.order.properties[loop.index0].typeId == 7 %}
+                                {% set reference = orderData.order.properties[loop.index0].value %}
+                            {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="row">
 
+                    <div class="row {{ reference }} {{ paymentMethodId }}">
+                      {% if reference != "" && paymentMethodId == 5100 %}
+                        <span class="col-xs-6 col-sm-5"></span>
+                        <span class="col-xs-6 col-sm-7">{{ trans("Ceres::Template.orderHistoryPaymentMethodComment") }}</span>
+                      {% endif %}
                     </div>
+
                     {% set currentTemplate = services.template.getCurrentTemplate() %}
 
                     {% if paymentMethoId != -1 and showAdditionalPaymentInformation == true %}
