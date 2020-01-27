@@ -71,6 +71,8 @@
                         <div style="display: none">{{ orderData | json_encode }}</div>
                         <span class="col-xs-6 col-sm-7" id="payment_name_{{ orderData.order.id }}">{{ orderData.paymentMethodName }}</span>
                     </div>
+                    {% set paymentMethodId = -1 %}
+                    {% set ETC_reference = "" %}
                     <div class="row">
                         <strong class="col-xs-6 col-sm-5">{{ trans("Ceres::Template.orderConfirmationPaymentStatus") }}</strong>
                         {% set paymentMethodId = -1 %}
@@ -85,15 +87,15 @@
                                 {% set paymentMethodId = orderData.order.properties[loop.index0].value %}
                             {% endif %}
                             {% if orderData.order.properties[loop.index0].typeId == 7 %}
-                                {% set reference = orderData.order.properties[loop.index0].value %}
+                                {% set ETC_reference = orderData.order.properties[loop.index0].value %}
                             {% endif %}
                         {% endfor %}
                     </div>
 
-                    <div class="row PaymentComment {{ reference }} {{ paymentMethodId }}">
-                      {% if reference != "" && paymentMethodId == 5100 %}
+                    <div class="row PaymentComment {{ ETC_reference }} {{ paymentMethodId }}">
+                      {% if (ETC_reference != "") && (paymentMethodId == 5100) %}
                         <span class="col-xs-6 col-sm-5"></span>
-                        <span class="col-xs-6 col-sm-7">{{ trans("Ceres::Template.orderHistoryPaymentMethodComment") }}</span>
+                        <span class="col-xs-6 col-sm-7">{{ trans("CeresCoconut::Template.orderHistoryPaymentMethodComment") }}</span>
                       {% endif %}
                     </div>
 
