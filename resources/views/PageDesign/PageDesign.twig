@@ -46,6 +46,20 @@
 
   {{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
   <div id="vue-app">
+    <div style="display: none; height: 100px; width: 100px; position: absolute; background-color: #F00; z-index: 111111111111111;">
+      {% set ETCUri = request.getRequestUri() %}
+      Request-URI (Funktion): {{ request.getRequestUri() }}
+      Request-URI (Variable): {{ ETCUri }}	
+
+      {% if ("/en/confirmation" in ETCUri) or ("/fr/confirmation" in ETCUri) %}
+        <script>window.location.href = "{{ ETCUri }}";</script>
+      {% endif %}
+
+      {{ canonicalUrl }}
+      Aktuelles Template: {{ currTpl }}<br>
+      <br>
+      CookieState = {{ cookieState }}
+    </div>
     <div class="wrapper wrapper-top testdev1525">
         <!-- messages -->
         <notifications template="#vue-notifications" :initial-notifications="{{ notifications | json_encode() }}"></notifications>
