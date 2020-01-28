@@ -60,6 +60,7 @@
       <br>
       CookieState = {{ cookieState }}
     </div>
+
     <div class="wrapper wrapper-top testdev1525">
         <!-- messages -->
         <notifications template="#vue-notifications" :initial-notifications="{{ notifications | json_encode() }}"></notifications>
@@ -385,6 +386,10 @@
 {{ Loader.include_components() }}
 
 {{ LayoutContainer.show("Ceres::Script.Loader") }}
+
+{% if ("/amazon-checkout" in ETCUri) %}
+  {{ LayoutContainer.show("CeresCoconut::Payment.Scripts") }}
+{% endif %}
 
 {{ Translations.add( "Ceres", "Template" ) }}
 
