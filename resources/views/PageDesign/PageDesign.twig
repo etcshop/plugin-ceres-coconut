@@ -388,8 +388,9 @@
 {{ LayoutContainer.show("Ceres::Script.Loader") }}
 
 {% if ("/amazon-checkout" in ETCUri) %}
-  <div style="display: none">Layoutcontainer anzeigen</div>
+  <div style="display: none">Layoutcontainer Anfang</div>
   {{ LayoutContainer.show("CeresCoconut::Payment.Scripts") }}
+  <div style="display: none">Layoutcontainer Ende</div>
 {% endif %}
 
 {{ Translations.add( "Ceres", "Template" ) }}
