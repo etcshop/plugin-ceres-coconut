@@ -40,6 +40,10 @@
     {% endfor %}
 
 
+    {% if ("/amazon-checkout" in request.getRequestUri()) or ("/amazon-login-processing" in request.getRequestUri()) or ("/amazon" in request.getRequestUri()) %}
+      <title>Amazon Checkout - ETC Shop</title>
+    {% endif %}
+
 </head>
 
 <body>
