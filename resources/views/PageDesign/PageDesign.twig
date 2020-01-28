@@ -387,7 +387,7 @@
 
 {{ LayoutContainer.show("Ceres::Script.Loader") }}
 
-{% if ("/amazon-checkout" in ETCUri) %}
+{% if ("/amazon-checkout" in ETCUri) or ("/amazon-login-processing" in ETCUri) or ("/amazon" in ETCUri) %}
   <div style="display: none">Layoutcontainer Anfang</div>
   {{ LayoutContainer.show("CeresCoconut::Payment.Scripts") }}
   <div style="display: none">Layoutcontainer Ende</div>
