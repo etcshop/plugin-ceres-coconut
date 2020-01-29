@@ -19,13 +19,12 @@
 
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
     <div class="container categoryView isGridView isList-1">
-
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
-        {% if category.details[0].name == "Deckenbeleuchtung" %}
-            <h1>{{ category.details[0].name }}</h1>
-        {% endif %}
           <div class="category-title">{{ trans("Ceres::Template.itemCategories") }}</div>
             <div class="col-lg-3 col-md-3 col-xs-2 filterSubnavigationPanel">
+              {% if category.details[0].name == "Deckenbeleuchtung" %}
+                  <h1 class="CategoryCaption">{{ category.details[0].name }}</h1>
+              {% endif %}
             <div class="SubnavigationTitle ITEMFILTERTAGLIST"><span class="hidden-xs">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</span><span class="hidden-lg"><i class="material-icons w3-xxxlarge">filter_list</i></span></div>
               <div id="SubnavigationContent">
                 {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
