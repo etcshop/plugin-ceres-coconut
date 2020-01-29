@@ -4,13 +4,11 @@
 {{ component( "Ceres::PageDesign.Components.Notifications" ) }}
 {{ component( "Ceres::Customer.Components.Login" ) }}
 {{ component( "CeresCoconut::Customer.Components.RegistrationETC" ) }}
-{{ component( "CeresCoconut::Basket.Components.AddItemToBasketOverlayETC" ) }}
 {{ component( "Ceres::PageDesign.Components.Popper" ) }}
 {{ component( "Ceres::Containers.Components.ContainerItemList" ) }}
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
 {{ component( "Ceres::Customer.Components.Contact.AcceptPrivacyPolicyCheck") }}
-{{ component( "Ceres::PageDesign.Components.CookieBannerETC" ) }}
 
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
@@ -121,9 +119,6 @@
             <forgot-password-modal></forgot-password-modal>
             <!-- ./PASSWORD RESET MODAL -->
 
-            <!-- BASKET MODAL -->
-            <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
-            <!-- ./BASKET MODAL -->
 
             <!-- SHIPPINGCOSTS MODAL -->
             <div id="shippingscosts-modal-wrapper">
