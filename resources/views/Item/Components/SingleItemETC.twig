@@ -10,6 +10,9 @@
 
 <script type="x/template" id="vue-single-item">
 <div class="container">
+  <!-- BASKET MODAL -->
+  <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
+  <!-- ./BASKET MODAL -->
   <div class="row">
 	  <div class="col-lg-3 col-md-2 hidden-sm SingleArticle_Top3">
     <div class="previewPicScrollUp scrolling_inactive">

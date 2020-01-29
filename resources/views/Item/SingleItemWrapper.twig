@@ -3,8 +3,6 @@
 {% import "CeresCoconut::PageDesign.Macros.ItemName" as ItemName %}
 {% set companyName  = config("Ceres.header.company_name") %}
 
-{{ component( "CeresCoconut::Basket.Components.AddItemToBasketOverlayETC" ) }}
-
 {% block PartialHead %}
 
     {% set itemData = item.documents[0].data %}
@@ -24,9 +22,6 @@
 
 {% block PageBody %}
 
-    <!-- BASKET MODAL -->
-    <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
-    <!-- ./BASKET MODAL -->
     {% include [category_template( item.documents[0].data.item.add_cms_page, lang, webstoreConfig.webstoreId ), "CeresCoconut::Item.SingleItemView"] %}
 
 {% endblock %}

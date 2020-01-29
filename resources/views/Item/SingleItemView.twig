@@ -7,6 +7,7 @@
 {{ component( "CeresCoconut::Item.Components.SingleItemETC" ) }}
 {{ component( "Ceres::Item.Components.GraduatedPrices" ) }}
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
+{{ component( "CeresCoconut::Basket.Components.AddItemToBasketOverlayETC" ) }}
 
 <single-item v-cloak item-data="{{ item | json_data }}" attributes-data="{{ attributes | json_data }}" variations="{{ variations | json_data }}">
     <template #before-price>{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</template>
