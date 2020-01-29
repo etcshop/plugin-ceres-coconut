@@ -19,7 +19,7 @@
 
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
     <div class="container categoryView isGridView isList-1">
-      {% {{ category.details[0].name }} == "Deckenbeleuchtung" %}
+      {% if {{ category.details[0].name }} == "Deckenbeleuchtung" %}
         <h1>{{ category.details[0].name }}</h1>
       {% endif %}
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
