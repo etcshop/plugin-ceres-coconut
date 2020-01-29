@@ -5,7 +5,7 @@
 {% block PartialHead %}
     <meta name="description" content="{{ trans('Ceres::Template.legalDisclosureMetaDescription') }}">
     <meta name="robots" content="{{ config("Ceres.meta.robots_legal_disclosure") }}">
-    <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.legalDisclosure") }}</title>
+    <title>{{ trans("Ceres::Template.legalDisclosure") }} | {{ config("Ceres.header.company_name") }}</title>
 {% endblock %}
 
 {% block PageBody %}

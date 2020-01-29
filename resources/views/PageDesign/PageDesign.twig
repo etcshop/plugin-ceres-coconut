@@ -41,7 +41,7 @@
 
 
     {% if ("/amazon-checkout" in request.getRequestUri()) or ("/amazon-login-processing" in request.getRequestUri()) or ("/amazon" in request.getRequestUri()) %}
-      <title>Amazon Checkout - ETC Shop</title>
+      <title>Amazon Checkout | {{ config("Ceres.header.company_name") }}</title>
     {% endif %}
 
 </head>

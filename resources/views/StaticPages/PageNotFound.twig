@@ -3,7 +3,7 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 
 {% block PartialHead %}
-    <title>{{ config("Ceres.header.company_name") }} - 404 {{ trans("CeresCoconut::Template.ETC_PageNotFoundPageTitle") }}</title>
+    <title>404 {{ trans("CeresCoconut::Template.ETC_PageNotFoundPageTitle") }} | {{ config("Ceres.header.company_name") }}</title>
 {% endblock %}
 
 {% block PageBody %}

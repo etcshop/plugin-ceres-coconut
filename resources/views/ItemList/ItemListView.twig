@@ -83,6 +83,6 @@
 {% block PartialHead %}
 <script type="application/ld+json">{"@context": "http://schema.org","@type": "WebSite","url": "{{ webstoreConfig.domainSsl }}","potentialAction":{"@type": "SearchAction","target": "{{ webstoreConfig.domainSsl }}/search?query={search_term}","query-input": "required name=search_term"}}</script>
     {% if isSearch %}
-        <title>{{ config("Ceres.header.company_name") }} - {{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }}</title>
+        <title>{{ trans("Ceres::Template.itemSearchResults") }} {{ searchString }} | {{ config("Ceres.header.company_name") }}</title>
     {% endif %}
 {% endblock %}

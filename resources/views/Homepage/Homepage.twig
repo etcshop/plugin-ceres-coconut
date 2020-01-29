@@ -21,9 +21,9 @@
     </script>
 
     {% if webstoreConfig.webstoreId == 4 %}
-      <title>{{ companyName }} - {{ trans('CeresCoconut::Template.ML_Start_Title') }} </title>
+      <title>{{ trans('CeresCoconut::Template.ML_Start_Title') }} | {{ config("Ceres.header.company_name") }}</title>
     {% else %}
-      <title>{{ trans('CeresCoconut::Template.ETC_Start_Title') }} </title>
+      <title>{{ trans('CeresCoconut::Template.ETC_Start_Title') }}  | {{ config("Ceres.header.company_name") }} </title>
     {% endif %}
 {% endblock %}
 
