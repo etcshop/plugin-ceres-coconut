@@ -13,10 +13,16 @@
 <link rel="preconnect" href="https://ad13.adfarm1.adition.com">
 <link rel="preconnect" href="https://imagesrv.adition.com">
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-
 <link rel="apple-touch-icon" href="https://www.etc-shop.de/layout/ETCeres/img/base/etc-logo_192x192.png">
 
 {% set defaultCSS = plugin_path('Ceres') ~ "/css/ceres-legacy.css" %}
+
+{% if webstoreConfig.webstoreId == 0 %}
+  <link rel="preload" href="{{ defaultCSS }}" as="style">
+  <link rel="preload" href="https://www.etc-shop.de/layout/ETCeres/css/etcpreload.css" as="style">
+  <link rel="preload" href="https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" />
+{% endif %}
 
 {% if ceresConfig.global.favicon is empty %}
     {% set favicon = url ~ '/tpl/favicon_' ~ webstoreConfig.webstoreId ~ '.ico' %}
@@ -65,7 +71,4 @@
 
 {% if webstoreConfig.webstoreId == 0 %}
   <link href="https://www.etc-shop.de/layout/ETCeres/css/etcpreload.css" rel="stylesheet" type="text/css" />
-  <link rel="preload" href="https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2" as="font" type="font/woff2" crossorigin>
-<!--  <link rel="preload" href="https://www.etc-shop.de/layout/ETCeres/css/etcpreload.css" as="style">-->
-  <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" />
 {% endif %}
