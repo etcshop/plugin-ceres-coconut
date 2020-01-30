@@ -332,9 +332,6 @@
 
 {{ get_shop_builder_styles() }}
 
-<style>
-.header, .navigation{display: none}
-</style>
 
 <script>
     App = {
@@ -401,7 +398,6 @@
 
 {{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
-{{ get_filtered_tags() }}
 <script>
     vueEventHub = new Vue();
 
@@ -570,6 +566,8 @@
 
     })(jQuery);
 </script>
+
+{{ get_filtered_tags() }}
 
 {{ get_shop_builder_scripts() }}
     <!--<script src="{{ plugin_path('Ceres') }}/js/dist/etc.js"></script>-->
