@@ -354,7 +354,11 @@
                 <!-- Mobile -->
                 <source srcset="{{ picP3S1 | replace({'.jpg': '-480.jpg'}) }}">
                 <!-- Fallback (Desktop) -->
-                <img class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-src="{{ picP3S1 }}" src="{{ picP3S1 }}" alt="{{ altP3S1 }}">
+                <lazy-img
+                    image-url="{{ picP3S1 }}"
+                    alt="altP3S1">
+                </lazy-img>
+                <!--<img class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-src="{{ picP3S1 }}" src="{{ picP3S1 }}" alt="{{ altP3S1 }}">-->
               </picture>
 
             </a>
