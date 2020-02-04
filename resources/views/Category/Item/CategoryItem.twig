@@ -94,9 +94,11 @@
       <div id="cnt_Start_SEO" class="container_centered">
           <div class="container">
               <div class="row">
+                {% if category.details[0].name == "Deckenbeleuchtung" %}
                 <div class="col-lg-12 p-0">
                   {{ category.details[0].description2 | raw }}
                 </div>
+                {% endif %}
                 <div class="col-lg-12 p-0">
                     {{ category.details[0].description | raw }}
                 </div>
