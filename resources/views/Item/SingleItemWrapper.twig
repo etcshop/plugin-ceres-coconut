@@ -23,10 +23,11 @@
 
     <meta name="keywords" content="{{ item.documents[0].data.barcodes | json_encode }}">
 
+    {% set barcodeEAN1 = "" %}
     {% for barcode in itemData.barcodes %}
-        <meta name="keywords" content="BC {{ barcode.name }}">
-      	{% if barcode.name == 'EAN 1' %}
-          {% set barcodeEAN1 =  barcode.code %}
+        <meta name="keywords" content="{{ barcode.name }}-{{ barcode.code }}">
+      	{% if (barcode.name == 'EAN 1') %}
+          {% set barcodeEAN1 = barcode.code %}
         {% endif %}
     {% endfor %}
 
