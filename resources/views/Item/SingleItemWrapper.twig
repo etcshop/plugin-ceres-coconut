@@ -15,16 +15,15 @@
     <meta property="og:image" content="{{  item.documents[0].data.images.all[0].url }}" />
     <meta property="og:description" content="{{ item.documents[0].data.texts.shortDescription }}" />
 
-    <meta name="keywords" content="1 {{ itemData.variation.barcodes[0].name }}">
-    <meta name="keywords" content="2 {{ itemData.variation.barcodes[1].name }}">
-    <meta name="keywords" content="3 {{ itemData.variation.barcodes[2].name }}">
-    <meta name="keywords" content="4 {{ itemData.variation.barcodes[3].name }}">
-    <meta name="keywords" content="5 {{ itemData.variation.barcodes[4].name }}">
+    <meta name="keywords" content="1 {{ itemData.barcodes[0].name }}">
+    <meta name="keywords" content="2 {{ itemData.barcodes[1].name }}">
+    <meta name="keywords" content="3 {{ itemData.barcodes[2].name }}">
+    <meta name="keywords" content="4 {{ itemData.barcodes[3].name }}">
+    <meta name="keywords" content="5 {{ itemData.barcodes[4].name }}">
 
-    <meta name="keywords" content="{{ item.documents[0].data | json_encode }}">
-        <meta name="keywords" content="{{ item.documents[0].data | json_encode }}">
+    <meta name="keywords" content="{{ item.documents[0].data.barcodes | json_encode }}">
 
-    {% for barcode in itemData.variation.barcodes %}
+    {% for barcode in itemData.barcodes %}
         <meta name="keywords" content="BC {{ barcode.name }}">
       	{% if barcode.name == 'EAN 1' %}
           {% set barcodeEAN1 =  barcode.code %}
