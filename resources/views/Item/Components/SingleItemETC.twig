@@ -12,7 +12,10 @@
 <div class="container">
   <div style="display: none">
     <span class="single-description" v-for="barcode in currentVariation.barcodes">
-  		<b>${ barcode.name }:</b>
+      {% if 'EAN 1' in barcode.name %}
+        {% set Standard = barcode.name %}
+      {% endif %}
+  		<b>${ barcode.name } {{ Standard }}:</b>
   		<span>${ barcode.code }</span><br>
   	</span>
   </div>
