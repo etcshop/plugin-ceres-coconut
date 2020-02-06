@@ -10,12 +10,7 @@
 
 <script type="x/template" id="vue-single-item">
 <div class="container">
-  <div style="display: none">
-    <span class="single-description" v-for="barcode in currentVariation.barcodes">
-    	<b v-if="barcode.name == 'EAN 1'">${ barcode.name }: </b>
-    	<span>${ barcode.code }</span><br>
-  	</span>
-  </div>
+
   <!-- BASKET MODAL -->
   <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
   <!-- ./BASKET MODAL -->
