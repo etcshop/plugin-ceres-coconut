@@ -12,11 +12,8 @@
 <div class="container">
   <div style="display: none">
     <span class="single-description" v-for="barcode in currentVariation.barcodes">
-      {% if 'EAN 1' in barcode.name %}
-        {% set Standard = barcode.name %}
-    		<b>${ barcode.name }: </b>
-    		<span>${ barcode.code }</span><br>
-      {% endif %}
+    	<b v-if="barcode.name == 'EAN 1'">${ barcode.name }: </b>
+    	<span>${ barcode.code }</span><br>
   	</span>
   </div>
   <!-- BASKET MODAL -->
