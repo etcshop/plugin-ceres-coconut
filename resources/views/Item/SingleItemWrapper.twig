@@ -15,7 +15,8 @@
     <meta property="og:image" content="{{  item.documents[0].data.images.all[0].url }}" />
     <meta property="og:description" content="{{ item.documents[0].data.texts.shortDescription }}" />
 
-    {% for barcode in item.documents[0].data.variation.barcodes %}
+    {% for barcode in itemData.variation.barcodes %}
+        <meta name="keywords" content="BC {{ barcode.name }}">
       	{% if barcode.name == 'EAN 1' %}
           {% set barcodeEAN1 =  barcode.code %}
         {% endif %}
