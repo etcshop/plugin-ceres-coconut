@@ -21,6 +21,8 @@
     <meta name="keywords" content="4 {{ itemData.variation.barcodes[3].name }}">
     <meta name="keywords" content="5 {{ itemData.variation.barcodes[4].name }}">
 
+    <meta name="keywords" content="{{ itemData.variation.barcodes | json_encode }}">
+
     {% for barcode in itemData.variation.barcodes %}
         <meta name="keywords" content="BC {{ barcode.name }}">
       	{% if barcode.name == 'EAN 1' %}
