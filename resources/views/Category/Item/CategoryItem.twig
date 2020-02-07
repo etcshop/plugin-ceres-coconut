@@ -16,7 +16,7 @@
     {{ component( "CeresCoconut::ItemList.Components.CategoryImageCarousel") }}
 
     <!-- include parallax image -->
-
+    {{ category.details[0] | json_encode }}
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
     <div class="container categoryView isGridView isList-1">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
