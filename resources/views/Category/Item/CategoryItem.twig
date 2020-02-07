@@ -81,6 +81,15 @@
                         {% for item in itemList %}
                           {% if loop.index == (loop.length // 2) %}
                             <div style="display: none"> Length: {{ loop.length }} - Index: {{ loop.index }} - 1/2 Lenght: {{ (loop.length // 2) }} </div>
+                            <a href="https://www.etc-shop.de/haushalt-technik/garten-freizeit/grillgeraete/" title="" class="itemListMiddlePic">
+                              <picture>
+                                <source media="(min-width: 992px)" srcset="https://www.etc-shop.de/layout/ETCeres/img/start/etc-cnt-start-de-P3-S1.jpg">
+                                <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/ETCeres/img/start/etc-cnt-start-de-P3-S1-992.jpg">
+                                <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/ETCeres/img/start/etc-cnt-start-de-P3-S1-768.jpg">
+                                <source srcset="https://www.etc-shop.de/layout/ETCeres/img/start/etc-cnt-start-de-P3-S1-480.jpg">
+                                <img data-src="https://www.etc-shop.de/layout/ETCeres/img/start/etc-cnt-start-de-P3-S1.jpg" alt="altP3S1" src="https://www.etc-shop.de/layout/ETCeres/img/start/etc-cnt-start-de-P3-S1.jpg" data-loaded="true">
+                              </picture>
+                            </a>
                           {% endif %}
                           {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                         {% endfor %}
