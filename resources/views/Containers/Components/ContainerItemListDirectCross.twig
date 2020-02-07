@@ -22,7 +22,10 @@
       </div>
       <!-- START [ItemViewCrossSellingItemsList3] -->
       <div class="CrossSelling_Direct_Item" v-for="item in items">
-          <div style="display: none">{{ item | json_encode }}</div>
+         <div style="display: none" v-for="varProp in item.data.variationProperties">
+            Name: ${ varProp.property.names.name } <br>
+            Value: ${ varProp.values.value }
+         </div>
          <div class="CRRadio" onclick="CRRadioClick(this.id)" :id="item.id"><input name="rdCrossSelling" type="radio" id="{{ item.id }}"></div>
          <div class="CRPrice"><label for="CRItem81059894">+${ formatPrice((Number(item.data.prices.default.price.value) - mainprice)) } €</label></div>
          <div class="CRImage"><label for="CRItem81059894"><img :src="getLastItemURL(item.data.images.all)" data-plenty="UI.initLazyload(this, 'fadeIn')" style="display: inline-block;" alt="Energieeffizienzklasse"></label></div>
