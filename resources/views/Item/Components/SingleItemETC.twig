@@ -3,6 +3,7 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
+{{ component( "CeresCoconut::Basket.Components.AddToBasketETC" ) }}
 
 {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
   {% set uvpSaving = ((1 - (item.documents[0].data.prices.default.price.value / item.documents[0].data.prices.rrp.unitPrice.value)) * 100) | round %}
