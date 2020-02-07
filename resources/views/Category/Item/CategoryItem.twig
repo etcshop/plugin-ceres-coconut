@@ -79,7 +79,9 @@
 
                     <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-9 col-xs-12 p-x-0">
                         {% for item in itemList %}
-                          <div style="display: none"> {{ loop.length }} </div>
+                          {% if loop.index == (loop.length // 2) %}
+                            <div style="display: none"> {{ loop.length }} </div>
+                          {% endif %}
                           {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                         {% endfor %}
                     </ul>
