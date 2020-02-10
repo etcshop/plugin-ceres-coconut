@@ -15,9 +15,6 @@
     <meta property="og:image" content="{{  item.documents[0].data.images.all[0].url }}" />
     <meta property="og:description" content="{{ item.documents[0].data.texts.shortDescription }}" />
 
-
-    <meta name="keywords" content="{{ item.documents[0].data | json_encode }}">
-    <meta name="keywords" content="{{ item.documents[0].data.prices.default.price.value }}">
     {% set barcodeEAN1 = "" %}
     {% for barcode in itemData.barcodes %}
       	{% if (barcode.name == 'EAN 1') %}
