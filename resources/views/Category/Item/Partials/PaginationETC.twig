@@ -20,11 +20,13 @@
             <!-- FIRST PAGE LINK -->
             {% if page > 2 and config('Ceres.pagination.showFirstPage') == "true" %}
                 <li class="nav_first">
+            {% else %}
+                <li class="nav_first hidden-lg">
+            {% endif %}
                     <a rel="first" href="{{ baseURL ~ queryString({ 'page': null }) }}">
                       <i class="material-icons skip_prev">skip_previous</i>
                     </a>
                 </li>
-            {% endif %}
             <!-- ./FIRST PAGE LINK -->
 
             <!-- PREV LINK -->
@@ -74,11 +76,13 @@
             <!-- LAST PAGE LINK -->
             {% if page < pageMax-2 and config('Ceres.pagination.showLastPage') == "true" %}
                 <li class="nav_last">
+            {% else %}
+                <li class="nav_next hidden-lg">
+            {% endif %}
                     <a rel="last" href="{{ baseURL ~ queryString({ 'page': pageMax }) }}">
                       <i class="material-icons skip_next">skip_next</i>
                     </a>
                 </li>
-            {% endif %}
             <!-- ./LAST PAGE LINK -->
           </div>
       </ul>
