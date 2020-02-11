@@ -22,7 +22,7 @@
       </div>
       <!-- START [ItemViewCrossSellingItemsList3] -->
       <div class="CrossSelling_Direct_Item" v-for="item in items">
-         <div style="display: none" v-for="varProp in item.data.variationProperties" v-if="varProp.property.id == 116">
+         <div class="Test1350" style="display: none" v-for="varProp in item.data.variationProperties" v-if="varProp.property.id == 116">
                 Name: ${ varProp.property.names.name } <br>
                 Value: ${ varProp.values.value }
          </div>
