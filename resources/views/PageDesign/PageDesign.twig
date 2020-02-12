@@ -368,6 +368,10 @@
 {{ Translations.add( "Ceres", "Template" ) }}
 
 
+{% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
+    <link data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ plugin_path('Ceres') }}/css/ceres-legacy.scss" rel="stylesheet" href="{{ defaultCSS }}">
+{% endif %}
+
 <link href="https://fonts.googleapis.com/css?family=Hind+Guntur:300,400,500,600,700&display=swap" rel="stylesheet">
 {% if webstoreConfig.webstoreId == 4 %}
   <link href="https://www.etc-shop.de/layout/ETCeres/css/themeETC.css" rel="stylesheet" type="text/css" />
