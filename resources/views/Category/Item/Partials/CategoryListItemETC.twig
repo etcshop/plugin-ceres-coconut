@@ -17,6 +17,12 @@
   {% endif %}
 {% endif %}
 
+{% if (item.documents[0].data.texts.name3 == "") or (item.documents[0].data.texts.name3 == "N / A") %}
+  {% set etcAltText = ItemName.get(item.data | itemName, item.data.variation.bundleType) %}
+{% else %}
+  {% set etcAltText = item.documents[0].data.texts.name3 %}
+{% endif %}
+
 <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
 
   <div class="itemBoxInner">
@@ -34,7 +40,7 @@
                     <category-image-carousel
                         template="#vue-category-image-carousel"
                         :image-urls-data="{{ item.data.images | json_encode() }} | itemImages('urlMiddle')"
-                        alt-text="{{ ItemName.get(item.data | itemName, item.data.variation.bundleType) }}"
+                        alt-text="{{ etcAltText }}"
                         item-url="{{ itemUrl }}"
                         :show-dots="{{ ceresConfig.item.categoryShowDots | json_encode }}"
                         :show-nav="{{ ceresConfig.item.categoryShowNav | json_encode }}"
