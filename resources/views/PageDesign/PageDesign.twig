@@ -367,7 +367,7 @@
 
 {{ Translations.add( "Ceres", "Template" ) }}
 
-
+{% set defaultCSS = plugin_path('Ceres') ~ "/css/ceres-legacy.css" %}
 {% if LayoutContainer.show("Ceres::Template.StyleOverwrite") | trim is empty %}
     <link data-sass-root="{{ plugin_path('Ceres') }}" data-sass-original="{{ plugin_path('Ceres') }}/css/ceres-legacy.scss" rel="stylesheet" href="{{ defaultCSS }}">
 {% endif %}
