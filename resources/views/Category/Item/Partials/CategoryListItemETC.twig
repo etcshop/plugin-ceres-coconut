@@ -40,7 +40,7 @@
                     <category-image-carousel
                         template="#vue-category-image-carousel"
                         :image-urls-data="{{ item.data.images | json_encode() }} | itemImages('urlMiddle')"
-                        alt-text="{{ etcAltText }}"
+                        alt-text="{{ etcAltText | trim }}"
                         item-url="{{ itemUrl }}"
                         :show-dots="{{ ceresConfig.item.categoryShowDots | json_encode }}"
                         :show-nav="{{ ceresConfig.item.categoryShowNav | json_encode }}"
