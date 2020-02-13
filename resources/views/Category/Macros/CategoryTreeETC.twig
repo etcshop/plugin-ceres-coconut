@@ -68,7 +68,8 @@
                       <div class="catLvl2">
                         <div class="NavigationArrow">
                           <span class="hidden-xs">•</span>
-                          <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                          <!--<i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>-->
+                          <i class="fas fa-chevron-right w3-xxxlarge hidden-md hidden-sm hidden-lg"></i>
                         </div>
                         <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name | raw }}">
                           <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
@@ -81,7 +82,8 @@
                               <div class="catLvl2">
                                 <div class="NavigationArrow">
                                   <span class="hidden-xs">•</span>
-                                  <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                                  <!--<i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>-->>
+                                  <i class="fas fa-chevron-right w3-xxxlarge hidden-md hidden-sm hidden-lg"></i>
                                 </div>
                                 <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child2.details[0].name | raw }}">
                                   <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
@@ -112,7 +114,8 @@
                         <div class="catLvl2">
                           <div class="NavigationArrow" style="float: right!important; margin-right:0!important">
                             <span class="hidden-xs">•</span>
-                            <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                            <!--<i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>-->
+                            <i class="fas fa-chevron-right w3-xxxlarge hidden-md hidden-sm hidden-lg"></i>
                           </div>
                           <a class="Category_Link" style="float: right!important; margin-right: 15px!important;" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child.details[0].name | raw }}">
                             <li id="{{ child.id }}" rel="/documents/{{ child.details[0].imagePath }}">
@@ -125,7 +128,8 @@
                                 <div class="catLvl2">
                                   <div class="NavigationArrow">
                                     <span class="hidden-xs">•</span>
-                                    <i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>
+                                    <!--<i class="material-icons w3-xxxlarge hidden-md hidden-sm hidden-lg">keyboard_arrow_right</i>-->>
+                                    <i class="fas fa-chevron-right w3-xxxlarge hidden-md hidden-sm hidden-lg"></i>
                                   </div>
                                   <a class="Category_Link" href="{{ currentScopeUrl }}/{{ child.details[0].nameUrl }}/{{ child2.details[0].nameUrl }}{{ urls.trailingSlashSuffix }}" title="{{ child2.details[0].name | raw }}">
                                     <li id="{{ child2.id }}" rel="/documents/{{ child2.details[0].imagePath }}">
@@ -145,7 +149,8 @@
             </div>
             <div class="NavigationArrow">
               <span class="hidden-xs">•</span>
-              <i class="material-icons w3-xxxlarge hidden-lg hidden-sm hidden-md">keyboard_arrow_down</i>
+              <!--<i class="material-icons w3-xxxlarge hidden-lg hidden-sm hidden-md">keyboard_arrow_down</i>-->>
+              <i class="fas fa-chevron-down w3-xxxlarge hidden-md hidden-sm hidden-lg"></i>
             </div>
 
         {% endif %}
