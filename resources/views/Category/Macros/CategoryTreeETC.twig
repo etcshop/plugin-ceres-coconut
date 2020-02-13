@@ -17,7 +17,7 @@
                 </li>
                 {% set counter = counter + 1 %}
                 {% if counter == maxitems[level]%}
-                    <li class="level{{ level }} bt-more"><a href="{{ currentScopeUrl }}">{{ trans("Ceres::Template.itemShowMore") }}...</a></li>
+                    <li class="level{{ level }} bt-more"><a href="{{ currentScopeUrl }}{{ urls.trailingSlashSuffix }}">{{ trans("Ceres::Template.itemShowMore") }}...</a></li>
                 {% endif %}
             {% endif %}
         {% endfor %}
@@ -157,7 +157,7 @@
         {% set catCount = catCount + 1 %}
     {% endfor %}
       <div class="catLvl1 menu_bargain TESTETC0900">
-        <a href="{{ topsellerURL }}" class="Category_Link" title="Top Seller">
+        <a href="{{ topsellerURL }}{{ urls.trailingSlashSuffix }}" class="Category_Link" title="Top Seller">
           <li>Top Seller</li>
         </a>
       </div>
