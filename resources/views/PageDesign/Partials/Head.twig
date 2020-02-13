@@ -84,6 +84,7 @@
 {% if config("Ceres.global.google_recaptcha_api_key") | length > 0 %}
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endif %}
+
 {% if webstoreConfig.webstoreId == 0 %}
   <meta name="google-site-verification" content="f0c1InvJLRY2zmHdJiOtGrajGIMrXlBMo7Tt28jK4po" />
 {% else %}
