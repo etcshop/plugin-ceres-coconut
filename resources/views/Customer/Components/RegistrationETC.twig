@@ -5,7 +5,7 @@
         <div class="modal-body" id="ContentAddressForm">
             <div class="row panel-body" :id="'registration' + _uid">
                 <div class="panel-heading">
-                  <h3 class="panel-title">{{ trans("CeresCoconut::Template.ETC_Kundendaten") }}</h3>
+                  <div class="panel-title">{{ trans("CeresCoconut::Template.ETC_Kundendaten") }}</div>
                 </div>
                 <div class="col-sm-6" id="Registration_E-Mail">
                     <div class="input-unit" data-validate="mail">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="ContentSeperator"></div>
                 <div class="panel-heading">
-                  <h3 class="panel-title">{{ trans("CeresCoconut::Template.ETC_Rechnungsadresse") }}:</h3>
+                  <div class="panel-title">{{ trans("CeresCoconut::Template.ETC_Rechnungsadresse") }}:</div>
                 </div>
                 <address-input-group
                     template="#vue-address-input-groupETC"
