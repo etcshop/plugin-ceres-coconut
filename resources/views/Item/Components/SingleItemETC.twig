@@ -33,9 +33,7 @@
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top2">
       <h1 id="SingleArticle_Name" itemprop="name">${ currentVariation.texts.name1 }</h1>
       <div style="display: none">${ currentVariation.texts.itemId }</div>
-      {% if currentVariation.texts.itemId == 81047528 %}
-        <h2>${ currentVariation.texts.shortDescription }</h2>
-      {% endif %}
+      <h2 v-if="currentVariation.texts.itemId == 81047528">${ currentVariation.texts.shortDescription }</h2>
       <div class="img-zoom hidden-xs hidden-md hidden-sm" id="zoomlayer" :style="'background-image: url(); display: none; background-position: 84.8552% 53.7285%;'"></div>
       <div id="SingleArticle_MainPic" class="imageBox">
         <div :id="'previewImages-' + currentVariation.variation.id" class="h-md-3 h-sm-2">
