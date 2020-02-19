@@ -17,7 +17,7 @@
     </a>
 
     <a v-else :href="itemUrl" class="test">
-        <img v-if="!disableLazyLoad" ref="itemLazyImage" template="#vue-item-lazy-img" :src="imageUrls | itemImage" :alt="getAltText(imageUrls[0])" :title="getAltText(imageUrl)"></img>
-        <img v-else class="img-fluid" :src="imageUrls | itemImage" :alt="getAltText(imageUrls[0])" :title="getAltText(imageUrl)">
+        <img v-if="!disableLazyLoad" ref="itemLazyImage" template="#vue-item-lazy-img" :src="imageUrls | itemImage" :alt="getAltText(imageUrls[0])" :title="getAltText(imageUrls[0])"></img>
+        <img v-else class="img-fluid" :src="imageUrls | itemImage" :alt="getAltText(imageUrls[0])" :title="getAltText(imageUrls[0])">
     </a>
 </script>
