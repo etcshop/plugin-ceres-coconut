@@ -11,6 +11,16 @@
 
         {% if itemList | length > 0 %}
         <div class="container categoryView isGridView isList-1">
+                  <div style="display: none">Vor isSearch (ItemListView.twig)</div>
+                  {% if isSearch %}
+                    <div style="display: none">Nach isSearch (ItemListView.twig)</div>
+                    {{ LayoutContainer.show("Findologic::CategoryItem.SmartDidYouMean") }}
+                  {% else %}
+                    {% if category.details[0].name == "Deckenbeleuchtung" %}
+                      <h1 class="CategoryCaption">{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}</h1>
+                      <span class="col-lg-12 CategorySubCaption">{{ category.details[0].shortDescription }}</span>
+                    {% endif %}
+                  {% endif %}
           <div class="col-lg-3 col-md-3 filterSubnavigationPanel">
             <div class="SubnavigationTitle ITEMFILTERTAGLIST"><span class="hidden-xs">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</span><span class="hidden-lg"><i class="material-icons w3-xxxlarge">filter_list</i></span></div>
             <div id="SubnavigationContent">
