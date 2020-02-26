@@ -20,7 +20,10 @@
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
     <div class="container categoryView isGridView isList-1">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
+
+          <div style="display: none">Vor isSearch</div>
           {% if isSearch %}
+            <div style="display: none">Nach isSearch</div>
             {{ LayoutContainer.show("Findologic::CategoryItem.SmartDidYouMean") }}
           {% else %}
             {% if category.details[0].name == "Deckenbeleuchtung" %}
