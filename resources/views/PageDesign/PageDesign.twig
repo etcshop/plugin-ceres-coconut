@@ -372,16 +372,6 @@
 
 {{ Loader.include_components() }}
 
-{{ component( "CeresCoconut::VueScripts" ) }}
-
-{{ component( "CeresCoconut::Containers.Components.ContainerCrosssellingItemListETC" ) }}
-{{ component( "CeresCoconut::Containers.Components.ContainerItemListDirectCross" ) }}
-{{ component( "CeresCoconut::ItemList.Components.CrossSellingItemETC" ) }}
-{{ component( "CeresCoconut::Containers.Components.ContainerStartBoxItemListETC" ) }}
-{{ component( "CeresCoconut::ItemList.Components.StartBoxItemETC" ) }}
-{{ component( "CeresCoconut::PageDesign.Components.CookieBannerETC" ) }}
-{{ component( "CeresCoconut::PageDesign.Components.TrackingETC" ) }}
-
 {{ LayoutContainer.show("Ceres::Script.Loader") }}
 
 {% if ("/amazon-checkout" in ETCUri) or ("/amazon-login-processing" in ETCUri) or ("/amazon" in ETCUri) %}
@@ -464,6 +454,16 @@
   {% else %}
     <script src="https://www.etc-shop.de/layout/ETCeres/js/etc.js"></script>
   {% endif %}
+
+{{ component( "CeresCoconut::VueScripts" ) }}
+
+{{ component( "CeresCoconut::Containers.Components.ContainerCrosssellingItemListETC" ) }}
+{{ component( "CeresCoconut::Containers.Components.ContainerItemListDirectCross" ) }}
+{{ component( "CeresCoconut::ItemList.Components.CrossSellingItemETC" ) }}
+{{ component( "CeresCoconut::Containers.Components.ContainerStartBoxItemListETC" ) }}
+{{ component( "CeresCoconut::ItemList.Components.StartBoxItemETC" ) }}
+{{ component( "CeresCoconut::PageDesign.Components.CookieBannerETC" ) }}
+{{ component( "CeresCoconut::PageDesign.Components.TrackingETC" ) }}
 
 {% if not services.template.shouldBeCached() %}
     <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
