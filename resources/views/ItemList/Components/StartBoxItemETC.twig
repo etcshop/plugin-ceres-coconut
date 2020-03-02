@@ -83,14 +83,15 @@ Vue.component("startbox-item", {
     {
       return vueApp.$store.basket.showNetPrices;
     }
-  },
+  },/*
   created: function created() {
+
     if (this.itemData.prices.rrp) {
       this.recommendedRetailPrice = this.itemData.prices.rrp.price.value;
     }
 
     this.variationRetailPrice = this.itemData.prices.default.price.value;
-  },
+  },*/
   methods: {
     loadFirstImage: function loadFirstImage() {
       var categoryImageCarousel = this.$refs.categoryImageCarousel;
