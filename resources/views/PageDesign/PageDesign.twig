@@ -414,8 +414,7 @@
 {{ get_json_data() }}
 
 {% if ceresConfig.log.performanceLevel  == 'development' %}
-    <!--<script src="{{ plugin_path('Ceres') }}/js/dist/ceres.js?v={{ buildHash }}"></script>-->
-    <script src="https://cdn02.plentymarkets.com/9krpwzxa6mmo/plugin/5/ceres/js/dist/ceres.min.js"></script>
+    <script src="{{ plugin_path('Ceres') }}/js/dist/ceres.js?v={{ buildHash }}"></script>
 {% else %}
     <script src="{{ plugin_path('Ceres') }}/js/dist/ceres.min.js?v={{ buildHash }}"></script>
 {% endif %}
