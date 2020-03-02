@@ -47,6 +47,18 @@
 <body>
 
   {{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
+
+  <script>
+      if('ontouchstart' in document.documentElement)
+      {
+          document.body.classList.add("touch");
+      }
+      else
+      {
+          document.body.classList.add("no-touch");
+      }
+  </script>
+
   <div id="vue-app">
     <div style="display: none; height: 100px; width: 100px; position: absolute; background-color: #F00; z-index: 111111111111111;">
       {% set ETCUri = request.getRequestUri() %}
@@ -334,6 +346,7 @@
 
 
 <script>
+
     App = {
         config: {{ ceresConfig | json_encode | raw }},
         urls: {{ urls | json_encode | raw }},
@@ -342,11 +355,13 @@
         isCategoryView: {% if services.template.isCategory() == "1" %}true{% else %}false{% endif %},
         isCheckoutView : {% if services.template.isCheckout() == "1" %}true{% else %}false{% endif %},
         isSearch: {% if services.template.isSearch() == "1" %}true{% else %}false{% endif %},
+        templateType: "{{ urls.templateType }}",
         templateEvent: "{{ templateEvent }}",
         language: "{{ lang }}",
         defaultLanguage: "{{ defaultLanguage }}",
         decimalSeparator: "{{ config("IO.format.separator_decimal") }}",
         urlTrailingSlash: {{ urls.appendTrailingSlash | json_encode }},
+        propertyFileUrl: "{{ services.propertyFile.getPropertyFileUrl() }}",
         isShopBuilder: {{ isShopBuilder | default(false) | json_encode }},
         initialData: {
             shippingCountries: {{ services.country.getActiveCountriesList() | filterFields(["id", "currLangName", "isoCode2", "states.id", "states.name"]) | json_encode | raw }},
@@ -433,8 +448,7 @@
 
 {{ get_filtered_tags() }}
 
-{{ get_shop_builder_scripts() }}
-    <!--<script src="{{ plugin_path('Ceres') }}/js/dist/etc.js"></script>-->
+{{ get_shop_builder_scripts( "latest", ceresConfig.log.performanceLevel == 'live') }}
 
   {% if webstoreConfig.webstoreId == 4 %}
     <script src="https://www.etc-shop.de/layout/ETCeres/ml/js/ml.js"></script>
@@ -451,9 +465,11 @@
 {{ component( "CeresCoconut::ItemList.Components.StartBoxItemETC" ) }}
 {{ component( "CeresCoconut::PageDesign.Components.CookieBannerETC" ) }}
 {{ component( "CeresCoconut::PageDesign.Components.TrackingETC" ) }}
+
 {% if not services.template.shouldBeCached() %}
     <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
 {% endif %}
+
 </body>
 </html>
 
