@@ -44,8 +44,51 @@
 
 Vue.component("startbox-item", {
   delimiters: ["${", "}"],
-  template: "#vue-startbox-itemETC",
-  props: ["decimalCount", "itemData", "imageUrlAccessor", "altUrl", "itemName"],
+  props:
+  {
+        template:
+        {
+            type: String,
+            default: "#vue-startbox-itemETC"
+        },
+        decimalCount:
+        {
+            type: Number,
+            default: 0
+        },
+        imageUrlAccessor:
+        {
+            type: String,
+            default: "urlMiddle"
+        },
+        itemData:
+        {
+            type: Object
+        },
+        disableCarouselOnMobile:
+        {
+            type: Boolean
+        },
+        paddingClasses:
+        {
+            type: String,
+            default: null
+        },
+        paddingInlineStyles:
+        {
+            type: String,
+            default: null
+        },
+        urlWithVariationId:
+        {
+            type: Boolean,
+            default: true
+        }
+  },
+
+  jsonDataFields: [
+      "itemDataRef"
+  ],
   data: function data() {
     return {
       recommendedRetailPrice: 0,
