@@ -34,7 +34,6 @@
             <div class="col-lg-3 col-md-3 col-xs-2 filterSubnavigationPanel">
             <div class="SubnavigationTitle ITEMFILTERTAGLIST"><span class="hidden-xs">{{ trans("CeresCoconut::Template.ETC_SucheEingrenzen") }}</span><span class="hidden-lg"><i class="material-icons w3-xxxlarge">filter_list</i></span></div>
               <div id="SubnavigationContent">
-                <div style="display: none">{{ facets | json_encode }}<br>{{ facets }}</div>
                 {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
                 <item-filter-tag-list></item-filter-tag-list>
                 {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
