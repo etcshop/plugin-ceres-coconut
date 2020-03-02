@@ -2,6 +2,7 @@
 
 <script type="x/template" id="vue-category-image-carousel">
     <a :id="'owl-carousel-' + _uid" v-if="$_enableCarousel" class="owl-carousel owl-theme" :href="itemUrl">
+      <div style="display: none">ETC Carousel</div>
         <div v-for="(imageUrl, index) in imageUrls">
             <lazy-img
                 class="img-basket-small"
