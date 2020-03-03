@@ -28,6 +28,10 @@
 {% set currTpl = services.template.getCurrentTemplate() %}
 {% set buttonSize = 0 %}
 
+
+
+{% set etctest = plugin_path('CeresCoconut') + '/js/dist/src/app/components/itemList/CategoryItem.vue' %}
+
 {% if request.get('openBasketPreview') == 1 %}
     {% set openBasketClass = "open-" ~ ceresConfig.basket.previewType %}
 {% endif %}
@@ -55,7 +59,7 @@
 </head>
 
 <body>
-
+  <div style="display: none">{{ etctest }}</div>
   {{ LayoutContainer.show("Ceres::PageDesign.AfterOpeningBodyTag") }}
 
   <script>
@@ -474,7 +478,7 @@
   {% endif %}
 
 <script>
-  Vue.component("category-item", () => import( {{ plugin_path('CeresCoconut') ~ '/js/dist/src/app/components/itemList/CategoryItem.vue' }}));
+  Vue.component("category-item", () => import( ));
 </script>
 
 {{ component( "CeresCoconut::VueScripts" ) }}
