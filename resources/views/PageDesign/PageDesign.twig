@@ -10,6 +10,16 @@
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
 {{ component( "Ceres::Customer.Components.Contact.AcceptPrivacyPolicyCheck") }}
 
+{# TODO: remove if shop builder pages can be rebuild by migrations #}
+{{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
+{{ component( "Ceres::ItemList.Components.CategoryItem") }}
+{{ component( "Ceres::Newsletter.Components.NewsletterInput" ) }}
+{{ component( "Ceres::PageDesign.Components.Carousel" ) }}
+
+{% if isShopBuilder %}
+    {% include "Ceres::Widgets.WidgetComponents" %}
+{% endif %}
+
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
 {% set pid = services.webstoreConfig.getPlentyId() %}
@@ -93,62 +103,6 @@
                 </div>
             </div>
             <!-- ./LOGIN MODAL -->
-
-            <!-- REGISTRATION MODAL -->
-            <div id="simple-registration-modal-wrapper">
-                <div class="modal fade" id="registration" tabindex="-1" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <div class="modal-title h3">
-                                    {{ trans("Ceres::Template.regCreateAccount") }}
-
-                                    <popper v-cloak class="pull-right m-r-1">
-                                        <button slot="handle" class="btn btn-icon btn-secondary btn-sm">
-                                            <i class="fa fa-info"></i>
-                                        </button>
-                                        <div slot="title">
-                                            {{ trans("Ceres::Template.regContactInformations") }}
-                                        </div>
-                                        <ul slot="content" class='p-l-1'>
-                                            <li class='m-b-1'>{{ trans('Ceres::Template.regContactInfoText1') }}</li>
-                                            <li class='m-b-1'>{{ trans('Ceres::Template.regContactInfoText2') }}</li>
-                                            <li class='m-b-1'>{{ trans('Ceres::Template.regContactInfoText3') }}</li>
-                                            <li>{{ trans('Ceres::Template.regContactInfoText4') }}</li>
-                                        </ul>
-                                    </popper>
-                                </div>
-                            </div>
-                            <registration template="#vue-registrationETC" :is-simple-registration="true" modal-element="simple-registration-modal-wrapper"></registration>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./REGISTRATION MODAL -->
-
-            <!-- PASSWORD RESET MODAL -->
-            <forgot-password-modal></forgot-password-modal>
-            <!-- ./PASSWORD RESET MODAL -->
-
-
-            <!-- SHIPPINGCOSTS MODAL -->
-            <div id="shippingscosts-modal-wrapper">
-                <div class="modal fade" id="shippingscosts" tabindex="-1" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <div class="modal-title h3">{{ trans('Ceres::Template.shippingInfoCosts') }}</div>
-                            </div>
-                            <div class="modal-body">
-                                {% include category_template(ceresConfig.global.shippingCostsCategoryId, lang, webstoreConfig.webstoreId) ignore missing %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./SHIPPINGCOSTS MODAL -->
     </div>
 
     <div class="wrapper wrapper-left">
@@ -335,7 +289,61 @@
     {% endif %}
 
     <div class="wrapper wrapper-bottom">
+      <!-- REGISTRATION MODAL -->
+      <div id="simple-registration-modal-wrapper">
+        <div class="modal fade" id="registration" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-title h3">
+                  {{ trans("Ceres::Template.regCreateAccount") }}
 
+                  <popper v-cloak class="pull-right m-r-1">
+                    <button slot="handle" class="btn btn-icon btn-secondary btn-sm">
+                      <i class="fa fa-info"></i>
+                    </button>
+                    <div slot="title">
+                      {{ trans("Ceres::Template.regContactInformations") }}
+                    </div>
+                    <ul slot="content" class='p-l-1'>
+                      <li class='m-b-1'>{{ trans('Ceres::Template.regContactInfoText1') }}</li>
+                      <li class='m-b-1'>{{ trans('Ceres::Template.regContactInfoText2') }}</li>
+                      <li class='m-b-1'>{{ trans('Ceres::Template.regContactInfoText3') }}</li>
+                      <li>{{ trans('Ceres::Template.regContactInfoText4') }}</li>
+                    </ul>
+                  </popper>
+                </div>
+              </div>
+              <registration template="#vue-registrationETC" :is-simple-registration="true" modal-element="simple-registration-modal-wrapper"></registration>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./REGISTRATION MODAL -->
+
+      <!-- PASSWORD RESET MODAL -->
+      <forgot-password-modal></forgot-password-modal>
+      <!-- ./PASSWORD RESET MODAL -->
+
+
+      <!-- SHIPPINGCOSTS MODAL -->
+      <div id="shippingscosts-modal-wrapper">
+        <div class="modal fade" id="shippingscosts" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="modal-title h3">{{ trans('Ceres::Template.shippingInfoCosts') }}</div>
+              </div>
+              <div class="modal-body">
+                {% include category_template(ceresConfig.global.shippingCostsCategoryId, lang, webstoreConfig.webstoreId) ignore missing %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./SHIPPINGCOSTS MODAL -->
     </div>
 </div>
 
@@ -412,6 +420,10 @@
 {% for scriptTemplate in get_additional_scripts() %}
     {% include scriptTemplate.path ignore missing with scriptTemplate.params %}
 {% endfor %}
+
+{% if isShopBuilder %}
+    {% include "Ceres::Widgets.ShopBuilderDataStore" %}
+{% endif %}
 
 {{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
