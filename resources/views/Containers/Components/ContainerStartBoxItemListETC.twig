@@ -7,7 +7,7 @@
 <div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 StartBoxItem" v-for="(item, index) in items" >
         <div :id="item.data.variation.id" class="StartBoxLabel">${ label }</div>
-        <startbox-item :key="item.data.variation.id" :alt-url="altUrl" :item-name="item.data.texts.name1" :item-data="item.data" decimal-count="{{ decimalCount }}" image-url-accessor="urlMiddle"></startbox-item>
+        <startbox-item :key="item.data.variation.id" :alt-url="altUrl" :item-name="item.data.texts.name1" :item-data="item.data" decimal-count="0" image-url-accessor="urlMiddle"></startbox-item>
     </div>
 </div>
 {% endspaceless %}
