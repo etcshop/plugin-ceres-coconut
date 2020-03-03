@@ -473,6 +473,10 @@
     <script src="https://www.etc-shop.de/layout/ETCeres/js/etc.js"></script>
   {% endif %}
 
+<script>
+  Vue.component("category-item", () => import("./js/src/app/components/itemList/CategoryItem.vue"));
+</script>
+
 {{ component( "CeresCoconut::VueScripts" ) }}
 
 {{ component( "CeresCoconut::Containers.Components.ContainerCrosssellingItemListETC" ) }}
