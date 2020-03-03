@@ -12,6 +12,8 @@
     {{ component( "Ceres::ItemList.Components.CategoryItem") }}
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterList") }}
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
+    {{ component( "Ceres::ItemList.Components.ItemList") }}
+    {{ component( "CeresCoconut::ItemList.Components.CategoryImageCarousel") }}
 
     <!-- include parallax image -->
 
@@ -86,21 +88,8 @@
 
                     <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-9 col-xs-12 p-x-0">
                         {% for item in itemList %}
-                          <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
 
-                            <category-item
-                                item-data-ref="{{ item.data | json_data }}"
-                                :decimal-count="{{ ceresConfig.item.storeSpecial }}">
-                                <template #before-prices>{{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}</template>
-                                <template #after-prices>{{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}</template>
-
-                                <a href="{{ item.data | itemURL }}" class="small">
-                                    <i class="fa fa-image"></i>
-                                    <span>{{ item.data | itemName }}</span>
-                                </a>
-                            </category-item>
-
-                          </li>
+                          {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                         {% endfor %}
                     </ul>
 
