@@ -474,7 +474,7 @@
   {% endif %}
 
 <script>
-  Vue.component("category-item", () => import( plugin_path('CeresCoconut') ~ "./js/src/app/components/itemList/CategoryItem.vue"));
+  Vue.component("category-item", () => import( {{ plugin_path('CeresCoconut') ~ '/js/dist/src/app/components/itemList/CategoryItem.vue' }}));
 </script>
 
 {{ component( "CeresCoconut::VueScripts" ) }}
