@@ -8,7 +8,7 @@
 {% endif %}
 {% set lang = services.sessionStorage.getLang() %}
 
-{% set defaultCSS = plugin_path('Ceres') ~ "/css/ceres-legacy.css" %}
+{% set defaultCSS = plugin_path("Ceres") ~ "/css/" ~ assetName ~ ".css?v=" ~ buildHash %}
 
 <link rel="preconnect" href="https://containertags.belboon.de">
 <link rel="preconnect" href="https://track.adform.net">
