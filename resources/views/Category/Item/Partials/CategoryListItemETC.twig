@@ -39,7 +39,7 @@
                 <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
                   <div class=" {{ item.data | json_encode }}" style="display: none"></div>
                   <category-image-carousel
-                      template="#vue-category-image-carousel"
+                      template-override="#vue-category-image-carousel"
                       :image-urls-data="{{ item.data.images | json_encode() }} | itemImages('urlMiddle')"
                       alt-text="{{ etcAltText | trim }}"
                       title-text="{{ etcAltText | trim }}"

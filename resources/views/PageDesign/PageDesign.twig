@@ -475,15 +475,6 @@
     <script src="https://www.etc-shop.de/layout/ETCeres/js/etc.js"></script>
   {% endif %}
 
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/http-vue-loader"></script>
-
-<script>
-        // =========================
-        // COMPONENTS
-        // =========================
-        Vue.component("basket-previewETC", () => import("{{ plugin_path('CeresCoconut') }}/js/src/app/components/basket/BasketPreview.vue"));
-</script>
 
 {{ component( "CeresCoconut::VueScripts" ) }}
 
