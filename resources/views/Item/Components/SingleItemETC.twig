@@ -31,8 +31,8 @@
     </div>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top2">
-      <h1 id="SingleArticle_Name" itemprop="name">${ currentVariation.texts.name1 }</h1>
-      <div style="display: none">${ currentVariation.texts.itemId }</div>
+      <h1 id="SingleArticle_Name" itemprop="name">{{ currentVariation.texts.name1 }}</h1>
+      <div style="display: none">{{ currentVariation.texts.itemId }}</div>
       <h2 v-if="currentVariation.texts.itemId == 81047528" id="SingleArticle_PreviewText"> {{ currentVariation.texts.shortDescription }}</h2>
       <div class="img-zoom hidden-xs hidden-md hidden-sm" id="zoomlayer" :style="'background-image: url(); display: none; background-position: 84.8552% 53.7285%;'"></div>
       <div id="SingleArticle_MainPic" class="imageBox">
@@ -69,12 +69,12 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top1">
-        <div id="SingleArticle_Data"> <span style="display: none;" itemprop="brand">${ currentVariation.item.manufacturer.externalName }</span>
+        <div id="SingleArticle_Data"> <span style="display: none;" itemprop="brand">{{ currentVariation.item.manufacturer.externalName }}</span>
           <table>
             <tbody>
               <tr>
                 <td>{{ trans("CeresCoconut::Template.ETC_Artikelnummer") }}:</td>
-                <td itemprop="sku" id="SingleArticle_VarNumber">${ currentVariation.variation.number }</td>
+                <td itemprop="sku" id="SingleArticle_VarNumber">{{ currentVariation.variation.number }}</td>
               </tr>
               <!-- Variation -->
               <tr v-if="variations.length > 1">
@@ -90,7 +90,7 @@
               </tr>
               <tr>
                 <td>{{ trans("CeresCoconut::Template.ETC_Verfuegbarkeit") }}:</td>
-                <td><span data-plenty="availabilityText">${ currentVariation.variation.availability.names.name }</span></td>
+                <td><span data-plenty="availabilityText">{{ currentVariation.variation.availability.names.name }</span></td>
               </tr>
               <tr>
                 <td>{{ trans("CeresCoconut::Template.ETC_Bewertung") }}:</td>
@@ -196,16 +196,16 @@
           <div id="VariationProperties" v-for="tag in currentVariation.tags" v-if="tag.id == 279">
             <div class="VariationProperty test1139">
               <div class="propLabel col-xs-5 col-sm-9 col-md-9 col-lg-9">Brand</div>
-              <div class="propUnit">${ currentVariation.item.manufacturer.externalName }</div>
+              <div class="propUnit">{{ currentVariation.item.manufacturer.externalName }}</div>
             </div>
             <div class="VariationProperty">
               <div class="propLabel col-xs-5 col-sm-9 col-md-9 col-lg-9" v-if="currentVariation.variation.model !== ''">Modell</div>
-              <div class="propUnit" v-if="currentVariation.variation.model !== ''">${ currentVariation.variation.model }</div>
+              <div class="propUnit" v-if="currentVariation.variation.model !== ''">{{ currentVariation.variation.model }}</div>
             </div>
 
             <div v-for="varProp in currentVariation.variationProperties" class="VariationProperty" v-if="varProp.values.value !== 'null'">
-              <div class="propLabel col-xs-5 col-sm-9 col-md-9 col-lg-9">${ varProp.property.names.name }</div>
-              <div class="propUnit">${ varProp.values.value }</div>
+              <div class="propLabel col-xs-5 col-sm-9 col-md-9 col-lg-9">{{ varProp.property.names.name }}</div>
+              <div class="propUnit">{{ varProp.values.value }}</div>
               <div class="propText" v-html="varProp.property.names.description"></div>
               <div class="propValueText" v-html="varProp.values.description"></div>
             </div>
