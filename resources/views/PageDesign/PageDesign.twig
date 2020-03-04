@@ -437,9 +437,6 @@
 
 {{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/http-vue-loader"></script>
-
 <script>
     window.vueEventHub = new Vue();
 
@@ -481,49 +478,12 @@
     <script src="https://www.etc-shop.de/layout/ETCeres/js/etc.js"></script>
   {% endif %}
 
+
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/http-vue-loader"></script>
+
 <script>
-        const mount = Vue.prototype.$mount;
-        const dataComponentElements = [].slice.call(document.querySelectorAll("script[data-component], template[data-component]"));
-        const overriddenComponents = dataComponentElements.reduce(
-            (obj, el) =>
-            {
-                return {
-                    ...obj,
-                    [el.dataset.component]: el
-                };
-            }, {});
-
-        Vue.prototype.$mount =
-            function(el, hydrating)
-            {
-                let compHtml = null;
-                const templateOverride = this.$props.templateOverride;
-
-                if (this.$props.templateOverride)
-                {
-                    compHtml = document.querySelector(templateOverride).innerHTML;
-                }
-                else if (overriddenComponents && overriddenComponents[this.$options._componentTag])
-                {
-                    compHtml = overriddenComponents[this.$options._componentTag].innerHTML;
-                }
-
-                if (compHtml)
-                {
-                    const renderFunctions = Vue.compile(compHtml);
-
-                    Object.assign(this.$options, renderFunctions);
-                }
-
-                return mount.call(this, el, hydrating);
-            };
-
-        window.Vue = Vue;
-        window.Vuex = Vuex;
-
-        window.jQuery = jQuery;
-        window.$ = jQuery;
-
         // =========================
         // COMPONENTS
         // =========================
