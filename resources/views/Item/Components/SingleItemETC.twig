@@ -33,7 +33,7 @@
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top2">
       <h1 id="SingleArticle_Name" itemprop="name">${ currentVariation.texts.name1 }</h1>
       <div style="display: none">${ currentVariation.texts.itemId }</div>
-      <h2 v-if="currentVariation.texts.itemId == 81047528" id="SingleArticle_PreviewText">${ currentVariation.texts.shortDescription }</h2>
+      <h2 v-if="currentVariation.texts.itemId == 81047528" id="SingleArticle_PreviewText"> {{ currentVariation.texts.shortDescription }}</h2>
       <div class="img-zoom hidden-xs hidden-md hidden-sm" id="zoomlayer" :style="'background-image: url(); display: none; background-position: 84.8552% 53.7285%;'"></div>
       <div id="SingleArticle_MainPic" class="imageBox">
         <div :id="'previewImages-' + currentVariation.variation.id" class="h-md-3 h-sm-2">
@@ -121,7 +121,7 @@
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup'" value="0">
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_total'">
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_cfgFormat'" value="0">
-                <span class="Price">${ variationTotalPrice }</span>
+                <span class="Price">{{ variationTotalPrice }}</span>
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_variationId'" value="35165">
               </span>
               <meta itemprop="priceCurrency" content="EUR">
@@ -130,14 +130,14 @@
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup" value="0">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_total" value="21.755">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_cfgFormat" value="0">
-              <span class="Price test0945">${ variationTotalPrice | currency(currentVariation.prices.default.currency) }</span>
+              <span class="Price test0945">{{ variationTotalPrice | currency(currentVariation.prices.default.currency) }}</span>
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_variationId" value="35165">
             </span>
           </div>
           {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
               <div class="crossprice" v-if="currentVariation.prices.rrp && currentVariation.prices.rrp.unitPrice.value > 0 && currentVariation.prices.rrp.unitPrice.value > currentVariation.prices.default.unitPrice.value">
                   <div class="text-muted small">
-                     <del>${ currentVariation.prices.rrp.unitPrice.formatted }</del> UVP <span class="crossprice_SavingText">{{ trans("CeresCoconut::Template.ETC_UVPSave") }} {{ uvpSaving }}%</span>
+                     <del>{{ currentVariation.prices.rrp.unitPrice.formatted }}</del> UVP <span class="crossprice_SavingText">{{ trans("CeresCoconut::Template.ETC_UVPSave") }} {{ uvpSaving }}%</span>
                   </div>
               </div>
           {% endif %}
