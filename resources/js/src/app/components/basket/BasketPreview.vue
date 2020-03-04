@@ -1,5 +1,5 @@
 <template>
-    <div class="basket-preview-wrapper h-100" :class="{ 'empty': !basketItems.length, 'open-hover': hover, 'open-right': !hover }">
+    <div class="basket-preview-wrapper h-100 test 0954" :class="{ 'empty': !basketItems.length, 'open-hover': hover, 'open-right': !hover }">
         <div class="position-relative h-100">
             <div class="basket-preview d-flex flex-column flex-nowrap bg-white shadow w-100">
 
