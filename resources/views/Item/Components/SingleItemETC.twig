@@ -31,7 +31,7 @@
     </div>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top2">
-    <div style="display: none">{{ currentVariation | json_encode }}</div>
+    <div style="display: none">{{ itemData | json_encode }}</div>
       <h1 id="SingleArticle_Name" itemprop="name">{{ currentVariation.texts.name1 }}</h1>
       <div style="display: none">${ currentVariation.texts.itemId }</div>
       <h2 v-if="currentVariation.texts.itemId == 81047528" id="SingleArticle_PreviewText">${ currentVariation.texts.shortDescription }</h2>
