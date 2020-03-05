@@ -3,11 +3,12 @@
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
+
 {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
   {% set uvpSaving = ((1 - (item.documents[0].data.prices.default.price.value / item.documents[0].data.prices.rrp.unitPrice.value)) * 100) | round %}
 {% endif %}
 
-<script type="x/template" id="vue-single-item" data-component="single-item">
+<script type="x/template" id="vue-single-item">
 <div class="container">
 
   <!-- BASKET MODAL -->
@@ -30,9 +31,9 @@
     </div>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top2">
-      <h1 id="SingleArticle_Name" itemprop="name">{{ currentVariation.texts.name1 }}</h1>
-      <div style="display: none" v-html="currentVariation.texts.name1"></div>
-      <h2 v-if="currentVariation.texts.itemId == 81047528" id="SingleArticle_PreviewText">{{ currentVariation.texts.shortDescription }}</h2>
+      <h1 id="SingleArticle_Name" itemprop="name">${ currentVariation.texts.name1 }</h1>
+      <div style="display: none">${ currentVariation.texts.itemId }</div>
+      <h2 v-if="currentVariation.texts.itemId == 81047528" id="SingleArticle_PreviewText">${ currentVariation.texts.shortDescription }</h2>
       <div class="img-zoom hidden-xs hidden-md hidden-sm" id="zoomlayer" :style="'background-image: url(); display: none; background-position: 84.8552% 53.7285%;'"></div>
       <div id="SingleArticle_MainPic" class="imageBox">
         <div :id="'previewImages-' + currentVariation.variation.id" class="h-md-3 h-sm-2">
@@ -68,12 +69,12 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top1">
-        <div id="SingleArticle_Data"> <span style="display: none;" itemprop="brand">{{ currentVariation.item.manufacturer.externalName }}</span>
+        <div id="SingleArticle_Data"> <span style="display: none;" itemprop="brand">${ currentVariation.item.manufacturer.externalName }</span>
           <table>
             <tbody>
               <tr>
                 <td>{{ trans("CeresCoconut::Template.ETC_Artikelnummer") }}:</td>
-                <td itemprop="sku" id="SingleArticle_VarNumber">{{ currentVariation.variation.number }}</td>
+                <td itemprop="sku" id="SingleArticle_VarNumber">${ currentVariation.variation.number }</td>
               </tr>
               <!-- Variation -->
               <tr v-if="variations.length > 1">
