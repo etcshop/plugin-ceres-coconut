@@ -39,7 +39,7 @@
         <div :id="'previewImages-' + currentVariation.variation.id" class="h-md-3 h-sm-2">
           <div class="previewImageSlider owl-carousel owl-theme" style="opacity: 1; display: block;">
             <div class="owl-wrapper-outer">
-                <item-image-carousel plugin-path="{{ plugin_path('Ceres') }}" image-url-accessor="url" template="#vue-item-image-carousel"></item-image-carousel>
+                <item-image-carousel plugin-path="{{ plugin_path('Ceres') }}" image-url-accessor="url" template-override="#vue-item-image-carousel"></item-image-carousel>
             </div>
             <div class="owl-controls clickable">
               <div class="owl-pagination">
