@@ -461,7 +461,9 @@
           <div class="container_centered PromoBox col-lg-12 col-md-12 col-sm-12 col-xs-12" id="cnt_Start_Pos4">
                <div class="container">
                   {% if itemsP4B1 != 'NULL' %}
-                      <start-box-item-list class="StartBoxItemList col-sm-6 col-lg-3" :items="{{ itemsP4B1 | json_encode }}" :label="{{ lblP4B1 | json_encode }}" :alt-url="{{ altUrlP4B1 | json_encode }}"></start-box-item-list>
+                  <lazy-load component="start-box-item-list">
+                    <start-box-item-list class="StartBoxItemList col-sm-6 col-lg-3" :items="{{ itemsP4B1 | json_encode }}" :label="{{ lblP4B1 | json_encode }}" :alt-url="{{ altUrlP4B1 | json_encode }}"></start-box-item-list>
+                  </lazy-load>
                   {% endif %}
                   {% if itemsP4B2 != 'NULL' %}
                       <start-box-item-list class="StartBoxItemList col-sm-6 col-lg-3" :items="{{ itemsP4B2 | json_encode }}" :label="{{ lblP4B2 | json_encode }}" :alt-url="{{ altUrlP4B2 | json_encode }}"></start-box-item-list>
