@@ -69,12 +69,12 @@
       </div>
     </div>
     <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 SingleArticle_Top1">
-        <div id="SingleArticle_Data"> <span style="display: none;" itemprop="brand">${ currentVariation.item.manufacturer.externalName }</span>
+        <div id="SingleArticle_Data"> <span style="display: none;" itemprop="brand">{{ currentVariation.item.manufacturer.externalName }}</span>
           <table>
             <tbody>
               <tr>
                 <td>{{ trans("CeresCoconut::Template.ETC_Artikelnummer") }}:</td>
-                <td itemprop="sku" id="SingleArticle_VarNumber">${ currentVariation.variation.number }</td>
+                <td itemprop="sku" id="SingleArticle_VarNumber">{{ currentVariation.variation.number }}</td>
               </tr>
               <!-- Variation -->
               <tr v-if="variations.length > 1">
