@@ -11,18 +11,10 @@
   <div class="itemBoxInner test1309">
       <div class="h-lg-2 h-md-3 h-sm-2 h-xs-6 PreviewImageBig">
                     <a :href="altUrl" v-if="altUrl">
-                        <lazy-img
-                            class="img-basket-small img-fluid"
-                            :image-url="firstImageByPosition"
-                            :alt="itemName">
-                        </lazy-img>
+                        <img src="{{firstImageByPosition}}">
                     </a>
                     <a :href="itemData | itemURL" v-else>
-                        <lazy-img
-                            class="img-basket-small img-fluid"
-                            :image-url="firstImageByPosition"
-                            :alt="itemName">
-                        </lazy-img>
+                        <img src="{{firstImageByPosition}}">
                     </a>
       </div>
       <a class="name block" :href="altUrl" v-if="altUrl">${ itemName }</a>
