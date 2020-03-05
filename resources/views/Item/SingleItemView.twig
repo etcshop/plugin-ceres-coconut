@@ -8,7 +8,7 @@
 {{ component( "Ceres::Item.Components.ItemBundle" ) }}
 {{ component( "CeresCoconut::Basket.Components.AddItemToBasketOverlayETC" ) }}
 
-<single-item template-override="#vue-single-itemETC" v-cloak item-data="{{ item | json_data }}" attributes-data="{{ attributes | json_data }}" variations="{{ variations | json_data }}">
+<single-item template-override="#vue-single-item" v-cloak item-data="{{ item | json_data }}" attributes-data="{{ attributes | json_data }}" variations="{{ variations | json_data }}">
     <template #before-price>{{ LayoutContainer.show("Ceres::SingleItem.BeforePrice", item.documents[0].data) }}</template>
     <template #after-price>{{ LayoutContainer.show("Ceres::SingleItem.AfterPrice", item.documents[0].data) }}</template>
     <template #before-add-to-basket>{{ LayoutContainer.show("Ceres::SingleItem.BeforeAddToBasket", item.documents[0].data) }}</template>
