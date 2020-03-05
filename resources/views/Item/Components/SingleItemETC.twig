@@ -121,7 +121,7 @@
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup'" value="0">
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_total'">
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_cfgFormat'" value="0">
-                <span class="Price">{{ variationTotalPrice }}</span>
+                <span class="Price">{{ item.documents[0].data.prices.default.price.formatted }}</span>
                 <input type="hidden" :id="'price_dynamic_0_' + currentVariation.item.id + '_variationId'" value="35165">
               </span>
               <meta itemprop="priceCurrency" content="EUR">
@@ -130,7 +130,7 @@
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_orderparam_markup" value="0">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_total" value="21.755">
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_cfgFormat" value="0">
-              <span class="Price test0945">${ variationTotalPrice | currency(currentVariation.prices.default.currency) }</span>
+              <span class="Price test0945">{{ item.documents[0].data.prices.default.price.formatted }}</span>
               <input type="hidden" id="'price_dynamic_0_' + currentVariation.item.id + '_variationId" value="35165">
             </span>
           </div>
