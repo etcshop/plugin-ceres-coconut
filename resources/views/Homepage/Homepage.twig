@@ -451,7 +451,9 @@
                   </lazy-load>
                   {% endif %}
                   {% if itemsP4B2 != 'NULL' %}
+                  <lazy-load component="start-box-item-list">
                       <start-box-item-list class="StartBoxItemList col-sm-6 col-lg-3" :items="{{ itemsP4B2 | json_encode }}" :label="{{ lblP4B2 | json_encode }}" :alt-url="{{ altUrlP4B2 | json_encode }}"></start-box-item-list>
+                  </lazy-load>
                   {% endif %}
                   {% if itemsP4B3 != 'NULL' %}
                       <start-box-item-list class="StartBoxItemList col-sm-6 col-lg-3" :items="{{ itemsP4B3 | json_encode }}" :label="{{ lblP4B3 | json_encode }}" :alt-url="{{ altUrlP4B3 | json_encode }}"></start-box-item-list>
