@@ -342,22 +342,7 @@
 
             <a href="{{ urlP3S1 }}" title="{{ config("CeresCoconut.homepage.cntStartEnP3S1AltText") }}">
 
-              <picture>
-                <source media="(min-width: 992px)" srcset="{{ picP3S1 }}">
-                <!-- Tablet/Desptop -->
-                <source media="(min-width: 768px)" srcset="{{ picP3S1 | replace({'.jpg': '-992.jpg'}) }}">
-                <!-- Tablet/Desptop -->
-                <source media="(min-width: 480px)" srcset="{{ picP3S1 | replace({'.jpg': '-768.jpg'}) }}">
-                <!-- Mobile -->
-                <source srcset="{{ picP3S1 | replace({'.jpg': '-480.jpg'}) }}">
-                <!-- Fallback (Desktop) -->
-                <lazy-img
-                    image-url="{{ picP3S1 }}"
-                    alt="altP3S1">
-                </lazy-img>
-                <!--<img class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-src="{{ picP3S1 }}" src="{{ picP3S1 }}" alt="{{ altP3S1 }}">-->
-              </picture>
-
+              <img src="{{ picP3S1 }}">
             </a>
           </div>
         </div>

@@ -8,13 +8,17 @@
 {% set itemUrl =  item.data | itemURL %}
 
 <script type="x/template" id="vue-startbox-itemETC">
+
+  {% set imgSrc = firstImageByPosition %}
+
   <div class="itemBoxInner test1309">
       <div class="h-lg-2 h-md-3 h-sm-2 h-xs-6 PreviewImageBig">
+
                     <a :href="altUrl" v-if="altUrl">
-                        <img src="{{firstImageByPosition}}">
+                        <img src="{{ imgSrc }}">
                     </a>
                     <a :href="itemData | itemURL" v-else>
-                        <img src="{{firstImageByPosition}}">
+                        <img src="{{ imgSrc }}">
                     </a>
       </div>
       <a class="name block" :href="altUrl" v-if="altUrl">${ itemName }</a>
