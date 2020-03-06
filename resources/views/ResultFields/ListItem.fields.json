@@ -41,6 +41,7 @@
     "texts.name1",
     "texts.name2",
     "texts.name3",
+    "texts.technicalData",
 
     "bundleComponents.*",
 
