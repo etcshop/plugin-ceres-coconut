@@ -5,7 +5,6 @@ use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
-use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
 use CeresCoconut\Contexts\CoconutSingleItemContext;
 use Plenty\Modules\Webshop\ItemSearch\Helpers\ResultFieldTemplate;
