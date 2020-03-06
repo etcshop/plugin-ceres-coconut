@@ -9,7 +9,7 @@
 {{ component( "CeresCoconut::Basket.Components.AddItemToBasketOverlayETC" ) }}
 
 <single-item
-    template-override="#vue-single-item"
+    data-component="vue-single-item"
     v-cloak
     item-data="{{ item | json_data }}"
     attributes-data="{{ attributes | json_data }}"
