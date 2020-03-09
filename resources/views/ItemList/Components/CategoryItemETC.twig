@@ -12,10 +12,10 @@
     {% endif %}
 {% endif %}
 
-{% set techData = item.texts.technicalData %}
-{% set nameItem = item.texts.name1 %}
+{% set techData = itemData.texts.technicalData %}
+{% set nameItem = itemData.texts.name1 %}
 {% set image = item.data.images.all | first %}
-{% set itemUrl =  item.texts.urlPath %}
+{% set itemUrl =  item.data | itemURL %}
 
 {% if enableCarousel is not defined %}
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
@@ -34,8 +34,8 @@
             <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
                 <div class="owl-item" style="width: 180px;">
                   <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height">
-                    <a :href="itemUrl">
-                        <img :src="item.images.all[0].urlMiddle" :alt="item.texts.name1">
+                    <a :href="itemData | itemURL">
+                        <img :src="itemData.images.all[0].urlMiddle" :alt="itemData.texts.name1">
                     </a>
                   </div>
                 </div>
@@ -43,16 +43,16 @@
           </div>
         </div>
       </div>
-      <a class="name block" :href="itemUrl">{{ nameItem }}</a>
+      <a class="name block" :href="itemData | itemURL">{{ nameItem }}</a>
       <p class="price js-link">
         <span class="test large linkToItem">
-          <span class="Price">${ item.prices.default.unitPrice.formatted }</span> €
+          <span class="Price">${ itemData.prices.default.unitPrice.formatted }</span> €
         </span>
       </p>
-      <p class="item_details hidden-xs test1649"><a href="{{ itemURL }}">Details</a></p>
+      <p class="item_details hidden-xs test1649"><a href="{{ itemData | itemURL }}">Details</a></p>
       <div class="CatOverviewTechnicalData">
         Technische Daten: {{ techData }}<br>
-        ${ item.texts.technicalData }
+        ${ itemData.texts.technicalData }
       </div>
     </div>
 </script>
