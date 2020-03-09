@@ -7,7 +7,7 @@
 
     {% set itemData = item.documents[0].data %}
     <meta name="description" content="{{ item.documents[0].data.texts.metaDescription }}">
-    <meta name="keywords" content="TEST1217 {{ item.documents[0].data.texts.keywords }}">
+    <meta name="keywords" content="{{ item.documents[0].data.texts.keywords }}">
 
     <meta property="og:title" content="{{ ItemName.get(item.documents[0].data | itemName, item.documents[0].data.variation.bundleType) | trim}}" />
     <meta property="og:type" content="article" />
