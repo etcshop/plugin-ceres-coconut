@@ -34,7 +34,7 @@
             <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
                 <div class="owl-item" style="width: 180px;">
                   <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height">
-                    <a :href="itemUrl">
+                    <a href="{{ itemUrl }}">
                         <img :src="itemData.images.all[0].urlMiddle" :alt="itemData.texts.name1">
                     </a>
                   </div>
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <a class="name block" :href="itemUrl">{{ nameItem }}</a>
+      <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
       <p class="price js-link">
         <span class="test large linkToItem">
           <span class="Price">${ itemData.prices.default.unitPrice.formatted }</span> €
