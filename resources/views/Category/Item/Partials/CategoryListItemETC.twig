@@ -38,7 +38,8 @@
           <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
               <div class="owl-item" style="width: 200px;">
                 <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
-                  <category-image-carousel :image-urls-data="images | itemImages(imageUrlAccessor)"
+                  <category-image-carousel template-override="#vue-category-image-carousel" 
+                                          :image-urls-data="images | itemImages(imageUrlAccessor)"
                                           :alt-text="item.data | itemName"
                                           :title-text="item.data | itemName"
                                           :item-url="item.data | itemURL(urlWithVariationId)"
