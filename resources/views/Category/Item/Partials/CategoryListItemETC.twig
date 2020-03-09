@@ -37,15 +37,13 @@
           <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
               <div class="owl-item" style="width: 200px;">
                 <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
-                  <category-image-carousel
-                      data-component="vue-category-image-carousel"
-                      :image-urls-data="{{ item.data.images | json_encode() }} | itemImages('urlMiddle')"
-                      alt-text="{{ etcAltText | trim }}"
-                      title-text="{{ etcAltText | trim }}"
-                      item-url="{{ itemUrl }}"
-                      :show-dots="{{ ceresConfig.item.categoryShowDots | json_encode }}"
-                      :show-nav="{{ ceresConfig.item.categoryShowNav | json_encode }}"
-                      :enable-carousel="{{ enableCarousel | json_encode }}">
+                  <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
+                                          :alt-text="item | itemName"
+                                          :title-text="item | itemName"
+                                          :item-url="item | itemURL(urlWithVariationId)"
+                                          :enable-carousel="$ceres.config.item.enableImageCarousel"
+                                          :disable-carousel-on-mobile="disableCarouselOnMobile"
+                                          ref="categoryImageCarousel">
                   </category-image-carousel>
                 </div>
               </div>
