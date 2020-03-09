@@ -15,7 +15,7 @@
 {% set techData = item.texts.technicalData %}
 {% set nameItem = item.texts.name1 %}
 {% set image = item.data.images.all | first %}
-{% set itemUrl =  item.data | itemURL %}
+{% set itemUrl =  item.texts.urlPath %}
 
 {% if enableCarousel is not defined %}
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
@@ -49,7 +49,7 @@
           <span class="Price">${ item.prices.default.unitPrice.formatted }</span> €
         </span>
       </p>
-      <p class="item_details hidden-xs test1649"><a href="{{ item | itemURL }}">Details</a></p>
+      <p class="item_details hidden-xs test1649"><a href="{{ itemURL }}">Details</a></p>
       <div class="CatOverviewTechnicalData">
         Technische Daten: {{ techData }}<br>
         ${ item.texts.technicalData }
