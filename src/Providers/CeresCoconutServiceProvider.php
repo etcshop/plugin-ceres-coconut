@@ -282,8 +282,6 @@ class CeresCoconutServiceProvider extends ServiceProvider
                 // Override list item result fields
                 if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
                 {
-                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_LIST_ITEM] = 'CeresCoconut::ResultFields.ListItem';
-
                     $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
                     $resultFieldTemplate->setTemplates([
                        ResultFieldTemplate::TEMPLATE_LIST_ITEM    => 'CeresCoconut::ResultFields.ListItem'
