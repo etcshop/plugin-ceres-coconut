@@ -40,13 +40,7 @@
               <div class="owl-item" style="width: 200px;">
                 <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
                   <div style="display: none">{{ item | json_encode }}</div>
-                        <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
-                                                :alt-text="item | itemName"
-                                                :title-text="item | itemName"
-                                                :item-url="item | itemURL(urlWithVariationId)"
-                                                :enable-carousel="$ceres.config.item.enableImageCarousel"
-                                                :disable-carousel-on-mobile="disableCarouselOnMobile"
-                                                ref="categoryImageCarousel">
+                        <category-image-carousel>
                         </category-image-carousel>
                 </div>
               </div>
