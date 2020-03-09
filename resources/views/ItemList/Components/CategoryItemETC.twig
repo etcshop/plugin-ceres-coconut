@@ -12,8 +12,8 @@
     {% endif %}
 {% endif %}
 
-{% set techData = itemData.texts.technicalData %}
-{% set nameItem = itemData.texts.name1 %}
+{% set techData = item.texts.technicalData %}
+{% set nameItem = item.texts.name1 %}
 {% set image = item.data.images.all | first %}
 {% set itemUrl =  item.data | itemURL %}
 
@@ -34,8 +34,8 @@
             <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
                 <div class="owl-item" style="width: 180px;">
                   <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height">
-                    <a :href="itemData | itemURL">
-                        <img :src="itemData.images.all[0].urlMiddle" :alt="itemData.texts.name1">
+                    <a :href="item | itemURL">
+                        <img :src="item.images.all[0].urlMiddle" :alt="item.texts.name1">
                     </a>
                   </div>
                 </div>
@@ -46,13 +46,13 @@
       <a class="name block" :href="itemData | itemURL">{{ nameItem }}</a>
       <p class="price js-link">
         <span class="test large linkToItem">
-          <span class="Price">${ itemData.prices.default.unitPrice.formatted }</span> €
+          <span class="Price">${ item.prices.default.unitPrice.formatted }</span> €
         </span>
       </p>
-      <p class="item_details hidden-xs test1649"><a href="{{ itemData | itemURL }}">Details</a></p>
+      <p class="item_details hidden-xs test1649"><a href="{{ item | itemURL }}">Details</a></p>
       <div class="CatOverviewTechnicalData">
         Technische Daten: {{ techData }}<br>
-        ${ itemData.texts.technicalData }
+        ${ item.texts.technicalData }
       </div>
     </div>
 </script>
