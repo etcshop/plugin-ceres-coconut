@@ -269,6 +269,13 @@ class CeresCoconutServiceProvider extends ServiceProvider
             return false;
         }, self::PRIORITY);
 
+
+            $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+            $resultFieldTemplate->setTemplates([
+               ResultFieldTemplate::TEMPLATE_LIST_ITEM    => 'CeresCoconut::ResultFields.ListItem'
+            ]);
+
+
         $enabledResultFields = [];
         if(!empty($config->get("CeresCoconut.result_fields.override")))
         {
@@ -282,10 +289,6 @@ class CeresCoconutServiceProvider extends ServiceProvider
                 // Override list item result fields
                 if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
                 {
-                    $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
-                    $resultFieldTemplate->setTemplates([
-                       ResultFieldTemplate::TEMPLATE_LIST_ITEM    => 'CeresCoconut::ResultFields.ListItem'
-                    ]);
                 }
                 // Override single item view result fields
                 if (in_array("single_item", $enabledResultFields) || in_array("all", $enabledResultFields))
