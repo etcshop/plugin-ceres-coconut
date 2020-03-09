@@ -89,6 +89,8 @@
 
                     <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-9 col-xs-12 p-x-0">
                         {% for item in itemList %}
+                            {{ item | json_encode }}
+                            
                             {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
                         {% endfor %}
                     </ul>
