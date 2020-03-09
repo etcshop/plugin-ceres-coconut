@@ -18,7 +18,7 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     public $customerShowNetPrices;
     public $ETCItemData;
     public $itemData;
-    public $assetName = "ceres-item";
+    public $assetName;
 
     public $accessory;
     public $similar;
@@ -27,6 +27,8 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     public function init($params)
     {
         parent::init($params);
+
+        $this->assetName = "ceres-item";
 
         $this->item = $params['item'];
         $itemData = $this->item['documents'][0]['data'];
