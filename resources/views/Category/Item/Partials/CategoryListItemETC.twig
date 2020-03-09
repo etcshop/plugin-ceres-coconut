@@ -4,6 +4,7 @@
 {% import "CeresCoconut::PageDesign.Macros.ItemName" as ItemName %}
 
 {% set image = item.data.images.all | first %}
+{% set images = item.data.images %}
 {% set itemUrl =  item.data | itemURL %}
 {% set nameItem = item.data.texts.name1 %}
 
@@ -37,7 +38,7 @@
           <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
               <div class="owl-item" style="width: 200px;">
                 <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
-                  <category-image-carousel :image-urls-data="item.data.images | itemImages(imageUrlAccessor)"
+                  <category-image-carousel :image-urls-data="images | itemImages(imageUrlAccessor)"
                                           :alt-text="item | itemName"
                                           :title-text="item | itemName"
                                           :item-url="item | itemURL(urlWithVariationId)"
