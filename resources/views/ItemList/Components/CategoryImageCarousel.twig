@@ -1,5 +1,3 @@
-{{ component( "Ceres::Components.common.LazyImg" ) }}
-
 <script type="x/template" id="vue-category-image-carousel">
     <a :id="'owl-carousel-' + _uid" v-if="$_enableCarousel" class="owl-carousel owl-theme" :href="itemUrl">
         <div v-for="(imageUrl, index) in imageUrls">

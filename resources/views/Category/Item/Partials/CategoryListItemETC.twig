@@ -3,6 +3,8 @@
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% import "CeresCoconut::PageDesign.Macros.ItemName" as ItemName %}
 
+{{ component( "CeresCoconut::ItemList.Components.CategoryImageCarousel") }}
+
 {% set image = item.images.all | first %}
 {% set itemUrl =  item | itemURL %}
 {% set nameItem = item.texts.name1 %}
