@@ -433,6 +433,13 @@
 
 {{ LayoutContainer.show("Ceres::Script.AfterScriptsLoaded") }}
 
+{% if assetName == 'ceres-checkout' %}
+    {{ LayoutContainer.show("Ceres::Checkout.AfterScriptsLoaded") }}
+{% endif %}
+{% if assetName == 'ceres-item' %}
+    {{ LayoutContainer.show("Ceres::SingleItem.AfterScriptsLoaded") }}
+{% endif %}
+
 <script>
     window.vueEventHub = new Vue();
 
