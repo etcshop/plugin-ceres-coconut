@@ -89,7 +89,7 @@
 
                     <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-9 col-xs-12 p-x-0">
                         {% for item in itemList %}
-                            {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item, 'shippingCat': shippingCat } %}
+                            {% include "CeresCoconut::Category.Item.Partials.CategoryListItemETC" with { 'item': item.data, 'shippingCat': shippingCat } %}
                         {% endfor %}
                     </ul>
 
