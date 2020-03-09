@@ -89,7 +89,7 @@
                         {% for item in itemList %}
                             <category-item
                                 template-override="#vue-category-itemETC"
-                                item-data="{{ item.data }}"
+                                item-data="{{ item.data | json_encode }}"
                                 item-data-ref="{{ item.data | json_data }}"
                                 :decimal-count="{{ ceresConfig.item.storeSpecial }}">
                                 <template #before-prices>{{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item.data) }}</template>
