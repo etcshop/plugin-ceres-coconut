@@ -46,13 +46,13 @@
       <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
       <p class="price js-link">
         <span class="test large linkToItem">
-          <span class="Price">${ item.prices.default.unitPrice.formatted }</span> €
+          <span class="Price">{{ item.prices.default.unitPrice.formatted }}</span> €
         </span>
       </p>
       <p class="item_details hidden-xs test1649"><a href="{{ itemUrl }}">Details</a></p>
       <div class="CatOverviewTechnicalData">
         Technische Daten: {{ techData }}<br>
-        ${ item.texts.technicalData }
+        {{ item.texts.technicalData | raw }}
       </div>
     </div>
 </script>
