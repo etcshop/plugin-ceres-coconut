@@ -55,7 +55,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
            $templateContainer->setContext(CoconutSingleItemContext::class);
            return false;
 
-           public $assetName = "ceres-item";
+           $assetName = "ceres-item";
        }, 0);
         // Override homepage
         if (in_array("homepage", $enabledOverrides) || in_array("all", $enabledOverrides))
