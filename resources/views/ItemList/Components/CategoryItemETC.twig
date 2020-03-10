@@ -21,6 +21,18 @@
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
 {% endif %}
 
+{% if (item.prices.rrp) %}
+  {% if (item.prices.rrp.unitPrice.value > item.prices.default.price.value) %}
+    {% set uvpSaving = ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | round %}
+  {% endif %}
+{% endif %}
+
+{% if (item.texts.name3 == "") or (item.texts.name3 == "N / A") %}
+  {% set etcAltText = ItemName.get(item | itemName, item.variation.bundleType) %}
+{% else %}
+  {% set etcAltText = item.texts.name3 %}
+{% endif %}
+
 <script type="x/template" id="vue-category-itemETC">
     <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
       <div class="itemBoxInner">
@@ -35,7 +47,6 @@
               <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
                   <div class="owl-item" style="width: 200px;">
                     <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
-                      <div style="display: none">{{ techData | json_encode }}</div>
                         <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
                                                 :alt-text="item | itemName"
                                                 :title-text="item | itemName"
@@ -51,32 +62,29 @@
           </div>
           {% if (uvpSaving) %}
               <div class="crossprice_saving">
-                -{{ uvpSaving }}%
+                -${ uvpSaving }%
               </div>
           {% endif %}
         </div>
-        <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
+        <a class="name block" :href="itemUrl">${ nameItem }</a>
         <p class="price js-link">
           <span class="test large linkToItem">
             <span class="Price">
-              {{ item.prices.default.unitPrice.formatted }}
+              ${ item.prices.default.unitPrice.formatted }
             </span>
           </span>
         </p>
-        <p class="item_details hidden-xs"><a href="{{ itemUrl }}">Details</a></p>
+        <p class="item_details hidden-xs"><a :href="itemUrl">Details</a></p>
         <p class="crossprice_container">
           {% if (uvpSaving) %}
+          <del>${ item.prices.rrp.unitPrice.value | number_format(2, '.', ',') } ${ item.prices.rrp.currency }</del> UVP
             <span class="crossprice_cat">
-              <del>{{ item.prices.rrp.unitPrice.value | number_format(2, '.', ',') }} {{ item.prices.rrp.currency }}</del> UVP
             </span>
           {% else %}
             <span class="crossprice_cat">&nbsp;</span>
           {% endif %}
         </p>
-        <div class="CatOverviewTechnicalData">
-          {{ item.texts.technicalData | raw }}
-
-        </div>
+        <div class="CatOverviewTechnicalData" v-html="item.texts.technicalData"></div>
       </div>
     </li>
 </script>
