@@ -24,6 +24,8 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     public $similar;
     public $replacementPart;
 
+    use Loggable;
+
     public function init($params)
     {
         parent::init($params);
