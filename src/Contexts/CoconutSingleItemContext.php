@@ -5,7 +5,6 @@ namespace CeresCoconut\Contexts;
 use IO\Helper\ContextInterface;
 use Ceres\Contexts\SingleItemContext;
 use Plenty\Modules\Item\Item\Contracts\ItemRepositoryContract;
-use Plenty\Plugin\Log\Loggable;
 
 use IO\Services\ItemSearch\Services\ItemSearchService;
 use IO\Services\ItemSearch\SearchPresets\CrossSellingItems;
@@ -24,15 +23,12 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     public $similar;
     public $replacementPart;
 
-    use Loggable;
+    public $assetName = "ceres-item";
 
     public function init($params)
     {
         parent::init($params);
-        $this->getLogger(__CLASS__)->error("Coconut Context is Calling", [
-            "assetName" => $this->assetName,
-            "buildHash" => $this->buildHash
-        ] );
+
         $this->item = $params['item'];
         $itemData = $this->item['documents'][0]['data'];
 
