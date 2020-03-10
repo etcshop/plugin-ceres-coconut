@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="crossprice_saving" v-if="item.prices.rrp != null">
-                <span>-${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%</span>
+                <span>-${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) }%</span>
           </div>
         </div>
         <a class="name block" :href="item | itemURL(urlWithVariationId)">${ item | itemName }</a>
