@@ -22,8 +22,9 @@
 {% endif %}
 
 <script type="x/template" id="vue-category-itemETC">
-  <div class="itemBoxInner">
-    <div style="display: none">{{ item | json_encode }}</div>
+  <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
+    <div class="itemBoxInner">
+      <div style="display: none">${ item.texts.name1}</div>
       <div class="CategoryViewRatingCount">
         <span class="ItemRatingIconContainer ItemRatingContainer_4.9">
           <!--<img src="/images/icons/silk/star_set_5_5.png" alt="Rating: 4.9">-->
@@ -56,4 +57,5 @@
         {{ item.texts.technicalData | raw }}
       </div>
     </div>
+  </li>
 </script>
