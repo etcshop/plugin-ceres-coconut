@@ -35,7 +35,7 @@
 
 <script type="x/template" id="vue-category-itemETC">
     <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
-      <div style="display: none"></div>
+      <div style="display: none">${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | round }</div>
       <div class="itemBoxInner">
         <div class="CategoryViewRatingCount">
           <span class="ItemRatingIconContainer">
