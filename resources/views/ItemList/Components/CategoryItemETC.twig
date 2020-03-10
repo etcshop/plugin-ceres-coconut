@@ -63,7 +63,7 @@
           </div>
           {% if (uvpSaving) %}
               <div class="crossprice_saving">
-                -{{ uvpSaving }}
+                -${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%
               </div>
           {% endif %}
         </div>
@@ -76,14 +76,9 @@
           </span>
         </p>
         <p class="item_details hidden-xs"><a :href="item | itemURL(urlWithVariationId)">Details</a></p>
-        <p class="crossprice_container">
-          {% if (uvpSaving) %}
+        <p class="crossprice_container" v-if="item.prices.rrp != null">
           <del>${ item.prices.rrp.unitPrice.value | number_format(2, '.', ',') } ${ item.prices.rrp.currency }</del> UVP
-            <span class="crossprice_cat">
-            </span>
-          {% else %}
-            <span class="crossprice_cat">&nbsp;</span>
-          {% endif %}
+            <span class="crossprice_cat"></span>
         </p>
         <div class="CatOverviewTechnicalData" v-html="item.texts.technicalData"></div>
       </div>
