@@ -26,7 +26,10 @@ class CoconutSingleItemContext extends SingleItemContext implements ContextInter
     public function init($params)
     {
         parent::init($params);
-
+        $this->getLogger(__CLASS__)->error("Coconut Context is Calling", [
+            "assetName" => $this->assetName,
+            "buildHash" => $this->buildHash
+        ] );
         $this->item = $params['item'];
         $itemData = $this->item['documents'][0]['data'];
 
