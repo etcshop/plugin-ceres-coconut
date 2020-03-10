@@ -14,8 +14,8 @@
 
 {% set techData = item.texts.technicalData %}
 {% set nameItem = item.texts.name1 %}
-{% set image = item.data.images.all | first %}
-{% set itemUrl =  item.data.texts.urlPath %}
+{% set image = item.images.all | first %}
+{% set itemUrl =  item.texts.urlPath %}
 
 {% if enableCarousel is not defined %}
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
@@ -23,6 +23,7 @@
 
 <script type="x/template" id="vue-category-itemETC">
   <div class="itemBoxInner">
+    <div style="display: none">{{ item | json_encode }}</div>
       <div class="CategoryViewRatingCount">
         <span class="ItemRatingIconContainer ItemRatingContainer_4.9">
           <!--<img src="/images/icons/silk/star_set_5_5.png" alt="Rating: 4.9">-->
