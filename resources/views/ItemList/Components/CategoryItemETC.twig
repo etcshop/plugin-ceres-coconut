@@ -21,12 +21,6 @@
     {% set enableCarousel = ceresConfig.item.enableImageCarousel %}
 {% endif %}
 
-{% if (item.prices.rrp) %}
-  {% if (item.prices.rrp.unitPrice.value > item.prices.default.price.value) %}
-    {% set uvpSaving = ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | round %}
-  {% endif %}
-{% endif %}
-
 {% if (item.texts.name3 == "") or (item.texts.name3 == "N / A") %}
   {% set etcAltText = ItemName.get(item | itemName, item.variation.bundleType) %}
 {% else %}
@@ -35,7 +29,6 @@
 
 <script type="x/template" id="vue-category-itemETC">
     <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
-      <div style="display: none" v-if="item.prices.rrp != null"><span>${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }</span></div>
       <div class="itemBoxInner">
         <div class="CategoryViewRatingCount">
           <span class="ItemRatingIconContainer">
@@ -62,7 +55,7 @@
             </div>
           </div>
           <div class="crossprice_saving" v-if="item.prices.rrp != null">
-                <span>-${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) }%</span>
+                <span>-${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%</span>
           </div>
         </div>
         <a class="name block" :href="item | itemURL(urlWithVariationId)">${ item | itemName }</a>
