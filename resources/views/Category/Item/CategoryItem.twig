@@ -87,7 +87,7 @@
 
                     <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-9 col-xs-12 p-x-0">
                         {% for item in itemList %}
-                            <span>-${ ((1 - (item.data.prices.default.price.value / item.data.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%</span>
+                            <span>-{{ ((1 - (item.data.prices.default.price.value / item.data.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }}</span>
 
                             <category-item
                                 template-override="#vue-category-itemETC"
