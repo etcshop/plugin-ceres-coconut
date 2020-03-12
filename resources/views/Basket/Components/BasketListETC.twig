@@ -4,6 +4,7 @@
 
 <script type="x/template" id="vue-basket-listETC">
   <ul class="list-unstyled basketItemsList">
-    <basket-list-item template="#vue-basket-list-itemETC" v-for="basketItem in basketItems" :key="basketItem.id" :basket-item="basketItem" language="{{ services.sessionStorage.getLang() }}"></basket-list-item>
+    <div style="display: none">{{ basketItems | json_encode }}</div>
+    <basket-list-item template-override="#vue-basket-list-itemETC" v-for="basketItem in basketItems" :key="basketItem.id" :basket-item="basketItem" :is-preview="isPreview" :basket-details-data="basketDetailsData" language="{{ services.sessionStorage.getLang() }}"></basket-list-item>
   </ul>
 </script>
