@@ -41,24 +41,6 @@
             <div class="owl-wrapper-outer">
                 <item-image-carousel plugin-path="{{ plugin_path('Ceres') }}" image-url-accessor="url" template-override="#vue-item-image-carousel"></item-image-carousel>
             </div>
-            <div class="owl-controls clickable">
-              <div class="owl-pagination">
-                <div class="owl-page active"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-                <div class="owl-page"><span class=""></span></div>
-              </div>
-              <div class="owl-buttons">
-                  <div class="owl-prev disabled"></div>
-                  <div class="owl-next"></div>
-              </div>
-            </div>
           </div>
         </div>
         {% if ('item.recommendedPrice' in itemData or 'all' in itemData) %}
@@ -214,7 +196,7 @@
         <div class="Article_Content" id="Article_Content_Delivery" name="Article_Content_Delivery">
           <div class="container_centered">
             <div class="ContentPage Test1657" id="ContentVersand">
-              {% include category_template( 722, lang, webstoreConfig.webstoreId ) ignore missing %}
+              {% include category_template( 725, lang, webstoreConfig.webstoreId ) ignore missing %}
             </div>
           </div>
         </div>
