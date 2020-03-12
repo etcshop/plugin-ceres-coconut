@@ -126,16 +126,22 @@
           <slot name="after-price"></slot>
           <div class="row m-y-1">
               <slot name="before-add-to-basket"></slot>
-                      {{ AddToBasket.printVueComponent(
-                          "currentVariation",
-                          false,
-                          true,
-                          {
-                              ":missing-order-properties":"variationMissingProperties",
-                              ":is-variation-selected": "isVariationSelected && currentVariation.filter.isSalable",
-                              ":has-price": "currentVariation | hasItemDefaultPrice"
-                          }
-                      ) }}
+              <add-to-basket
+                      :variation-id="currentVariation.variation.id"
+                      :is-salable="!!currentVariation.filter && currentVariation.filter.isSalable"
+                      :has-children="!!currentVariation.filter && currentVariation.filter.hasActiveChildren"
+                      :interval-quantity="currentVariation.variation.intervalOrderQuantity || 1"
+                      :minimum-quantity="currentVariation.variation.minimumOrderQuantity"
+                      :maximum-quantity="!!currentVariation.variation.maximumOrderQuantity && currentVariation.variation.maximumOrderQuantity > 0 ? currentVariation.variation.maximumOrderQuantity : null"
+                      :order-properties="currentVariation.properties.filter(function(prop) { return prop.property.isOderProperty })"
+                      :use-large-scale="false"
+                      :show-quantity="true"
+                      :item-url="currentVariation | itemURL"
+                      :missing-order-properties="variationMissingProperties"
+                      :is-variation-selected="isVariationSelected && currentVariation.filter.isSalable"
+                      :has-price="currentVariation | hasItemDefaultPrice"
+                  >
+              </add-to-basket>
               <slot name="after-add-to-basket"></slot>
           </div>
           <slot name="additional-content-after-add-to-basket"></slot>
