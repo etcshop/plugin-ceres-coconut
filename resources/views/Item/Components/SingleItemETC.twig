@@ -14,7 +14,7 @@
   <!-- BASKET MODAL -->
   <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
   <!-- ./BASKET MODAL -->
-  <div class="row">
+  <div class="row" :getDataField="getDataField" :getFilteredDataField="getFilteredDataField">
 	  <div class="col-lg-3 col-md-2 hidden-sm SingleArticle_Top3">
     <div class="previewPicScrollUp scrolling_inactive">
       <div class="chevron"></div>
@@ -127,7 +127,6 @@
           <div class="row m-y-1">
               <slot name="before-add-to-basket"></slot>
               <add-to-basket
-                      template-override="#vue-add-to-basketETC"
                       :variation-id="currentVariation.variation.id"
                       :is-salable="!!currentVariation.filter && currentVariation.filter.isSalable"
                       :has-children="!!currentVariation.filter && currentVariation.filter.hasActiveChildren"
