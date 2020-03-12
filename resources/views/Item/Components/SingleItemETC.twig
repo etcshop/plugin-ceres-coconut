@@ -10,11 +10,11 @@
 
 <script type="x/template" id="vue-single-item">
 <div class="container">
-
+  <slot :getDataField="getDataField" :getFilteredDataField="getFilteredDataField">
   <!-- BASKET MODAL -->
   <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
   <!-- ./BASKET MODAL -->
-  <div class="row" :getDataField="getDataField" :getFilteredDataField="getFilteredDataField">
+  <div class="row">
 	  <div class="col-lg-3 col-md-2 hidden-sm SingleArticle_Top3">
     <div class="previewPicScrollUp scrolling_inactive">
       <div class="chevron"></div>
@@ -126,7 +126,6 @@
           <slot name="after-price"></slot>
           <div class="row m-y-1">
               <slot name="before-add-to-basket"></slot>
-              <div style="display: none">${ currentVariation | json_encode }</div>
               <add-to-basket
                       :variation-id="currentVariation.variation.id"
                       :is-salable="!!currentVariation.filter && currentVariation.filter.isSalable"
@@ -236,6 +235,6 @@
       </div>
     </div>
   </div>
-
+</slot>
 </div>
 </script>
