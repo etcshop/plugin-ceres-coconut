@@ -276,7 +276,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
         if(!empty($enabledResultFields))
         {
             $dispatcher->listen( 'IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) use ($enabledResultFields)
-            {
+            {/*
                 $templatesToOverride = [];
                 // Override list item result fields
                 if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
@@ -304,6 +304,31 @@ class CeresCoconutServiceProvider extends ServiceProvider
                     $templatesToOverride[ResultFieldTemplate::TEMPLATE_CATEGORY_TREE] = 'CeresCoconut::ResultFields.CategoryTree';
                 }
                 $templateContainer->setTemplates($templatesToOverride);
+                */
+                $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                $resultFieldTemplate->setTemplates([
+                   ResultFieldTemplate::TEMPLATE_LIST_ITEM    => 'CeresCoconut::ResultFields.ListItem'
+                ]);
+
+                $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                $resultFieldTemplate->setTemplates([
+                   ResultFieldTemplate::TEMPLATE_SINGLE_ITEM    => 'CeresCoconut::ResultFields.SingleItem'
+                ]);
+
+                $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                $resultFieldTemplate->setTemplates([
+                   ResultFieldTemplate::TEMPLATE_BASKET_ITEM    => 'CeresCoconut::ResultFields.BasketItem'
+                ]);
+
+                $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                $resultFieldTemplate->setTemplates([
+                   ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST    => 'CeresCoconut::ResultFields.AutoCompleteListItem'
+                ]);
+
+                $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                $resultFieldTemplate->setTemplates([
+                   ResultFieldTemplate::TEMPLATE_CATEGORY_TREE    => 'CeresCoconut::ResultFields.CategoryTree'
+                ]);
             }, self::PRIORITY);
         }
     }
