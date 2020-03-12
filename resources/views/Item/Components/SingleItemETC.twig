@@ -126,7 +126,7 @@
           <slot name="after-price"></slot>
           <div class="row m-y-1">
               <slot name="before-add-to-basket"></slot>
-              <div style="display: none">{{ currentVariation | json_encode }}</div>
+              <div style="display: none">${ currentVariation | json_encode }</div>
               <add-to-basket
                       :variation-id="currentVariation.variation.id"
                       :is-salable="!!currentVariation.filter && currentVariation.filter.isSalable"
