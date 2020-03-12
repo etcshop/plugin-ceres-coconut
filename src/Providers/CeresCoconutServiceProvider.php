@@ -5,9 +5,10 @@ use Plenty\Plugin\Events\Dispatcher;
 use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
-use IO\Services\ItemSearch\Helper\ResultFieldTemplate;
 use Plenty\Plugin\ConfigRepository;
 use CeresCoconut\Contexts\CoconutSingleItemContext;
+use Plenty\Modules\Webshop\ItemSearch\Helpers\ResultFieldTemplate;
+
 /**
  * Class CeresCoconutServiceProvider
  * @package CeresCoconut\Providers
@@ -268,6 +269,13 @@ class CeresCoconutServiceProvider extends ServiceProvider
             return false;
         }, self::PRIORITY);
 
+
+            $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+            $resultFieldTemplate->setTemplates([
+               ResultFieldTemplate::TEMPLATE_LIST_ITEM    => 'CeresCoconut::ResultFields.ListItem'
+            ]);
+
+
         $enabledResultFields = [];
         if(!empty($config->get("CeresCoconut.result_fields.override")))
         {
@@ -275,36 +283,46 @@ class CeresCoconutServiceProvider extends ServiceProvider
         }
         if(!empty($enabledResultFields))
         {
-            $dispatcher->listen( 'IO.ResultFields.*', function(ResultFieldTemplate $templateContainer) use ($enabledResultFields)
-            {
-                $templatesToOverride = [];
-                // Override list item result fields
-                if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
-                {
-                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_LIST_ITEM] = 'CeresCoconut::ResultFields.ListItem';
-                }
-                // Override single item view result fields
-                if (in_array("single_item", $enabledResultFields) || in_array("all", $enabledResultFields))
-                {
-                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_SINGLE_ITEM] = 'CeresCoconut::ResultFields.SingleItem';
-                }
-                // Override basket item result fields
-                if (in_array("basket_item", $enabledResultFields) || in_array("all", $enabledResultFields))
-                {
-                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_BASKET_ITEM] = 'CeresCoconut::ResultFields.BasketItem';
-                }
-                // Override auto complete list item result fields
-                if (in_array("auto_complete_list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
-                {
-                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST] = 'CeresCoconut::ResultFields.AutoCompleteListItem';
-                }
-                // Override category tree result fields
-                if (in_array("category_tree", $enabledResultFields) || in_array("all", $enabledResultFields))
-                {
-                    $templatesToOverride[ResultFieldTemplate::TEMPLATE_CATEGORY_TREE] = 'CeresCoconut::ResultFields.CategoryTree';
-                }
-                $templateContainer->setTemplates($templatesToOverride);
-            }, self::PRIORITY);
+          // Override list item result fields
+                      if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                      {
+                        $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                        $resultFieldTemplate->setTemplates([
+                           ResultFieldTemplate::TEMPLATE_LIST_ITEM    => 'CeresCoconut::ResultFields.ListItem'
+                        ]);
+                      }
+                      // Override single item view result fields
+                      if (in_array("single_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                      {
+                        $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                        $resultFieldTemplate->setTemplates([
+                           ResultFieldTemplate::TEMPLATE_SINGLE_ITEM    => 'CeresCoconut::ResultFields.SingleItem'
+                        ]);
+                      }
+                      // Override basket item result fields
+                      if (in_array("basket_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                      {
+                        $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                        $resultFieldTemplate->setTemplates([
+                           ResultFieldTemplate::TEMPLATE_BASKET_ITEM    => 'CeresCoconut::ResultFields.BasketItem'
+                        ]);
+                      }
+                      // Override auto complete list item result fields
+                      if (in_array("auto_complete_list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
+                      {
+                        $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                        $resultFieldTemplate->setTemplates([
+                           ResultFieldTemplate::TEMPLATE_AUTOCOMPLETE_ITEM_LIST    => 'CeresCoconut::ResultFields.AutoCompleteListItem'
+                        ]);
+                      }
+                      // Override category tree result fields
+                      if (in_array("category_tree", $enabledResultFields) || in_array("all", $enabledResultFields))
+                      {
+                        $resultFieldTemplate = pluginApp(ResultFieldTemplate::class);
+                        $resultFieldTemplate->setTemplates([
+                           ResultFieldTemplate::TEMPLATE_CATEGORY_TREE    => 'CeresCoconut::ResultFields.CategoryTree'
+                        ]);
+                      }
         }
     }
 }
