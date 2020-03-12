@@ -306,8 +306,8 @@ class CeresCoconutServiceProvider extends ServiceProvider
                 $templateContainer->setTemplates($templatesToOverride);
 
                 }
-            }, self::PRIORITY);
-            */
+            }, self::PRIORITY);*/
+
 
             // Override list item result fields
             if (in_array("list_item", $enabledResultFields) || in_array("all", $enabledResultFields))
@@ -348,6 +348,7 @@ class CeresCoconutServiceProvider extends ServiceProvider
               $resultFieldTemplate->setTemplates([
                  ResultFieldTemplate::TEMPLATE_CATEGORY_TREE    => 'CeresCoconut::ResultFields.CategoryTree'
               ]);
+            }
         }
     }
 }
