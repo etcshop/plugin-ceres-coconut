@@ -12,7 +12,7 @@
 <div class="container">
   <slot :getDataField="getDataField" :getFilteredDataField="getFilteredDataField">
   <!-- BASKET MODAL -->
-  <add-item-to-basket-overlay template="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
+  <add-item-to-basket-overlay template-override="#vue-add-item-to-basket-overlayETC" :basket-add-information="{{ ceresConfig.basket.addItemToBasketConfirm | json_encode() }}"></add-item-to-basket-overlay>
   <!-- ./BASKET MODAL -->
   <div class="row">
 	  <div class="col-lg-3 col-md-2 hidden-sm SingleArticle_Top3">
