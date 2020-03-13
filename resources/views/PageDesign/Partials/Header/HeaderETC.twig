@@ -62,7 +62,7 @@
         <i id="BasketButtonIcon" class="material-icons BasketEmpty" v-if="$store.state.basket.data.itemQuantity==0">shopping_cart</i>
         <i id="BasketButtonIcon" class="material-icons BasketFull" v-else>shopping_cart</i>
         <div id="BasketQuantity" v-basket-item-quantity="$store.state.basket.data.itemQuantity">0</div>
-          <basket-preview></basket-preview>
+        <basket-preview template-override="#vue-basket-preview-hoverETC" :show-net-prices="{{ showNetPrices | json_encode }}"></basket-preview>
       </div>
       <div id="ServiceCenterButton" class="ToolButton">
         <div class="hidden-xs hidden-sm">{{ trans("CeresCoconut::Template.ETC_ServiceCenter") }}</div>
