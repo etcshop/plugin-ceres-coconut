@@ -10,7 +10,7 @@
     <div class="basketPreviewBasketEmpty">{{ trans("CeresCoconut::Template.ETC_WarenkorbLeer") }}</div>
   </div>
   <div class="headicon_toolbox" id="BasketPreview" v-else>
-    <basket-list class="item-list" template="#vue-basket-listETC" size="small"></basket-list>
+    <basket-list class="item-list" template-override="#vue-basket-listETC" size="small"></basket-list>
     <hr>
     <div class="basketPreviewFooter">
       <basket-totals template="#vue-basket-totalsETC"></basket-totals>
