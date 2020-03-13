@@ -22,8 +22,8 @@
             </div>
             <div class="ContentSeperator"></div>
             <div id="chk_BasketContent" class="ContentText">
-              <basket-list template="#vue-basket-list-nopreviewETC" size="large" :basket-details-data="{{ ceresConfig.basket.itemData | json_encode }}"></basket-list>
-              <basket-totals class="m-b-2" template="#vue-basket-totals-nopreviewETC"></basket-totals>
+              <basket-list template-override="#vue-basket-list-nopreviewETC" size="large" :basket-details-data="{{ ceresConfig.basket.itemData | json_encode }}"></basket-list>
+              <basket-totals class="m-b-2" template-override="#vue-basket-totals-nopreviewETC"></basket-totals>
             </div>
           </div>
         {% else %}
