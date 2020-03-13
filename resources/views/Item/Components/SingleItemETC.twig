@@ -127,6 +127,7 @@
           <div class="row m-y-1">
               <slot name="before-add-to-basket"></slot>
               <add-to-basket
+                      template-override="#vue-add-to-basketETC"
                       :variation-id="currentVariation.variation.id"
                       :is-salable="!!currentVariation.filter && currentVariation.filter.isSalable"
                       :has-children="!!currentVariation.filter && currentVariation.filter.hasActiveChildren"
