@@ -6,10 +6,10 @@
 {% set techData = itemData.texts.technicalData %}
 {% set image = item.data.images.all | first %}
 {% set itemUrl =  item.data | itemURL %}
+{% set imgSrc = firstImageByPosition %}
 
 <script type="x/template" id="vue-startbox-itemETC">
 
-  {% set imgSrc = firstImageByPosition %}
 
   <div class="itemBoxInner test1309">
       <div class="h-lg-2 h-md-3 h-sm-2 h-xs-6 PreviewImageBig">
