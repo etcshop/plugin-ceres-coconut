@@ -44,6 +44,7 @@
     %}
 
     <checkout
+      template-override="#vue-checkout"
       v-cloak
       :initial-checkout="{{ checkout | json_encode() }}"
       :delivery-address-list="{{ services.customer.getAddresses(2) | json_encode }}"
@@ -60,7 +61,7 @@
                 </a>
                 <h4>{{ trans("CeresCoconut::Template.ETC_Warenkorb") }}</h4>
                 <div id="OrderOverview_ItemsList" class="col-lg-12 col-xs-12">
-                  <basket-list template="#vue-basket-list-checkoutETC" size="small"></basket-list>
+                  <basket-list template-override="#vue-basket-list-checkoutETC" size="small"></basket-list>
                   <hr>
                   <coupon template="#vue-couponETC"></coupon>
                   <hr>
@@ -68,16 +69,16 @@
                     <accept-gtc-check template="#vue-accept-gtc-checkETC"></accept-gtc-check>
                     {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
                     <div class="margin-top-1">
-                      <contact-wish-input class="p-b-1" template="#vue-contact-wish-input"></contact-wish-input>
+                      <contact-wish-input class="p-b-1" template-override="#vue-contact-wish-input"></contact-wish-input>
                     </div>
                   </div>
                   <div id="chk_PlaceOrderContainer" class="col-lg-6 col-md-6 col-xs-12 test1104">
                     <div data-plenty-checkout-template="Totals">
                       {{ LayoutContainer.show("Ceres::Checkout.BeforeBasketTotals") }}
-                      <basket-totals class="m-b-2" template="#vue-basket-totals-checkoutETC"></basket-totals>
+                      <basket-totals class="m-b-2" template-override="#vue-basket-totals-checkoutETC"></basket-totals>
                       {{ LayoutContainer.show("Ceres::Checkout.AfterBasketTotals") }}
                       {{ LayoutContainer.show("Ceres::Checkout.BeforePlaceOrder") }}
-                      <place-order template="#vue-place-orderETC" target-continue="{{ homepageURL }}{% if homepageURL | last != '/'%}/{% endif %}place-order{% if urls.appendTrailingSlash %}/{% endif %}" @payment-response="checkoutComp.showModal($event)"></place-order>
+                      <place-order template-override="#vue-place-orderETC" target-continue="{{ homepageURL }}{% if homepageURL | last != '/'%}/{% endif %}place-order{% if urls.appendTrailingSlash %}/{% endif %}" @payment-response="checkoutComp.showModal($event)"></place-order>
                       {{ LayoutContainer.show("Ceres::Checkout.AfterPlaceOrder") }}
                     </div>
                   </div>
@@ -114,7 +115,7 @@
                   {% set overridePaymentList = LayoutContainer.show("Ceres::Checkout.PaymentList") %}
                   {% if overridePaymentList|trim is empty %}
                       <div class="test1057 paymentproviderCoconut"></div>
-                        <payment-provider-select template="#vue-payment-provider-select"></payment-provider-select>
+                        <payment-provider-select template-override="#vue-payment-provider-select"></payment-provider-select>
                   {% else %}
 
                       <div class="test1057 paymentproviderOverride"></div>
