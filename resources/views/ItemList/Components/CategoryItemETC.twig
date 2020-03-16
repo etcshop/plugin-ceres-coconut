@@ -27,13 +27,17 @@
   {% set etcAltText = item.texts.name3 %}
 {% endif %}
 
-
-
 <script type="x/template" id="vue-category-itemETC">
     <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
       <div class="itemBoxInner">
-        <div style="display: none" v-for="prop in item.properties">
-          ${ prop.property.names.name }
+        <div style="display: none">
+          <span v-for="prop in item.properties">
+            ${ prop.property.names.name }
+          </span>
+          <br><br>
+          <span v-if="item.prices.default.price.value >= 100">
+            gratis Versand
+          </span>
         </div>
         <div class="CategoryViewRatingCount">
           <span class="ItemRatingIconContainer">
