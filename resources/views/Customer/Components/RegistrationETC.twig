@@ -52,7 +52,7 @@
                   <div class="panel-title">{{ trans("CeresCoconut::Template.ETC_Rechnungsadresse") }}:</div>
                 </div>
                 <address-input-group
-                    template="#vue-address-input-groupETC"
+                    template-override="#vue-address-input-groupETC"
                     v-if="!isSimpleRegistration"
                     address-type="1"
                     :value="billingAddress"
