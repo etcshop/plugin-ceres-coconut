@@ -63,10 +63,10 @@
                 <div id="OrderOverview_ItemsList" class="col-lg-12 col-xs-12">
                   <basket-list template-override="#vue-basket-list-checkoutETC" size="small"></basket-list>
                   <hr>
-                  <coupon template="#vue-couponETC"></coupon>
+                  <coupon template-override="#vue-couponETC"></coupon>
                   <hr>
                   <div id="chk_LegalNotesContainer" class="col-lg-6 col-md-6 col-xs-12">
-                    <accept-gtc-check template="#vue-accept-gtc-checkETC"></accept-gtc-check>
+                    <accept-gtc-check template-override="#vue-accept-gtc-checkETC"></accept-gtc-check>
                     {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
                     <div class="margin-top-1">
                       <contact-wish-input class="p-b-1" template-override="#vue-contact-wish-input"></contact-wish-input>
