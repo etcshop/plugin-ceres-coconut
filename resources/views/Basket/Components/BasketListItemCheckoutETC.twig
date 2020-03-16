@@ -30,7 +30,7 @@
             <span id="chk_ItemPrice" data-plenty-checkout="basket-item-price-total">${ itemTotalPrice | currency(basketItem.variation.data.prices.default.currency) }</span><br>
           </div>
           <div class="quantityInputWrapper" data-plenty="quantityInputWrapper">
-            <quantity-input template="#vue-quantity-inputETC"
+            <quantity-input template-override="#vue-quantity-inputETC"
               @quantity-change="updateQuantity"
               :value="basketItem.quantity"
               :waiting="isInputLocked"

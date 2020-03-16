@@ -4,6 +4,6 @@
 
 <script type="x/template" id="vue-basket-list-checkoutETC">
   <div>
-    <basket-list-item template="#vue-basket-list-item-checkoutETC" v-for="basketItem in basketItems" :key="basketItem.id" :basket-item="basketItem" language="{{ services.sessionStorage.getLang() }}"></basket-list-item>
+    <basket-list-item template-override="#vue-basket-list-item-checkoutETC" v-for="basketItem in basketItems" :key="basketItem.id" :basket-item="basketItem" language="{{ services.sessionStorage.getLang() }}"></basket-list-item>
   </div>
 </script>
