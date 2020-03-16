@@ -229,7 +229,7 @@
                   {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
                   {% if loggedIn %}
                     <span id="PlentyWebMyAccountMyAccountLogoutContainer">
-                  	   <a class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" title="Ausloggen" v-logout>{{ trans("Ceres::Template.loginLogout") }}</a>
+                  	   <a href="#" class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" title="Ausloggen" v-logout>{{ trans("Ceres::Template.loginLogout") }}</a>
                      </span>
                   {% else %}
                     <span id="PlentyWebMyAccountMyAccountLogoutContainer">
