@@ -28,49 +28,25 @@
 {% endif %}
 
 <script type="x/template" id="vue-category-itemETC">
-    <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
-      <div class="itemBoxInner">
-        <div style="display: none">
-          <span v-for="prop in item.properties">
-            ${ prop.property.names.name }
-          </span>
-          <br><br>
-          <span v-if="item.prices.default.price.value >= 100">
-            gratis Versand
-          </span>
-          <span v-else>
-            zzgl. Versandkosten
-          </span>
+  <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
+    <div class="itemBoxInner">
+      <div class="catItemRow1 row">
+        <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
+                                :alt-text="item | itemName"
+                                :title-text="item | itemName"
+                                :item-url="item | itemURL(urlWithVariationId)"
+                                :enable-carousel="$ceres.config.item.enableImageCarousel"
+                                :disable-carousel-on-mobile="disableCarouselOnMobile"
+                                ref="categoryImageCarousel">
+        </category-image-carousel>
+        <div class="crossprice_saving" v-if="item.prices.rrp != null">
+          ${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%
         </div>
-        <div class="CategoryViewRatingCount">
-          <span class="ItemRatingIconContainer">
-            {{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item) }}
-          </span>
-        </div>
-        <div id="previewImages-{{ item.id }}" class="h-lg-2 h-md-3 h-sm-2 h-xs-6 PreviewImageBig">
-          <div class="previewImageSlider owl-carousel owl-theme" style="opacity: 1; display: block;">
-            <div class="owl-wrapper-outer">
-              <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
-                  <div class="owl-item" style="width: 200px;">
-                    <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
-                        <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
-                                                :alt-text="item | itemName"
-                                                :title-text="item | itemName"
-                                                :item-url="item | itemURL(urlWithVariationId)"
-                                                :enable-carousel="$ceres.config.item.enableImageCarousel"
-                                                :disable-carousel-on-mobile="disableCarouselOnMobile"
-                                                ref="categoryImageCarousel">
-                        </category-image-carousel>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="crossprice_saving" v-if="item.prices.rrp != null">
-                <span>-${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%</span>
-          </div>
-        </div>
+      </div>
+      <div class="catItemRow2 row">
         <a class="name block" :href="item | itemURL(urlWithVariationId)">${ item | itemName }</a>
+      </div>
+      <div class="catItemRow3 row">
         <p class="price js-link">
           <span class="test large linkToItem">
             <span class="Price">
@@ -78,12 +54,28 @@
             </span>
           </span>
         </p>
-        <p class="item_details hidden-xs"><a :href="item | itemURL(urlWithVariationId)">Details</a></p>
-        <p class="crossprice_container" v-if="item.prices.rrp != null">
-          <del>${ item.prices.rrp.unitPrice.value | numberFormat(2, '.', ',') } ${ item.prices.rrp.currency }</del> UVP
-            <span class="crossprice_cat"></span>
+        <p class="crossprice_container">
+          <span class="crossprice_cat">
+            <span v-if="item.prices.rrp != null"><del>${ item.prices.rrp.unitPrice.value | numberFormat(2, '.', ',') } ${ item.prices.rrp.currency }</del> UVP</span>
+          </span>
         </p>
+      </div>
+      <div class="catItemRow4 row">
+        <div class="CategoryViewRatingCount">
+          <span class="ItemRatingIconContainer">
+            {{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item) }}
+          </span>
+        </div>
+        <div class="categoryViewShippingLabel" v-if="item.prices.default.price.value >= 100">{{ trans("CeresCoconut::Template.ETC_GratisVersand") }}</div>
+      </div>
+      <div class="catItemRow5 row">
+        <div v-for="prop in item.properties">
+          ${ prop.property.names.name }
+        </span>
+      </div>
+      <div class="catItemRow6 row">
         <div class="CatOverviewTechnicalData" v-html="item.texts.technicalData"></div>
       </div>
-    </li>
+    </div>
+  </li>
 </script>
