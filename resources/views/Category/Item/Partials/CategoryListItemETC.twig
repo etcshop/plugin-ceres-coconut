@@ -28,52 +28,51 @@
 
 <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3 margin-bottom-2 center itemBox tileView onHover action-0" data-plenty-id="{{ item.id }}">
   <div class="itemBoxInner">
-    <div class="CategoryViewRatingCount">
-      <span class="ItemRatingIconContainer">
-        {{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item) }}
-      </span>
-    </div>
-    <div id="previewImages-{{ item.id }}" class="h-lg-2 h-md-3 h-sm-2 h-xs-6 PreviewImageBig">
-      <div class="previewImageSlider owl-carousel owl-theme" style="opacity: 1; display: block;">
-        <div class="owl-wrapper-outer">
-          <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
-              <div class="owl-item" style="width: 200px;">
-                <div class="imageBox h-lg-2 h-md-3 h-sm-2 h-xs-6 adapt-line-height test1308">
-                  <div style="display: none">{{ item | json_encode }}</div>
-                        <category-image-carousel>
-                        </category-image-carousel>
-                </div>
-              </div>
-          </div>
+    <div class="catItemRow1 row">
+      <category-image-carousel>
+      </category-image-carousel>
+      {% if (uvpSaving) %}
+        <div class="crossprice_saving">
+          -{{ uvpSaving }}%
         </div>
-      </div>
-      {% if (uvpSaving) %}
-          <div class="crossprice_saving">
-            -{{ uvpSaving }}%
-          </div>
       {% endif %}
     </div>
-    <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
-    <p class="price js-link">
-      <span class="test large linkToItem">
-        <span class="Price">
-          {{ item.prices.default.unitPrice.formatted }}
+    <div class="catItemRow2 row">
+      <a class="name block" href="{{ itemUrl }}">{{ nameItem }}</a>
+    </div>
+    <div class="catItemRow3 row">
+      <p class="price js-link">
+        <span class="test large linkToItem">
+          <span class="Price">
+            {{ item.prices.default.unitPrice.formatted }}
+          </span>
         </span>
-      </span>
-    </p>
-    <p class="item_details hidden-xs"><a href="{{ itemUrl }}">Details</a></p>
-    <p class="crossprice_container">
-      {% if (uvpSaving) %}
-        <span class="crossprice_cat">
-          <del>{{ item.prices.rrp.unitPrice.value | number_format(2, '.', ',') }} {{ item.prices.rrp.currency }}</del> UVP
+      </p>
+      <p class="crossprice_container">
+        {% if (uvpSaving) %}
+          <span class="crossprice_cat">
+            <del>{{ item.prices.rrp.unitPrice.value | number_format(2, '.', ',') }} {{ item.prices.rrp.currency }}</del> UVP
+          </span>
+        {% else %}
+          <span class="crossprice_cat">&nbsp;</span>
+        {% endif %}
+      </p>
+    </div>
+    <div class="catItemRow4 row">
+      <div class="CategoryViewRatingCount">
+        <span class="ItemRatingIconContainer">
+          {{ LayoutContainer.show("Ceres::CategoryItem.BeforePrices", item) }}
         </span>
-      {% else %}
-        <span class="crossprice_cat">&nbsp;</span>
-      {% endif %}
-    </p>
-    <div class="CatOverviewTechnicalData">
-      {{ item.texts.technicalData | raw }}
-
+      </div>
+      <div class="categoryViewShippingLabel">{{ trans("CeresCoconut::Template.ETC_GratisVersand") }}</div>
+    </div>
+    <div class="catItemRow5 row">
+      <!-- Todo: PROPERTYICONS -->
+    </div>
+    <div class="catItemRow6 row">
+      <div class="CatOverviewTechnicalData">
+        {{ item.texts.technicalData | raw }}
+      </div>
     </div>
   </div>
 </li>
