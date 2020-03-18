@@ -59,17 +59,18 @@
         <div id="LanguageSelector" class="test1439 ToolButton ToolButton_small">
          {% set flagIndikator = "" %}
          {% if (lang == "de") %}
-          {% set flagIndikator = "de" %}
+          {% set flagIndikator = "DE" %}
           {% set containerID = "Lang_Deutsch" %}
          {% elseif (lang == "fr") %}
-          {% set flagIndikator = "fr" %}
+          {% set flagIndikator = "FR" %}
           {% set containerID = "Lang_Franzoesisch" %}
          {% elseif (lang == "en") %}
-          {% set flagIndikator = "uk" %}
+          {% set flagIndikator = "UK" %}
           {% set containerID = "Lang_Englisch" %}
          {% endif %}
            <div id="{{ containerID }}">
             <a href="#LanguageSelector" title="Sprache">
+              <div class="Lang_Text">{{ flagIndikator }}</div>
               <picture>
                 <!-- Tablet/Desptop -->
                 <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png">
@@ -80,7 +81,6 @@
                 <!-- Fallback (Desktop) -->
                 <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ lang }}_active.png" alt="{{ lang }}">
               </picture>
-              <div class="Lang_Text">{{ flagIndikator }}</div>
             </a>
           </div>
         </div>
