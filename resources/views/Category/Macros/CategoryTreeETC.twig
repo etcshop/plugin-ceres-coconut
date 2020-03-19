@@ -342,7 +342,7 @@
             {% if (category.children is not empty) %}
               {% for subcategory in category.children %}
                 {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl ~ "/" ~ subcategory.details[0].nameUrl %}
-                <li id="option-{{ category.id }}" class="categoryInactive">
+                <li id="option-{{ subcategory.id }}" class="categoryInactive">
                     <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="" title="{{ subcategory.details[0].name }}">
                       {{ subcategory.details[0].name }}
                     </a>
@@ -351,8 +351,11 @@
             {% else %}
               {% for category in categories %}
                 {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
-                {% if (category.details[0] and startcat.id == category.id) %}
-                  <li id="option-{{ category.id }}" class="categoryActive">
+                  {% if (category.details[0] and startcat.id == category.id) %}
+                    <li id="option-{{ category.id }}" class="categoryActive">
+                  {% else %}
+                    <li id="option-{{ category.id }}" class="categoryInactive">
+                  {% endif %}
                       <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="" title="{{ category.details[0].name }}">
                         {{ category.details[0].name }}
                       </a>
