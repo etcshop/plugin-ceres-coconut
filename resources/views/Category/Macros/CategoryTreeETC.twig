@@ -342,32 +342,21 @@
             {% if (category.children is not empty) %}
               {% for subcategory in category.children %}
                 {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl ~ "/" ~ subcategory.details[0].nameUrl %}
-                <div class="categoryRow">
-                  <input id="option-{{ subcategory.id }}" type="checkbox" class="">
-                  <label for="option-{{ subcategory.id }}" class="">
+                <li id="option-{{ category.id }}" class="categoryInactive">
                     <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="" title="{{ subcategory.details[0].name }}">
-                      <div class="categoryInactive"></div>
                       {{ subcategory.details[0].name }}
                     </a>
-                  </label>
-                </div>
+                </li>
               {% endfor %}
             {% else %}
               {% for category in categories %}
                 {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
-                <div class="categoryRow">
-                    <input id="option-{{ category.id }}" type="checkbox" class="hidden-xs-up">
-                    <label for="option-{{ category.id }}" class="">
+                {% if (category.details[0] and startcat.id == category.id) %}
+                  <li id="option-{{ category.id }}" class="categoryActive">
                       <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="" title="{{ category.details[0].name }}">
-                        {% if (category.details[0] and startcat.id == category.id) %}
-                          <div class="categoryActive"></div>
-                        {% else %}
-                          <div class="categoryInactive"></div>
-                        {% endif %}
                         {{ category.details[0].name }}
                       </a>
-                    </label>
-                </div>
+                  </li>
               {% endfor %}
             {% endif %}
           {% else %}
