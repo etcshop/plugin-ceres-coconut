@@ -340,68 +340,41 @@
 
           {% if (category.details[0] and startcat.id == category.id) %}
             {% if (category.children is not empty) %}
-
-                <div class="card-columns test1558">
-                  <div class="card category-card">
-                    <div class="h3">Kategorie</div>
-                    <div>
-                      <div class="category-container">
-                        <div class="sub-category-container test">
-                          {% for subcategory in category.children %}
-                            {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl ~ "/" ~ subcategory.details[0].nameUrl %}
-                            <div class="form-check">
-                              <input id="option-{{ subcategory.id }}" type="checkbox" class="form-check-input hidden-xs-up">
-                              <label for="option-{{ subcategory.id }}" class="form-check-label">
-                                <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ subcategory.details[0].name }}">
-                                  <div class="CategoryCheckDivInactive"></div>
-                                  {{ subcategory.details[0].name }}
-                                </a>
-                              </label>
-                              <div class="filter-badge"></div>
-                            </div>
-                          {% endfor %}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              {% for subcategory in category.children %}
+                {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl ~ "/" ~ subcategory.details[0].nameUrl %}
+                <div class="categoryRow">
+                  <input id="option-{{ subcategory.id }}" type="checkbox" class="form-check-input hidden-xs-up">
+                  <label for="option-{{ subcategory.id }}" class="form-check-label">
+                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ subcategory.details[0].name }}">
+                      <div class="CategoryCheckDivInactive"></div>
+                      {{ subcategory.details[0].name }}
+                    </a>
+                  </label>
                 </div>
+              {% endfor %}
             {% else %}
-            <div class="card-columns test1604">
-              <div class="card category-card">
-                <div class="h3">Kategorie</div>
-                <div>
-                  <div class="category-container">
-                    <div class="sub-category-container test">
-                      {% for category in categories %}
-                          {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
-                          <div class="form-check">
-                            <input id="option-{{ category.id }}" type="checkbox" class="form-check-input hidden-xs-up">
-                            <label for="option-{{ category.id }}" class="form-check-label">
-                              <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ category.details[0].name }}">
-                              {% if (category.details[0] and startcat.id == category.id) %}
-                                <div class="CategoryCheckDivActive"></div>
-                              {% else %}
-                                <div class="CategoryCheckDivInactive"></div>
-                              {% endif %}
-                                {{ category.details[0].name }}
-                              </a>
-                            </label>
-                            <div class="filter-badge"></div>
-                          </div>
-                      {% endfor %}
-                    </div>
-                  </div>
+              {% for category in categories %}
+                {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
+                <div class="categoryRow">
+                    <input id="option-{{ category.id }}" type="checkbox" class="form-check-input hidden-xs-up">
+                    <label for="option-{{ category.id }}" class="form-check-label">
+                      <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ category.details[0].name }}">
+                        {% if (category.details[0] and startcat.id == category.id) %}
+                          <div class="CategoryCheckDivActive"></div>
+                        {% else %}
+                          <div class="CategoryCheckDivInactive"></div>
+                        {% endif %}
+                        {{ category.details[0].name }}
+                      </a>
+                    </label>
                 </div>
-              </div>
-            </div>
+              {% endfor %}
             {% endif %}
           {% else %}
              {% if category.children is not empty %}
-                 {{ sidemenu.get_sidemenu_onlysub(breadcrumbs, category.children, urlNow, startcat, "true", "") }}
+                 {{ sidemenu.get_sidemenu_categoryview(breadcrumbs, category.children, urlNow, startcat, "true", "") }}
              {% endif %}
-
           {% endif %}
-
       {% endfor %}
 
 {% endmacro %}
