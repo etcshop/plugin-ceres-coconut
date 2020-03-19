@@ -343,10 +343,10 @@
               {% for subcategory in category.children %}
                 {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl ~ "/" ~ subcategory.details[0].nameUrl %}
                 <div class="categoryRow">
-                  <input id="option-{{ subcategory.id }}" type="checkbox" class="form-check-input hidden-xs-up">
-                  <label for="option-{{ subcategory.id }}" class="form-check-label">
-                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ subcategory.details[0].name }}">
-                      <div class="CategoryCheckDivInactive"></div>
+                  <input id="option-{{ subcategory.id }}" type="checkbox" class="">
+                  <label for="option-{{ subcategory.id }}" class="">
+                    <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="" title="{{ subcategory.details[0].name }}">
+                      <div class="categoryInactive"></div>
                       {{ subcategory.details[0].name }}
                     </a>
                   </label>
@@ -356,13 +356,13 @@
               {% for category in categories %}
                 {% set urlNow = currentScopeUrl ~ "/" ~ category.details[0].nameUrl %}
                 <div class="categoryRow">
-                    <input id="option-{{ category.id }}" type="checkbox" class="form-check-input hidden-xs-up">
-                    <label for="option-{{ category.id }}" class="form-check-label">
-                      <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="nav-link" title="{{ category.details[0].name }}">
+                    <input id="option-{{ category.id }}" type="checkbox" class="hidden-xs-up">
+                    <label for="option-{{ category.id }}" class="">
+                      <a href="{{ urlNow }}{{ urls.trailingSlashSuffix }}" class="" title="{{ category.details[0].name }}">
                         {% if (category.details[0] and startcat.id == category.id) %}
-                          <div class="CategoryCheckDivActive"></div>
+                          <div class="categoryActive"></div>
                         {% else %}
-                          <div class="CategoryCheckDivInactive"></div>
+                          <div class="categoryInactive"></div>
                         {% endif %}
                         {{ category.details[0].name }}
                       </a>
