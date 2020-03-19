@@ -14,18 +14,10 @@
     {{ component( "Ceres::ItemList.Components.Filter.ItemFilterTagList") }}
     {{ component( "Ceres::ItemList.Components.ItemList") }}
 
-    <div class="d-flex">
-      <div class="cat-left w-25">
-
-      </div>
-      <div class="cat-right w-75">
-
-      </div>
-
-    </div>
+    <!-- include parallax image -->
 
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
-    <div class="container categoryView isGridView isList-1 ">
+    <div class="container categoryView isGridView isList-1">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 CategoryItemList">
 
           <div style="display: none">Vor isSearch</div>
