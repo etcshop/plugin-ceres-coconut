@@ -5,7 +5,7 @@
 {% set currentCategory = services.category.getCurrentCategory() %}
 
 {% if lang != "de" %}
-  {{ Tree.get_sidemenu_onlysub(categoryBreadcrumbs, categories, "", currentCategory, "false", lang) }}
+  {{ Tree.get_sidemenu_categoryview(categoryBreadcrumbs, categories, "", currentCategory, "false", lang) }}
 {% else %}
-  {{ Tree.get_sidemenu_onlysub(categoryBreadcrumbs, categories, "", currentCategory, "false", "") }}
+  {{ Tree.get_sidemenu_categoryview(categoryBreadcrumbs, categories, "", currentCategory, "false", "") }}
 {% endif %}
