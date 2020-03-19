@@ -18,9 +18,9 @@
 
     <div class="d-flex">
       <div class="cat-left col-lg-3 pr-0">
-        <div id="sideNavigationContainer">
+        <ul id="sideNavigationContainer">
             {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
-        </div>
+        </ul>
         <item-filter-tag-list></item-filter-tag-list>
         {% set overrideSearchFilters = LayoutContainer.show("Ceres::Search.Filter", facets ) %}
         {% if overrideSearchFilters | trim is empty and facets %}
