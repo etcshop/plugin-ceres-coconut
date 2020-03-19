@@ -34,11 +34,13 @@
           <span itemprop="contactType">customer service</span>
       </span>
   </span>
-  <div class="container_centered d-flex flex-row">
-    <div id="logoContainer" class="headContainer col-lg-2 col-md-3 col-sm-3 col-xs-6">
-      	<a href="{{ homepageURL }}" title="Startseite"><img src="/layout/content/base/etc_logo.png" id="mainLogo"></a>
+  <div class="container_centered">
+    <div id="logocontainer" class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+      <div id="logo_bg">
+      	<a href="{{ homepageURL }}" title="Startseite">&nbsp;</a>
+      </div>
     </div>
-    <div id="searchContainer" class="headContainer col-lg-5 col-md-4 col-sm-5">
+    <div id="SearchFormContainer" class="col-lg-5 col-md-4 col-sm-5 hidden-xs">
       {% set overrideSearchBar = LayoutContainer.show("Ceres::Search.SearchBar") %}
       {% if overrideSearchBar | trim is empty %}
           <form action="/" style="padding:0px;margin:0px;" name="search_form" class="search_form" method="get">
@@ -53,40 +55,182 @@
           {{ overrideSearchBar | raw }}
       {% endif %}
     </div>
-    <div id="iconContainer" class="headContainer col-lg-5 col-md-5 col-sm-4 col-xs-6 d-flex">
-      <div id="languageContainer" class="icon1 col-lg-4">
-        {% set languageUrls = services.url.getLanguageURLs() %}
-        <div id="LanguageSelector" class="test1439 ToolButton ToolButton_small">
-         {% set flagIndikator = "" %}
-         {% if (lang == "de") %}
-          {% set flagIndikator = "de" %}
-          {% set containerID = "Lang_Deutsch" %}
-         {% elseif (lang == "fr") %}
-          {% set flagIndikator = "fr" %}
-          {% set containerID = "Lang_Franzoesisch" %}
-         {% elseif (lang == "en") %}
-          {% set flagIndikator = "uk" %}
-          {% set containerID = "Lang_Englisch" %}
-         {% endif %}
-           <div id="{{ containerID }}">
-            <a href="#LanguageSelector" title="Sprache">
-              <span class="Lang_Text">{{ flagIndikator }}</span>
-              <picture>
-                <!-- Tablet/Desptop -->
-                <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png">
-                <!-- Tablet/Desptop -->
-                <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_{{ flagIndikator }}_active.png">
-                <!-- Mobile -->
-                <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_{{ flagIndikator }}_active.png">
-                <!-- Fallback (Desktop) -->
-                <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ lang }}_active.png" alt="{{ lang }}">
-              </picture>
-            </a>
+    <div id="headicons" class="col-lg-5 col-md-5 col-sm-4 col-xs-6">
+
+      <div id="BasketButton" class="ToolButton">
+        <div id="BasketButtonBox" class="hidden-xs hidden-sm">{{ trans("CeresCoconut::Template.ETC_Warenkorb") }}</div>
+        <i id="BasketButtonIcon" class="material-icons BasketEmpty" v-if="$store.state.basket.data.itemQuantity==0">shopping_cart</i>
+        <i id="BasketButtonIcon" class="material-icons BasketFull" v-else>shopping_cart</i>
+        <div id="BasketQuantity" v-basket-item-quantity="$store.state.basket.data.itemQuantity">0</div>
+          <basket-preview template="#vue-basket-preview-hoverETC" :show-net-prices="{{ showNetPrices | json_encode }}"></basket-preview>
+      </div>
+      <div id="ServiceCenterButton" class="ToolButton">
+        <div class="hidden-xs hidden-sm">{{ trans("CeresCoconut::Template.ETC_ServiceCenter") }}</div>
+        <i id="ServiceCenterButtonIcon" class="material-icons">info</i>
+        <div class="headicon_toolbox_container headicon_toolbox_container_inactive" id="ServiceCenterContainer">
+          <div class="headicon_toolbox" id="ServiceCenterBox">
+            <ul id="ServiceCenterContent">
+              <a href="{{ urls.myAccount }}" title="{{ trans("Ceres::Template.myAccount") }}"><li>{{ trans("Ceres::Template.myAccount") }}</li></a>
+              <a href="{{ urls.contact }}" title="Kontakt"><li>{{ trans("CeresCoconut::Template.ETC_Kontakt") }}</li></a>
+              {% set FAQ = services.category.get(714, lang) %}
+              <a href="{{ services.category.getURL(FAQ, lang) }}" title="{{ FAQ.details[0].name }}"><li>{{ FAQ.details[0].name }}</li></a>
+              {% set versand = services.category.get(722, lang) %}
+              <a href="{{ services.category.getURL(versand, lang) }}" title="{{ versand.details[0].name }}"><li>{{ versand.details[0].name }}</li></a>
+              {% set zahlung = services.category.get(725, lang) %}
+              <a href="{{ services.category.getURL(zahlung, lang) }}" title="{{ zahlung.details[0].name }}"><li>{{ zahlung.details[0].name }}</li></a>
+              {% if lang == "en" %}
+                <a href="http://s141963554.online.de/retoure/voll/retoure_en.php" target="_blank" rel="noopener" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
+              {% elseif lang == "fr" %}
+                <a href="http://s141963554.online.de/retoure/voll/retoure_fr.php" target="_blank" rel="noopener" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
+              {% else %}
+                <a href="http://s141963554.online.de/retoure/voll/retoure.php" target="_blank" rel="noopener" title="{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}"><li>{{ trans("CeresCoconut::Template.ETC_Retourenportal") }}</li></a>
+              {% endif %}
+              {% set newsletter = services.category.get(802, lang) %}
+              <a href="{{ services.category.getURL(newsletter, lang) }}" title="{{ newsletter.details[0].name }}"><li>{{ newsletter.details[0].name }}</li></a>
+            </ul>
           </div>
         </div>
       </div>
-      <div id="accountContainer" class="icon2 col-lg-4">Konto</div>
-      <div id="basketContainer" class="icon3 col-lg-4">Warenkorb</div>
+      {% set languageUrls = services.url.getLanguageURLs() %}
+      <div id="LanguageSelector" class="test1439 ToolButton ToolButton_small">
+       {% set flagIndikator = "" %}
+       {% if (lang == "de") %}
+        {% set flagIndikator = "de" %}
+        <div id="Lang_Deutsch">
+       {% elseif (lang == "fr") %}
+        {% set flagIndikator = "fr" %}
+        <div id="Lang_Franzoesisch">
+       {% elseif (lang == "en") %}
+        {% set flagIndikator = "uk" %}
+        <div id="Lang_Englisch">
+       {% endif %}
+          <a href="#LanguageSelector" title="Sprache">
+            <picture>
+              <!-- Tablet/Desptop -->
+              <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png">
+              <!-- Tablet/Desptop -->
+              <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_{{ flagIndikator }}_active.png">
+              <!-- Mobile -->
+              <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_{{ flagIndikator }}_active.png">
+              <!-- Fallback (Desktop) -->
+              <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ lang }}_active.png" alt="{{ lang }}">
+            </picture>
+            <div class="Lang_Text">{{ flagIndikator }}</div>
+          </a>
+          <a href="#headicons" title="Sprache">
+            <picture>
+              <!-- Tablet/Desptop -->
+              <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png">
+              <!-- Tablet/Desptop -->
+              <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_{{ flagIndikator }}_active.png">
+              <!-- Mobile -->
+              <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_{{ flagIndikator }}_active.png">
+              <!-- Fallback (Desktop) -->
+              <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ flagIndikator }}_active.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_{{ lang }}_active.png" alt="{{ lang }}">
+            </picture>
+            <div class="Lang_Text">{{ flagIndikator }}</div>
+          </a>
+        </div>
+        <div id="Lang_Choice">
+         {% if (lang != "de") %}
+          <div id="Lang_Deutsch">
+            <div class="inactive">
+              <picture>
+                <!-- Tablet/Desptop -->
+                <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_de_inactive.png">
+                <!-- Tablet/Desptop -->
+                <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_de_inactive.png">
+                <!-- Mobile -->
+                <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_de_inactive.png">
+                <!-- Fallback (Desktop) -->
+                <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_de_inactive.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_de_inactive.png" alt="{{ lang }}">
+              </picture>
+              <div class="Lang_Text">DE</div>
+            </div>
+            <div class="active">
+              <a href="{% if languageUrls["de"] is defined %}{{ languageUrls["de"] ~ queryString() }}{% elseif "de" != defaultLanguage %}/de{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url title="Deutsch">
+                <picture>
+                  <!-- Tablet/Desptop -->
+                  <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_de_active.png">
+                  <!-- Tablet/Desptop -->
+                  <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_de_active.png">
+                  <!-- Mobile -->
+                  <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_de_active.png">
+                  <!-- Fallback (Desktop) -->
+                  <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_de_active.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_de_active.png" alt="{{ lang }}">
+                </picture>
+                <div class="Lang_Text">DE</div>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        {% if (lang != "en") %}
+          <div id="Lang_Englisch">
+            <div class="inactive">
+              <picture>
+                <!-- Tablet/Desptop -->
+                <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_uk_inactive.png">
+                <!-- Tablet/Desptop -->
+                <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_uk_inactive.png">
+                <!-- Mobile -->
+                <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_uk_inactive.png">
+                <!-- Fallback (Desktop) -->
+                <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_uk_inactive.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_uk_inactive.png" alt="{{ lang }}">
+              </picture>
+              <div class="Lang_Text">UK</div>
+            </div>
+            <div class="active">
+              <a href="{% if languageUrls["en"] is defined %}{{ languageUrls["en"] ~ queryString() }}{% elseif "en" != defaultLanguage %}/en{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url title="Englisch">
+                <picture>
+                  <!-- Tablet/Desptop -->
+                  <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_uk_active.png">
+                  <!-- Tablet/Desptop -->
+                  <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_uk_active.png">
+                  <!-- Mobile -->
+                  <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_uk_active.png">
+                  <!-- Fallback (Desktop) -->
+                  <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_uk_active.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_uk_active.png" alt="{{ lang }}">
+                </picture>
+                <div class="Lang_Text">UK</div>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        {% if (lang != "fr") %}
+          <div id="Lang_Franzoesisch">
+            <div class="inactive">
+              <picture>
+                <!-- Tablet/Desptop -->
+                <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_fr_inactive.png">
+                <!-- Tablet/Desptop -->
+                <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_fr_inactive.png">
+                <!-- Mobile -->
+                <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_fr_inactive.png">
+                <!-- Fallback (Desktop) -->
+                <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_fr_inactive.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_fr_inactive.png" alt="{{ lang }}">
+              </picture>
+              <div class="Lang_Text">FR</div>
+            </div>
+            <div class="active">
+              <a href="{% if languageUrls["fr"] is defined %}{{ languageUrls["fr"] ~ queryString() }}{% elseif "fr" != defaultLanguage %}/fr{{ urls.trailingSlashSuffix }}{% else %}/{% endif %}" data-update-url title="Französisch">
+                <picture>
+                  <!-- Tablet/Desptop -->
+                  <source media="(min-width: 768px)" srcset="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_fr_active.png">
+                  <!-- Tablet/Desptop -->
+                  <source media="(min-width: 480px)" srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_fr_active.png">
+                  <!-- Mobile -->
+                  <source srcset="https://www.etc-shop.de/layout/content/base/flag_big/flag_big_fr_active.png">
+                  <!-- Fallback (Desktop) -->
+                  <img class="" data-src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_fr_active.png" src="https://www.etc-shop.de/layout/content/base/flag_small/flag_small_fr_active.png" alt="{{ lang }}">
+                </picture>
+              <div class="Lang_Text">FR</div>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+        </div>
+      </div>
+      <div id="ServiceTelefon" class="hidden-xs hidden-sm">{{ trans("CeresCoconut::Template.ETC_Telefonnummer") }} {{ trans("CeresCoconut::Template.ETC_Servicetelefon") }}</div>
     </div>
   </div>
 </div>
