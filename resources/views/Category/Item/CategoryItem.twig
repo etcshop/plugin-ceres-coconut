@@ -17,7 +17,7 @@
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
 
     <div class="d-flex">
-      <div class="cat-left w-25">
+      <div class="cat-left col-lg-3 pr-0">
         <div id="sideNavigationContainer">
             {{ include('CeresCoconut::PageDesign.Partials.Header.SideNavigationETC.twig') }}
         </div>
@@ -39,7 +39,7 @@
           </div>
         {% endif %}
       </div>
-      <div class="cat-right w-75">
+      <div class="cat-right col-lg-9">
         {% if not isSearch %}
           {% if category.details[0].name == "Deckenbeleuchtung" %}
             <h1 class="CategoryCaption">{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}</h1>
