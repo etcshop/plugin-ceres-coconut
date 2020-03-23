@@ -72,7 +72,7 @@
           {% include "Ceres::ItemList.Partials.LoadingAnimation" %}
         {% endif %}
 
-        <ul id="twig-rendered-item-list" class="row categoryDetails isGridView col-lg-12 col-xs-12 p-x-0">
+        <ul id="catItemList" class="col-lg-12 px-0">
           {% for item in itemList %}
             <category-item
                 template-override="#vue-category-itemETC"
