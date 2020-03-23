@@ -53,7 +53,7 @@
           ${ item.prices.default.unitPrice.formatted }
         </div>
         <div class="crosspriceContainer col-lg-6 p-0 float-right">
-          <div class="crossPrice" v-if="item.prices.rrp != null">
+          <div class="crossPrice text-right" v-if="item.prices.rrp != null">
             <del>${ item.prices.rrp.unitPrice.value | numberFormat(2, '.', ',') } ${ item.prices.rrp.currency }</del> UVP
           </div>
         </div>
@@ -62,7 +62,7 @@
         <div class="CategoryViewRatingCount col-lg-6 float-left">
           {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}
         </div>
-        <div class="categoryViewShippingLabel col-lg-6 float-right" v-if="item.prices.default.price.value >= 100">
+        <div class="categoryViewShippingLabel col-lg-6 float-right text-right" v-if="item.prices.default.price.value >= 100">
           {{ trans("CeresCoconut::Template.ETC_GratisVersand") }}
         </div>
       </div>
