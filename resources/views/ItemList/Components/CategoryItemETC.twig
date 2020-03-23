@@ -2,6 +2,7 @@
 {{ component( "CeresCoconut::ItemList.Components.ItemStoreSpecial" ) }}
 
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
+{% import "CeresCoconut::PageDesign.Macros.ItemName" as ItemName %}
 
 {% set lang = services.sessionStorage.getLang() %}
 {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
