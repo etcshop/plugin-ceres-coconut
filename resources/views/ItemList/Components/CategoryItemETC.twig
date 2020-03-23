@@ -61,7 +61,7 @@
       </div>
       <div class="catItemRow4 row">
         <div class="CategoryViewRatingCount col-lg-6 float-left">
-          {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item.data) }}
+          {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
         </div>
         <div class="categoryViewShippingLabel col-lg-6 float-right text-right" v-if="item.prices.default.price.value >= 100">
           {{ trans("CeresCoconut::Template.ETC_GratisVersand") }}
