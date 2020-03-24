@@ -404,7 +404,7 @@
   <link href="https://www.etc-shop.de/layout/ETCeres/css/themeETC.css" rel="stylesheet" type="text/css" />
   <link href="https://www.etc-shop.de/layout/ETCeres/ml/css/em-minml.css" rel="stylesheet" type="text/css" />
   <link href="https://www.etc-shop.de/layout/ETCeres/ml/css/ml.css" rel="stylesheet" type="text/css" />
-{% else %} 
+{% else %}
   <link href="https://www.etc-shop.de/layout/ETCeres/css/etcmainbetaneu.css" rel="stylesheet" type="text/css" />
   <link href="https://www.etc-shop.de/layout/ETCeres/css/etcmainbeta.css" rel="stylesheet" type="text/css" />
 {% endif %}
@@ -414,6 +414,13 @@
   <link href="https://www.etc-shop.de/layout/ETCeres/css/etc_en.css" rel="stylesheet" type="text/css" />
 {% endif %}
 
+    {% if assetName == 'ceres-checkout' %}
+        {{ LayoutContainer.show("Ceres::Checkout.Styles") }}
+    {% endif %}
+    {% if assetName == 'ceres-item' %}
+        {{ LayoutContainer.show("Ceres::SingleItem.Styles") }}
+    {% endif %}
+    
 {{ get_json_data() }}
 
 {% if ceresConfig.log.performanceLevel  == 'development' %}
