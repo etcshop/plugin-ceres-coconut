@@ -61,6 +61,8 @@
     "variation.releasedAt",
     "variation.bundleType",
 
+    "variationProperties",
+
     "filter.hasChildren",
     "filter.isSalable",
     "filter.hasActiveChildren",
