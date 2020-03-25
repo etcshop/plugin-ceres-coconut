@@ -82,8 +82,8 @@
 
                 <template #etc-eigenschaften>
                   {% set countProps = 0 %}
-                  {% for prop in item.variationProperties %}
-                    {% for prop in item.variationProperties %}
+                  {% for prop in item.data.variationProperties %}
+                    {% for propGroup in prop.property.groups %}
                       {% if (propGroup.id == 19 && countProps < 6 && prop.property.names.description) %}
                         <div class="pl-4 float-right">{{ prop.property.names.description }}</div>
                         {% set countProps += 1 %}
