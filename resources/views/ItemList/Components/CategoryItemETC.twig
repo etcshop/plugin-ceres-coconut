@@ -54,7 +54,6 @@
           ${ item.prices.default.unitPrice.formatted }
         </div>
         <div class="crosspriceContainer col-lg-6 p-0 float-right">
-          ${ item.prices.rrp.unitPrice.value }
           <div class="crossPrice text-left" v-if="item.prices.rrp != null">
             <del>${ item.prices.rrp.unitPrice.value | numberFormat(2, '.', ',') } ${ item.prices.rrp.currency }</del> UVP
           </div>
