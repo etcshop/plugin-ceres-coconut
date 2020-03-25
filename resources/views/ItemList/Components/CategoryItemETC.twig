@@ -63,14 +63,12 @@
         <div class="CategoryViewRatingCount col-lg-6 px-0 float-left">
           {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
         </div>
-        <div class="categoryViewShippingLabel col-lg-6 float-right text-right" v-if="item.prices.default.price.value >= 100">
+        <div class="categoryViewShippingLabel col-lg-5 float-right text-center px-0" v-if="item.prices.default.price.value >= 100">
           {{ trans("CeresCoconut::Template.ETC_GratisVersand") }}
         </div>
       </div>
       <div class="catItemRow5 row">
-        <div v-for="prop in item.properties">
-          ${ prop.property.names.name }
-        </div>
+        <slot name="etc-eigenschaften"></slot>
       </div>
       <div class="catItemRow6 row">
         <div class="CatOverviewTechnicalData" v-html="item.texts.technicalData"></div>
