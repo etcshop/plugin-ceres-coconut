@@ -85,7 +85,7 @@
                   {% for prop in item.data.variationProperties %}
                     {% for propGroup in prop.property.groups %}
                       {% if (propGroup.id == 19 and countProps < 6 and prop.property.names.description) %}
-                        <div class="pl-4 float-right">{{ prop.property.names.description }}</div>
+                        <div class="pl-4 float-right">{{ prop.property.names.description | raw }}</div>
                         {% set countProps = countProps + 1 %}
                       {% endif %}
                     {% endfor %}
