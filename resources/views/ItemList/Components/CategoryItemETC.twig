@@ -68,8 +68,8 @@
         </div>
       </div>
       <div class="catItemRow5 row">
-        <div v-for="(prop, countProps) in item.variationProperties" v-if="prop.property.names.description" class="pl-4 float-right">
-          <div v-for="propGroup in prop.property.groups" v-html="prop.property.names.description" v-if="propGroup.id == 19 && countProps < 6 && prop.property.names.description">
+        <div v-for="prop in item.variationProperties" v-if="prop.property.names.description" class="pl-4 float-right">
+          <div v-for="(propGroup, countProps) in prop.property.groups" v-html="prop.property.names.description" v-if="propGroup.id == 19 && countProps < 6 && prop.property.names.description">
             {{countProps + 1}}
           </div>
         </div>
