@@ -68,7 +68,7 @@
         </div>
       </div>
       <div class="catItemRow5 row">
-        <div v-for="prop in item.variationProperties" v-html="prop.property.names.description" class="float-right">
+        <div v-for="prop in item.variationProperties" v-html="prop.property.names.description" v-if="prop.property.names.description" class="pl-4 float-right">
         </div>
       </div>
       <div class="catItemRow6 row">
