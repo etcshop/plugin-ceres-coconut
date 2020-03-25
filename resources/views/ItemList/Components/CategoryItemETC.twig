@@ -43,7 +43,7 @@
                                 ref="categoryImageCarousel">
         </category-image-carousel>
         <div class="crossprice_saving" v-if="item.prices.rrp != null">
-          ${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%
+          -${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%
         </div>
       </div>
       <div class="catItemRow2 row">
