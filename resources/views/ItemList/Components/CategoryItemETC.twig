@@ -68,8 +68,8 @@
         </div>
       </div>
       <div class="catItemRow5 row">
-        <div v-for="prop in item.variationProperties" v-html="prop.values.description">
-        ${ prop }
+        <div v-for="prop in item.variationProperties">
+          <div v-html="prop.values.description"></div>
         </div>
       </div>
       <div class="catItemRow6 row">
