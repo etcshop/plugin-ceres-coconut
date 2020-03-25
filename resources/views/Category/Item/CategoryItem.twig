@@ -86,12 +86,10 @@
                     {% for propGroup in prop.property.groups %}
                       {% if (propGroup.id == 19 and countProps < 6 and prop.property.names.description) %}
                         <div class="pl-4 float-right">{{ prop.property.names.description }}</div>
-                        {% set countProps += 1 %}
+                        {% set countProps = countProps + 1 %}
                       {% endif %}
                     {% endfor %}
                   {% endfor %}
-                   {% set deinErgebnis =  deineFormel %}
-                   {{ deinErgebnis }}
                 </template>
             </category-item>
           {% endfor %}
