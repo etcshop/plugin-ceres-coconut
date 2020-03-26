@@ -15,7 +15,11 @@
 
 <div style="display: none">
 {% for i in 0..pageMax %}
+  {% if i == currentPage %}
+    aktuelle Seite: {{ i }}<br>
+  {% else %}
     Page: {{ i }}<br>
+  {% endif %}
 {% endfor %}
 </div>
 
