@@ -13,6 +13,11 @@
   {% set classPageNumberLength = "einstellig" %}
 {% endif %}
 
+<div style="display: none">
+{% for i in 0..pageMax %}
+    Page: {{ i }}<br>
+{% endfor %}
+</div>
 
 {% if pageMax > 1 %}
         <div class="paginationContainer float-right">
