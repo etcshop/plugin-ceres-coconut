@@ -13,7 +13,6 @@
   {% set classPageNumberLength = "einstellig" %}
 {% endif %}
 
-<div style="display: none">
   {% set iRange = 5 %}
   {% if currentPage - iRange > 1 %}
     {% set iStart = currentPage - iRange %}
@@ -27,7 +26,6 @@
     {% set iEnd = pageMax %}
   {% endif %}
 
-</div>
 
 {% if pageMax > 1 %}
         <div class="paginationContainer float-right">
