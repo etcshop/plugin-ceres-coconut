@@ -30,9 +30,9 @@
   {% for i in 0..pageMax %}
     {% if i >= iStart and i <= iEnd %}
       {% if i == currentPage %}
-        aktuelle Seite: {{ i }}<br>
+        <a class="pageLinkElement pageActiveLink {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': i }) }}">{{ i }}</a>
       {% else %}
-        Page: {{ i }}<br>
+        <a class="pageLinkElement {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': i }) }}">{{ i }}</a>
       {% endif %}
     {% endif %}
   {% endfor %}
