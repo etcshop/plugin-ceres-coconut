@@ -14,28 +14,18 @@
 {% endif %}
 
 <div style="display: none">
-
-  {% if currentPage - 10 > 1 %}
-    {% set iStart = currentPage - 10 %}
+  {% set iRange = 5 %}
+  {% if currentPage - iRange > 1 %}
+    {% set iStart = currentPage - iRange %}
   {% else %}
     {% set iStart = 1 %}
   {% endif %}
 
-  {% if currentPage + 10 < pageMax %}
-    {% set iEnd = currentPage + 10 %}
+  {% if currentPage + iRange < pageMax %}
+    {% set iEnd = currentPage + iRange %}
   {% else %}
     {% set iEnd = pageMax %}
   {% endif %}
-
-  {% for i in 0..pageMax %}
-    {% if i >= iStart and i <= iEnd %}
-      {% if i == currentPage %}
-        <a class="pageLinkElement pageActiveLink {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': i }) }}">{{ i }}</a>
-      {% else %}
-        <a class="pageLinkElement {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': i }) }}">{{ i }}</a>
-      {% endif %}
-    {% endif %}
-  {% endfor %}
 
 </div>
 
@@ -61,19 +51,16 @@
 
           <div class="pagePages float-left">
                 <!-- PAGINATION -->
-                {% if page > 1 %}
-                  <a class="pageLinkElement {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': prevPage }) }}">{{ page - 1 }}</a>
-                {% endif %}
 
-                <a class="pageLinkElement pageActiveLink {{ classPageNumberLength }}">{{ page }}</a>
-
-                {% if page+1 <= pageMax %}
-                  <a class="pageLinkElement {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': currentPage + 1 }) }}">{{ page + 1 }}</a>
-                {% endif %}
-
-                {% if page == 1 and pageMax >= 3 %}
-                  <a class="pageLinkElement {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': currentPage + 2 }) }}">{{ page + 2 }}</a>
-                {% endif %}
+                {% for i in 0..pageMax %}
+                  {% if i >= iStart and i <= iEnd %}
+                    {% if i == currentPage %}
+                      <a class="pageLinkElement pageActiveLink {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': i }) }}">{{ i }}</a>
+                    {% else %}
+                      <a class="pageLinkElement {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': i }) }}">{{ i }}</a>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
 
                 <!-- ./PAGINATION -->
           </div>
