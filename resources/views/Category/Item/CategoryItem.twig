@@ -42,7 +42,7 @@
       <div class="cat-right col-lg-10">
         {% if not isSearch %}
           {% if category.details[0].name == "Deckenbeleuchtung" %}
-            <h1 class="CategoryCaption col-lg-6">{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}</h1>
+            <h1 class="CategoryCaption col-lg-6">{% if category.details[0].metaTitle %}{{ category.details[0].metaTitle }}{% else %}{{ category.details[0].name }}{% endif %}</h1> {{ itemCountTotal }} {{ trans("CeresCoconut::Template.ETC_Artikel") }}
             {% include "CeresCoconut::Category.Item.Partials.ItemSorting" with { 'sortingData': searchOptions.sorting, 'selectedSorting': itemSorting } %}
             {% include "CeresCoconut::Category.Item.Partials.ItemsPerPage" with { 'itemsPerPage': searchOptions.itemsPerPage, 'selectedValue': itemsPerPage } %}
 
