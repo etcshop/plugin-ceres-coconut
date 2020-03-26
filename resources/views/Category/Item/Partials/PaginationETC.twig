@@ -15,32 +15,26 @@
 
 
 {% if pageMax > 1 %}
-        <ul class="paginationContainer float-right">
+        <div class="paginationContainer float-right">
           <div class="navPrevLinks TEST0857">
             <!-- FIRST PAGE LINK -->
             {% if page > 2 and config('Ceres.pagination.showFirstPage') == "true" %}
-                <li class="nav_first">
                     <a rel="first" href="{{ baseURL ~ queryString({ 'page': null }) }}">
                       <i class="material-icons skip_prev">skip_previous</i>
                     </a>
-                </li>
             {% endif %}
             <!-- ./FIRST PAGE LINK -->
 
             <!-- PREV LINK -->
             {% if page > 1 %}
-                <li class="nav_prev">
                     <a rel="prev" href="{{ baseURL ~ queryString({ 'page': prevPage }) }}">
                       <i class="material-icons">play_arrow</i>
                     </a>
-                </li>
             {% endif %}
             <!-- ./PREV LINK -->
           </div>
 
           <div class="navPages">
-            <li class="">
-              <div class="articlePages">
                 <!-- PAGINATION -->
                 {% if page > 1 %}
                   <a class="articlePages_LinkElement articlePages_Link page-link {{ classPageNumberLength }}" href="{{ baseURL ~ queryString({ 'page': prevPage }) }}">{{ page - 1 }}</a>
@@ -57,27 +51,21 @@
                 {% endif %}
 
                 <!-- ./PAGINATION -->
-              </div>
-            </li>
           </div>
           <div class="navNextLinks">
             <!-- NEXT LINK -->
             {% if page < pageMax-1 and config('Ceres.pagination.showLastPage') == "true" %}
-                <li class="nav_next">
                     <a rel="next" href="{{ baseURL ~ queryString({ 'page': currentPage + 1 }) }}">
                        <i class="material-icons">play_arrow</i>
                     </a>
-                </li>
             {% endif %}
             <!-- ./NEXT LINK -->
 
             <!-- LAST PAGE LINK -->
             {% if page < pageMax-2 and config('Ceres.pagination.showLastPage') == "true" %}
-                <li class="nav_last">
                     <a rel="last" href="{{ baseURL ~ queryString({ 'page': pageMax }) }}">
                       <i class="material-icons skip_next">skip_next</i>
                     </a>
-                </li>
             {% endif %}
             <!-- ./LAST PAGE LINK -->
           </div>
