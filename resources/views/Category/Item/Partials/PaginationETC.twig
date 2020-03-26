@@ -15,27 +15,28 @@
 
 <div style="display: none">
 
-{% if currentPage - 10 > 1 %}
-  {% set iStart = currentPage - 10 %}
-{% else %}
-  {% set iStart = 1 %}
-{% endif %}
-
-{% if currentPage + 10 < pageMax %}
-  {% set iEnd = currentPage + 10 %}
-{% else %}
-  {% set iEnd = pageMax %}
-{% endif %}
-
-{% for i in 0..pageMax %}
-  {% if i >= iStart && i <= iEnd %}
-    {% if i == currentPage %}
-      aktuelle Seite: {{ i }}<br>
-    {% else %}
-      Page: {{ i }}<br>
-    {% endif %}
+  {% if currentPage - 10 > 1 %}
+    {% set iStart = currentPage - 10 %}
+  {% else %}
+    {% set iStart = 1 %}
   {% endif %}
-{% endfor %}
+
+  {% if currentPage + 10 < pageMax %}
+    {% set iEnd = currentPage + 10 %}
+  {% else %}
+    {% set iEnd = pageMax %}
+  {% endif %}
+
+  {% for i in 0..pageMax %}
+    {% if i >= iStart and i <= iEnd %}
+      {% if i == currentPage %}
+        aktuelle Seite: {{ i }}<br>
+      {% else %}
+        Page: {{ i }}<br>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
 </div>
 
 {% if pageMax > 1 %}
