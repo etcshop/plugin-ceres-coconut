@@ -3,7 +3,14 @@
         <div id="quickView_TopLeft"></div>
         <div id="quickView_TopRight">
           <slot name="etc-quickview-eigenschaften"></slot>
-          ${ itemData.texts.name1 }
+          ${ itemData.texts.name1 }<br>
+          ${ itemData.prices.default.price.formatted }<br>
+          {% if itemData.prices.rrp %}
+            ${ itemData.prices.rrp.price.formatted }<br>
+          {% endif %}
+          ${ itemData.texts.technicalData }<br>
+          <a :href="itemData | itemURL(urlWithVariationId)">Link</a><br>
+          <img :src="firstImageByPosition"><br>
         </div>
         <div id="quickView_Bottom"></div>
     </div>
