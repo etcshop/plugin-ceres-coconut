@@ -33,7 +33,7 @@
 <script type="x/template" id="vue-category-itemETC">
   <li class="col-lg-3" data-plenty-id="{{ item.id }}">
     <div class="itemBoxInner">
-      <category-item-quickview class="categoryItemQuickView" :key="item.data.variation.id" :alt-url="altUrl" :item-name="item.data.texts.name1" :item-data="item.data" image-url-accessor="urlMiddle"></category-item-quickview>
+      <category-item-quickview class="categoryItemQuickView" :item-data="item.data" image-url-accessor="urlMiddle"></category-item-quickview>
 
       <div class="catItemRow1 row text-center">
         <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
