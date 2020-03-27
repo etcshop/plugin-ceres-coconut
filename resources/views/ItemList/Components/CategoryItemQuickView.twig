@@ -1,7 +1,10 @@
 <script type="x/template" id="vue-category-item-quickview">
     <div>
         <div id="quickView_TopLeft"></div>
-        <div id="quickView_TopRight"></div>
+        <div id="quickView_TopRight">
+          <slot name="etc-eigenschaften"></slot>
+          ${ itemData.texts.name1 }
+        </div>
         <div id="quickView_Bottom"></div>
     </div>
 </script>
