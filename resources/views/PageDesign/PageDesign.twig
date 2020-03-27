@@ -420,7 +420,7 @@
     {% if assetName == 'ceres-item' %}
         {{ LayoutContainer.show("Ceres::SingleItem.Styles") }}
     {% endif %}
-    
+
 {{ get_json_data() }}
 
 {% if ceresConfig.log.performanceLevel  == 'development' %}
@@ -497,6 +497,7 @@
 {{ component( "CeresCoconut::ItemList.Components.StartBoxItemETC" ) }}
 {{ component( "CeresCoconut::PageDesign.Components.CookieBannerETC" ) }}
 {{ component( "CeresCoconut::PageDesign.Components.TrackingETC" ) }}
+{{ component( "CeresCoconut::ItemList.Components.CategoryItemQuickView" ) }}
 
 {% if not services.template.shouldBeCached() %}
     <input type="hidden" id="csrf-token" value="{{ csrf_token() }}">
