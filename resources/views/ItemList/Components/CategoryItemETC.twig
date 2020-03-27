@@ -42,8 +42,6 @@
       </lazy-load>
 
       <div class="catItemRow1 row text-center">
-
-        <lazy-load component="category-image-carousel">
         <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
                                 :alt-text="item | itemName"
                                 :title-text="item | itemName"
@@ -52,7 +50,6 @@
                                 :disable-carousel-on-mobile="disableCarouselOnMobile"
                                 ref="categoryImageCarousel">
         </category-image-carousel>
-      </lazy-load>
         <div class="crossprice_saving" v-if="item.prices.rrp != null">
           -${ ((1 - (item.prices.default.price.value / item.prices.rrp.unitPrice.value)) * 100) | numberFormat(0) }%
         </div>
