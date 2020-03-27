@@ -1,20 +1,20 @@
 <script type="x/template" id="vue-category-item-quickview">
-    <div>
-        <div id="quickView_TopLeft">
+    <div id="categoryItemQuickView">
+        <div id="quickView_TopLeft" class="col-lg-6">
           <img :src="firstImageByPosition"><br>
         </div>
-        <div id="quickView_TopRight">
-          <slot name="etc-quickview-eigenschaften"></slot>
+        <div id="quickView_TopRight" class="col-lg-6">
           ${ itemData.texts.name1 }<br>
           ${ itemData.prices.default.price.formatted }<br>
           {% if itemData.prices.rrp %}
             ${ itemData.prices.rrp.price.formatted }<br>
           {% endif %}
           ${ itemData.texts.technicalData }<br>
-          <a :href="itemData | itemURL(urlWithVariationId)">Link</a><br>
+          <a :href="itemData | itemURL(urlWithVariationId)">Produktdetails</a><br>
           {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
+          <slot name="etc-quickview-eigenschaften"></slot>
         </div>
-        <div id="quickView_Bottom"></div>
+        <div id="quickView_Bottom"  class="col-lg-12"></div>
     </div>
 </script>
 
