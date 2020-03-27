@@ -33,13 +33,11 @@
 <script type="x/template" id="vue-category-itemETC">
   <li class="col-lg-3" data-plenty-id="{{ item.id }}">
     <div class="itemBoxInner">
-      <lazy-load component="category-item-quickview">
         <category-item-quickview class="categoryItemQuickView" :item-data="item">
           <template #etc-quickview-eigenschaften>
             <slot name="etc-eigenschaften"></slot>
           </template>
         </category-item-quickview>
-      </lazy-load>
 
       <div class="catItemRow1 row text-center">
         <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
