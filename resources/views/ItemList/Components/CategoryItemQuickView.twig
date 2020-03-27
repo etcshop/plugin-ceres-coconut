@@ -67,6 +67,7 @@
       }
     },
     created: function created() {
+      this.$store.dispatch("loadComponent", "category-item-quickview");
     },
     methods: {
       loadFirstImage: function loadFirstImage() {
