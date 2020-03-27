@@ -33,6 +33,8 @@
 <script type="x/template" id="vue-category-itemETC">
   <li class="col-lg-3" data-plenty-id="{{ item.id }}">
     <div class="itemBoxInner">
+      <category-item-quickview class="categoryItemQuickView" :items="{{ itemsLastSeen | json_encode }}" :label="{{ itemLastSeenLbl | json_encode }}"></category-item-quickview>
+
       <div class="catItemRow1 row text-center">
         <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
                                 :alt-text="item | itemName"

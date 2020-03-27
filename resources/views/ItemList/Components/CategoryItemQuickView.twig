@@ -1,7 +1,12 @@
+{{ component( "CeresCoconut::ItemList.Components.ItemLazyImg" ) }}
+{{ component( "Ceres::Components.common.LazyImg" ) }}
+
 <script type="x/template" id="vue-add-category-item-quickview">
     <div>
         <div id="quickView_TopLeft"></div>
-        <div id="quickView_TopRight"></div>
+        <div id="quickView_TopRight">
+          <div style="display: none">itemData: ${ itemData }<br>firstImageByPosition: ${ firstImageByPosition }</div>
+        </div>
         <div id="quickView_Bottom"></div>
     </div>
 </script>
@@ -11,22 +16,111 @@
   function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
   Vue.component("category-item-quickview", {
-    template: "#vue-category-item-quickview",
     delimiters: ["${", "}"],
-    props: {
+    props:
+    {
+          template:
+          {
+              type: String,
+              default: "#vue-category-item-quickview"
+          },
+          imageUrlAccessor:
+          {
+              type: String,
+              default: "urlMiddle"
+          },
+          itemData:
+          {
+              type: Object
+          },
+          disableCarouselOnMobile:
+          {
+              type: Boolean
+          },
+          paddingClasses:
+          {
+              type: String,
+              default: null
+          },
+          paddingInlineStyles:
+          {
+              type: String,
+              default: null
+          },
+          urlWithVariationId:
+          {
+              type: Boolean,
+              default: true
+          },
+          altUrl:
+          {
+              type: String,
+              default: null
+          },
+          itemName:
+          {
+              type: String,
+              default: null
+          }
+    },
 
+    jsonDataFields: [
+        "itemDataRef"
+    ],
+    data: function data() {
+      return {
+        recommendedRetailPrice: 0,
+        variationRetailPrice: 0
+      };
     },
     computed: {
+      /**
+       * returns itemData.item.storeSpecial
+       */
+      storeSpecial: function storeSpecial() {
+        return this.itemData.item.storeSpecial;
+      },
 
+      /**
+       * returns itemData.texts[0]
+       */
+      texts: function texts() {
+        return this.itemData.texts;
+      },
+      firstImageByPosition: function firstImageByPosition() {
+        var pos = 10000;
+        var retImg = "";
+
+        for (var i = 0; i < this.itemData.images.all.length; i++) {
+          if (this.itemData.images.all[i].position < pos && this.itemData.images.all[i].position != 0) {
+            pos = this.itemData.images.all[i].position;
+            retImg = this.itemData.images.all[i].urlMiddle;
+          }
+        }
+
+        return retImg;
+      },
+      showNetPrices: function showNetPrices()
+      {
+        return vueApp.$store.basket.showNetPrices;
+      }
     },
-    data: function data() {
+    created: function created() {
 
+      if (this.itemData.prices.rrp) {
+        this.recommendedRetailPrice = this.itemData.prices.rrp.price.value;
+      }
+
+      this.variationRetailPrice = this.itemData.prices.default.price.value;
     },
     methods: {
+      loadFirstImage: function loadFirstImage() {
+        var categoryImageCarousel = this.$refs.categoryImageCarousel;
 
-    },
-    watch: {
-
+        if (categoryImageCarousel) {
+          categoryImageCarousel.loadFirstImage();
+        }
+      }
     }
   });
 </script>
