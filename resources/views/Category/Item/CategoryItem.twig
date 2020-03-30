@@ -15,6 +15,7 @@
     {{ component( "Ceres::ItemList.Components.ItemList") }}
 
     {% set shippingCat = config("Ceres.global.shippingCostsCategoryId") %}
+    {% set qvData = item.data %}
 
     <div class="d-flex">
       <div class="cat-left col-lg-2 pr-0">
@@ -84,14 +85,13 @@
           {% endfor %}
         </ul>
 
-        <lazy-load component="category-item-quickview">
-          <category-item-quickview class="categoryItemQuickView" :show-quick-view="false" item-data-ref="{{ item.data | json_data }}" :disable-carousel-on-mobile="false">
+
+
+          <category-item-quickview class="categoryItemQuickView" :show-quick-view="false" item-data-ref="{{ qvData | json_data }}" :disable-carousel-on-mobile="false">
             <template #etc-quickview-eigenschaften>
               <slot name="etc-eigenschaften"></slot>
             </template>
           </category-item-quickview>
-        </lazy-load>
-
 
         <div class="col-lg-12 px-0">
             {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
