@@ -29,13 +29,14 @@
 {% else %}
   {% set etcAltText = item.texts.name3 %}
 {% endif %}
+{% set showQuick = false %}
 
 <script type="x/template" id="vue-category-itemETC">
   <li class="col-lg-3" :data-plenty-id="item.item.id">
     <div class="itemBoxInner">
-      <i aria-hidden="true" class="fa fa-search-plus" @click="show = true; $store.dispatch('loadComponent', 'category-item-quickview');"></i>
+      <i aria-hidden="true" class="fa fa-search-plus" @click="showQuick = true; $store.dispatch('loadComponent', 'category-item-quickview');"></i>
       <lazy-load component="category-item-quickview">
-        <category-item-quickview class="categoryItemQuickView" :show-quick-view="show" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
+        <category-item-quickview class="categoryItemQuickView" :show-quick-view="showQuick" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
           <template #etc-quickview-eigenschaften>
             <slot name="etc-eigenschaften"></slot>
           </template>
