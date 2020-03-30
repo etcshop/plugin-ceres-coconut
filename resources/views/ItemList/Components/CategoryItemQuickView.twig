@@ -1,7 +1,7 @@
 {{ component( "CeresCoconut::ItemList.Components.CategoryImageCarousel") }}
 
 <script type="x/template" id="vue-category-item-quickview">
-    <div id="categoryItemQuickView">
+    <div :id="'categoryItemQuickView' + item.item.id">
         <div id="quickView_TopLeft" class="col-lg-6">
           <img :src="firstImageByPosition"><br>
         </div>
