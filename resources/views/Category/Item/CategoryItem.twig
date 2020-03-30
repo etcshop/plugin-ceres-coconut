@@ -85,7 +85,7 @@
         </ul>
 
         <lazy-load component="category-item-quickview">
-          <category-item-quickview class="categoryItemQuickView" :show-quick-view="false" :item-data="item.data" :disable-carousel-on-mobile="false">
+          <category-item-quickview class="categoryItemQuickView" :show-quick-view="false" item-data="{{ item.data | json_data }}" :disable-carousel-on-mobile="false">
             <template #etc-quickview-eigenschaften>
               <slot name="etc-eigenschaften"></slot>
             </template>
