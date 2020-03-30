@@ -34,7 +34,7 @@
   <li class="col-lg-3" data-plenty-id="{{ item.id }}" @mouseover.once="$store.dispatch('loadComponent', 'category-item-quickview')">
     <div class="itemBoxInner">
       <lazy-load component="category-item-quickview">
-        <category-item-quickview class="categoryItemQuickView" :item-data="item">
+        <category-item-quickview class="categoryItemQuickView" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
           <template #etc-quickview-eigenschaften>
             <slot name="etc-eigenschaften"></slot>
           </template>
