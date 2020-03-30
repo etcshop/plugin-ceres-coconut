@@ -84,6 +84,14 @@
           {% endfor %}
         </ul>
 
+        <lazy-load component="category-item-quickview">
+          <category-item-quickview class="categoryItemQuickView" :show-quick-view="showQuick" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
+            <template #etc-quickview-eigenschaften>
+              <slot name="etc-eigenschaften"></slot>
+            </template>
+          </category-item-quickview>
+        </lazy-load>
+
 
         <div class="col-lg-12 px-0">
             {% if ceresConfig.pagination.position in ['top', 'top_bottom'] %}
