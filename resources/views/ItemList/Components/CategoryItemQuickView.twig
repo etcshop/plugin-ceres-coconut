@@ -17,8 +17,10 @@
             <span class="qvItemRRP">${ itemData.prices.rrp.price.formatted }</span><br>
             <br>
           {% endif %}
-          {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
-          <slot name="etc-quickview-eigenschaften"></slot>
+          <div class="qvRatingProperties">
+            {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
+            <slot name="etc-quickview-eigenschaften"></slot>
+          </div>
           <span class="qvItemTechData" v-html="itemData.texts.technicalData"></span><br>
           <br>
           <a :href="itemData | itemURL(urlWithVariationId)" class="qvLinkToItem px-5 py-3">Produktdetails</a>
