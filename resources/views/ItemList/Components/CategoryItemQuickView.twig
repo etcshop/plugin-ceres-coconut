@@ -49,7 +49,6 @@
 
   function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-  import { mapState } from "vuex";
   Vue.component("category-item-quickview", {
     delimiters: ["${", "}"],
     props:
@@ -120,11 +119,7 @@
           texts()
           {
               return this.item.texts;
-          },
-
-          ...mapState({
-              showNetPrices: state => state.basket.showNetPrices
-          })
+          }
     },
     created: function created() {
 
