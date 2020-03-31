@@ -57,8 +57,10 @@
             default: true
           }
     },
-    data: {
-      seen: false
+    data: function () {
+      return {
+        seen: false
+      }
     },
     jsonDataFields: [
         "itemDataRef"
