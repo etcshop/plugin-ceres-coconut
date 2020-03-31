@@ -9,13 +9,18 @@
           <img :src="firstImageByPosition"><br>
         </div>
         <div id="quickView_TopRight" class="col-lg-6">
-          ${ itemData.texts.name1 }<br>
-          ${ itemData.prices.default.price.formatted }<br>
+          <span class="qvItemName">${ itemData.texts.name1 }</span><br>
+          <br>
+          <span class="qvItemPrice">${ itemData.prices.default.price.formatted }</span><br>
+          <br>
           {% if itemData.prices.rrp %}
-            ${ itemData.prices.rrp.price.formatted }<br>
+            <span class="qvItemRRP">${ itemData.prices.rrp.price.formatted }</span><br>
+            <br>
           {% endif %}
-          ${ itemData.texts.technicalData }<br>
+          <span class="qvItemTechData">${ itemData.texts.technicalData }</span><br>
+          <br>
           <a :href="itemData | itemURL(urlWithVariationId)">Produktdetails</a><br>
+          <br>
           {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
           <slot name="etc-quickview-eigenschaften"></slot>
         </div>
