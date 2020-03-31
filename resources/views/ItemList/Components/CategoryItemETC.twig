@@ -33,7 +33,7 @@
 <script type="x/template" id="vue-category-itemETC">
   <li class="col-lg-3" :data-plenty-id="item.item.id">
     <div class="itemBoxInner">
-        <category-item-quickview class="categoryItemQuickView" show-quick-view="{{ showQuick }}" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
+        <category-item-quickview class="categoryItemQuickView" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
           <template #etc-quickview-eigenschaften>
             <slot name="etc-eigenschaften"></slot>
           </template>
