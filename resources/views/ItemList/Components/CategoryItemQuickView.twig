@@ -3,7 +3,7 @@
 <script type="x/template" id="vue-category-item-quickview">
   <div>
     <i aria-hidden="true" class="fa fa-search-plus showQuickView" click="seen = !seen" ></i>
-    <div :id="'categoryItemQuickView' + itemData.item.id" v-if="seen">
+    <div :id="'categoryItemQuickView_' + itemData.item.id" v-if="seen">
         <div id="quickView_TopLeft" class="col-lg-6">
           <img :src="firstImageByPosition"><br>
         </div>
@@ -57,7 +57,7 @@
             default: true
           }
     },
-    data{
+    data: {
       seen: false
     }
     jsonDataFields: [
