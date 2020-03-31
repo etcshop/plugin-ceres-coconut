@@ -28,6 +28,14 @@
           <br>
         </div>
         <div class="quickView_Bottom col-lg-12">
+          <category-image-carousel :image-urls-data="itemData.images | itemImages(imageUrlAccessor)"
+                                  :alt-text="itemData | itemName"
+                                  :title-text="itemData | itemName"
+                                  :item-url="itemData | itemURL(urlWithVariationId)"
+                                  :enable-carousel="$ceres.config.item.enableImageCarousel"
+                                  :disable-carousel-on-mobile="disableCarouselOnMobile"
+                                  ref="categoryImageCarousel">
+          </category-image-carousel>
         </div>
     </div>
   </div>
