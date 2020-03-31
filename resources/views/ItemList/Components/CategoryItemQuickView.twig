@@ -21,7 +21,8 @@
           <slot name="etc-quickview-eigenschaften"></slot>
           <span class="qvItemTechData" v-html="itemData.texts.technicalData"></span><br>
           <br>
-          <a :href="itemData | itemURL(urlWithVariationId)">Produktdetails</a><br>
+          <a :href="itemData | itemURL(urlWithVariationId)" class="qvLinkToItem px-5 py-3">Produktdetails</a><br>
+          <a :href="itemData | itemURL(urlWithVariationId)" class="qvToBasket px-3 py-3"><i id="BasketButtonIcon" class="material-icons BasketEmpty">shopping_cart</i></a><br>
           <br>
         </div>
         <div class="quickView_Bottom col-lg-12">
