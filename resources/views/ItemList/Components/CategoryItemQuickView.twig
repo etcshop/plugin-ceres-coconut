@@ -4,7 +4,7 @@
   <div>
     <i aria-hidden="true" class="fa fa-search-plus showQuickView" @click="seen = !seen" ></i>
     <div :id="'categoryItemQuickView_' + itemData.item.id" class="quickItemView" v-if="seen">
-        <i aria-hidden="true" class="fa fa-times" @click="seen = !seen" ></i>
+        <i aria-hidden="true" class="fa fa-times float-right p-3 quickItemViewClose" @click="seen = !seen" ></i>
         <div id="quickView_TopLeft" class="col-lg-6">
           <img :src="firstImageByPosition"><br>
         </div>
