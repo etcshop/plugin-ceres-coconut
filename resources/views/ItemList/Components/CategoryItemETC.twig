@@ -36,7 +36,7 @@
     <div class="itemBoxInner">
       <i aria-hidden="true" class="fa fa-search-plus" @click="showQuick = true; $store.dispatch('loadComponent', 'category-item-quickview');"></i>
       <lazy-load component="category-item-quickview">
-        <category-item-quickview class="categoryItemQuickView" :show-quick-view="showQuick" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
+        <category-item-quickview class="categoryItemQuickView" show-quick-view="{{ showQuick }}" :item-data="item" :disable-carousel-on-mobile="disableCarouselOnMobile">
           <template #etc-quickview-eigenschaften>
             <slot name="etc-eigenschaften"></slot>
           </template>
