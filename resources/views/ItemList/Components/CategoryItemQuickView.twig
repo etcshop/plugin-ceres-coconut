@@ -17,7 +17,7 @@
             <span class="qvItemRRP">${ itemData.prices.rrp.price.formatted }</span><br>
             <br>
           {% endif %}
-          <span class="qvItemTechData">${ itemData.texts.technicalData }</span><br>
+          <span class="qvItemTechData" v-html="itemData.texts.technicalData"></span><br>
           <br>
           <a :href="itemData | itemURL(urlWithVariationId)">Produktdetails</a><br>
           <br>
