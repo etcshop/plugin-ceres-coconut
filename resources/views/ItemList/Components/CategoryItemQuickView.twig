@@ -5,10 +5,10 @@
     <i aria-hidden="true" class="fa fa-search-plus showQuickView" @click="seen = !seen" ></i>
     <div :id="'categoryItemQuickView_' + itemData.item.id" class="quickItemView" v-if="seen">
         <i aria-hidden="true" class="fa fa-times float-right p-3 quickItemViewClose" @click="seen = !seen" ></i>
-        <div id="quickView_TopLeft" class="col-lg-6">
+        <div class="quickView_TopLeft col-lg-6">
           <img :src="firstImageByPosition"><br>
         </div>
-        <div id="quickView_TopRight" class="col-lg-6">
+        <div class="quickView_TopRight col-lg-6">
           <span class="qvItemName">${ itemData.texts.name1 }</span><br>
           <br>
           <span class="qvItemPrice">${ itemData.prices.default.price.formatted }</span><br>
@@ -24,7 +24,7 @@
           {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
           <slot name="etc-quickview-eigenschaften"></slot>
         </div>
-        <div id="quickView_Bottom" class="col-lg-12">
+        <div class="quickView_Bottom col-lg-12">
         </div>
     </div>
   </div>
