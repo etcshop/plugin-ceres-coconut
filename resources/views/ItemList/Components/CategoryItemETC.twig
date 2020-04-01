@@ -38,7 +38,7 @@
             <slot name="etc-eigenschaften"></slot>
           </template>
           <template #quickViewImageCarousel>
-            <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
+            <category-image-carousel :image-urls-data="item.images | itemImages('urlPreview')"
                                     :alt-text="item | itemName"
                                     :title-text="item | itemName"
                                     :item-url="item | itemURL(urlWithVariationId)"
