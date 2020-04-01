@@ -1,4 +1,4 @@
-{{ component( "Ceres::ItemList.Components.CategoryImageCarousel") }}
+{{ component( "CeresCoconut::ItemList.Components.CategoryImageCarousel") }}
 {{ component( "CeresCoconut::ItemList.Components.ItemStoreSpecial" ) }}
 
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
@@ -32,13 +32,7 @@
           <br>
         </div>
         <div class="quickView_Bottom col-lg-12">
-          <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
-                                  :alt-text="item | itemName"
-                                  :title-text="item | itemName"
-                                  :item-url="item | itemURL(urlWithVariationId)"
-                                  :enable-carousel="$ceres.config.item.enableImageCarousel"
-                                  :disable-carousel-on-mobile="disableCarouselOnMobile"
-                                  ref="categoryImageCarousel">
+          <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)">
           </category-image-carousel>
         </div>
     </div>
