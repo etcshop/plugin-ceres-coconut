@@ -1,4 +1,3 @@
-{{ component( "CeresCoconut::ItemList.Components.CategoryImageCarousel") }}
 {{ component( "CeresCoconut::ItemList.Components.ItemStoreSpecial" ) }}
 
 {% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
@@ -100,26 +99,26 @@
 
         return retImg;
       },
-          item()
-          {
-              return this.itemData || this.itemDataRef;
-          },
+      item()
+      {
+          return this.itemData || this.itemDataRef;
+      },
 
-          /**
-           * returns itemData.item.storeSpecial
-           */
-          storeSpecial()
-          {
-              return this.item.item.storeSpecial;
-          },
+      /**
+       * returns itemData.item.storeSpecial
+       */
+      storeSpecial()
+      {
+          return this.item.item.storeSpecial;
+      },
 
-          /**
-           * returns itemData.texts
-           */
-          texts()
-          {
-              return this.item.texts;
-          }
+      /**
+       * returns itemData.texts
+       */
+      texts()
+      {
+          return this.item.texts;
+      }
     },
     created: function created() {
 
