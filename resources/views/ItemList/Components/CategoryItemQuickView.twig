@@ -7,32 +7,38 @@
 <script type="x/template" id="vue-category-item-quickview">
   <div>
     <i aria-hidden="true" class="fa fa-search-plus showQuickView" @click="seen = !seen" ></i>
-    <div :id="'categoryItemQuickView_' + itemData.item.id" class="quickItemView" v-if="seen">
+    <div :id="'categoryItemQuickView_' + item.item.id" class="quickItemView" v-if="seen">
         <i aria-hidden="true" class="fa fa-times float-right p-3 quickItemViewClose" @click="seen = !seen" ></i>
         <div class="quickView_TopLeft col-lg-6">
           <img :src="firstImageByPosition"><br>
         </div>
         <div class="quickView_TopRight col-lg-6">
-          <span class="qvItemName">${ itemData.texts.name1 }</span><br>
+          <span class="qvItemName">${ item.texts.name1 }</span><br>
           <br>
-          <span class="qvItemPrice">${ itemData.prices.default.price.formatted }</span><br>
+          <span class="qvItemPrice">${ item.prices.default.price.formatted }</span><br>
           <br>
           {% if itemData.prices.rrp %}
-            <span class="qvItemRRP">${ itemData.prices.rrp.price.formatted }</span><br>
+            <span class="qvItemRRP">${ item.prices.rrp.price.formatted }</span><br>
             <br>
           {% endif %}
           <div class="qvRatingProperties">
             {{ LayoutContainer.show("Ceres::CategoryItem.AfterPrices", item) }}
             <slot name="etc-quickview-eigenschaften"></slot>
           </div>
-          <span class="qvItemTechData" v-html="itemData.texts.technicalData"></span><br>
+          <span class="qvItemTechData" v-html="item.texts.technicalData"></span><br>
           <br>
-          <a :href="itemData | itemURL(urlWithVariationId)" class="qvLinkToItem px-5 py-3">Produktdetails</a>
-          <a :href="itemData | itemURL(urlWithVariationId)" class="qvToBasket ml-2"><i class="material-icons">shopping_cart</i></a><br>
+          <a :href="item | itemURL(urlWithVariationId)" class="qvLinkToItem px-5 py-3">Produktdetails</a>
+          <a :href="item | itemURL(urlWithVariationId)" class="qvToBasket ml-2"><i class="material-icons">shopping_cart</i></a><br>
           <br>
         </div>
         <div class="quickView_Bottom col-lg-12">
-          <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)">
+          <category-image-carousel :image-urls-data="item.images | itemImages(imageUrlAccessor)"
+                                  :alt-text="item | itemName"
+                                  :title-text="item | itemName"
+                                  :item-url="item | itemURL(urlWithVariationId)"
+                                  :enable-carousel="$ceres.config.item.enableImageCarousel"
+                                  :disable-carousel-on-mobile="disableCarouselOnMobile"
+                                  ref="categoryImageCarousel">
           </category-image-carousel>
         </div>
     </div>
