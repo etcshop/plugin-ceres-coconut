@@ -9,7 +9,7 @@
                 v-if="index === 0 && !disableLazyLoad" >
             </lazy-img>
             <img v-else-if="index !== 0 && !disableLazyLoad" class="img-fluid owl-lazy" :data-src="imageUrl.url" :title="getAltText(imageUrl)" :alt="getAltText(imageUrl)">
-            <img v-else class="img-fluid" :src="imageUrl.url" :alt="getAltText(imageUrl)" :title="getAltText(imageUrl)">
+            <img v-else class="img-fluid" :src="imageUrl.url" :alt="getAltText(imageUrl)" :title="getAltText(imageUrl)" style="width:150px">
         </div>
     </a>
     <a v-else :href="itemUrl" class="test">
