@@ -38,6 +38,7 @@
             <slot name="etc-eigenschaften"></slot>
           </template>
           <template #quickViewImageCarousel>
+            <item-image-carousel plugin-path="{{ plugin_path('Ceres') }}" image-url-accessor="url"></item-image-carousel>
             <category-image-carousel :image-urls-data="item.images | itemImages('urlPreview')"
                                     :alt-text="item | itemName"
                                     :title-text="item | itemName"
