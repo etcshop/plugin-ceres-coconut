@@ -9,7 +9,7 @@
 {{ component( "Ceres::Containers.Components.LastSeenItemList" ) }}
 {{ component( "Ceres::Customer.Components.ForgotPassword" ) }}
 {{ component( "Ceres::Customer.Components.Contact.AcceptPrivacyPolicyCheck") }}
- 
+
 {% set currencyFormat = config("Ceres.currency.format") %}
 {% set defaultLanguage = services.webstoreConfig.getDefaultLanguage() %}
 {% set pid = services.webstoreConfig.getPlentyId() %}
@@ -266,7 +266,7 @@
                   {% set loggedIn = frontend.Account.getIsAccountLoggedIn %}
                   {% if loggedIn %}
                     <span id="PlentyWebMyAccountMyAccountLogoutContainer">
-                  	   <a class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" title="Ausloggen" v-logout>{{ trans("Ceres::Template.loginLogout") }}</a>
+                  	   <a href="#" class="PlentyWebshopButton logout" id="button_logoutPlentyWebMyAccountLogout" title="Ausloggen" v-logout>{{ trans("Ceres::Template.loginLogout") }}</a>
                      </span>
                   {% else %}
                     <span id="PlentyWebMyAccountMyAccountLogoutContainer">
