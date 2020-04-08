@@ -1,5 +1,5 @@
-{{ component( "CeresCoconut::Customer.Components.AddressSelect.CreateUpdateAddress") }}
-{{ component( "CeresCoconut::Customer.Components.AddressSelect.AddressHeader") }}
+{{ component( "Ceres::Customer.Components.AddressSelect.CreateUpdateAddress") }}
+{{ component( "Ceres::Customer.Components.AddressSelect.AddressHeader") }}
 
 
 <script type="x/template" id="vue-address-select">
@@ -14,8 +14,8 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    data-boundary="window">
-
+                    data-boundary="window"
+                    data-flip="false">
                     <div class="item-inner" :class="{'error': showError}">
                         <span v-if="selectedAddress && selectedAddress.id == -99">
                             <p class="text-muted small font-italic pt-3 m-0" :class="paddingClasses" :style="paddingInlineStyles">{{ trans("Ceres::Template.addressSameAsInvoice") }}</p>
@@ -29,13 +29,12 @@
                         </span>
                     </div>
                 </div>
-                <div class="add-item" v-if="isAddAddressEnabled">
-                    <button data-placement="top" title="{{ trans("Ceres::Template.addressAddAddress") }}" class="btn btn-primary btn-appearance btn-medium btn-only-icon-xs-down" @click.prevent="showAddModal()">
+                <div class="add-item">
+                    <button v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.addressAddAddress") }}" class="btn btn-primary btn-appearance btn-medium btn-only-icon-xs-down" v-if="isAddAddressEnabled" @click.prevent="showAddModal()" :disabled="isBasketLoading || isCheckoutReadonly">
                         <span>{{ trans("Ceres::Template.addressAddAddress") }}</span>
                         <i class="fa fa-plus-square" aria-hidden="true"></i>
                     </button>
                 </div>
-
                 <div class="dropdown-menu" :aria-labelledby="'addressMultiSelect' + _uid" v-if="!isAddressListEmpty && !(addressType === '2' && addressList.length === 1)">
                     <ul>
                         <li class="item" v-for="(address, index) in addressList">
@@ -53,14 +52,25 @@
                                 <span v-else class="item-content small">
                                 <address-header :address="address" :class="paddingClasses" :style="paddingInlineStyles"></address-header>
                             </span>
-
+                                <!---->
+                                <div class="item-controls" v-if="address.id != -99">
+                                    <span class="item-edit">
+                                        <button v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.addressEdit") }}" class="btn btn-primary btn-appearance" @click.prevent="showEditModal(address)">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                    <span class="item-remove">
+                                        <button v-tooltip data-toggle="tooltip" data-placement="top" title="{{ trans("Ceres::Template.addressDelete") }}" class="btn btn-danger" @click.prevent="showDeleteModal(address)">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                </div>
                             </label>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-
         <div ref="addressModal">
             <div class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -71,8 +81,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-
-                        <div class="modal-body TEST1343">
+                        <div class="modal-body">
                             <fieldset>
                                 <create-update-address
                                     template="#vue-create-update-address"
@@ -91,7 +100,6 @@
                 </div>
             </div>
         </div>
-
         <div ref="deleteModal">
             <div class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -102,7 +110,6 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-
                         <div class="modal-body">
                             <fieldset>
                                 <div class="row">
@@ -116,8 +123,8 @@
                                             <span>
                                                 <template v-if="addressToDelete.address1 === 'PACKSTATION' || addressToDelete.address1 === 'POSTFILIALE'">
                                                     {{ trans("Ceres::Template.addressPostNummer") }}
+                                                    ${addressToDelete | optionType(6)}
                                                 </template>
-
                                                 ${ addressToDelete.address3 }
                                             </span>
                                             <span>${addressToDelete.postalCode} ${addressToDelete.town}</span>
@@ -127,7 +134,6 @@
                                 </div>
                             </fieldset>
                         </div>
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-medium mr-2 btn-outline-primary" @click="closeDeleteModal">
                                 <span>{{ trans("Ceres::Template.addressCancel") }}</span>
