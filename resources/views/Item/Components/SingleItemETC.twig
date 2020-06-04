@@ -158,7 +158,7 @@
           </div>
           <slot name="additional-content-after-add-to-basket"></slot>
           {% set versand = services.category.get(722, lang) %}
-          <span id="SingleArticle_Price_Vat">{{ trans("CeresCoconut::Template.ETC_InclMwSt") }} 19% <a href="{{ services.category.getURL(versand, lang) }}">, {{ trans("CeresCoconut::Template.ETC_ZzglVersand") }}</a></span>
+          <span id="SingleArticle_Price_Vat">{{ trans("CeresCoconut::Template.ETC_InclMwSt") }} ${ currentVariation.prices.default.vat.value }% <a href="{{ services.category.getURL(versand, lang) }}">, {{ trans("CeresCoconut::Template.ETC_ZzglVersand") }}</a></span>
 
           <slot name="CrossSellingAccessory"></slot>
 
