@@ -93,12 +93,12 @@
                                                 {{ trans("Ceres::Template.orderHistoryOrderDetails") }}
                                             </button>
 
-                                            {% if entry.isReturnable %}
+
                                                 <a v-waiting-animation-infinite class="btn btn-primary btn-block" href="/returns/{{ entry.order.id }}">
                                                     <i class="fa fa-undo" aria-hidden="true"></i>
                                                     {{ trans("Ceres::Template.orderHistoryReturnSendBack") }}
                                                 </a>
-                                            {% endif %}
+
                                             <change-payment-method  template="#vue-change-payment-method"
                                                                     :current-order="{{ entry.order | json_encode() }}"
                                                                     :change-possible="{{ services.order.allowPaymentMethodSwitchFrom(paymentMethodId, entry.order.id) | json_encode() }}"
