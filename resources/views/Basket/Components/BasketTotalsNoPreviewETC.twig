@@ -41,8 +41,8 @@
             <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right">
               <span data-plenty-basket-preview="totalsTotalAmount">${ basket.basketAmount | currency  }</span>
             </dd>
-            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs">
-              <span>{{ trans("Ceres::Template.basketIncludeAbbr") }} {{ trans("Ceres::Template.basketVAT") }} 19%</span>
+            <dt class="col-xs-7 col-sm-10 col-lg-7 col-md-7 padding-right-xs-025 text-left-xs" v-for="totalVat in basket.totalVats">
+              <span>{{ trans("Ceres::Template.basketIncludeAbbr") }} {{ trans("Ceres::Template.basketVAT") }} ${ totalVat.vatValue }%</span>
             </dt>
             <dd class="col-xs-5 col-sm-2 col-lg-5 col-md-5 padding-left-xs-025 text-right test1041" v-for="totalVat in basket.totalVats">
               <span data-plenty-basket-preview="totalsVat">${ totalVat.vatAmount | currency }</span>
