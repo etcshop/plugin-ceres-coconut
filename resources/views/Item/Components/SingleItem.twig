@@ -4,7 +4,7 @@
 {% set itemData = config("Ceres.item.data") | split(', ') %}
 {% set enabledRoutes = config("IO.routing.enabled_routes") | split(', ') %}
 
-<script type="x/template" id="vue-single-item">
+<script type="x/template" id="vue-single-item" data-component="single-item">
     <div>
         <div class="single container-max page-content">
             <div class="row mt-5 position-relative">
