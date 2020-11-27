@@ -54,6 +54,7 @@
     {% if template | trim is not empty %}
         {{ template }}
     {% else %}
+      test
         {% include "CeresCoconut::Item.SingleItemView" %}
     {% endif %}
 
@@ -81,6 +82,7 @@
     {# Empty shop builder template is loading #}
     {% else %}
         {# No item template defined in ShopBuilder => use default template from plugin #}
+        test
         {% include "CeresCoconut::Item.SingleItemView" %}
     {% endif %}
 
