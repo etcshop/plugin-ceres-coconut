@@ -8,7 +8,7 @@
     "description"       :   "A Coconut theme for Ceres 4",
     "namespace"         :   "CeresCoconut",
     "author"            :   "plentysystems AG",
-    "type"              :   "theme", 
+    "type"              :   "theme",
     "require"           :   {
                                 "Ceres":">= 3.0.0"
                             },
