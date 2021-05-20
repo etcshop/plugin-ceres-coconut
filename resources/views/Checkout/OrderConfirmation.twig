@@ -32,21 +32,17 @@
 
             {% include "CeresCoconut::Checkout.OrderDetails" with { orderData: data } %}
 
-            <div class="row rowTrustedShops">
+            <!--<div class="row rowTrustedShops">
               <div class="col-md-6 m-b-2">
                 <div class="card small">
                   <div class="card-block">
                     <div id="ts_Bewertung">
-                      {% if webstoreConfig.webstoreId == 4 %}
-                        <a href="https://www.trustedshops.de/bewertung/bewerten_X265918130C87C319EB2890B6759D208E.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("CeresCoconut::Template.ETC_JetztBewerten") }}</a>
-                      {% else %}
-                        <a href="https://www.trustedshops.de/bewertung/bewerten_X59BB3F6DD867AF89CB5B857F35614717.html&buyerEmail={{ codedMail }}&shopOrderID={{ codedOrderID }}">{{ trans("CeresCoconut::Template.ETC_JetztBewerten") }}</a>
-                      {% endif %}
+                        <a href="#">Jetzt Bewerten</a>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             {% if addContentAfterOrderDetailsRow|trim is not empty %}
             <div class="row">

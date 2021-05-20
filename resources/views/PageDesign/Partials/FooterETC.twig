@@ -109,23 +109,7 @@
               <a href="{{ services.category.getURL(leucht, lang) }}" title="{{ services.category.get(337, lang).details[0].name }}">{{ services.category.get(337, lang).details[0].name }}</a> <br>
               <a href="{{ services.category.getURL(moebel, lang) }}" title="{{ services.category.get(460, lang).details[0].name }}">{{ services.category.get(460, lang).details[0].name }}</a> <br>
               <a href="{{ services.category.getURL(top, lang) }}" title="{{ services.category.get(378, lang).details[0].name }}">{{ services.category.get(378, lang).details[0].name }}</a> <br>
-          {% else %}
-            <div class="footersub footer_tslogo test1157">
-              <lazy-img
-                  image-url="https://www.etc-shop.de/img/base/ts.png"
-                  alt="Trusted Shops">
-              </lazy-img>
-            </div>
-            <div class="footersub footer_tstext"> {{ trans("CeresCoconut::Template.ETC_Zertifiziert") }}<br>
-              <br>
-            </div>
-            <a href="https://www.trustedshops.de/bewertung/info_X59BB3F6DD867AF89CB5B857F35614717.html" target="_blank" rel="nofollow noopener" title="Kundenbewertungen von etc-shop.de einsehen">
-              <lazy-img
-                  id="TSBadge"
-                  image-url="https://www.trustedshops.com/bewertung/widget/widgets.nfs/X59BB3F6DD867AF89CB5B857F35614717.gif"
-                  alt="Trusted Shops">
-              </lazy-img>
-            </a><br>
+
           {% endif %}
         </div>
         <div id="footer5" class="footerbox col-xs-6 col-sm-6 col-md-3 col-lg-3">
